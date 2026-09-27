@@ -110,6 +110,16 @@ class ShotTest(unittest.TestCase):
         self.assertGreater(r.pulled, 0.9)
         self.assertTrue(r.warnings)
 
+    def test_push_in_only_moves_closer_even_when_walls_cut_it_short(self):
+        # Wall 250 units in front of the subject's path: the 420 -> 150 push must shrink to fit, never back off.
+        g = geometry(wall(-1000, 250, 3000, 250))
+        track = straight_track(speed=60.0, direction=(0.0, 1.0))
+        track.pos[:, 1] -= 400
+        r = cine.build("push", track, 64, 320, TICKRATE, {"angle": 0.0}, g)
+        d = np.linalg.norm(r.cam - r.aim, axis=1)
+        self.assertTrue((np.diff(d) < 1.0).all())
+        self.assertGreater(d[0] - d[-1], 40)
+
     def test_tripod_is_fixed_and_pans(self):
         r = cine.build("tripod", straight_track(), 64, 320, TICKRATE, {"pos": [300, -400, 60]}, None)
         self.assertTrue(np.allclose(r.cam, r.cam[0]))

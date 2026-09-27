@@ -324,3 +324,18 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
     TODO: add entity models (func_door / prop_dynamic from the vmap's entity lump) to the collision set.
   - FOV defaults (follow 70, side 55, tripod auto by size) look natural at 16:9. Tripod "full" at ~450 u reads well.
   - The output folder fix works: files land in `Videos\CS2 Renders` as `sequence-N-tick-A-to-B.mp4`.
+- **2026-09-27, props, doors and workshop maps:** collision now = world_physics + solid entities from the entity lumps
+  (`maps/<map>/entities/*.vents_c`, decompiled to `key value` blocks): prop_*, func_door*, func_brush, func_wall,
+  func_breakable, func_movelinear... Models are exported from the map VPK, the workshop addon, or pak01, placed with
+  the Source AngleMatrix + `scales` (verified: the dust2 soccer ball lands centred on its origin). Dust2 has only 3 (its
+  doors are static world geometry); totemlake has 148 (126 prop_dynamic, 3 prop_door_rotating), all exported.
+  **Workshop VPK = addon** (`content/730/<id>/<id>[_dir].vpk`) with a nested `maps/<map>.vpk` + custom models;
+  `-l -f maps/` lists nothing, so search the full listing. totemlake = workshop 3581521200. The combined collision is
+  cached in `videos/maps/<map>/collision_full.npz` (delete it after changing the collision code).
+- **Dust2 doorway occlusion wasn't a collision miss:** the camera followed through a doorway and the frame filled the
+  picture's edges. Fix: a "thick" collision arm (extra lines beside/above the lens, half-width 16 + 0.15 × distance).
+- **Lead / push / arc render (dust2-cine-test2): lead and arc good.** Push v1 read as pull-out then push-in, because
+  the wall pull-in at the start broke the distance ramp. Fixed: moving-distance shots shrink the whole move to fit,
+  stay one-directional, and use the subject's overall travel direction, not the first-frame heading. Re-rendered:
+  good push-in (wide to medium). The 8-tick campath pre-roll fixed the first-frame spectator view.
+- push/pull/arc/crane default to `"angle": "auto"` (the candidate with the least wall pull-in wins).

@@ -253,13 +253,31 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
         distance = _ramp(p["distance"], f)
         height = _ramp(p["height"], f)
         heading = sub.heading
-        if p.get("frame") == "world":  # direction fixed at the start of the shot (push-in / pull-out)
-            heading = np.tile(sub.heading[0], (len(t), 1))
+        if p.get("frame") == "world":
+            # Push-in / pull-out: one fixed direction for the whole move, the subject's overall travel direction
+            # (the heading at the first frame can still be mid-turn and point into a wall).
+            travel = sub.feet[-1, :2] - sub.feet[0, :2]
+            overall = _unit(travel[None])[0] if np.linalg.norm(travel) > 64 else _unit(sub.heading.mean(axis=0)[None])[0]
+            heading = np.tile(overall, (len(t), 1))
+
+        moving_distance = isinstance(p["distance"], (list, tuple))  # push-in / pull-out / custom dolly
 
         def rig(angle_value):
             direction = _rot(heading, _ramp(angle_value, f))
-            wanted = np.c_[sub.aim[:, :2] + direction * distance[:, None], sub.aim[:, 2] + height]
+            scaled = distance
+            wanted = np.c_[sub.aim[:, :2] + direction * scaled[:, None], sub.aim[:, 2] + height]
             placed, pulled_mask = _resolve(geometry, sub.aim, wanted, keys_per_second)
+            if moving_distance and pulled_mask.any():
+                # A wall would cut the move short (a push-in that starts pulled in reads as pull-out + push-in).
+                # Shrink the whole move to fit instead, keeping its shape, then keep it one-directional.
+                got = np.linalg.norm(placed - sub.aim, axis=1)
+                scale = float(np.clip((got / np.maximum(distance, 1.0)).min(), 0.35, 1.0))
+                scaled = distance * scale
+                wanted = np.c_[sub.aim[:, :2] + direction * scaled[:, None], sub.aim[:, 2] + height]
+                placed, pulled_mask = _resolve(geometry, sub.aim, wanted, keys_per_second)
+                got = np.linalg.norm(placed - sub.aim, axis=1)
+                mono = np.minimum.accumulate(got) if distance[-1] < distance[0] else np.minimum.accumulate(got[::-1])[::-1]
+                placed = sub.aim + (placed - sub.aim) / np.maximum(got, 1e-9)[:, None] * mono[:, None]
             placed = gaussian_filter1d(placed, sigma=0.12 * keys_per_second, axis=0, mode="nearest")
             lost = np.linalg.norm(wanted - placed, axis=1).mean() / max(float(distance.mean()), 1.0)
             return placed, pulled_mask, lost

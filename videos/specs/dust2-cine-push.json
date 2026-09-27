@@ -1,0 +1,17 @@
+{
+  "name": "dust2-cine-push",
+  "summary": "videos/demos/Brycetopher.summary.json",
+  "outputFileName": "dust2-cine-push",
+  "concatenate": false,
+  "clips": [
+    {
+      "type": "ticks",
+      "start": 2038,
+      "end": 2460,
+      "camera": {
+        "shot": "push",
+        "subject": "Caillou"
+      }
+    }
+  ]
+}
