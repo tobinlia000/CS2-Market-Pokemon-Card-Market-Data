@@ -214,6 +214,40 @@ def place_tripod(geometry, sub: Subject, params: dict) -> np.ndarray:
     return best
 
 
+# --- handheld ---------------------------------------------------------------------------------------------------
+
+HANDHELD_KEY_STEP_TICKS = 2   # 32 keys/s so the fast jitter survives HLAE's interpolation
+STEP_HZ = 1.9                 # operator footsteps while the camera moves
+
+
+def apply_handheld(amount, t, kps, cam, pitch, yaw, roll, seed: int = 7):
+    """Handheld camera: slow operator drift + fast jitter on the angles, a small positional wander, and a footstep
+    bob/sway while the camera itself travels. amount: True/1 = documentary, 0.5 = subtle, 2 = frantic."""
+    amount = 1.0 if amount is True else float(amount)
+    rng = np.random.default_rng(seed)
+    n = len(t)
+
+    def noise(sigma_seconds: float, amplitude: float) -> np.ndarray:
+        raw = rng.standard_normal(n + 400)
+        smooth = gaussian_filter1d(raw, sigma=max(sigma_seconds * kps, 0.6), mode="wrap")[200:200 + n]
+        return smooth / max(float(smooth.std()), 1e-9) * amplitude
+
+    pitch = pitch + amount * (noise(0.45, 0.7) + noise(0.07, 0.18))
+    yaw = yaw + amount * (noise(0.5, 0.9) + noise(0.07, 0.22))
+    roll = roll + amount * (noise(0.6, 0.6) + noise(0.1, 0.12))
+
+    speed = np.linalg.norm(np.gradient(cam, axis=0), axis=1) * kps
+    walking = gaussian_filter1d(np.clip(speed / 120.0, 0.0, 1.0), sigma=0.3 * kps, mode="nearest")
+    phase = 2 * np.pi * np.cumsum(STEP_HZ * walking / kps)
+    heading = np.gradient(cam[:, :2], axis=0)
+    side = np.c_[-heading[:, 1], heading[:, 0]] / np.maximum(np.linalg.norm(heading, axis=1), 1e-9)[:, None]
+    cam = cam + amount * np.c_[noise(0.8, 1.5), noise(0.8, 1.5), noise(0.8, 1.0)]
+    cam[:, 2] += amount * walking * 1.4 * np.sin(phase)
+    cam[:, :2] += side * (amount * walking * 0.8 * np.sin(phase / 2))[:, None]
+    yaw = yaw + amount * walking * 0.3 * np.sin(phase / 2)
+    return cam, pitch, yaw, roll
+
+
 # --- placed shots: the camera has its own position/motion, not glued to the subject ------------------------------
 
 def _basis(pitch: float, yaw: float) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -482,19 +516,23 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
 
     sub_full = subject_motion(window, tickrate, heading_smooth=p.get("headingSmooth", 0.7),
                               aim_height=float(p.get("aimHeight", 50.0)))
-    key_ticks = np.arange(start_tick, end_tick + 1, KEY_STEP_TICKS)
+    step = HANDHELD_KEY_STEP_TICKS if p.get("handheld") else KEY_STEP_TICKS  # denser keys keep the fast jitter
+    key_ticks = np.arange(start_tick, end_tick + 1, step)
     if key_ticks[-1] != end_tick:
         key_ticks = np.r_[key_ticks, end_tick]
     idx = np.searchsorted(sub_full.tick, key_ticks).clip(0, len(sub_full.tick) - 1)
     sub = Subject(key_ticks, sub_full.feet[idx], sub_full.heading[idx], sub_full.aim[idx], sub_full.speed[idx])
     t = (key_ticks - start_tick) / tickrate
     f = t / max(t[-1], 1e-9)
-    keys_per_second = tickrate / KEY_STEP_TICKS
+    keys_per_second = tickrate / step
 
     if kind in PLACED_SHOTS:
         cam, pitch, yaw, fov, extra = PLACED_SHOTS[kind](geometry, sub, p, f, keys_per_second)
         warnings += extra
         roll = _ramp(p.get("roll", 0.0), f)
+        if p.get("handheld"):
+            cam, pitch, yaw, roll = apply_handheld(p["handheld"], t, keys_per_second, cam, pitch, yaw, roll,
+                                                   int(p.get("seed", 7)))
         keys = [campath.Key(float(t[i]), *map(float, cam[i]), float(pitch[i]), float(yaw[i]), float(roll[i]),
                             float(fov[i])) for i in range(len(t))]
         visible = 1.0 if geometry is None else float(np.mean([geometry.clear(cam[i], sub.aim[i]) for i in range(len(t))]))
@@ -559,11 +597,8 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
     roll = _ramp(p.get("roll", 0.0), f)
 
     if p.get("handheld"):
-        amount = 1.0 if p["handheld"] is True else float(p["handheld"])
-        rng = np.random.default_rng(int(p.get("seed", 7)))
-        for arr, amp in ((pitch, 0.35), (yaw, 0.5), (roll, 0.25)):
-            for freq in (0.23, 0.61, 1.3):
-                arr += amount * amp / (1 + freq) * np.sin(2 * np.pi * (freq * t + rng.random()))
+        cam, pitch, yaw, roll = apply_handheld(p["handheld"], t, keys_per_second, cam, pitch, yaw, roll,
+                                               int(p.get("seed", 7)))
 
     if p.get("fov") is None:
         fov = np.full(len(t), hfov_for_size(float(np.median(dist_now)), p.get("size", "medium")))

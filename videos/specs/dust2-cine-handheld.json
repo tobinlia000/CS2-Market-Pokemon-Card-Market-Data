@@ -1,0 +1,12 @@
+{
+  "name": "dust2-cine-handheld",
+  "summary": "videos/demos/Brycetopher.summary.json",
+  "outputFileName": "dust2-cine-handheld",
+  "concatenate": false,
+  "clips": [
+    { "type": "ticks", "start": 1274, "end": 1735, "camera": { "shot": "static", "subject": "Caillou", "handheld": 0.6 } },
+    { "type": "ticks", "start": 2038, "end": 2460, "camera": { "shot": "tripod", "subject": "Caillou", "size": "full", "handheld": 1 } },
+    { "type": "ticks", "start": 3447, "end": 4033, "camera": { "shot": "lead", "subject": "Caillou", "handheld": 1.5 } },
+    { "type": "ticks", "start": 4662, "end": 5252, "camera": { "shot": "follow", "subject": "Caillou", "handheld": 1 } }
+  ]
+}

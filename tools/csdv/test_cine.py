@@ -154,6 +154,20 @@ class ShotTest(unittest.TestCase):
         with self.assertRaises(cine.ShotError):
             cine.build("drone", straight_track(), 64, 320, TICKRATE, {"move": "loop"}, None)
 
+    def test_handheld_shakes_more_with_amount_and_is_repeatable(self):
+        steady = cine.build("follow", straight_track(), 64, 320, TICKRATE, {}, None)
+        soft = cine.build("follow", straight_track(), 64, 320, TICKRATE, {"handheld": 0.5}, None)
+        hard = cine.build("follow", straight_track(), 64, 320, TICKRATE, {"handheld": 2}, None)
+        again = cine.build("follow", straight_track(), 64, 320, TICKRATE, {"handheld": 2}, None)
+        self.assertGreater(len(hard.keys), len(steady.keys))                 # denser keys for the jitter
+        jitter = lambda r: np.std(np.diff([k.pitch for k in r.keys]))        # noqa: E731
+        self.assertGreater(jitter(hard), jitter(soft) * 2)
+        self.assertEqual([k.yaw for k in hard.keys], [k.yaw for k in again.keys])
+        # A locked-off shot with handheld: operator standing still -> wander of a few units, no footstep bob.
+        r = cine.build("static", straight_track(), 64, 320, TICKRATE, {"handheld": 1}, geometry())
+        self.assertLess(np.ptp(r.cam, axis=0).max(), 15)
+        self.assertGreater(np.ptp([k.yaw for k in r.keys]), 0.5)
+
     def test_tripod_is_fixed_and_pans(self):
         r = cine.build("tripod", straight_track(), 64, 320, TICKRATE, {"pos": [300, -400, 60]}, None)
         self.assertTrue(np.allclose(r.cam, r.cam[0]))
