@@ -29,6 +29,8 @@ PAD_SECONDS = 2.0            # extra motion before/after the shot so smoothing h
 PLAYER_HEIGHT = 72.0
 CAMERA_MARGIN = 16.0         # keep the lens this far from walls
 MIN_DISTANCE = 40.0
+FRAME_CLEARANCE = 16.0        # + FRAME_CLEARANCE_SCALE * distance: half-width of the "thick" collision arm
+FRAME_CLEARANCE_SCALE = 0.15
 
 PRESET_ANGLES = {"front": 0.0, "back": 180.0, "left": 90.0, "right": -90.0,
                  "front-left": 45.0, "front-right": -45.0, "back-left": 135.0, "back-right": -135.0}
@@ -38,17 +40,17 @@ SHOT_DEFAULTS = {
     "follow": dict(angle="back", distance=150.0, height=12.0, fov=70.0, headingSmooth=0.7, frame="heading", lead=0.0),
     "lead":   dict(angle="front", distance=170.0, height=6.0, fov=65.0, headingSmooth=0.7, frame="heading", lead=0.0),
     "side":   dict(angle="auto", distance=230.0, height=4.0, fov=55.0, headingSmooth=1.2, frame="heading", lead=0.18),
-    "arc":    dict(angle=[150.0, 60.0], distance=180.0, height=10.0, fov=65.0, headingSmooth=1.0, frame="heading", lead=0.0),
-    "crane":  dict(angle="front-left", distance=220.0, height=[-20.0, 220.0], fov=60.0, headingSmooth=1.0, frame="heading", lead=0.0),
-    "push":   dict(angle="front-left", distance=[420.0, 150.0], height=10.0, fov=55.0, headingSmooth=1.0, frame="world", lead=0.0),
-    "pull":   dict(angle="front", distance=[140.0, 420.0], height=30.0, fov=60.0, headingSmooth=1.0, frame="world", lead=0.0),
+    "arc":    dict(angle="auto", distance=180.0, height=10.0, fov=65.0, headingSmooth=1.0, frame="heading", lead=0.0),
+    "crane":  dict(angle="auto", distance=220.0, height=[-20.0, 220.0], fov=60.0, headingSmooth=1.0, frame="heading", lead=0.0),
+    "push":   dict(angle="auto", distance=[420.0, 150.0], height=10.0, fov=55.0, headingSmooth=1.0, frame="world", lead=0.0),
+    "pull":   dict(angle="auto", distance=[140.0, 420.0], height=30.0, fov=60.0, headingSmooth=1.0, frame="world", lead=0.0),
     "tripod": dict(angle="front-left", distance=450.0, height=20.0, fov=None, size="medium", operatorLag=0.35, lead=0.12),
 }
 SHOTS = set(SHOT_DEFAULTS)
 # "angle": "auto" tries these and keeps the one with the clearest view (fewest wall pull-ins).
 AUTO_ANGLES = {"follow": [180.0, 155.0, -155.0], "lead": [0.0, 25.0, -25.0], "side": [90.0, -90.0],
-               "arc": [[150.0, 60.0], [-150.0, -60.0]], "crane": [45.0, -45.0, 135.0, -135.0],
-               "push": [45.0, -45.0, 0.0], "pull": [0.0, 45.0, -45.0]}
+               "arc": [[150.0, 60.0], [-150.0, -60.0], [60.0, -30.0], [-60.0, 30.0], [120.0, 30.0], [-120.0, -30.0]], "crane": [45.0, -45.0, 135.0, -135.0],
+               "push": [45.0, -45.0, 0.0, 20.0, -20.0], "pull": [0.0, 45.0, -45.0, 20.0, -20.0]}
 SIZE_FRACTION = {"wide": 0.18, "full": 0.45, "medium": 0.7, "close": 1.1}  # subject height / frame height
 
 
@@ -149,11 +151,19 @@ def _resolve(geometry, aim: np.ndarray, cam: np.ndarray, tickrate_keys: float) -
     dist = np.linalg.norm(offset, axis=1)
     direction = offset / np.maximum(dist, 1e-9)[:, None]
     allowed = dist.copy()
+    up = np.array([0.0, 0.0, 1.0])
     for i in range(len(cam)):
+        # A "thick" arm: besides the centre line, test lines to points beside/above the lens. Walls or door frames
+        # that would fill the edges of the picture (camera following through a doorway) pull the camera in too.
+        side = np.cross(direction[i], up)
+        side /= max(np.linalg.norm(side), 1e-9)
+        width = FRAME_CLEARANCE + FRAME_CLEARANCE_SCALE * dist[i]
         reach = dist[i] + CAMERA_MARGIN
-        hit = geometry.first_hit(aim[i], aim[i] + direction[i] * reach, see_through_blocks=True)
-        if hit is not None:
-            allowed[i] = max(MIN_DISTANCE, hit * reach - CAMERA_MARGIN)
+        for lateral, vertical in ((0, 0), (1, 0), (-1, 0), (0, 0.6), (0, -0.4)):
+            end = aim[i] + direction[i] * reach + side * lateral * width + up * vertical * width
+            hit = geometry.first_hit(aim[i], end, see_through_blocks=True)
+            if hit is not None:
+                allowed[i] = min(allowed[i], max(MIN_DISTANCE, hit * reach - CAMERA_MARGIN))
     pulled = allowed < dist - 1.0
     if pulled.any():
         # Pull in ~0.4 s early and let go slowly, then smooth: a spring arm, not a pop.

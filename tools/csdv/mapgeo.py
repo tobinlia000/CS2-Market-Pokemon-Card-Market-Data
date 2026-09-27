@@ -13,7 +13,9 @@ Surface groups (node names / extras.InteractAs):
 from __future__ import annotations
 
 import json
+import math
 import os
+import re
 import struct
 import subprocess
 from pathlib import Path
@@ -42,23 +44,42 @@ def cs2_csgo_dir() -> Path | None:
     return None
 
 
-def find_map_vpk(map_name: str) -> Path:
-    """Official maps: game/csgo/maps/<map>.vpk. Workshop maps: steamapps/workshop/content/730/<id>/*.vpk that
-    contains maps/<map>.vmap_c (the file name is the workshop id, so the listing is checked)."""
+def map_vpks(map_name: str) -> list[Path]:
+    """VPKs to search for a map's files, most specific first.
+
+    Official maps: [game/csgo/maps/<map>.vpk].
+    Workshop maps: steamapps/workshop/content/730/<id>/<id>[_dir].vpk is an *addon* that contains a nested
+    maps/<map>.vpk (the map itself) plus the map's custom models. The nested VPK is extracted once to
+    videos/maps/<map>/<map>.vpk; returns [nested map vpk, addon vpk]. (`-l -f maps/` lists nothing for these
+    addons, so the full listing is searched.)"""
     csgo = cs2_csgo_dir()
     if not csgo:
         raise GeometryError("CS2 install not found.")
     official = csgo / "maps" / f"{map_name}.vpk"
     if official.is_file():
-        return official
+        return [official]
+    nested = MAPS_DIR / map_name / f"{map_name}.vpk"
+    addon_note = MAPS_DIR / map_name / "addon.txt"
+    if nested.is_file() and addon_note.is_file():
+        return [nested, Path(addon_note.read_text(encoding="utf-8").strip())]
     workshop = csgo.parents[3] / "workshop" / "content" / "730"
-    for vpk in sorted(workshop.glob("*/*.vpk")):
-        if vpk.name.endswith(tuple(f"_{i:03d}.vpk" for i in range(1000))):
+    wanted = f"maps/{map_name}.vpk".lower()
+    for addon in sorted(workshop.glob("*/*.vpk")):
+        if re.search(r"_\d{3}\.vpk$", addon.name):
             continue  # data chunks; the _dir.vpk or single .vpk holds the listing
-        listing = _run_cli(["-i", str(vpk), "-l", "-f", "maps/"], check=False)
-        if f"maps/{map_name}.vmap_c".lower() in listing.lower():
-            return vpk
+        listing = _run_cli(["-i", str(addon), "-l"], check=False).lower()
+        if wanted + " " in listing or wanted + "\n" in listing:
+            nested.parent.mkdir(parents=True, exist_ok=True)
+            _run_cli(["-i", str(addon), "-f", f"maps/{map_name}.vpk", "-o", str(nested)])
+            if not nested.is_file():
+                raise GeometryError(f"Could not extract maps/{map_name}.vpk from {addon}")
+            addon_note.write_text(str(addon), encoding="utf-8")
+            return [nested, addon]
     raise GeometryError(f"No VPK found for map '{map_name}' (official maps folder or subscribed workshop maps).")
+
+
+def find_map_vpk(map_name: str) -> Path:
+    return map_vpks(map_name)[0]
 
 
 def _run_cli(args: list[str], check: bool = True) -> str:
@@ -82,12 +103,136 @@ def export_map(map_name: str) -> Path:
     # Windows paths only: an MSYS-style /c/... output path is taken literally (it wrote to C:\c\...).
     _run_cli(["-i", str(vpk), "-f", f"maps/{map_name}/world_physics.vmdl_c", "-d", "--gltf_export_format", "glb",
               "-o", str(out_dir)])
-    found = sorted(out_dir.rglob("*_physics.glb"))
+    # Layout varies: <map>_physics.glb (de_dust2) or maps/<map>/world_physics_physics.glb (totemlake).
+    # Skip models/ and entities/ (per-prop exports) and pick the biggest file.
+    found = sorted((p for p in out_dir.rglob("*_physics.glb")
+                    if not {"models", "entities"} & set(p.relative_to(out_dir).parts[:-1])),
+                   key=lambda p: -p.stat().st_size)
     if not found:
         raise GeometryError(f"Export produced no *_physics.glb in {out_dir}")
     if found[0] != glb:
         found[0].replace(glb)
     return glb
+
+
+# --- Entities (doors, dynamic/physics props, func_brush): not part of world_physics -------------------------------
+
+# Entity classes whose model is visible geometry the camera must not pass through or look through.
+SOLID_ENTITY_PREFIXES = ("prop_", "func_door", "func_brush", "func_wall", "func_breakable", "func_movelinear",
+                         "func_rotating", "func_tracktrain", "func_physbox")
+
+
+def parse_entities(text: str) -> list[dict]:
+    """Source2Viewer's decompiled .vents: blocks separated by '====N====', one 'key value' per line."""
+    entities = []
+    for block in re.split(r"^====\d+====\s*$", text, flags=re.M):
+        kv = {}
+        for line in block.splitlines():
+            match = re.match(r"^(\S+)\s+(.*)$", line.strip())
+            if match:
+                kv[match.group(1)] = match.group(2).strip().strip('"')
+        if kv:
+            entities.append(kv)
+    return entities
+
+
+def _vec(value: str | None, default=(0.0, 0.0, 0.0)) -> np.ndarray:
+    if not value:
+        return np.array(default, dtype=np.float64)
+    numbers = re.findall(r"-?\d+(?:\.\d+)?(?:e-?\d+)?", value)
+    return np.array([float(n) for n in numbers[:3]], dtype=np.float64) if len(numbers) >= 3 else np.array(default)
+
+
+def angle_matrix(pitch: float, yaw: float, roll: float) -> np.ndarray:
+    """Source engine AngleMatrix: columns are the entity's forward, left and up axes in world space."""
+    sp, cp = math.sin(math.radians(pitch)), math.cos(math.radians(pitch))
+    sy, cy = math.sin(math.radians(yaw)), math.cos(math.radians(yaw))
+    sr, cr = math.sin(math.radians(roll)), math.cos(math.radians(roll))
+    return np.array([
+        [cp * cy, sr * sp * cy - cr * sy, cr * sp * cy + sr * sy],
+        [cp * sy, sr * sp * sy + cr * cy, cr * sp * sy - sr * cy],
+        [-sp, sr * cp, cr * cp],
+    ])
+
+
+def solid_entities(entities: list[dict]) -> list[dict]:
+    keep = []
+    for e in entities:
+        cls = e.get("classname", "")
+        model = e.get("model", "")
+        if not cls.startswith(SOLID_ENTITY_PREFIXES) or ".vmdl" not in model:
+            continue
+        if e.get("rendermode") == "10" or e.get("startdisabled", "false").lower() in ("1", "true"):
+            continue  # invisible or disabled at spawn
+        keep.append(e)
+    return keep
+
+
+def _model_path(model: str) -> str:
+    """'resource_name:"models/x/y.vmdl' -> 'models/x/y.vmdl_c'"""
+    path = model.split(":", 1)[-1].strip().strip('"')
+    return path + ("_c" if path.endswith(".vmdl") else "")
+
+
+def export_entities(map_name: str) -> list[dict]:
+    """Decompile the map's entity lumps (maps/<map>/entities/*.vents_c) into a list of dicts (cached as text)."""
+    out_dir = MAPS_DIR / map_name / "entities"
+    cached = sorted(out_dir.glob("*.txt"))
+    if not cached:
+        vpk = find_map_vpk(map_name)
+        listing = _run_cli(["-i", str(vpk), "-l", "-f", f"maps/{map_name}/entities/"], check=False)
+        lumps = re.findall(r"^(maps/\S+?\.vents_c)", listing, flags=re.M)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        for lump in lumps:
+            target = out_dir / (Path(lump).stem + ".txt")
+            _run_cli(["-i", str(vpk), "-f", lump, "-d", "-o", str(target)])
+        cached = sorted(out_dir.glob("*.txt"))
+    entities = []
+    for path in cached:
+        entities += parse_entities(path.read_text(encoding="utf-8", errors="replace"))
+    return entities
+
+
+def export_model(map_name: str, model: str) -> Path | None:
+    """Export one entity model to glb (physics hull if the model has one). Searched in the map VPK, then in the
+    game's pak01 (stock props). Cached in videos/maps/<map>/models/."""
+    rel = _model_path(model)
+    out_dir = MAPS_DIR / map_name / "models" / re.sub(r"[^A-Za-z0-9._-]", "_", rel)
+    found = sorted(out_dir.glob("*.glb")) if out_dir.is_dir() else []
+    if not found and not (out_dir / "missing").exists():
+        out_dir.mkdir(parents=True, exist_ok=True)
+        csgo = cs2_csgo_dir()
+        for vpk in (*map_vpks(map_name), csgo / "pak01_dir.vpk" if csgo else None):
+            if vpk is None or not Path(vpk).is_file():
+                continue
+            _run_cli(["-i", str(vpk), "-f", rel, "-d", "--gltf_export_format", "glb", "-o", str(out_dir)], check=False)
+            found = sorted(out_dir.rglob("*.glb"))
+            if found:
+                break
+        if not found:
+            (out_dir / "missing").write_text(rel)
+    physics = [p for p in found if p.stem.endswith("_physics")]
+    return (physics or found or [None])[0]
+
+
+def entity_triangles(map_name: str):
+    """Yield (entity, (triangles in world space, opaque)) for every solid entity with an exportable model."""
+    models: dict[str, tuple[np.ndarray, np.ndarray] | None] = {}
+    for entity in solid_entities(export_entities(map_name)):
+        model = entity["model"]
+        if model not in models:
+            glb = export_model(map_name, model)
+            models[model] = MapGeometry.glb_triangles(glb) if glb else None
+        local = models[model]
+        if local is None or not len(local[0]):
+            continue
+        tris, opaque = local
+        angles = _vec(entity.get("angles"))
+        scale = _vec(entity.get("scales"), (1.0, 1.0, 1.0))
+        rotation = angle_matrix(*angles)
+        world = (tris * scale) @ rotation.T + _vec(entity.get("origin"))
+        yield entity, (world, opaque)
+
 
 
 # --- Loading ----------------------------------------------------------------------------------------------------
@@ -121,6 +266,7 @@ class MapGeometry:
     def __init__(self, triangles: np.ndarray, opaque: np.ndarray, name: str = ""):
         """triangles: (N, 3, 3) world coordinates; opaque: (N,) bool, False for glass/chain-link."""
         self.name = name
+        self.entity_count = 0
         self.tri = triangles.astype(np.float64)
         self.opaque = opaque.astype(bool)
         self.v0 = self.tri[:, 0]
@@ -141,8 +287,9 @@ class MapGeometry:
                     cells.setdefault(base + cy, []).append(i)
         self.cells = {k: np.asarray(v, dtype=np.int64) for k, v in cells.items()}
 
-    @classmethod
-    def load(cls, glb: Path) -> "MapGeometry":
+    @staticmethod
+    def glb_triangles(glb: Path) -> tuple[np.ndarray, np.ndarray]:
+        """(triangles (N,3,3) in the file's raw Source units, opaque (N,)) with clip/sky groups removed."""
         gltf, accessor = _read_glb(Path(glb))
         tris, opaque = [], []
         for node in gltf["nodes"]:
@@ -154,17 +301,45 @@ class MapGeometry:
                 continue
             see_through = any(word in name for word in SEE_THROUGH_WORDS)
             for prim in gltf["meshes"][node["mesh"]]["primitives"]:
+                if "indices" not in prim:
+                    continue
                 verts = accessor(prim["attributes"]["POSITION"]).astype(np.float64)
                 idx = accessor(prim["indices"]).astype(np.int64).reshape(-1, 3)
                 tris.append(verts[idx])
                 opaque.append(np.full(len(idx), not see_through))
         if not tris:
-            raise GeometryError(f"No collision triangles in {glb}")
-        return cls(np.concatenate(tris), np.concatenate(opaque), Path(glb).stem)
+            return np.empty((0, 3, 3)), np.empty(0, bool)
+        return np.concatenate(tris), np.concatenate(opaque)
 
     @classmethod
-    def for_map(cls, map_name: str) -> "MapGeometry":
-        return cls.load(export_map(map_name))
+    def load(cls, glb: Path) -> "MapGeometry":
+        tris, opaque = cls.glb_triangles(glb)
+        if not len(tris):
+            raise GeometryError(f"No collision triangles in {glb}")
+        return cls(tris, opaque, Path(glb).stem)
+
+    @classmethod
+    def for_map(cls, map_name: str, entities: bool = True) -> "MapGeometry":
+        """World collision + solid entities (doors, dynamic/physics props, func_brush). Cached as an .npz."""
+        cache = MAPS_DIR / map_name / ("collision_full.npz" if entities else "collision_world.npz")
+        if cache.is_file():
+            data = np.load(cache)
+            geometry = cls(data["tri"], data["opaque"], map_name)
+            geometry.entity_count = int(data["entities"])
+            return geometry
+        tris, opaque = cls.glb_triangles(export_map(map_name))
+        parts, flags, count = [tris], [opaque], 0
+        if entities:
+            for entity, (etris, eopaque) in entity_triangles(map_name):
+                parts.append(etris)
+                flags.append(eopaque)
+                count += 1
+        tri, opq = np.concatenate(parts), np.concatenate(flags)
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(cache, tri=tri.astype(np.float32), opaque=opq, entities=count)
+        geometry = cls(tri, opq, map_name)
+        geometry.entity_count = count
+        return geometry
 
     # --- Queries ---------------------------------------------------------------------------------------------
 

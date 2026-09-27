@@ -45,7 +45,47 @@ class GeometryTest(unittest.TestCase):
         self.assertAlmostEqual(g.floor_z(10, 10, 100), 0.0, places=6)
 
 
+class EntityTest(unittest.TestCase):
+    TEXT = """====0====
+classname                      worldspawn
+====1====
+classname                      prop_dynamic
+model                          resource_name:"models/props/crate.vmdl
+origin                         [ 100.0, 200.0, 8.0 ]
+angles                         [ 0.0, 90.0, 0.0 ]
+scales                         [ 2.0, 2.0, 2.0 ]
+====2====
+classname                      prop_dynamic
+model                          resource_name:"models/props/hidden.vmdl
+rendermode                     10
+====3====
+classname                      trigger_multiple
+model                          resource_name:"maps/x/entities/unnamed_1.vmdl
+"""
+
+    def test_parse_and_filter(self):
+        entities = mapgeo.parse_entities(self.TEXT)
+        self.assertEqual(len(entities), 4)
+        solid = mapgeo.solid_entities(entities)
+        self.assertEqual([e["model"] for e in solid], ['resource_name:"models/props/crate.vmdl'])
+        self.assertEqual(mapgeo._model_path(solid[0]["model"]), "models/props/crate.vmdl_c")
+        self.assertEqual(list(mapgeo._vec(solid[0]["origin"])), [100.0, 200.0, 8.0])
+
+    def test_angle_matrix_matches_source(self):
+        m = mapgeo.angle_matrix(0, 90, 0)
+        self.assertTrue(np.allclose(m @ [1, 0, 0], [0, 1, 0]))     # yaw 90: forward -> +y
+        m = mapgeo.angle_matrix(90, 0, 0)
+        self.assertTrue(np.allclose(m @ [1, 0, 0], [0, 0, -1]))    # pitch 90: forward -> straight down
+
+
 class ShotTest(unittest.TestCase):
+    def test_thick_arm_pulls_in_for_walls_beside_the_lens(self):
+        # Doorway: two wall stubs at x=-100 leaving a 30-unit gap on the centre line. The centre ray is clear,
+        # but the frame edges would be filled by the door frame, so the camera must move in front of it.
+        g = geometry(wall(-100, 15, -100, 500), wall(-100, -500, -100, -15))
+        track = straight_track(speed=0.0)
+        r = cine.build("follow", track, 64, 320, TICKRATE, {"distance": 200.0, "height": 0.0}, g)
+        self.assertTrue((r.cam[:, 0] > -100).all())
     def test_follow_stays_behind_and_looks_at_subject(self):
         r = cine.build("follow", straight_track(), 64, 320, TICKRATE, {}, None)
         self.assertGreaterEqual(len(r.keys), 4)
