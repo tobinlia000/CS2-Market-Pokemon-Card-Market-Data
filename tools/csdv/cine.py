@@ -580,8 +580,25 @@ def shot_ots(geometry, sub, p, f, kps):
     return cam, pitch, yaw, np.full(n, max(fov, 20.0)), []
 
 
+def shot_pov(geometry, sub, p, f, kps):
+    """Found-footage camcorder in the subject's own hands: their eye position and view direction with camcorder
+    inertia (the lens lags the mouse a little), a wide lens, plus handheld shake. Spectated in first person, so the
+    subject's own model is hidden (csdv does that for "pov")."""
+    view = p.get("_view")
+    if view is None:
+        raise ShotError("\"pov\" needs the subject's view angles.")
+    view_pitch, view_yaw, duck = view
+    n = len(f)
+    inertia = float(p.get("inertia", 0.12)) * kps
+    pitch = gaussian_filter1d(view_pitch, sigma=max(inertia, 0.5), mode="nearest") * float(p.get("pitchScale", 0.8))
+    yaw = gaussian_filter1d(np.degrees(np.unwrap(np.radians(view_yaw))), sigma=max(inertia, 0.5), mode="nearest")
+    eye = sub.feet + np.c_[np.zeros(n), np.zeros(n), 64.0 - 18.0 * duck]
+    cam = gaussian_filter1d(eye, sigma=0.05 * kps, axis=0, mode="nearest")
+    return cam, pitch, yaw, np.full(n, float(p.get("fov", 95.0))), []
+
+
 PLACED_SHOTS = {"static": shot_static, "overhead": shot_overhead, "drone": shot_drone, "ground": shot_ground,
-                "dolly_zoom": shot_dolly_zoom, "stalker": shot_stalker, "ots": shot_ots}
+                "dolly_zoom": shot_dolly_zoom, "stalker": shot_stalker, "ots": shot_ots, "pov": shot_pov}
 SHOT_DEFAULTS.update({
     "static": dict(angle="front-left", distance=650.0, height=60.0, margin=1.15),
     "overhead": dict(fov169=60.0, margin=1.2, spin=0.0),
@@ -590,6 +607,7 @@ SHOT_DEFAULTS.update({
     "dolly_zoom": dict(angle="auto", distance=[320.0, 110.0], height=4.0, fov=28.0),
     "stalker": dict(distance=650.0, size="full", lag=0.7, handheld=0.3),
     "ots": dict(back=55.0, offset=20.0, height=6.0, shoulder="right", size="full"),
+    "pov": dict(fov=95.0, handheld=0.7, inertia=0.12, pitchScale=0.8),
 })
 SHOTS.update(PLACED_SHOTS)
 
@@ -624,6 +642,9 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
     f = t / max(t[-1], 1e-9)
     keys_per_second = tickrate / step
 
+    if kind == "pov":  # the subject's own view angles + crouch at the key ticks
+        wi = np.searchsorted(window.tick, key_ticks).clip(0, len(window.tick) - 1)
+        p["_view"] = (window.pitch[wi], window.yaw[wi], window.duck[wi])
     if isinstance(p.get("overTrack"), Track):  # second player for over-the-shoulder shots
         other = p["overTrack"]
         oi = np.searchsorted(other.tick, key_ticks).clip(0, len(other.tick) - 1)

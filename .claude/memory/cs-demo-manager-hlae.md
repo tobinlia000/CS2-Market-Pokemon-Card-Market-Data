@@ -364,3 +364,12 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   clip((tension-0.8)/1.6, 0, 1.3); repeats ×0.55 per use. On Brycetopher: 22 beats, ~6 horror picks, all at tense
   moments. Whole-demo analysis takes ~2 min (mostly test-building candidates).
   Brycetopher context: umbass is noclipping (flies); the players are close around 0:21–0:26 and 1:10–1:24.
+- **User rule (2026-09-27): don't make every shot crazy.** Mostly plain, static-feeling shots so the special ones
+  keep their effect. Implemented as pacing classes anchor/move/special in scene.py (`category`, `pacing`): open on
+  an anchor, no two specials in a row, a breather after a special, specials <= 25%, anchors >= 50%, max two moves in
+  a row. New anchors: "Static medium", "Eye-level lock-off (arrival)".
+- **Backrooms mood** (the user's project is Backrooms-style): research in `videos/HORROR-CAMERA.md` (found-footage
+  camcorder handheld with sweeping pans, wide lenses, restrained camera, empty liminal frames, withholding, VHS in
+  post). Recipes: camcorder `pov` (new shot: eye position + view angles with inertia, FOV 95, handheld 0.7; csdv
+  keeps first-person spectating for pov so the body is hidden), camcorder follow, liminal lock-off, empty-room wide,
+  dropped camera (special). No drones in this mood. Not built yet: a VHS post-process pass.

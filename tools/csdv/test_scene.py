@@ -61,6 +61,35 @@ class SceneTest(unittest.TestCase):
         calm = scene.plan({"1": track("1", "A", lambda t: (100.0 * t, 0.0))}, "1", 32, 7 * TICKRATE, mood="horror")
         self.assertTrue(all(not options[0].recipe.horror for _, options in calm if options))  # calm walk: normal
 
+    def test_pacing_rules(self):
+        self.assertGreater(scene.pacing([])["anchor"], 1.0)                      # open on a still frame
+        after_special = scene.pacing(["anchor", "special"])
+        self.assertLess(after_special["special"], 0.2)                           # never two specials in a row
+        self.assertGreater(after_special["anchor"], 1.0)                         # breather after a special
+        self.assertLess(scene.pacing(["anchor", "move", "move"])["move"], 1.0)  # max two moves in a row
+        self.assertGreater(scene.pacing(["move", "move", "special", "move"])["anchor"], 1.0)  # anchors < half
+
+    def test_categories(self):
+        by_name = {r.name: r for r in scene.RECIPES}
+        self.assertEqual(scene.category(by_name["locked-off wide"]), "anchor")
+        self.assertEqual(scene.category(by_name["steadicam follow"]), "move")
+        self.assertEqual(scene.category(by_name["vertigo"]), "special")
+        self.assertEqual(scene.category(by_name["dutch lock-off"]), "special")
+        self.assertEqual(scene.category(by_name["chase handheld"]), "special")
+        self.assertFalse(scene.allowed(by_name["camcorder pov"], "horror"))
+        self.assertTrue(scene.allowed(by_name["vertigo"], "backrooms"))
+        self.assertFalse(scene.allowed(by_name["drone flyover"], "backrooms"))
+
+    def test_plan_keeps_specials_rare_and_apart(self):
+        # A long tense stretch (being watched the whole time) must still alternate with calm shots.
+        victim = track("1", "Victim", lambda t: (100.0 * t, 0.0), seconds=40)
+        watcher = track("2", "Watcher", lambda t: (100.0 * t - 600, 0.0), seconds=40)
+        planned = scene.plan({"1": victim, "2": watcher}, "1", 32, 38 * TICKRATE, mood="horror")
+        classes = [scene.category(o[0].recipe) for _, o in planned if o]
+        self.assertGreaterEqual(len(classes), 5)
+        self.assertFalse(any(a == b == "special" for a, b in zip(classes, classes[1:])))
+        self.assertLessEqual(classes.count("special") / len(classes), 0.5)
+
     def test_beats_cover_range_without_overlap(self):
         tr = {"1": track("1", "A", lambda t: (100.0 * t if t < 4 else 400.0, 0.0))}
         beats = scene.segment(scene.analyze(tr, "1", 32, 7 * TICKRATE))

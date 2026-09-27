@@ -1,0 +1,695 @@
+{
+  "name": "dust2-backrooms-suggested",
+  "summary": "videos/demos/Brycetopher.summary.json",
+  "outputFileName": "dust2-backrooms-suggested",
+  "concatenate": true,
+  "order": "spec",
+  "clips": [
+    {
+      "type": "ticks",
+      "start": 1,
+      "end": 193,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Empty-room wide",
+        "margin": 1.6,
+        "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+      },
+      "beat": "Caillou (Canadian now) is standing still ~5 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static wide",
+          "why": "Static wide: lets the action play inside a still frame."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 193,
+      "end": 705,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is running indoors ~190 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage follow (second camera)",
+          "distance": 70.0,
+          "height": 6.0,
+          "fov": 95.0,
+          "handheld": 0.8,
+          "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 705,
+      "end": 833,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Dropped camera",
+        "lens": 4.0,
+        "roll": 18.0,
+        "fov": 95.0,
+        "lookAhead": 0.35,
+        "why": "Dropped camera: the camcorder has fallen and lies tilted on the floor, still recording as they leave."
+      },
+      "beat": "Caillou (Canadian now) stops suddenly in a tight space ~64 u/s",
+      "alternatives": [
+        {
+          "shot": "dolly_zoom",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly zoom (Vertigo)",
+          "why": "Dolly zoom (Vertigo): the background warps while they stay the same size: the moment of realisation."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 833,
+      "end": 1057,
+      "camera": {
+        "shot": "tripod",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Tripod pan",
+        "size": "full",
+        "why": "Tripod pan: a fixed observer panning with the action."
+      },
+      "beat": "Caillou (Canadian now) is running in a tight space indoors ~160 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage follow (second camera)",
+          "distance": 70.0,
+          "height": 6.0,
+          "fov": 95.0,
+          "handheld": 0.8,
+          "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static wide",
+          "why": "Static wide: lets the action play inside a still frame."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 1057,
+      "end": 1281,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Empty-room wide",
+        "margin": 1.6,
+        "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+      },
+      "beat": "Caillou (Canadian now) is standing still ~14 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static wide",
+          "why": "Static wide: lets the action play inside a still frame."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 1281,
+      "end": 1505,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is running ~202 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage follow (second camera)",
+          "distance": 70.0,
+          "height": 6.0,
+          "fov": 95.0,
+          "handheld": 0.8,
+          "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 1505,
+      "end": 1761,
+      "camera": {
+        "shot": "follow",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage follow (second camera)",
+        "distance": 70.0,
+        "height": 6.0,
+        "fov": 95.0,
+        "handheld": 0.8,
+        "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+      },
+      "beat": "Caillou (Canadian now) is running ~183 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 1761,
+      "end": 2049,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static wide",
+        "why": "Static wide: lets the action play inside a still frame."
+      },
+      "beat": "Caillou (Canadian now) is standing still ~9 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static medium",
+          "margin": 1.05,
+          "distance": 450.0,
+          "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2049,
+      "end": 2401,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Liminal lock-off",
+        "facing": "toward",
+        "lens": 56.0,
+        "fov": 100.0,
+        "lookAhead": 0.7,
+        "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+      },
+      "beat": "Caillou (Canadian now) is running ~230 u/s",
+      "alternatives": [
+        {
+          "shot": "side",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly track",
+          "why": "Dolly track: shows speed and the space they move through."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2401,
+      "end": 2529,
+      "camera": {
+        "shot": "dolly_zoom",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Dolly zoom (Vertigo)",
+        "why": "Dolly zoom (Vertigo): the background warps while they stay the same size: the moment of realisation."
+      },
+      "beat": "Caillou (Canadian now) stops suddenly ~83 u/s",
+      "alternatives": [
+        {
+          "shot": "pov",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        },
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2529,
+      "end": 2913,
+      "camera": {
+        "shot": "follow",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage follow (second camera)",
+        "distance": 70.0,
+        "height": 6.0,
+        "fov": 95.0,
+        "handheld": 0.8,
+        "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+      },
+      "beat": "Caillou (Canadian now) turns a corner ~268 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2945,
+      "end": 3425,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Empty-room wide",
+        "margin": 1.6,
+        "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+      },
+      "beat": "Caillou (Canadian now) is standing still ~5 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static wide",
+          "why": "Static wide: lets the action play inside a still frame."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static medium",
+          "margin": 1.05,
+          "distance": 450.0,
+          "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 3425,
+      "end": 3937,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is running ~217 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        },
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 3937,
+      "end": 4065,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Liminal lock-off",
+        "facing": "toward",
+        "lens": 56.0,
+        "fov": 100.0,
+        "lookAhead": 0.7,
+        "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+      },
+      "beat": "Caillou (Canadian now) is running in a tight space indoors ~148 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4065,
+      "end": 4257,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static medium",
+        "margin": 1.05,
+        "distance": 450.0,
+        "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+      },
+      "beat": "Caillou (Canadian now) is standing still in a tight space indoors ~24 u/s",
+      "alternatives": [
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        },
+        {
+          "shot": "overhead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Bird's-eye",
+          "track": true,
+          "why": "Bird's-eye: shows the geography from above."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4257,
+      "end": 4481,
+      "camera": {
+        "shot": "follow",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage follow (second camera)",
+        "distance": 70.0,
+        "height": 6.0,
+        "fov": 95.0,
+        "handheld": 0.8,
+        "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+      },
+      "beat": "Caillou (Canadian now) is running in a tight space indoors ~231 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        },
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4481,
+      "end": 4609,
+      "camera": {
+        "shot": "lead",
+        "subject": "🗿⃤⃢🍷umbass",
+        "technique": "Low angle on the threat",
+        "height": -45.0,
+        "distance": 170.0,
+        "fov": 70.0,
+        "why": "Low angle on the threat: shooting the threat from below makes them dominant and menacing."
+      },
+      "beat": "Caillou (Canadian now) faces someone (🗿⃤⃢🍷umbass in front of them, 638 u away) ~100 u/s",
+      "alternatives": [
+        {
+          "shot": "ots",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Over the threat's shoulder",
+          "over": "🗿⃤⃢🍷umbass",
+          "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+        },
+        {
+          "shot": "dolly_zoom",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly zoom (Vertigo)",
+          "why": "Dolly zoom (Vertigo): the background warps while they stay the same size: the moment of realisation."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4609,
+      "end": 4737,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Liminal lock-off",
+        "facing": "toward",
+        "lens": 56.0,
+        "fov": 100.0,
+        "lookAhead": 0.7,
+        "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+      },
+      "beat": "Caillou (Canadian now) is being chased (🗿⃤⃢🍷umbass running after them, 1267 u away) ~106 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Eye-level lock-off (arrival)",
+          "facing": "toward",
+          "lens": 58.0,
+          "fov": 85.0,
+          "why": "Eye-level lock-off (arrival): a still frame down the space they walk into, held at eye height."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Empty-room wide",
+          "margin": 1.6,
+          "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4737,
+      "end": 4897,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is running in a tight space ~242 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4897,
+      "end": 5121,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Ground-level lock-off",
+        "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+      },
+      "beat": "Caillou (Canadian now) is running ~220 u/s",
+      "alternatives": [
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Eye-level lock-off (arrival)",
+          "facing": "toward",
+          "lens": 58.0,
+          "fov": 85.0,
+          "why": "Eye-level lock-off (arrival): a still frame down the space they walk into, held at eye height."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 5121,
+      "end": 5249,
+      "camera": {
+        "shot": "stalker",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Stalker vision / voyeur",
+        "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+      },
+      "beat": "Caillou (Canadian now) is being approached (🗿⃤⃢🍷umbass closing in, 1080 u away) ~178 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage follow (second camera)",
+          "distance": 70.0,
+          "height": 6.0,
+          "fov": 95.0,
+          "handheld": 0.8,
+          "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+        },
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 5249,
+      "end": 5377,
+      "camera": {
+        "shot": "ots",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Over the threat's shoulder",
+        "over": "🗿⃤⃢🍷umbass",
+        "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+      },
+      "beat": "Caillou (Canadian now) is being approached (🗿⃤⃢🍷umbass closing in, 873 u away) ~28 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Empty-room wide",
+          "margin": 1.6,
+          "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static wide",
+          "why": "Static wide: lets the action play inside a still frame."
+        }
+      ]
+    }
+  ]
+}

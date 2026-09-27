@@ -7,47 +7,514 @@
   "clips": [
     {
       "type": "ticks",
-      "start": 4096,
-      "end": 4256,
+      "start": 1,
+      "end": 193,
       "camera": {
         "shot": "static",
         "subject": "Caillou (Canadian now)",
         "technique": "Static wide",
         "why": "Static wide: lets the action play inside a still frame."
       },
-      "beat": "Caillou (Canadian now) is standing still in a tight space indoors ~18 u/s",
-      "alternatives": []
+      "beat": "Caillou (Canadian now) is standing still ~5 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static medium",
+          "margin": 1.05,
+          "distance": 450.0,
+          "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+        },
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        }
+      ]
     },
     {
       "type": "ticks",
-      "start": 4256,
-      "end": 4480,
+      "start": 193,
+      "end": 705,
       "camera": {
         "shot": "ground",
         "subject": "Caillou (Canadian now)",
         "technique": "Ground-level lock-off",
         "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
       },
-      "beat": "Caillou (Canadian now) is running in a tight space indoors ~230 u/s",
-      "alternatives": []
+      "beat": "Caillou (Canadian now) is running indoors ~190 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
     },
     {
       "type": "ticks",
-      "start": 4608,
-      "end": 4736,
+      "start": 705,
+      "end": 833,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static medium",
+        "margin": 1.05,
+        "distance": 450.0,
+        "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+      },
+      "beat": "Caillou (Canadian now) stops suddenly in a tight space ~64 u/s",
+      "alternatives": [
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        },
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 833,
+      "end": 1057,
+      "camera": {
+        "shot": "tripod",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Tripod pan",
+        "size": "full",
+        "why": "Tripod pan: a fixed observer panning with the action."
+      },
+      "beat": "Caillou (Canadian now) is running in a tight space indoors ~160 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        },
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 1057,
+      "end": 1281,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static wide",
+        "why": "Static wide: lets the action play inside a still frame."
+      },
+      "beat": "Caillou (Canadian now) is standing still ~14 u/s",
+      "alternatives": [
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        },
+        {
+          "shot": "overhead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Bird's-eye",
+          "track": true,
+          "why": "Bird's-eye: shows the geography from above."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 1281,
+      "end": 1505,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Ground-level lock-off",
+        "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+      },
+      "beat": "Caillou (Canadian now) is running ~202 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Steadicam follow",
+          "why": "Steadicam follow: stays with them through the space."
+        },
+        {
+          "shot": "side",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly track",
+          "why": "Dolly track: shows speed and the space they move through."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 1505,
+      "end": 1761,
       "camera": {
         "shot": "follow",
         "subject": "Caillou (Canadian now)",
         "technique": "Steadicam follow",
         "why": "Steadicam follow: stays with them through the space."
       },
-      "beat": "Caillou (Canadian now) is being chased (🗿⃤⃢🍷umbass running after them, 1252 u away) ~104 u/s",
-      "alternatives": []
+      "beat": "Caillou (Canadian now) is running ~183 u/s",
+      "alternatives": [
+        {
+          "shot": "side",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly track",
+          "why": "Dolly track: shows speed and the space they move through."
+        },
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        }
+      ]
     },
     {
       "type": "ticks",
-      "start": 4736,
-      "end": 4896,
+      "start": 1761,
+      "end": 2049,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static medium",
+        "margin": 1.05,
+        "distance": 450.0,
+        "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+      },
+      "beat": "Caillou (Canadian now) is standing still ~9 u/s",
+      "alternatives": [
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        },
+        {
+          "shot": "overhead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Bird's-eye",
+          "track": true,
+          "why": "Bird's-eye: shows the geography from above."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2049,
+      "end": 2401,
+      "camera": {
+        "shot": "side",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Dolly track",
+        "why": "Dolly track: shows speed and the space they move through."
+      },
+      "beat": "Caillou (Canadian now) is running ~230 u/s",
+      "alternatives": [
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Eye-level lock-off (arrival)",
+          "facing": "toward",
+          "lens": 58.0,
+          "fov": 85.0,
+          "why": "Eye-level lock-off (arrival): a still frame down the space they walk into, held at eye height."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2401,
+      "end": 2529,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Eye-level lock-off (arrival)",
+        "facing": "toward",
+        "lens": 58.0,
+        "fov": 85.0,
+        "why": "Eye-level lock-off (arrival): a still frame down the space they walk into, held at eye height."
+      },
+      "beat": "Caillou (Canadian now) stops suddenly ~83 u/s",
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2529,
+      "end": 2913,
+      "camera": {
+        "shot": "follow",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Steadicam follow",
+        "why": "Steadicam follow: stays with them through the space."
+      },
+      "beat": "Caillou (Canadian now) turns a corner ~268 u/s",
+      "alternatives": [
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        },
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 2945,
+      "end": 3425,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static wide",
+        "why": "Static wide: lets the action play inside a still frame."
+      },
+      "beat": "Caillou (Canadian now) is standing still ~5 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static medium",
+          "margin": 1.05,
+          "distance": 450.0,
+          "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+        },
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 3425,
+      "end": 3937,
+      "camera": {
+        "shot": "tripod",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Tripod pan",
+        "size": "full",
+        "why": "Tripod pan: a fixed observer panning with the action."
+      },
+      "beat": "Caillou (Canadian now) is running ~217 u/s",
+      "alternatives": [
+        {
+          "shot": "side",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly track",
+          "why": "Dolly track: shows speed and the space they move through."
+        },
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 3937,
+      "end": 4065,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Ground-level lock-off",
+        "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+      },
+      "beat": "Caillou (Canadian now) is running in a tight space indoors ~148 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Eye-level lock-off (arrival)",
+          "facing": "toward",
+          "lens": 58.0,
+          "fov": 85.0,
+          "why": "Eye-level lock-off (arrival): a still frame down the space they walk into, held at eye height."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off (arrival)",
+          "facing": "toward",
+          "why": "Ground-level lock-off (arrival): they run straight at a camera on the floor."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4065,
+      "end": 4257,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static medium",
+        "margin": 1.05,
+        "distance": 450.0,
+        "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+      },
+      "beat": "Caillou (Canadian now) is standing still in a tight space indoors ~24 u/s",
+      "alternatives": [
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        },
+        {
+          "shot": "overhead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Bird's-eye",
+          "track": true,
+          "why": "Bird's-eye: shows the geography from above."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4257,
+      "end": 4481,
+      "camera": {
+        "shot": "follow",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Steadicam follow",
+        "why": "Steadicam follow: stays with them through the space."
+      },
+      "beat": "Caillou (Canadian now) is running in a tight space indoors ~231 u/s",
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4481,
+      "end": 4609,
+      "camera": {
+        "shot": "side",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Dolly track",
+        "why": "Dolly track: shows speed and the space they move through."
+      },
+      "beat": "Caillou (Canadian now) faces someone (🗿⃤⃢🍷umbass in front of them, 638 u away) ~100 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Eye-level lock-off (arrival)",
+          "facing": "toward",
+          "lens": 58.0,
+          "fov": 85.0,
+          "why": "Eye-level lock-off (arrival): a still frame down the space they walk into, held at eye height."
+        },
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4609,
+      "end": 4737,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Eye-level lock-off (arrival)",
+        "facing": "toward",
+        "lens": 58.0,
+        "fov": 85.0,
+        "why": "Eye-level lock-off (arrival): a still frame down the space they walk into, held at eye height."
+      },
+      "beat": "Caillou (Canadian now) is being chased (🗿⃤⃢🍷umbass running after them, 1267 u away) ~106 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off (arrival)",
+          "facing": "toward",
+          "why": "Ground-level lock-off (arrival): they run straight at a camera on the floor."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 4737,
+      "end": 4897,
       "camera": {
         "shot": "tripod",
         "subject": "Caillou (Canadian now)",
@@ -56,46 +523,103 @@
         "why": "Tripod pan: a fixed observer panning with the action."
       },
       "beat": "Caillou (Canadian now) is running in a tight space ~242 u/s",
-      "alternatives": []
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        },
+        {
+          "shot": "overhead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Bird's-eye",
+          "track": true,
+          "why": "Bird's-eye: shows the geography from above."
+        }
+      ]
     },
     {
       "type": "ticks",
-      "start": 4896,
-      "end": 5120,
-      "camera": {
-        "shot": "side",
-        "subject": "Caillou (Canadian now)",
-        "technique": "Dolly track",
-        "why": "Dolly track: shows speed and the space they move through."
-      },
-      "beat": "Caillou (Canadian now) is being chased (🗿⃤⃢🍷umbass running after them, 560 u away) ~220 u/s",
-      "alternatives": []
-    },
-    {
-      "type": "ticks",
-      "start": 5120,
-      "end": 5248,
+      "start": 4897,
+      "end": 5121,
       "camera": {
         "shot": "ground",
         "subject": "Caillou (Canadian now)",
         "technique": "Ground-level lock-off",
         "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
       },
-      "beat": "Caillou (Canadian now) is being approached (🗿⃤⃢🍷umbass closing in, 1082 u away) ~179 u/s",
-      "alternatives": []
+      "beat": "Caillou (Canadian now) is running ~220 u/s",
+      "alternatives": [
+        {
+          "shot": "overhead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Bird's-eye",
+          "track": true,
+          "why": "Bird's-eye: shows the geography from above."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off (arrival)",
+          "facing": "toward",
+          "why": "Ground-level lock-off (arrival): they run straight at a camera on the floor."
+        }
+      ]
     },
     {
       "type": "ticks",
-      "start": 5248,
-      "end": 5376,
+      "start": 5121,
+      "end": 5249,
       "camera": {
-        "shot": "lead",
+        "shot": "follow",
         "subject": "Caillou (Canadian now)",
-        "technique": "Lead / walk-and-talk",
-        "why": "Lead / walk-and-talk: shows their face and where they come from."
+        "technique": "Steadicam follow",
+        "why": "Steadicam follow: stays with them through the space."
       },
-      "beat": "Caillou (Canadian now) is being approached (🗿⃤⃢🍷umbass closing in, 874 u away) ~27 u/s",
-      "alternatives": []
+      "beat": "Caillou (Canadian now) is being approached (🗿⃤⃢🍷umbass closing in, 1080 u away) ~178 u/s",
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Lead / walk-and-talk",
+          "why": "Lead / walk-and-talk: shows their face and where they come from."
+        },
+        {
+          "shot": "side",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly track",
+          "why": "Dolly track: shows speed and the space they move through."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 5249,
+      "end": 5377,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static wide",
+        "why": "Static wide: lets the action play inside a still frame."
+      },
+      "beat": "Caillou (Canadian now) is being approached (🗿⃤⃢🍷umbass closing in, 873 u away) ~28 u/s",
+      "alternatives": [
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static medium",
+          "margin": 1.05,
+          "distance": 450.0,
+          "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+        }
+      ]
     }
   ]
 }

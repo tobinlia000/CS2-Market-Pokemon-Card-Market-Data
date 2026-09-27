@@ -285,6 +285,27 @@ class Recipe:
     over_other: bool = False          # over the other player's shoulder
     requires_other: bool = False      # only when another player is part of the beat
     why: str = ""
+    moods: tuple | None = None        # moods the recipe is offered in (None: all; horror recipes: horror + backrooms)
+    tense: bool | None = None         # weight by beat tension (default: horror recipes)
+    style: str = ""                   # "backrooms": found-footage recipes, favoured in that mood
+    special: bool = False             # force the "special" pacing class
+
+
+def category(recipe: "Recipe") -> str:
+    """Pacing class. anchor = calm, static-feeling coverage; move = camera travels; special = attention-grabbing.
+    Specials only keep their effect when they are rare and surrounded by anchors."""
+    p = recipe.params
+    if (recipe.special or recipe.shot == "dolly_zoom" or p.get("roll") or float(p.get("handheld", 0)) >= 1.0
+            or recipe.over_other or recipe.subject_is_other):
+        return "special"
+    if recipe.shot in ("static", "tripod", "ground", "stalker") or (recipe.shot == "overhead" and not p.get("track")):
+        return "anchor"
+    return "move"
+
+
+def allowed(recipe: "Recipe", mood: str) -> bool:
+    moods = recipe.moods or (("horror", "backrooms") if recipe.horror else None)
+    return moods is None or mood in moods
 
 
 MOVE = ("walk", "run", "corner")
@@ -303,9 +324,16 @@ RECIPES = [
     Recipe("overhead", "Bird's-eye", "overhead", {"track": True}, {"walk": 0.5, "run": 0.6, "still": 0.5},
            why="shows the geography from above"),
     Recipe("drone flyover", "Aerial flyover", "drone", {}, {"run": 0.8, "walk": 0.6},
-           needs={"open"}, avoid={"indoor"}, why="a sweeping establishing move over the area"),
+           needs={"open"}, avoid={"indoor"}, why="a sweeping establishing move over the area",
+           moods=("neutral", "horror")),
     Recipe("drone orbit", "Aerial orbit", "drone", {"move": "orbit"}, {"still": 0.7, "searching": 0.5},
-           needs={"open"}, avoid={"indoor"}, why="circles the scene to set it up"),
+           needs={"open"}, avoid={"indoor"}, why="circles the scene to set it up", moods=("neutral", "horror")),
+    Recipe("locked-off medium", "Static medium", "static", {"margin": 1.05, "distance": 450.0},
+           {"still": 0.8, "walk": 0.7, "searching": 0.7, "run": 0.4},
+           why="a plain, still frame: the calm between the bigger moments"),
+    Recipe("eye-level arrival", "Eye-level lock-off (arrival)", "ground", {"facing": "toward", "lens": 58.0, "fov": 85.0},
+           {"walk": 0.8, "run": 0.7, "corner": 0.6},
+           why="a still frame down the space they walk into, held at eye height"),
     Recipe("ground runner", "Ground-level lock-off", "ground", {}, {"run": 0.9, "walk": 0.5},
            why="the lens rests on the floor while they run away from it"),
     Recipe("ground arrival", "Ground-level lock-off (arrival)", "ground", {"facing": "toward"},
@@ -357,6 +385,27 @@ RECIPES = [
     Recipe("nervous observer", "Unsteady observer", "tripod", {"handheld": 0.8, "size": "medium"},
            {"searching": 1.1, "still": 0.8, "watched": 0.9}, horror=True,
            why="a slightly shaky, lagging observer makes calm moments feel unsafe"),
+
+    # Backrooms / found footage (mood "backrooms"): camcorder language + restrained, empty, liminal frames.
+    Recipe("camcorder pov", "Found-footage camcorder POV", "pov", {"handheld": 0.7, "fov": 95.0},
+           {"walk": 1.0, "run": 1.0, "searching": 1.3, "still": 0.6, "corner": 1.0}, style="backrooms",
+           moods=("backrooms",),
+           why="the character's own camcorder at eye height, wide lens, sweeping when they look around"),
+    Recipe("camcorder follow", "Found-footage follow (second camera)", "follow",
+           {"distance": 70.0, "height": 6.0, "fov": 95.0, "handheld": 0.8},
+           {"walk": 1.0, "run": 0.9, "corner": 1.0}, style="backrooms", moods=("backrooms",),
+           why="someone filming right behind them at eye level, like the second person in found footage"),
+    Recipe("liminal hallway", "Liminal lock-off", "ground", {"facing": "toward", "lens": 56.0, "fov": 100.0,
+                                                              "lookAhead": 0.7},
+           {"walk": 1.1, "run": 0.8, "still": 0.7, "corner": 0.8}, style="backrooms", moods=("backrooms",),
+           why="a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself"),
+    Recipe("empty room wide", "Empty-room wide", "static", {"margin": 1.6},
+           {"still": 1.0, "searching": 1.0, "walk": 0.8}, style="backrooms", moods=("backrooms",),
+           why="a wide, still frame where the room dwarfs them: vast and claustrophobic at once"),
+    Recipe("dropped camera", "Dropped camera", "ground", {"lens": 4.0, "roll": 18.0, "fov": 95.0, "lookAhead": 0.35},
+           {"startle": 1.4, "death": 1.6, "chase": 0.9, "run": 0.4}, style="backrooms", moods=("backrooms",),
+           tense=True, special=True,
+           why="the camcorder has fallen and lies tilted on the floor, still recording as they leave"),
 ]
 
 
@@ -371,29 +420,35 @@ class Suggestion:
 
 
 def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "neutral", geometry=None,
-            history: list[tuple[str, str]] | None = None, top: int = 3, tickrate: float = 64.0) -> list[Suggestion]:
+            history: list[tuple[str, str]] | None = None, top: int = 3, tickrate: float = 64.0,
+            pace: dict | None = None) -> list[Suggestion]:
     history = history or []
-    horror = mood == "horror"
+    pace = pace or {}
+    horror = mood in ("horror", "backrooms")
     scored = []
     for recipe in RECIPES:
+        if not allowed(recipe, mood):
+            continue
+        tense = recipe.horror if recipe.tense is None else recipe.tense
         base = recipe.weights.get(beat.label)
-        if base is None and not recipe.horror:
+        if base is None and not tense:
             base = recipe.weights.get(beat.motion, 0) * 0.8   # everyday coverage for any beat, by how they move
         if not base:
-            continue
-        if recipe.horror and not horror:
             continue
         if recipe.needs - beat.tags or recipe.avoid & beat.tags:
             continue
         if (recipe.over_other or recipe.subject_is_other or recipe.requires_other) and not beat.other:
             continue
-        if recipe.horror:
+        if tense:
             # Genre shots are for tense beats: ~0 at tension 0.8, ~0.75 at 2.0, >1 for chases/watchers/deaths.
             score = base * float(np.clip((beat.tension - 0.8) / 1.6, 0.0, 1.3))
             if score <= 0.05:
                 continue
         else:
             score = base * ((1.15 - 0.25 * beat.tension) if horror else 1.0)
+        if recipe.style and recipe.style == mood:
+            score *= 1.25
+        score *= pace.get(category(recipe), 1.0)
         if history and history[-1][0] == recipe.shot:
             score *= 0.4
         if recipe.name in [name for _, name in history[-3:]]:
@@ -437,10 +492,39 @@ def plan(tracks: dict[str, Track], subject_id: str, start: int, end: int, mood: 
     windows = analyze(tracks, subject_id, start, end, geometry, events, tickrate)
     beats = segment(windows)
     history: list[tuple[str, str]] = []  # (shot type, recipe name) of each beat's top pick
+    classes: list[str] = []               # pacing class of each beat's top pick
     out = []
     for beat in beats:
-        options = suggest(beat, tracks, subject_id, mood, geometry, history, top, tickrate)
+        options = suggest(beat, tracks, subject_id, mood, geometry, history, top, tickrate, pacing(classes))
         if options:
             history.append((options[0].recipe.shot, options[0].recipe.name))
+            classes.append(category(options[0].recipe))
         out.append((beat, options))
     return out
+
+
+ANCHOR_SHARE = 0.5     # at least half the beats are calm, static-feeling coverage
+SPECIAL_SHARE = 0.25   # at most a quarter are attention-grabbing shots
+MAX_MOVES_IN_A_ROW = 2
+
+
+def pacing(classes: list[str]) -> dict[str, float]:
+    """Score multipliers per pacing class so the big shots stay rare and land: open on an anchor, never two
+    specials in a row, a breather after every special, and enough anchors overall."""
+    pace = {"anchor": 1.0, "move": 1.0, "special": 1.0}
+    n = len(classes)
+    if n == 0:
+        pace["anchor"] *= 1.4                      # open with an establishing, still frame
+        pace["special"] *= 0.2
+        return pace
+    if classes[-1] == "special":
+        pace["special"] *= 0.1                     # never two in a row
+        pace["anchor"] *= 1.5                      # let it breathe
+    if classes.count("special") / n >= SPECIAL_SHARE:
+        pace["special"] *= 0.3
+    if n >= 2 and classes.count("anchor") / n < ANCHOR_SHARE:
+        pace["anchor"] *= 1.35
+    if classes[-MAX_MOVES_IN_A_ROW:] == ["move"] * MAX_MOVES_IN_A_ROW:
+        pace["move"] *= 0.55
+        pace["anchor"] *= 1.3
+    return pace

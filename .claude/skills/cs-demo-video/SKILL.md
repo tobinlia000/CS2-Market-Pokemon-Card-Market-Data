@@ -105,13 +105,15 @@ ignore `view`.
 
 **Automatic shot suggestions (use these when planning a scene):**
 `python tools/csdv/csdv.py suggest videos/demos/<demo>.summary.json --subject <player> [--start m:ss --end m:ss]
-[--mood neutral|horror] [--top 3] [--name <spec>]` splits the stretch into 2–8 s beats. It tags each beat (motion,
+[--mood neutral|horror|backrooms] [--top 3] [--name <spec>]` splits the stretch into 2–8 s beats. It tags each beat (motion,
 tight/open/indoor, watched/chase/face-off/approach, deaths) and ranks feasible shots (test-built against the map). It
 writes `videos/specs/<name>.json` (top pick per beat, with `why`, `beat` and `alternatives`) plus a readable `.md`.
 Show the user the beats + picks, let them swap in alternatives, then build. Horror recipes (`videos/HORROR-CAMERA.md`)
 only appear with `--mood horror` and scale with tension; repeated signature moves are penalized.
+PACING (user rule): mostly plain, static-feeling shots so the special ones keep their effect. The suggester enforces
+it (anchors >= ~50%, specials <= ~25%, never two specials in a row); keep that when hand-editing a plan.
 Shot types: follow, lead, side, arc, crane, push, pull, tripod, static, overhead, drone (flyover/orbit/rise), ground
-(away/toward), dolly_zoom, stalker, ots (`"over": "<player>"`); any of them + `"handheld": 0.5–2`, `"roll"` (dutch).
+(away/toward), dolly_zoom, stalker, ots, pov (camcorder) (`"over": "<player>"`); any of them + `"handheld": 0.5–2`, `"roll"` (dutch).
 
 Add `"camera"` to a `round`/`ticks`/`time` clip (one sequence). csdv writes an HLAE campath XML to
 `videos/campaths/<spec>-clip<N>.xml` and adds cfg that loads it and anchors keyframe 0 to the sequence start tick via

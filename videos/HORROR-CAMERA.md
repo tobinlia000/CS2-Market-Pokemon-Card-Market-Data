@@ -25,6 +25,40 @@ Pacing rule from the research: alternate **downtime → build-up → payoff**. T
 space) is where the fear lives, and constant genre shots desensitize. That's why the suggester keeps ordinary shots
 in calm beats.
 
+## Backrooms (A24 film, 2026, and Kane Parsons' web series) → `--mood backrooms`
+What the research says the camera does:
+- **Found footage first.** 90s camcorder look, handheld at eye height, with harried, sweeping pans when the
+  character scans the space. The film shot handheld on cinema cameras (DP Jeremy Cox, cropped Super 16, RED Komodo)
+  to match Parsons' early videos and the feel of first-person games. "Camcorder" shots were a cinema camera
+  operated just off-frame, and the footage went through a real VCR for the degraded look.
+- **Wide-angle lenses.** Distorted, slightly hallucinatory: the space feels vast and claustrophobic at once.
+- **Restrained camera choreography.** Attention stays on the space itself. Mundane, empty, liminal rooms become
+  dreadful when something is slightly off; the dread comes from the environment, not camera tricks.
+- **Withholding.** Pans and limited visibility suggest danger just past the frame edge rather than showing it.
+
+Our recipes (backrooms mood also includes the horror recipes, tension-weighted, and drops the drone shots):
+| Recipe | Shot | Pacing class |
+|---|---|---|
+| Found-footage camcorder POV: their eye position + view direction, camcorder inertia, wide lens (95), handheld 0.7; spectated in first person so their own body is hidden | `pov` | move |
+| Found-footage follow: a second person filming right behind them at eye level | `follow` 70 u, wide, handheld 0.8 | move |
+| Liminal lock-off: still, wide, eye-level frame down the space they walk into | `ground` facing toward, lens 56, FOV 100 | anchor |
+| Empty-room wide: the room dwarfs them | `static` margin 1.6 | anchor |
+| Dropped camera: camcorder lying tilted on the floor, still recording as they leave (shocks, deaths) | `ground` lens 4, roll 18 | special |
+Not done yet: the VHS/VCR look in post (4:3 crop, chroma bleed, noise, tape wobble, timestamp) could be an ffmpeg pass
+after rendering.
+
+## Pacing: the big shots only work next to plain ones (every mood)
+Each shot is classed **anchor** (static, tripod, ground, stalker, fixed overhead), **move** (follow, lead, side,
+arc, push, drone, tracking overhead, camcorder) or **special** (dolly zoom, Dutch, handheld ≥ 1, low angle on the
+threat, over-the-shoulder, dropped camera). `scene.pacing()` rules:
+- Open on an anchor (establishing, still).
+- Never two specials in a row; after a special, the next beat favours an anchor (a breather).
+- Specials ≤ ~25% of beats; anchors ≥ ~50% (they get a boost when behind).
+- At most two moving shots in a row, then an anchor.
+- Signature moves lose weight every time they're used (×0.55 per use for horror/special recipes).
+Result on Brycetopher (22 beats): horror = 14 anchors / 5 moves / 3 specials; backrooms = 11 anchors / 7 camcorder
+moves / 4 specials, never two specials in a row.
+
 ## How scene context is detected (per 0.5 s, from demoparser2 positions + map geometry)
 - Motion: still (< 40 u/s), walk, run (> 180 u/s); sudden stop (from > 150 to < 40); searching (view turning
   > 110°/s while not running); corner (travel heading turns > 55° in 0.5 s); crouch.
@@ -42,3 +76,8 @@ in calm beats.
 - Film Lifestyle, "What Is Stalker Vision in Film": https://filmlifestyle.com/what-is-stalker-vision/
 - StudioBinder, "Telephoto Lens Shot": https://www.studiobinder.com/camera-shots/camera-lenses/telephoto-lens-shot/
 - American Cinematographer, "The Steadicam and The Shining Revisited": https://theasc.com/article/steadicam-shining-revisited/
+- Wikipedia, "Backrooms (film)": https://en.wikipedia.org/wiki/Backrooms_(film)
+- Hypercritic, "Backrooms Explained | Kane Parsons and the Horror of Liminal Spaces": https://hypercritic.org/collection/backrooms-explained-review
+- CBR, "Backrooms Review": https://www.cbr.com/backrooms-review/
+- CinemaBlend, "How Were Backrooms' Found Footage Scenes Shot?": https://www.cinemablend.com/movies/how-were-backrooms-found-footage-scenes-shot-director-kane-parsons-compares-youtube-series-interview
+- Medium, "The Backrooms (Found Footage) – 4 Years On": https://medium.com/@thebackrooms.online/the-backrooms-found-footage-4-years-on-from-kane-pixels-first-backrooms-video-2f3b6c2b3dad

@@ -539,6 +539,8 @@ def apply_view(clip: dict, sequences: list[dict], default_view: str) -> None:
     if view not in ("first", "third"):
         raise CsdvError(f"Unknown view '{view}'. Use \"first\" or \"third\".")
     camera_clip = bool(clip.get("camera"))
+    if camera_clip and clip["camera"].get("shot") == "pov":
+        return  # camcorder POV: stay in CS:DM's first-person spectating so the subject's own model is hidden
     if camera_clip:
         # An HLAE campath drives the view. Spectate in chase mode anyway, so the spectated player's model is drawn
         # (first-person spectating hides it). attach_camera already cleared mirv_cmd, so don't clear again.
@@ -895,8 +897,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--subject", required=True, help="player name or SteamID64")
     p.add_argument("--start", help="demo time (m:ss) or seconds; default: demo start")
     p.add_argument("--end", help="demo time (m:ss) or seconds; default: demo end")
-    p.add_argument("--mood", default="neutral", choices=["neutral", "horror"],
-                   help="horror adds horror/thriller techniques, weighted by each beat's tension")
+    p.add_argument("--mood", default="neutral", choices=["neutral", "horror", "backrooms"],
+                   help="horror: + horror/thriller techniques by tension; backrooms: + found-footage language")
     p.add_argument("--top", type=int, default=3)
     p.add_argument("--name", help="output spec name")
     p.add_argument("--demo", help="override the .dem path")

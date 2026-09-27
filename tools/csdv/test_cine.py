@@ -168,6 +168,15 @@ class ShotTest(unittest.TestCase):
         self.assertLess(np.ptp(r.cam, axis=0).max(), 15)
         self.assertGreater(np.ptp([k.yaw for k in r.keys]), 0.5)
 
+    def test_pov_rides_the_eyes_and_follows_the_view(self):
+        track = straight_track()
+        track.yaw[:] = np.linspace(0, 90, len(track.yaw))          # player turns their view while walking
+        r = cine.build("pov", track, 64, 320, TICKRATE, {"handheld": 0}, None)
+        self.assertTrue(np.allclose(r.cam[:, 2], 64.0, atol=1.0))
+        self.assertTrue(np.allclose(r.cam[:, :2], r.subject[:, :2], atol=5.0))   # light edge smoothing
+        self.assertGreater(r.keys[-1].yaw - r.keys[0].yaw, 35)   # view turns 45 deg over this 4 s window
+        self.assertEqual(r.keys[0].fov, 95.0)
+
     def test_tripod_is_fixed_and_pans(self):
         r = cine.build("tripod", straight_track(), 64, 320, TICKRATE, {"pos": [300, -400, 60]}, None)
         self.assertTrue(np.allclose(r.cam, r.cam[0]))
