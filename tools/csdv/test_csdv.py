@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import campath
 import csdv
 
 A = "76561198000000001"  # "Liam #1"
@@ -131,6 +132,47 @@ class CsdvTest(unittest.TestCase):
     def test_ambiguous_player_errors(self):
         with self.assertRaises(csdv.CsdvError):
             self.build([{"type": "kills", "player": "l"}])  # Liam, Bob ... Builder and Carl all contain "l"
+
+    def test_safety_blocks_server_and_map_commands(self):
+        for line in ["connect 1.2.3.4:27015", "+connect 1.2.3.4", "mirv_fov 90; retry", "map de_dust2",
+                     "map_workshop 123 x", "mirv_cmd addAtTick 500 connect 1.2.3.4", "exec autoexec",
+                     "mirv_loadlibrary x.dll", "echo steam://connect/1.2.3.4"]:
+            self.assertTrue(csdv.unsafe_command_problems(line), line)
+        for line in ["mirv_fov 90", "spec_mode 1", "mirv_cmd addAtTick 500 mirv_campath offset current", "r_drawviewmodel 0"]:
+            self.assertEqual(csdv.unsafe_command_problems(line), [], line)
+        config = self.build([{"type": "ticks", "start": 500, "end": 900, "cfg": "connect 1.2.3.4"}])
+        errors = [p for p in csdv.validate_config(config) if "SAFETY" in p]
+        self.assertTrue(errors)
+
+    def test_look_at_conventions(self):
+        self.assertEqual(campath.look_at((0, 0, 0), (100, 0, 0)), (0.0, 0.0))
+        self.assertEqual(campath.look_at((0, 0, 0), (0, 100, 0))[1], 90.0)
+        pitch, _ = campath.look_at((0, 0, 100), (100, 0, 0))
+        self.assertAlmostEqual(pitch, 45.0)  # positive pitch = looking down
+
+    def test_campath_xml_and_min_keys(self):
+        keys = campath.static((1, 2, 3), 5.0, target=(10, 2, 3))
+        self.assertGreaterEqual(len(keys), 4)
+        xml = campath.to_xml(campath.orbit((0, 0, 0), 200, 50, 4.0, degrees=180))
+        self.assertIn('<campath positionInterp="cubic" rotationInterp="sCubic"', xml)
+        self.assertGreaterEqual(xml.count("<p "), 4)
+        yaws = [k.yaw for k in campath.orbit((0, 0, 0), 200, 0, 4.0, start_deg=170, degrees=40)]
+        self.assertTrue(all(abs(b - a) < 180 for a, b in zip(yaws, yaws[1:])))
+        pos, ang = campath.parse_getpos("setpos -2028.00 1043.50 125.03;setang 5.40 63.40 0.00")
+        self.assertEqual(pos, (-2028.0, 1043.5, 125.03))
+        self.assertEqual(ang[1], 63.4)
+
+    def test_camera_clip_is_synced_to_ticks(self):
+        spec = {"name": "t", "clips": [
+            {"type": "ticks", "start": 6400, "end": 6720, "camera": {"shot": "orbit", "center": [0, 0, 64], "degrees": 90}}]}
+        config = csdv.build_config(spec, self.profile, self.summary, write_files=False)
+        cfg = config["sequences"][0]["cfg"].split("\n")
+        self.assertIn('mirv_campath load "{REPO}/videos/campaths/t-clip1.xml"', cfg)
+        self.assertIn("mirv_cmd addAtTick 6400 mirv_campath offset current", cfg)
+        self.assertIn("mirv_cmd addAtTick 6720 mirv_campath enabled 0", cfg)
+        self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
+        with self.assertRaises(csdv.CsdvError):
+            self.build([{"type": "kills", "player": A, "camera": {"shot": "static", "pos": [0, 0, 0]}}])
 
     def test_cli_round_trip(self):
         with tempfile.TemporaryDirectory() as tmp:

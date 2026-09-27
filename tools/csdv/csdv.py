@@ -21,6 +21,8 @@ import re
 import sys
 from pathlib import Path
 
+import campath
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_PROFILE_PATH = REPO_ROOT / "videos" / "profile.json"
 
@@ -31,6 +33,19 @@ MAX_SECONDS_BETWEEN_KILLS = 10
 # CS:DM strips `#...` and `//...` from the config file with a regex before JSON parsing, even inside strings.
 # Any string containing them corrupts the config, so they must never be written.
 FORBIDDEN_CONFIG_PATTERNS = ("#", "//", "/*")
+
+
+# SAFETY: HLAE is a cheat as far as VAC is concerned. Configs must never make the game join a server or load
+# anything except the demo CS:DM plays. First token of any cfg command (split on ';') that is refused:
+FORBIDDEN_COMMANDS = {
+    "connect", "retry", "redirect", "password", "joingame", "join", "matchmaking",
+    "map", "changelevel", "map_workshop", "host_workshop_map", "host_workshop_collection", "ds_workshop_changelevel",
+    "playdemo", "sv_lan", "rcon", "rcon_password", "rcon_address", "mirv_loadlibrary", "bind", "unbindall",
+    "exec", "execifexists", "host_writeconfig", "mirv_exec", "mirv_script_load", "mirv_script_exec", "mirv_vscript_exec",
+}
+# Placeholder for the repo folder on the Windows PC; scripts/render.ps1 substitutes it before rendering.
+REPO_PLACEHOLDER = "{REPO}"
+CAMPATH_DIR = "videos/campaths"
 
 
 class CsdvError(Exception):
@@ -140,6 +155,8 @@ def summarize_match(match: dict) -> dict:
                 "airborne": bool(k.get("isKillerAirborne")),
                 "trade": bool(k.get("isTradeKill")),
                 "distance": round(k.get("distance") or 0, 1),
+                "killerPos": [round(k.get(f"killer{a}") or 0, 1) for a in "XYZ"],
+                "victimPos": [round(k.get(f"victim{a}") or 0, 1) for a in "XYZ"],
             }
             for k in match.get("kills", [])
         ),
@@ -391,6 +408,44 @@ def build_clip(clip: dict, match: Match, settings: dict, spec_cfg: str | None) -
     raise CsdvError(f"Unknown clip type '{kind}'. Use kills, deaths, round, ticks or time.")
 
 
+def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: str, clip_index: int,
+                  write_files: bool) -> None:
+    """Drive the view with an HLAE campath for this clip, synced to the recording start tick."""
+    shot = clip.get("camera")
+    if not shot:
+        return
+    if len(sequences) != 1:
+        raise CsdvError(f"Clip {clip_index + 1}: \"camera\" needs a clip that makes exactly one sequence (round/ticks/time).")
+    sequence = sequences[0]
+    duration = (sequence["endTick"] - sequence["startTick"]) / match.tickrate
+    if "file" in shot:
+        relative = shot["file"].replace("\\", "/")
+    else:
+        try:
+            keys = campath.build_shot(shot, duration)
+        except (KeyError, ValueError) as error:
+            raise CsdvError(f"Clip {clip_index + 1}: bad camera {shot}: {error}") from error
+        relative = f"{CAMPATH_DIR}/{spec_name}-clip{clip_index + 1}.xml"
+        if write_files:
+            path = REPO_ROOT / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(campath.to_xml(keys, shot.get("interp", "cubic")), encoding="utf-8", newline="\n")
+    lines = [
+        "mirv_campath enabled 0",
+        "mirv_campath clear",
+        f'mirv_campath load "{REPO_PLACEHOLDER}/{relative}"',
+        "mirv_campath offset none",
+        "mirv_campath enabled 1",
+        # CS:DM runs cfg ~1 s before the start tick; HLAE's command system fires on exact demo ticks.
+        "mirv_cmd clear",
+        f"mirv_cmd addAtTick {sequence['startTick']} mirv_campath offset current",
+        f"mirv_cmd addAtTick {sequence['endTick']} mirv_campath enabled 0",
+    ]
+    if shot.get("hideViewmodel", True):
+        lines.append("r_drawviewmodel 0")
+    sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), *lines]))
+
+
 def players_options(match: Match, highlight: set[str], voice: bool) -> list[dict]:
     return [
         {
@@ -404,7 +459,7 @@ def players_options(match: Match, highlight: set[str], voice: bool) -> list[dict
     ]
 
 
-def build_config(spec: dict, profile: dict, summary: dict | None) -> dict:
+def build_config(spec: dict, profile: dict, summary: dict | None, write_files: bool = False) -> dict:
     settings = deep_merge(profile, spec.get("overrides", {}))
     seq_settings = settings["sequenceDefaults"]
     match = Match(summary)
@@ -414,8 +469,11 @@ def build_config(spec: dict, profile: dict, summary: dict | None) -> dict:
         raise CsdvError("The spec needs \"demo\" (Windows path to the .dem) or a summary containing demoPath.")
 
     sequences: list[dict] = []
-    for clip in spec.get("clips", []):
-        sequences.extend(build_clip(clip, match, seq_settings, spec.get("cfg")))
+    spec_name = re.sub(r"[^A-Za-z0-9._-]", "-", spec.get("name") or "spec")
+    for index, clip in enumerate(spec.get("clips", [])):
+        clip_sequences = build_clip(clip, match, seq_settings, spec.get("cfg"))
+        attach_camera(clip, clip_sequences, match, spec_name, index, write_files)
+        sequences.extend(clip_sequences)
     if not sequences:
         raise CsdvError("The spec has no clips.")
 
@@ -476,7 +534,7 @@ def command_build(args) -> int:
         if not summary_path.is_absolute():
             summary_path = REPO_ROOT / summary_path
         summary = load_json(summary_path)
-    config = build_config(spec, profile, summary)
+    config = build_config(spec, profile, summary, write_files=True)
     problems = validate_config(config)
     errors = [p for p in problems if p.startswith("ERROR")]
     for problem in problems:
@@ -547,6 +605,9 @@ def validate_config(config: dict) -> list[str]:
             if pattern in text:
                 error(f"{path} contains '{pattern}' which CS:DM's comment stripper removes: {text!r}")
 
+    for path, text in iter_strings(config):
+        if "steam://" in text.lower():
+            error(f"SAFETY: {path} contains a steam:// link")
     if not str(config.get("demoPath", "")).lower().endswith(".dem"):
         error("demoPath must end with .dem")
     if config.get("recordingSystem") not in ("HLAE", "CS"):
@@ -598,6 +659,25 @@ def validate_config(config: dict) -> list[str]:
         for line in str(sequence.get("cfg") or "").split("\n"):
             if line.strip().startswith(("startmovie", "endmovie", "mirv_streams record start", "mirv_streams record end")):
                 error(f"{label}: cfg must not start/stop recording itself: {line!r}")
+            for problem in unsafe_command_problems(line):
+                error(f"{label}: SAFETY: {problem}")
+    return problems
+
+
+def unsafe_command_problems(line: str) -> list[str]:
+    """Commands that could join a server, load a map or run unknown code are never allowed in a config."""
+    problems = []
+    for part in re.split(r"[;\n]", line):
+        tokens = part.strip().lstrip("+").split()
+        if not tokens:
+            continue
+        # mirv_cmd addAtTick <tick> <command...> schedules another command: check that one too.
+        if tokens[0].lower() == "mirv_cmd" and len(tokens) > 3 and tokens[1].lower() in ("addattick", "addattime"):
+            tokens = tokens[3:]
+        if tokens[0].lower() in FORBIDDEN_COMMANDS:
+            problems.append(f"forbidden command {tokens[0]!r} in {line.strip()!r}")
+    if "steam://" in line.lower():
+        problems.append(f"steam:// links are forbidden: {line.strip()!r}")
     return problems
 
 

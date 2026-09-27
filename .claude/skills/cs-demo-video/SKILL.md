@@ -5,6 +5,14 @@ description: Plan and program Counter-Strike 2 demo videos (frag movies, highlig
 
 # CS2 demo videos with CS Demo Manager + HLAE
 
+## ⛔ SAFETY FIRST — never let a recording session reach a real game
+HLAE is a cheat to VAC. Read and obey the SAFETY section of `CLAUDE.md` before anything else. In short:
+- Configs/cfg/`mirv_cmd` must never contain server, map-loading, exec/bind or plugin-loading commands
+  (`csdv.py validate` blocks them; treat a SAFETY error as a hard stop, never work around it).
+- `-insecure` is mandatory and is what keeps VAC off; never touch it or HLAE/CS:DM launch parameters.
+- `render.ps1` refuses to start while CS2 is running; after every session remind the user:
+  close CS2 → `.\scripts\safety-check.ps1` → launch CS2 from Steam for online play.
+
 You cannot run CS2, HLAE or CS Demo Manager (CS:DM) here — this is a Linux cloud container and HLAE is Windows-only.
 Your job is the programming: choose the moments, author clip specs, build and validate CS:DM configs, and push them.
 The user runs two PowerShell scripts on Windows. Git is the hand-off in both directions.
@@ -82,6 +90,35 @@ Rules the builder enforces/assumes:
   builder rewrites player names (`#` → `＃`, `"` → `'`); in `cfg` never write comments.
 - Never put `startmovie`/`mirv_streams record start|end` in `cfg`; CS:DM controls recording.
 
+## Camerawork and stories (custom cameras, workshop maps)
+Coordinates are plain world coordinates (x, y, z; z up; yaw 0 = +x, 90 = +y; pitch + = looking down). They work on
+**any** map, official or workshop — CS:DM's "map support" only matters for its 2D viewer/radar, not for cameras.
+
+Add `"camera"` to a `round`/`ticks`/`time` clip (one sequence). csdv writes an HLAE campath XML to
+`videos/campaths/<spec>-clip<N>.xml` and adds cfg that loads it and anchors keyframe 0 to the sequence start tick via
+`mirv_cmd addAtTick <startTick> mirv_campath offset current` (HLAE's command system runs on exact demo ticks).
+```jsonc
+"camera": { "shot": "static", "pos": [x, y, z], "lookAt": [x, y, z], "fov": 75 }
+"camera": { "shot": "dolly",  "from": [x, y, z], "to": [x, y, z], "lookAt": [x, y, z] }   // or startAngles/endAngles [pitch, yaw]
+"camera": { "shot": "orbit",  "center": [x, y, z], "radius": 250, "height": 60, "startDeg": 0, "degrees": 120 }
+"camera": { "shot": "keys",   "keys": [ { "t": 0, "pos": [..], "lookAt": [..] }, { "t": 2.5, "pos": [..], "pitch": 10, "yaw": 45, "fov": 70 } ] }
+"camera": { "file": "videos/campaths/scout/alley.xml" }        // a path the user recorded with mirv_campath save
+// common: "interp": "cubic"|"linear", "hideViewmodel": true
+```
+Where coordinates come from (best first):
+1. **User scouting inside the demo** (works on workshop maps because the demo loads the map): watch the demo from
+   CS:DM, switch to free camera, fly to a spot and run `getpos` → paste the `setpos ...;setang ...` line
+   (`campath.parse_getpos` reads it). For moves: `mirv_campath clear`, `mirv_campath add` at each spot (≥ 4), then
+   `mirv_campath save "<repo>/videos/campaths/scout/<name>.xml"` and push. I retime, smooth and reuse those.
+2. **Demo data**: summary `kills[].killerPos/victimPos` (feet; eyes ≈ +64 z). Full per-tick player positions:
+   CS:DM's analyzer `csda -demo-path x.dem -format json -positions` — runs here in the cloud if the user shares the
+   .dem (e.g. Google Drive); I can then follow players (`campath.track`).
+3. Map geometry (walls) is unknown to me → cameras placed only from positions can clip through walls. Keep cameras
+   near space players occupied or scouted spots, and ask for a short low-res test render before a long one.
+   (Possible future step, unverified: export the workshop VPK geometry with Source2Viewer CLI for collision checks.)
+Stories: plan a shot list (scene, subject, shot type, duration), map each shot to a clip + camera, keep
+`order: "spec"` so scenes stay in story order, and use `concatenate`.
+
 ## Useful per-clip `cfg` lines (CS2 + HLAE)
 | Goal | cfg |
 |---|---|
@@ -105,6 +142,7 @@ Anything uncertain: tell the user to test it on a short clip first, and record t
 ## Troubleshooting (ask for the log; see memory §2 for the pipeline)
 | Symptom | Likely cause → fix |
 |---|---|
+| Any error when starting CS from CS:DM right after a CS2 update | Update HLAE (CS:DM Settings > Video > HLAE, or a newer release from github.com/advancedfx/advancedfx); try once **without** HLAE (Settings > Playback > Use HLAE off) to tell an HLAE problem from a CS:DM plugin problem; get the exact error text |
 | "Steam is not running" / game never starts | Start Steam; CS2 must be installed and up to date |
 | HLAE error window, instant exit | CS2 update broke HLAE → update HLAE in CS:DM Settings > Video; else wait for an HLAE release |
 | Demo plays but nothing recorded / "raw files not found" | CS:DM CS2 plugin incompatible after a CS2 patch → update CS:DM, or pick a plugin version in Settings > Playback |

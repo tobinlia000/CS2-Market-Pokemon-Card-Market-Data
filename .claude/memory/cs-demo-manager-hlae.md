@@ -5,7 +5,26 @@ source code, not only the docs, so they are precise but tied to the versions bel
 
 - **CS Demo Manager** v3.20.1 — github.com/akiver/cs-demo-manager (commit 10fc2a9, 2026-09-25). Docs: cs-demo-manager.com/docs (guides/video, cli).
 - **HLAE** (Half-Life Advanced Effects, "advancedfx") — github.com/advancedfx/advancedfx (commit 96e13a0, 2026-09-27). Manual: github.com/advancedfx/advancedfx/wiki.
-- Last updated: 2026-09-27.
+- Last updated: 2026-09-27 (safety, cameras, launch-error research added).
+
+## 0. SAFETY (top priority — see CLAUDE.md for the binding rules)
+Verified in source (2026-09-27):
+- **HLAE (AfxHookSource2 `DllMain`)**: if the game command line lacks `-insecure`, shows "Please add -insecure…
+  AfxHookSource2 will refuse to work without it!" and terminates the game. The HLAE CS2 launcher's
+  "-insecure (prevents joining VAC secured server / VAC bans)" checkbox is checked and **disabled** (can't untick).
+- HLAE once had a "YOU ARE TRYING TO CONNECT TO A SERVER - THIS WILL GET YOU VAC BANNED" prompt on `connect`;
+  in the current CS2 code it is **commented out** → there is no connect guard in HLAE today. `-insecure` is the guard.
+- **CS:DM**: always launches CS2 with `-insecure -novid` (both plain and HLAE launches). Its CS2 server plugin
+  (`game/csgo/csdm/bin/server.dll`, loaded via a `Game csgo/csdm` line added to `gameinfo.gi`) calls
+  `Plat_FatalError` ("CS:DM plugin loaded without the -insecure launch option. Aborting.") if `-insecure` is missing,
+  so a leftover plugin can't silently run in a secure session. The plugin restores `gameinfo.gi` from
+  `gameinfo.gi.backup` itself; CS:DM also uninstalls it after each run. A crash can leave leftovers →
+  `scripts/safety-check.ps1` detects and removes them.
+- `-insecure` = VAC not loaded; VAC-secured servers (all Valve matchmaking/Premier, most community servers) refuse
+  the connection. Third-party anti-cheats (FACEIT, 5E…) are separate programs — never run them alongside.
+- Our guards: `csdv validate` blocks server/map/exec/bind/plugin commands (also inside `mirv_cmd addAtTick`);
+  `render.ps1` refuses to start if CS2 is already running and warns if CS2/HLAE stay open after; `safety-check.ps1`
+  before online play.
 
 ## 1. What each tool is
 
@@ -173,5 +192,42 @@ Available `mirv_*` commands: `mirv_streams, mirv_campath, mirv_camio, mirv_death
 - Not yet verified on the user's machine: the PowerShell scripts (no PowerShell in the cloud container) and a first
   real render. Record results of the first run here.
 
-## 11. Render log (append: date, demo, what worked / broke)
+## 11. Cameras, custom/workshop maps (research 2026-09-27)
+- CS:DM custom cameras = `{x,y,z,pitch,yaw}` per `(game, mapName)` in its DB (a few defaults for official maps, e.g.
+  de_dust2 "Tunnels"). Applied in videos via `spec_goto x y z pitch yaw` at a tick. Added via Settings > Cameras (map
+  list comes from Settings > Maps, where custom maps can be added); "Start CS2 on <map>" launches `+map <name>` in a
+  local spectator session (-insecure) and "capture" runs `getposcopy` + a screenshot. Config-file sequences can only
+  reference cameras by DB id → we use HLAE campaths instead (no DB access needed).
+- Maps support in CS:DM (radar image, posX/posY/scale/thresholdZ) is only for the 2D viewer/heatmaps.
+- HLAE campath XML: `<campath positionInterp="default|linear|cubic" rotationInterp="default|sLinear|sCubic"
+  fovInterp=… [offset=…] [hold]><points><p t x y z fov rx(roll) ry(pitch) rz(yaw) [qw qx qy qz]/>…`. ≥ 4 keyframes to
+  enable. Times are client curtime seconds; `mirv_campath offset current[+s]` shifts the path to start now.
+  `mirv_campath add` records the current view; `save/load <file>`.
+- HLAE `mirv_cmd addAtTick <demoTick> <cmd…>` / `addAtTime` / `addCurves` / `clear` / `print` / `load|save` (XML):
+  the tick variant uses the **demo file tick** (+ interpolation) → exact sync with CS:DM sequence ticks.
+  csdv uses: at setup tick load path + `mirv_cmd addAtTick <start> mirv_campath offset current` and
+  `addAtTick <end> mirv_campath enabled 0`. UNTESTED on a real render yet.
+- `mirv_viewmodel enabled 0|1`, `mirv_viewmodel set x y z fov leftHanded` (* keeps); `mirv_noflash <0..1>`;
+  `mirv_fov <f>|default|handleZoom…`.
+- CS:DM `csdm json` export has kill positions (killerX/Y/Z, victimX/Y/Z) but **no per-tick player positions**
+  (`analyzePositions` is off by default and positions aren't exported). CS:DM's analyzer binary
+  (`@akiver/cs-demo-analyzer`, npm, v1.11.0; linux/windows/mac binaries) runs in this cloud container:
+  `csda -demo-path x.dem -output out -format json -positions [-minify]` → `playerPositions` (x,y,z,yaw,tick…),
+  grenade/inferno positions. Sampling rate not yet verified. Needs the .dem shared with the cloud (Drive connector).
+- Map geometry isn't available to me; untested idea: Source2Viewer (ValveResourceFormat) CLI can decompile the
+  workshop map VPK (`steamapps/workshop/content/730/<id>/`) to glTF for wall/collision checks.
+- Workshop-map demos: playback needs the map installed locally (subscribed). How CS2 resolves workshop map names in
+  demos is not verified yet — check on the first workshop demo (summary `map` field).
+
+## 12. Versions / launch errors (2026-09-27)
+- CS2 updates ~2026-09-23 (build 14182) and 1.41.8.5 (~09-26). HLAE fixed them in 2.192.3 → **2.192.6
+  (2026-09-26, latest)**; 2.192.5 broke sniper scopes (fixed in .6). Older HLAE → errors on launch.
+- CS:DM latest release **v3.20.1 (2026-07-30)**. CS2 plugin last updated for the 2026-07-09 CS2 update (plugin
+  versions 14030…14168 + latest). No CS:DM commit for the September CS2 updates as of 2026-09-25 → if the plain
+  (non-HLAE) launch also fails, the CS:DM plugin may be broken by the CS2 update (check CS:DM GitHub issues/Discord).
+- CS:DM checks HLAE updates from GitHub releases (latest non-prerelease) and can update it in Settings > Video.
+- Triage: exact error text → update HLAE → retry → try with "Use HLAE" off (Settings > Playback) → check `csdm.log`
+  in `<CS2>/game/bin/win64/` and CS:DM logs.
+
+## 13. Render log (append: date, demo, what worked / broke)
 - (none yet)
