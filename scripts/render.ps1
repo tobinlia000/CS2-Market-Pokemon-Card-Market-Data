@@ -82,5 +82,5 @@ foreach ($file in $Config) {
         Write-Host "CS2/HLAE from the recording is still open. Close it before playing online (see scripts\safety-check.ps1)." -ForegroundColor Yellow
     }
     $dest = if ($OutputFolder) { $OutputFolder } elseif ($cfg.outputFolderPath) { $cfg.outputFolderPath } else { Split-Path $cfg.demoPath }
-    Write-Host "Done. Output is in a sub-folder (named after the video id) of: $dest" -ForegroundColor Green
+    Write-Host "Done. Output is in: $dest" -ForegroundColor Green
 }

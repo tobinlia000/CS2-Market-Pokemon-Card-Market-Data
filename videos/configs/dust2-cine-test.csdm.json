@@ -56,7 +56,7 @@
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/dust2-cine-test-clip1.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 2038 mirv_campath offset current\nmirv_cmd addAtTick 2460 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 2460 cl_drawhud 1\nmirv_cmd addAtTick 2008 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/dust2-cine-test-clip1.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 2030 mirv_campath offset current\nmirv_cmd addAtTick 2460 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 2460 cl_drawhud 1\nmirv_cmd addAtTick 2008 spec_mode 3"
     },
     {
       "number": 2,
@@ -92,7 +92,7 @@
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/dust2-cine-test-clip2.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 3447 mirv_campath offset current\nmirv_cmd addAtTick 4033 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 4033 cl_drawhud 1\nmirv_cmd addAtTick 3417 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/dust2-cine-test-clip2.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 3439 mirv_campath offset current\nmirv_cmd addAtTick 4033 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 4033 cl_drawhud 1\nmirv_cmd addAtTick 3417 spec_mode 3"
     },
     {
       "number": 3,
@@ -128,7 +128,7 @@
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/dust2-cine-test-clip3.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 4662 mirv_campath offset current\nmirv_cmd addAtTick 5252 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 5252 cl_drawhud 1\nmirv_cmd addAtTick 4632 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/dust2-cine-test-clip3.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 4654 mirv_campath offset current\nmirv_cmd addAtTick 5252 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 5252 cl_drawhud 1\nmirv_cmd addAtTick 4632 spec_mode 3"
     }
   ],
   "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"

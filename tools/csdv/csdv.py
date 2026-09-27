@@ -410,6 +410,13 @@ def build_clip(clip: dict, match: Match, settings: dict, spec_cfg: str | None) -
 
 
 _GEOMETRY_CACHE: dict = {}
+# The campath is anchored this many ticks before the recording starts. Anchored exactly on startTick, the first
+# recorded frame still showed the spectator view (verified 2026-09-27, one frame per clip).
+CAMPATH_PREROLL_TICKS = 8
+
+
+def campath_start_tick(sequence: dict) -> int:
+    return max(1, sequence["startTick"] - CAMPATH_PREROLL_TICKS)
 
 
 def map_geometry(map_name: str):
@@ -442,7 +449,7 @@ def cinematic_keys(clip: dict, shot: dict, sequence: dict, match: Match, demo_pa
     geometry = map_geometry(match.summary.get("map", "")) if shot.get("collision", True) else None
     params = {k: v for k, v in shot.items() if k not in ("shot", "subject", "collision", "interp", "hideViewmodel", "hud")}
     try:
-        result = cine.build(shot["shot"], tracks[subject["steamId"]], sequence["startTick"], sequence["endTick"],
+        result = cine.build(shot["shot"], tracks[subject["steamId"]], campath_start_tick(sequence), sequence["endTick"],
                             match.tickrate, params, geometry)
     except cine.ShotError as error:
         raise CsdvError(f"Clip {clip_index + 1}: {error}") from error
@@ -480,6 +487,12 @@ def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: st
                 keys = campath.build_shot(shot, duration)
             except (KeyError, ValueError) as error:
                 raise CsdvError(f"Clip {clip_index + 1}: bad camera {shot}: {error}") from error
+            # Hold the first view during the pre-roll so the shot itself still starts on the first recorded frame.
+            pre = (sequence["startTick"] - campath_start_tick(sequence)) / match.tickrate
+            if pre > 0:
+                first = keys[0]
+                keys = [campath.Key(0.0, first.x, first.y, first.z, first.pitch, first.yaw, first.roll, first.fov)] + [
+                    campath.Key(k.t + pre, k.x, k.y, k.z, k.pitch, k.yaw, k.roll, k.fov) for k in keys]
         relative = f"{CAMPATH_DIR}/{spec_name}-clip{clip_index + 1}.xml"
         if write_files:
             path = REPO_ROOT / relative
@@ -493,7 +506,7 @@ def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: st
         "mirv_campath enabled 1",
         # CS:DM runs cfg ~1 s before the start tick; HLAE's command system fires on exact demo ticks.
         "mirv_cmd clear",
-        f"mirv_cmd addAtTick {sequence['startTick']} mirv_campath offset current",
+        f"mirv_cmd addAtTick {campath_start_tick(sequence)} mirv_campath offset current",
         f"mirv_cmd addAtTick {sequence['endTick']} mirv_campath enabled 0",
     ]
     if shot.get("hideViewmodel", True):

@@ -309,3 +309,18 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   maps: `game\csgo\maps\<map>.vpk`. Workshop maps: `steamapps\workshop\content\730\<id>\*.vpk`.
 - CS:DM's saved cameras (Settings > Cameras, e.g. 15+ dust2 presets) are good tripod/establishing positions for
   official maps. They live in CS:DM's PostgreSQL DB.
+- **Built 2026-09-27** (`tools/csdv/positions.py`, `mapgeo.py`, `cine.py`; spec: clip `"camera": {"shot": "follow" |
+  "lead" | "side" | "arc" | "crane" | "push" | "pull" | "tripod", "subject": "<player>", ...}`). Map geometry = collision
+  mesh `maps/<map>/world_physics.vmdl_c` exported to `videos/maps/<map>/<map>_physics.glb` (gitignored). The raw glb
+  vertex positions are already world units, z up (the node matrix only converts to glTF meters). Skip
+  playerclip/npcclip/grenadeclip/sky; glass/chain-link block the camera but not the view. 0.4 s load, ~0.8 ms per ray.
+  Top-down previews: `videos/previews/<spec>-clipN.png` (gitignored). CLI gotcha: pass Windows paths, since `-o /c/...`
+  wrote to `C:\c\...`. (Note: `C:\c\Users\...\Content Creator Hub` already existed from something earlier; not ours.)
+- **First cinematic render (dust2, Brycetopher, Caillou): WORKED.** Tripod pan, follow from behind and side tracking
+  all look right. The subject is drawn (spectated in chase mode) and `cl_drawhud 0` removes the HUD. Findings:
+  - The campath anchored on startTick left **frame 1 in the spectator view** → it's now anchored 8 ticks earlier
+    (`CAMPATH_PREROLL_TICKS`); cinematic shots are built from startTick-8. Not re-rendered yet.
+  - **Doors and dynamic props aren't in world_physics** (the dust2 double doors blocked the end of a follow shot).
+    TODO: add entity models (func_door / prop_dynamic from the vmap's entity lump) to the collision set.
+  - FOV defaults (follow 70, side 55, tripod auto by size) look natural at 16:9. Tripod "full" at ~450 u reads well.
+  - The output folder fix works: files land in `Videos\CS2 Renders` as `sequence-N-tick-A-to-B.mp4`.

@@ -171,7 +171,7 @@ class CsdvTest(unittest.TestCase):
         config = csdv.build_config(spec, self.profile, self.summary, write_files=False)
         cfg = config["sequences"][0]["cfg"].split("\n")
         self.assertIn('mirv_campath load "{REPO}/videos/campaths/t-clip1.xml"', cfg)
-        self.assertIn("mirv_cmd addAtTick 6400 mirv_campath offset current", cfg)
+        self.assertIn("mirv_cmd addAtTick 6392 mirv_campath offset current", cfg)
         self.assertIn("mirv_cmd addAtTick 6720 mirv_campath enabled 0", cfg)
         self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
         with self.assertRaises(csdv.CsdvError):
@@ -220,7 +220,7 @@ class CsdvTest(unittest.TestCase):
         cfg = seq["cfg"].split("\n")
         self.assertEqual(seq["playerCameras"][0]["playerSteamId"], A)          # spectate the subject...
         self.assertIn(f"mirv_cmd addAtTick {6400 - 32 + 2} spec_mode 3", cfg)   # ...in chase mode (model visible)
-        self.assertIn("mirv_cmd addAtTick 6400 mirv_campath offset current", cfg)
+        self.assertIn("mirv_cmd addAtTick 6392 mirv_campath offset current", cfg)
         self.assertIn("cl_drawhud 0", cfg)
         self.assertEqual(cfg.count("mirv_cmd clear"), 1)                       # view lines must not wipe the campath sync
         self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
