@@ -96,9 +96,11 @@ Rules the builder enforces/assumes:
 Coordinates are plain world coordinates (x, y, z; z up; yaw 0 = +x, 90 = +y; pitch + = looking down). They work on
 **any** map, official or workshop — CS:DM's "map support" only matters for its 2D viewer/radar, not for cameras.
 
-**Third person is the user's main style** and the profile default (`"view": "third"`). Set it per clip or per spec
-(`"view": "first"` for POV). It uses CS2's chase camera (`spec_mode 3`, sent through `mirv_cmd addAtTick` a couple of
-ticks after each player camera; the first camera is moved 0.5 s before the recording start). Clips with a `"camera"`
+**The user's main style is cinematic shots from a separate camera** (movie-style: follow from behind, in front or at
+the side, tripod pans, push-ins, arcs, establishing shots), driven by per-tick player positions. See "Cinematic
+cameras" in the memory file. First person (`"view": "first"`) stays the default for plain clips. `"view": "third"` is
+CS2's chase camera (`spec_mode 3`, sent through `mirv_cmd addAtTick` 2 ticks after each player camera; the first camera
+is moved 0.5 s before the start). It's a utility, not what the user means by "third person". Clips with a `"camera"`
 ignore `view`.
 
 Add `"camera"` to a `round`/`ticks`/`time` clip (one sequence). csdv writes an HLAE campath XML to

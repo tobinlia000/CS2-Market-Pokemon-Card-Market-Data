@@ -280,8 +280,9 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   and CS2/HLAE closed by themselves. Findings:
   - **Third person = `spec_mode 3`** (CS2 chase cam). `spec_mode 5` stays first person. Sent with
     `mirv_cmd addAtTick <tick> spec_mode 3` from the sequence cfg it switches exactly at that tick (a visible cut from
-    first person). csdv now has `"view": "third"` (profile default, user's main style): the first player camera moves
-    32 ticks before startTick and spec_mode 3 fires 2 ticks after each player camera.
+    first person). csdv has `"view": "third"`: the first player camera moves 32 ticks before startTick and spec_mode 3
+    fires 2 ticks after each player camera. **Correction (user, same day): first person is the default.** By
+    "third person" the user means cinematic shots from a separate camera (see §16), not the chase cam.
     UNVERIFIED: whether 2 ticks is enough after CS:DM's `spec_mode 1; spec_player` (render mango1-test with view third).
   - **CS:DM ignores `--output` with `--config-file`**: files were written next to the demo (the csgo folder). With
     `concatenateSequences` false, they're named `sequence-<N>-tick-<start>-to-<end>.mp4`, with no video-id sub-folder.
@@ -293,3 +294,18 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   - PC scripts: Python is the Microsoft Store 3.13 (a WindowsApps alias). Two `_common.ps1` bugs are fixed:
     WindowsApps was skipped, and a one-item `Get-Python` result was indexed as a string (`$py[0]` = "C"). Also
     `Invoke-Csdv` had `-o` swallowed as `-OutVariable`.
+
+## 16. Cinematic cameras: the user's main goal (2026-09-27)
+- The user wants **movie-style shots from a separate camera** for most footage, on official AND workshop maps:
+  follow from behind, from the front (leading) and from the side (tracking), tripod pans, push-ins, arcs,
+  establishing shots. Shots should copy real film grammar, not gimmicky orbits. First person stays the default for plain clips.
+- **Player positions: `demoparser2` (Python, already installed, 0.41.3)** `DemoParser(dem).parse_ticks(["X","Y","Z",
+  "pitch","yaw","velocity_X","velocity_Y","is_alive","duck_amount"])` gives every player on **every tick**, with or
+  without rounds (tested: Brycetopher de_dust2, 6158 ticks in 0.5 s; mango1 totemlake). It works where `csda -positions`
+  gives nothing (all of the user's demos so far are free-roam sessions with 0 rounds). Teleports/respawns show up as huge
+  speed spikes, so cut there. On Windows set `PYTHONIOENCODING=utf-8` (player names contain emoji).
+- **Map geometry:** Source 2 Viewer GUI 20.0 is installed at `Desktop\Demos\Source2Viewer.exe`. It has **no CLI**, and
+  running it with `--help` opens the GUI. The CLI is a separate release asset (`cli-windows-x64.zip`, 52.7 MB). Official
+  maps: `game\csgo\maps\<map>.vpk`. Workshop maps: `steamapps\workshop\content\730\<id>\*.vpk`.
+- CS:DM's saved cameras (Settings > Cameras, e.g. 15+ dust2 presets) are good tripod/establishing positions for
+  official maps. They live in CS:DM's PostgreSQL DB.
