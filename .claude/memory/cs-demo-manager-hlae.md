@@ -148,6 +148,30 @@ Available `mirv_*` commands: `mirv_streams, mirv_campath, mirv_camio, mirv_death
 - **Frag movie for one player**: `csdm video demo.dem --mode player --steamids 7656… --event kills --recording-system HLAE --framerate 60 --width 1920 --height 1080 --concatenate-sequences --output-file-name "{map}-{date}"`.
 - **Troubleshooting**: HLAE error window → update HLAE (Settings > Video) or pin an older HLAE/CS2 plugin version after a CS2 patch; "raw files not found" → check the recording ran (Steam running, plugin loaded, `csdm.log`); missing audio → `recordAudio` on and `audio.wav` present; spec camera wrong → add player camera at a tick after the seek.
 
-## 9. Open questions / next steps for the skill
-- Decide skill scope: GUI workflow guidance, generating `--config-file` JSON, HLAE cfg/campath authoring, or all three.
-- Confirm user's environment: Windows? CS2 only? Preferred output (fps, resolution, codec)?
+## 9. Config-file gotchas (verified in CS:DM source, `video-command.ts`)
+- The CLI strips comments with `/(#.*)/g` then `//.*|/\*[\s\S]*?\*/` **before** JSON.parse, even inside strings. A `#` in a
+  player name, cfg line or file name silently truncates the JSON → "Failed to read or parse config file".
+- `sequences` from a config are used as-is: every field (`playersOptions`, `playerCameras`, `cameras`, booleans,
+  `deathNoticesDuration`) must be present or recording commands get `undefined` / crash.
+- Config values override CLI flags; `--output` is ignored if the config has `outputFolderPath`.
+- CLI `csdm video` auto-installs HLAE/FFmpeg if missing, and the demo must already be analyzed (`csdm json` analyzes it).
+- `outputParameters` replaces `-crf` and, in the HLAE video mux step, is appended after the output file (ffmpeg
+  warns "trailing options") — prefer leaving it empty and using CRF.
+- Width/height minimum 800x600.
+- Windows installer adds the install folder (contains `csdm.cmd`) to PATH.
+- `csdm json <demo> --output-folder <dir> [--minify]` exports the full match (`<match name>.json`) incl. kills
+  (`tick`, `roundNumber`, killer/victim SteamIDs, weapon, headshot…), rounds (start/freezetimeEnd/end ticks),
+  players, clutches. Team numbers: 2 = T, 3 = CT.
+
+## 10. User profile and project setup
+- User is on **Windows**, CS2. Wants **1440p (2560x1440) @ 60 fps** outputs. Goal: Claude programs and generates
+  videos from demos with the user's help (user runs the renders).
+- Skill: `.claude/skills/cs-demo-video/SKILL.md`. Tool: `tools/csdv/csdv.py` (summarize / build / validate).
+  Windows scripts: `scripts/export-demo.ps1`, `scripts/render.ps1`. Data: `videos/` (profile, demos, specs, configs, logs).
+- Chosen defaults (`videos/profile.json`): HLAE + FFmpeg direct pipe, mp4, libx264 CRF 18, aac 256k, concatenate on,
+  X-ray off, voice comms off, kill-feed-only HUD, 3 s before / 2 s after kills.
+- Not yet verified on the user's machine: the PowerShell scripts (no PowerShell in the cloud container) and a first
+  real render. Record results of the first run here.
+
+## 11. Render log (append: date, demo, what worked / broke)
+- (none yet)
