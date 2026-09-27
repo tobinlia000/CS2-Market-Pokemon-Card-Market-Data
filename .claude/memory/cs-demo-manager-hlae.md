@@ -373,3 +373,13 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   post). Recipes: camcorder `pov` (new shot: eye position + view angles with inertia, FOV 95, handheld 0.7; csdv
   keeps first-person spectating for pov so the body is hidden), camcorder follow, liminal lock-off, empty-room wide,
   dropped camera (special). No drones in this mood. Not built yet: a VHS post-process pass.
+- **Workshop map test (totemlake, mango1 2:55–3:40, backrooms mood, 14 beats, 2026-09-27): all shots worked.**
+  Context detection works indoors on a workshop map (indoor, watched, face-off). The camcorder `pov` works in game
+  (first person, no body/gun, the other player visible down the hall). Stalker vision placed at the real watcher's
+  spot, OTS over David. Totemlake = grey concrete liminal halls, a natural fit for the Backrooms look.
+- **CS:DM bug: `concatenateSequences` fails for any path with an apostrophe.** CS:DM writes `~/.csdm/videos.txt` as
+  `file 'C:\Users\Liam's PC\...'` without escaping → FFmpeg "Impossible to open 'C:\Users\Liams'"; csdm still
+  exits 0 and only prints "FFmpeg error". Fix in render.ps1: turn concatenation off in the run config, then
+  `Join-Sequences` (`_common.ps1`) joins in number order with `-c copy`, escaping `'` as `'\''`, writes
+  `<Folder>\<name>.mp4` and moves the shots to `<name>-shots\`. render.ps1 now fails if the log says "FFmpeg error".
+  Contiguous beats (next start = previous end) rendered fine.

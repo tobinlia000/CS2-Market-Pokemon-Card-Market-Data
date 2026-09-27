@@ -62,6 +62,10 @@ foreach ($file in $Config) {
             $raw = ([regex]'\{').Replace($raw, { '{' + "`n  " + '"outputFolderPath": ' + $folderJson + ',' }, 1)
         }
     }
+    # CS:DM's own concatenation writes an FFmpeg list with unescaped quotes, so any path with an apostrophe
+    # (C:\Users\Liam's PC\...) fails ("Impossible to open 'C:\Users\Liams'", 2026-09-27). Join the clips ourselves.
+    $joinAfter = [bool]$cfg.concatenateSequences
+    if ($joinAfter) { $raw = [regex]::Replace($raw, '"concatenateSequences"\s*:\s*true', '"concatenateSequences": false') }
     $runFile = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetFileName($file))
     [IO.File]::WriteAllText($runFile, $raw, (New-Object System.Text.UTF8Encoding $false))
 
@@ -73,6 +77,7 @@ foreach ($file in $Config) {
     & $csdm @cliArgs --verbose 2>&1 | ForEach-Object { "$_" } | Tee-Object -FilePath $log
     $exitCode = $LASTEXITCODE
     $ErrorActionPreference = 'Stop'
+    if ($exitCode -eq 0 -and (Select-String -Path $log -Pattern 'FFmpeg error' -Quiet)) { $exitCode = 3 }  # csdm exits 0 anyway
     if ($exitCode -ne 0) {
         Write-Host "FAILED - log: $log (commit it so Claude can debug)" -ForegroundColor Red
         exit $exitCode
@@ -82,5 +87,11 @@ foreach ($file in $Config) {
         Write-Host "CS2/HLAE from the recording is still open. Close it before playing online (see scripts\safety-check.ps1)." -ForegroundColor Yellow
     }
     $dest = if ($OutputFolder) { $OutputFolder } elseif ($cfg.outputFolderPath) { $cfg.outputFolderPath } else { Split-Path $cfg.demoPath }
+    if ($joinAfter) {
+        $name = if ($cfg.outputFileName -and -not $cfg.outputFileName.Contains('{')) { $cfg.outputFileName } else {
+            [IO.Path]::GetFileNameWithoutExtension([IO.Path]::GetFileNameWithoutExtension($file)) }
+        $joined = Join-Sequences -Folder $dest -Name $name -Config $cfg
+        Write-Host "Joined $($cfg.sequences.Count) shots -> $joined (separate shots in $name-shots\)" -ForegroundColor Green
+    }
     Write-Host "Done. Output is in: $dest" -ForegroundColor Green
 }

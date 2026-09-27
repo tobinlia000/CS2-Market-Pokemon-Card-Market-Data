@@ -43,6 +43,45 @@ function Invoke-Csdv {
     return $LASTEXITCODE
 }
 
+function Get-FFmpeg {
+    # The FFmpeg CS:DM is set to use (Settings > Video), else one on PATH.
+    $settings = Join-Path $env:USERPROFILE '.csdm\settings.json'
+    if (Test-Path $settings) {
+        $ff = (Get-Content $settings -Raw | ConvertFrom-Json).video.ffmpegSettings
+        if ($ff.customLocationEnabled -and (Test-Path $ff.customExecutableLocation)) { return $ff.customExecutableLocation }
+    }
+    $cmd = Get-Command ffmpeg -ErrorAction SilentlyContinue
+    if ($cmd) { return $cmd.Source }
+    throw "FFmpeg not found (set it in CS Demo Manager > Settings > Video)."
+}
+
+function Join-Sequences {
+    # Join a render's sequence files in order (lossless, -c copy) into <Folder>\<Name>.<ext> and move the separate
+    # shots into <Folder>\<Name>-shots\. Paths are escaped for FFmpeg's concat list (an apostrophe becomes '\'').
+    param([string]$Folder, [string]$Name, $Config)
+    $ext = if ($Config.ffmpegSettings.videoContainer) { $Config.ffmpegSettings.videoContainer } else { 'mp4' }
+    $files = foreach ($s in ($Config.sequences | Sort-Object number)) {
+        $path = Join-Path $Folder ("sequence-{0}-tick-{1}-to-{2}.{3}" -f $s.number, $s.startTick, $s.endTick, $ext)
+        if (-not (Test-Path $path)) { throw "Missing rendered shot: $path" }
+        $path
+    }
+    $list = Join-Path ([IO.Path]::GetTempPath()) ("join-" + [guid]::NewGuid() + ".txt")
+    $lines = $files | ForEach-Object { "file '" + $_.Replace("'", "'\''") + "'" }
+    [IO.File]::WriteAllLines($list, [string[]]$lines, (New-Object System.Text.UTF8Encoding $false))
+    $out = Join-Path $Folder "$Name.$ext"
+    $ffmpeg = Get-FFmpeg
+    $ErrorActionPreference = 'Continue'
+    & $ffmpeg -hide_banner -loglevel error -y -f concat -safe 0 -i $list -c copy $out 2>&1 | ForEach-Object { "$_" } | Out-Host
+    $code = $LASTEXITCODE
+    $ErrorActionPreference = 'Stop'
+    Remove-Item $list -Force -ErrorAction SilentlyContinue
+    if ($code -ne 0 -or -not (Test-Path $out)) { throw "Joining the shots failed (FFmpeg exit $code)." }
+    $shots = Join-Path $Folder "$Name-shots"
+    New-Item -ItemType Directory -Force -Path $shots | Out-Null
+    $files | ForEach-Object { Move-Item $_ $shots -Force }
+    return $out
+}
+
 # --- Safety helpers -------------------------------------------------------------------------------
 # HLAE is treated as a cheat by VAC. These helpers make sure recording sessions and real play never mix.
 
