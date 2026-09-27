@@ -1,0 +1,460 @@
+{
+  "name": "totemlake-backrooms-test",
+  "summary": "videos/demos/mango1.summary.json",
+  "outputFileName": "totemlake-backrooms-test",
+  "concatenate": true,
+  "order": "spec",
+  "clips": [
+    {
+      "type": "ticks",
+      "start": 11200,
+      "end": 11328,
+      "camera": {
+        "shot": "stalker",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Stalker vision / voyeur",
+        "pos": [
+          125.586669921875,
+          3357.927734375,
+          831.03125
+        ],
+        "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+      },
+      "beat": "Caillou (Canadian now) is being watched in open space indoors (David behind them with line of sight, 569 u away) ~63 u/s",
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Negative space behind the subject",
+          "lead": -0.3,
+          "distance": 210.0,
+          "why": "Negative space behind the subject: framing them to one side leaves empty space behind them, where the audience expects the threat."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Unsteady observer",
+          "handheld": 0.8,
+          "size": "medium",
+          "why": "Unsteady observer: a slightly shaky, lagging observer makes calm moments feel unsafe."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 11328,
+      "end": 11456,
+      "camera": {
+        "shot": "dolly_zoom",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Dolly zoom (Vertigo)",
+        "why": "Dolly zoom (Vertigo): the background warps while they stay the same size: the moment of realisation."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 384 u away) ~238 u/s",
+      "alternatives": [
+        {
+          "shot": "ots",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Over the threat's shoulder",
+          "over": "David",
+          "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+        },
+        {
+          "shot": "lead",
+          "subject": "David",
+          "technique": "Low angle on the threat",
+          "height": -45.0,
+          "distance": 170.0,
+          "fov": 70.0,
+          "why": "Low angle on the threat: shooting the threat from below makes them dominant and menacing."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 11456,
+      "end": 11616,
+      "camera": {
+        "shot": "tripod",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Unsteady observer",
+        "handheld": 0.8,
+        "size": "medium",
+        "why": "Unsteady observer: a slightly shaky, lagging observer makes calm moments feel unsafe."
+      },
+      "beat": "Caillou (Canadian now) is being watched indoors (David behind them with line of sight, 784 u away) ~241 u/s",
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Negative space behind the subject",
+          "lead": -0.3,
+          "distance": 210.0,
+          "why": "Negative space behind the subject: framing them to one side leaves empty space behind them, where the audience expects the threat."
+        },
+        {
+          "shot": "stalker",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Stalker vision / voyeur",
+          "pos": [
+            -349.70635986328125,
+            3602.965087890625,
+            831.03125
+          ],
+          "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 11616,
+      "end": 11744,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is looking around in a tight space indoors ~145 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Empty-room wide",
+          "margin": 1.6,
+          "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 11744,
+      "end": 11872,
+      "camera": {
+        "shot": "follow",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage follow (second camera)",
+        "distance": 70.0,
+        "height": 6.0,
+        "fov": 95.0,
+        "handheld": 0.8,
+        "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+      },
+      "beat": "Caillou (Canadian now) is being approached indoors (David closing in, 972 u away) ~241 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        },
+        {
+          "shot": "stalker",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Stalker vision / voyeur",
+          "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 11872,
+      "end": 12000,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Liminal lock-off",
+        "facing": "toward",
+        "lens": 56.0,
+        "fov": 100.0,
+        "lookAhead": 0.7,
+        "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 400 u away) ~120 u/s",
+      "alternatives": [
+        {
+          "shot": "ots",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Over the threat's shoulder",
+          "over": "David",
+          "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Empty-room wide",
+          "margin": 1.6,
+          "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 12000,
+      "end": 12512,
+      "camera": {
+        "shot": "ots",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Over the threat's shoulder",
+        "over": "David",
+        "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 616 u away) ~0 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Empty-room wide",
+          "margin": 1.6,
+          "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+        },
+        {
+          "shot": "lead",
+          "subject": "David",
+          "technique": "Low angle on the threat",
+          "height": -45.0,
+          "distance": 170.0,
+          "fov": 70.0,
+          "why": "Low angle on the threat: shooting the threat from below makes them dominant and menacing."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 12512,
+      "end": 13024,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Empty-room wide",
+        "margin": 1.6,
+        "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 600 u away) ~0 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static wide",
+          "why": "Static wide: lets the action play inside a still frame."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static medium",
+          "margin": 1.05,
+          "distance": 450.0,
+          "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 13024,
+      "end": 13280,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 454 u away) ~0 u/s",
+      "alternatives": [
+        {
+          "shot": "push",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Push-in",
+          "why": "Push-in: draws attention to them."
+        },
+        {
+          "shot": "overhead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Bird's-eye",
+          "track": true,
+          "why": "Bird's-eye: shows the geography from above."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 13280,
+      "end": 13536,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Static wide",
+        "why": "Static wide: lets the action play inside a still frame."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 490 u away) ~0 u/s",
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "David",
+          "technique": "Low angle on the threat",
+          "height": -45.0,
+          "distance": 170.0,
+          "fov": 70.0,
+          "why": "Low angle on the threat: shooting the threat from below makes them dominant and menacing."
+        },
+        {
+          "shot": "dolly_zoom",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly zoom (Vertigo)",
+          "why": "Dolly zoom (Vertigo): the background warps while they stay the same size: the moment of realisation."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 13536,
+      "end": 13696,
+      "camera": {
+        "shot": "lead",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Negative space behind the subject",
+        "lead": -0.3,
+        "distance": 210.0,
+        "why": "Negative space behind the subject: framing them to one side leaves empty space behind them, where the audience expects the threat."
+      },
+      "beat": "Caillou (Canadian now) is being watched indoors (David behind them with line of sight, 497 u away) ~137 u/s",
+      "alternatives": [
+        {
+          "shot": "ots",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Over the threat's shoulder",
+          "over": "David",
+          "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+        },
+        {
+          "shot": "stalker",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Stalker vision / voyeur",
+          "pos": [
+            -400.44873046875,
+            3620.36376953125,
+            831.03125
+          ],
+          "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 13696,
+      "end": 13824,
+      "camera": {
+        "shot": "stalker",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Stalker vision / voyeur",
+        "pos": [
+          -551.413818359375,
+          3621.27880859375,
+          831.03125
+        ],
+        "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+      },
+      "beat": "Caillou (Canadian now) is being watched indoors (David behind them with line of sight, 764 u away) ~182 u/s",
+      "alternatives": [
+        {
+          "shot": "ots",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Over the threat's shoulder",
+          "over": "David",
+          "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 13824,
+      "end": 13952,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is looking around in a tight space indoors ~150 u/s",
+      "alternatives": [
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Empty-room wide",
+          "margin": 1.6,
+          "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+        },
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 13952,
+      "end": 14080,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Dropped camera",
+        "lens": 4.0,
+        "roll": 18.0,
+        "fov": 95.0,
+        "lookAhead": 0.35,
+        "why": "Dropped camera: the camcorder has fallen and lies tilted on the floor, still recording as they leave."
+      },
+      "beat": "Caillou (Canadian now) stops suddenly in a tight space indoors ~107 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dutch angle",
+          "roll": 12.0,
+          "why": "Dutch angle: a tilted horizon makes the world feel wrong."
+        }
+      ]
+    }
+  ]
+}
