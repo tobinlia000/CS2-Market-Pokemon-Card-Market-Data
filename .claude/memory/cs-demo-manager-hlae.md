@@ -189,8 +189,8 @@ Available `mirv_*` commands: `mirv_streams, mirv_campath, mirv_camio, mirv_death
   Windows scripts: `scripts/export-demo.ps1`, `scripts/render.ps1`. Data: `videos/` (profile, demos, specs, configs, logs).
 - Chosen defaults (`videos/profile.json`): HLAE + FFmpeg direct pipe, mp4, libx264 CRF 18, aac 256k, concatenate on,
   X-ray off, voice comms off, kill-feed-only HUD, 3 s before / 2 s after kills.
-- Not yet verified on the user's machine: the PowerShell scripts (no PowerShell in the cloud container) and a first
-  real render. Record results of the first run here.
+- Not yet verified on the user's machine: `export-demo.ps1`, `render.ps1` and a first real render
+  (`safety-check.ps1` verified 2026-09-27). Record results of the first run here.
 
 ## 11. Cameras, custom/workshop maps (research 2026-09-27)
 - CS:DM custom cameras = `{x,y,z,pitch,yaw}` per `(game, mapName)` in its DB (a few defaults for official maps, e.g.
@@ -260,6 +260,19 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   `2.192.6.0+a9683e59c02c42146af4b73aa520daaf21615d05` = the official v2.192.6 tag commit; normal layout (HLAE.exe,
   injector.exe x86/x64, x64/AfxHookSource2.dll, MS runtimes, changelogs). Antivirus flags are the usual
   injector/hook false positives. Fix used: folder exclusion + download via PowerShell + Get-FileHash compare.
+- 2026-09-27 (local session): installed HLAE 2.192.6 at **C:\Users\Liam's PC\HLAE\2.192.6\HLAE.exe**. Downloaded
+  with PowerShell `Invoke-WebRequest`. The hash matched GitHub's asset digest. No exclusion was added. The old 2.191.1
+  (`Program Files (x86)\HLAE`, intact, nothing quarantined there) is kept as a fallback. Logged in
+  `Desktop\Demos\findings.md`. The user set CS:DM's HLAE custom location to the new path (confirmed in
+  `%USERPROFILE%\.csdm\settings.json`: `video.hlae.customExecutableLocation`; read it, never edit it).
+- Defender (`Get-MpThreatDetection`, readable without admin; the quarantine list via `MpCmdRun -Restore -ListAll`
+  needs admin): `Trojan:Win32/Sabsik.EN.A!ml` (ML false positive) quarantined the **root `AfxHookSource.dll`** (32-bit
+  Source 1/CS:GO hook) about 12 minutes after extraction. **`x64\AfxHookSource2.dll` (CS2) was not touched.**
+  Recheck this whenever HLAE fails to start.
+- **2026-09-27 RESOLVED:** with HLAE 2.192.6 (user-profile install, above) a demo started from CS:DM booted fine
+  (Use HLAE on). So the launch errors were the old HLAE 2.191.1 vs the Sept CS2 updates; CS:DM v3.20.1's plugin still
+  works on CS2 1.41.8.5. `scripts\safety-check.ps1` (report mode) verified on the real PC: prints SAFE, exit 0.
+  csdm.log is at `C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\gamein\win64\csdm.log`.
 
 ## 15. Render log (append: date, demo, what worked / broke)
 - (none yet)
