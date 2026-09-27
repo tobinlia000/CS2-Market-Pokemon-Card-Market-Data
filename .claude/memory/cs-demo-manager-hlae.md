@@ -350,3 +350,9 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   ground (runner enters mid-frame and runs down the street; the first ~1.5 s show an empty street because the
   camera sits 20–30% along the route), static (high wide lock-off, ~350 u up, FOV 52), drone flyover (high pass
   over the rooftops, ends looking down on the runner at B).
+- **Handheld (2026-09-27):** `"handheld": 0.5 | 1 | 2` on any shot (placed ones too). Model: filtered-noise drift
+  (~0.4–0.5 s) + jitter (~0.07 s) on pitch/yaw/roll, a small positional wander, and a footstep bob (1.9 Hz) + sway
+  while the camera travels. Handheld shots use keys every 2 ticks. Render dust2-cine-handheld: static 0.6, tripod
+  pan 1, lead 1.5, follow 1, all framed fine. **Verification method:** phase-correlate each frame against frame 0
+  (`scratchpad/shake.py` idea: ffmpeg → 320x180 gray raw → FFT); consecutive-frame shifts round to 0. The static
+  handheld drifted 32×48 px in 3 s at 1440p vs 0 px for the locked-off static.
