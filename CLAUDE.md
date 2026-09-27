@@ -13,6 +13,7 @@ running with HLAE or CS Demo Manager's plugin load into a real game.**
   offline map it starts itself for camera scouting). If a request would break these rules, refuse and explain.
 
 ## Working memory
+- `HANDOFF.md` — current status and next steps for a new (local) session. Start there.
 - `.claude/memory/cs-demo-manager-hlae.md` — research notes on CS Demo Manager + HLAE (pipeline, settings, CLI,
   `mirv_*` commands, safety mechanisms, cameras). Read it before any CS:DM / HLAE / demo-video task, and update it
   (including the "Last updated" line) when you learn something new.
