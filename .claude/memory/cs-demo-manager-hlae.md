@@ -339,3 +339,14 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   stay one-directional, and use the subject's overall travel direction, not the first-frame heading. Re-rendered:
   good push-in (wide to medium). The 8-tick campath pre-roll fixed the first-frame spectator view.
 - push/pull/arc/crane default to `"angle": "auto"` (the candidate with the least wall pull-in wins).
+- **User preference (2026-09-27):** mostly shots that are NOT glued to the character: overhead, locked-off
+  statics, sweeping drone shots, low ground-level lock-offs with the runner leaving frame. Follow/lead/side are
+  the minority. Built "placed" shots in cine.py: `static` (auto spot + lens that frames the whole action; with a
+  subject/POV; without one, the old coordinate `static` is used), `overhead` (pitch 89, travel = up the frame,
+  fit-to-action or `"track": true`, ceiling-aware), `drone` (`move`: flyover | orbit | rise; own path at altitude,
+  look target lagged ~1 s), `ground` (lens 6 u above the floor, locked off, `facing` away|toward; picks the point on
+  the route with the most time in view + in frame).
+- **Render dust2-cine-test3: all four worked.** Overhead track (~630 u up, player small, wires cross the frame),
+  ground (runner enters mid-frame and runs down the street; the first ~1.5 s show an empty street because the
+  camera sits 20–30% along the route), static (high wide lock-off, ~350 u up, FOV 52), drone flyover (high pass
+  over the rooftops, ends looking down on the runner at B).
