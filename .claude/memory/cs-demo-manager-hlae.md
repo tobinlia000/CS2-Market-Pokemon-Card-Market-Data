@@ -272,7 +272,7 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
 - **2026-09-27 RESOLVED:** with HLAE 2.192.6 (user-profile install, above) a demo started from CS:DM booted fine
   (Use HLAE on). So the launch errors were the old HLAE 2.191.1 vs the Sept CS2 updates; CS:DM v3.20.1's plugin still
   works on CS2 1.41.8.5. `scripts\safety-check.ps1` (report mode) verified on the real PC: prints SAFE, exit 0.
-  csdm.log is at `C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\gamein\win64\csdm.log`.
+  csdm.log is at `C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\bin\win64\csdm.log`.
 
 ## 15. Render log (append: date, demo, what worked / broke)
 - (none yet)
