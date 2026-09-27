@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """csdv - CS Demo Video helper for CS Demo Manager (CS:DM) + HLAE.
 
-Standard library only, runs on Windows and Linux (Python 3.9+).
+Standard library for build/validate; cinematic cameras (cine.py) also need numpy + scipy, demo positions need
+demoparser2 and map collision uses Source2Viewer-CLI (Windows PC). Python 3.9+.
 
 Subcommands:
   summarize <export.json> [-o out.json]   Shrink a `csdm json` match export into a compact summary
@@ -408,8 +409,57 @@ def build_clip(clip: dict, match: Match, settings: dict, spec_cfg: str | None) -
     raise CsdvError(f"Unknown clip type '{kind}'. Use kills, deaths, round, ticks or time.")
 
 
+_GEOMETRY_CACHE: dict = {}
+
+
+def map_geometry(map_name: str):
+    """Collision mesh for camera placement, or None (with a warning) if it can't be exported/loaded."""
+    if map_name not in _GEOMETRY_CACHE:
+        try:
+            import mapgeo
+
+            _GEOMETRY_CACHE[map_name] = mapgeo.MapGeometry.for_map(map_name)
+        except Exception as error:  # noqa: BLE001 - cameras still work without collision checks
+            print(f"WARNING: no map geometry for {map_name} ({error}); cameras are not checked against walls.",
+                  file=sys.stderr)
+            _GEOMETRY_CACHE[map_name] = None
+    return _GEOMETRY_CACHE[map_name]
+
+
+def cinematic_keys(clip: dict, shot: dict, sequence: dict, match: Match, demo_path: str, spec_name: str,
+                   clip_index: int, write_files: bool) -> list:
+    """Film-style shot around a player, from per-tick demo positions (see cine.py)."""
+    import cine
+    import positions
+
+    subject_ref = shot.get("subject") or clip.get("pov") or clip.get("player")
+    if not subject_ref:
+        raise CsdvError(f"Clip {clip_index + 1}: cinematic camera needs \"subject\" (player name or SteamID64).")
+    subject = match.player(subject_ref)
+    tracks = positions.load_tracks(demo_path)
+    if subject["steamId"] not in tracks:
+        raise CsdvError(f"Clip {clip_index + 1}: no positions for {subject['name']} in the demo.")
+    geometry = map_geometry(match.summary.get("map", "")) if shot.get("collision", True) else None
+    params = {k: v for k, v in shot.items() if k not in ("shot", "subject", "collision", "interp", "hideViewmodel", "hud")}
+    try:
+        result = cine.build(shot["shot"], tracks[subject["steamId"]], sequence["startTick"], sequence["endTick"],
+                            match.tickrate, params, geometry)
+    except cine.ShotError as error:
+        raise CsdvError(f"Clip {clip_index + 1}: {error}") from error
+    for warning in result.warnings:
+        print(f"WARNING: clip {clip_index + 1} ({shot['shot']}): {warning}", file=sys.stderr)
+    if write_files:
+        preview = REPO_ROOT / "videos" / "previews" / f"{spec_name}-clip{clip_index + 1}.png"
+        preview.parent.mkdir(parents=True, exist_ok=True)
+        cine.preview(result, preview, geometry, f"clip {clip_index + 1}: {shot['shot']} {subject['name']}")
+    # Spectate the subject in chase mode (apply_view): in first person CS2 hides the spectated player's model.
+    if not sequence["playerCameras"]:
+        sequence["playerCameras"] = [camera(sequence["startTick"], subject)]
+    return result.keys
+
+
 def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: str, clip_index: int,
-                  write_files: bool) -> None:
+                  write_files: bool, demo_path: str = "") -> None:
     """Drive the view with an HLAE campath for this clip, synced to the recording start tick."""
     shot = clip.get("camera")
     if not shot:
@@ -421,10 +471,15 @@ def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: st
     if "file" in shot:
         relative = shot["file"].replace("\\", "/")
     else:
-        try:
-            keys = campath.build_shot(shot, duration)
-        except (KeyError, ValueError) as error:
-            raise CsdvError(f"Clip {clip_index + 1}: bad camera {shot}: {error}") from error
+        import cine
+
+        if shot.get("shot") in cine.SHOTS:
+            keys = cinematic_keys(clip, shot, sequence, match, demo_path, spec_name, clip_index, write_files)
+        else:
+            try:
+                keys = campath.build_shot(shot, duration)
+            except (KeyError, ValueError) as error:
+                raise CsdvError(f"Clip {clip_index + 1}: bad camera {shot}: {error}") from error
         relative = f"{CAMPATH_DIR}/{spec_name}-clip{clip_index + 1}.xml"
         if write_files:
             path = REPO_ROOT / relative
@@ -443,6 +498,8 @@ def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: st
     ]
     if shot.get("hideViewmodel", True):
         lines.append("r_drawviewmodel 0")
+    if not shot.get("hud", False):  # film shots: no HUD, kill feed included; restored when the shot ends
+        lines += ["cl_drawhud 0", f"mirv_cmd addAtTick {sequence['endTick']} cl_drawhud 1"]
     sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), *lines]))
 
 
@@ -459,8 +516,11 @@ def apply_view(clip: dict, sequences: list[dict], default_view: str) -> None:
     view = clip.get("view", default_view)
     if view not in ("first", "third"):
         raise CsdvError(f"Unknown view '{view}'. Use \"first\" or \"third\".")
-    if clip.get("camera"):
-        return  # an HLAE campath drives the view instead of the spectator camera (attach_camera clears mirv_cmd)
+    camera_clip = bool(clip.get("camera"))
+    if camera_clip:
+        # An HLAE campath drives the view. Spectate in chase mode anyway, so the spectated player's model is drawn
+        # (first-person spectating hides it). attach_camera already cleared mirv_cmd, so don't clear again.
+        view = "third"
     if view == "first":
         # Drop switches scheduled by earlier sequences: with order "spec" CS:DM can seek back over their ticks.
         for sequence in sequences:
@@ -472,7 +532,7 @@ def apply_view(clip: dict, sequences: list[dict], default_view: str) -> None:
             continue
         if cameras[0]["tick"] == sequence["startTick"]:
             cameras[0]["tick"] = max(1, sequence["startTick"] - VIEW_PREROLL_TICKS)
-        lines = ["mirv_cmd clear"] + [
+        lines = ([] if camera_clip else ["mirv_cmd clear"]) + [
             f"mirv_cmd addAtTick {cam['tick'] + VIEW_SWITCH_DELAY_TICKS} spec_mode {SPEC_MODE_BY_VIEW[view]}"
             for cam in cameras
         ]
@@ -505,7 +565,7 @@ def build_config(spec: dict, profile: dict, summary: dict | None, write_files: b
     spec_name = re.sub(r"[^A-Za-z0-9._-]", "-", spec.get("name") or "spec")
     for index, clip in enumerate(spec.get("clips", [])):
         clip_sequences = build_clip(clip, match, seq_settings, spec.get("cfg"))
-        attach_camera(clip, clip_sequences, match, spec_name, index, write_files)
+        attach_camera(clip, clip_sequences, match, spec_name, index, write_files, demo_path)
         apply_view(clip, clip_sequences, spec.get("view", settings.get("view", "first")))
         sequences.extend(clip_sequences)
     if not sequences:

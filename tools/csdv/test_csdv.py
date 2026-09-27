@@ -5,6 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import numpy as np
+
 import campath
 import csdv
 
@@ -175,8 +177,8 @@ class CsdvTest(unittest.TestCase):
         with self.assertRaises(csdv.CsdvError):
             self.build([{"type": "kills", "player": A, "camera": {"shot": "static", "pos": [0, 0, 0]}}])
 
-    def test_third_person_is_default_and_starts_before_recording(self):
-        config = self.build([{"type": "time", "start": "0:10", "end": "0:20", "pov": B,
+    def test_third_person_starts_before_recording(self):
+        config = self.build([{"type": "time", "start": "0:10", "end": "0:20", "pov": B, "view": "third",
                               "povSwitches": [{"time": 15, "player": C}]}])
         seq = config["sequences"][0]
         self.assertEqual([c["tick"] for c in seq["playerCameras"]], [640 - 32, 960])
@@ -195,6 +197,33 @@ class CsdvTest(unittest.TestCase):
         self.assertNotIn("spec_mode", config["sequences"][0]["cfg"])
         with self.assertRaises(csdv.CsdvError):
             self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A, "view": "side"}])
+
+    def test_first_person_is_default(self):
+        config = self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A}])
+        self.assertEqual(config["sequences"][0]["playerCameras"][0]["tick"], 6400)
+        self.assertNotIn("spec_mode", config["sequences"][0]["cfg"])
+
+    def test_cinematic_clip_uses_positions_and_chase_spectating(self):
+        import positions
+
+        ticks = np.arange(6000, 7200)
+        track = positions.Track(A, "Liam #1", ticks, np.c_[(ticks - 6000) * 3.0, np.zeros(len(ticks)), np.zeros(len(ticks))],
+                                np.zeros(len(ticks)), np.zeros(len(ticks)), np.ones(len(ticks), bool), np.zeros(len(ticks)))
+        original = positions.load_tracks
+        positions.load_tracks = lambda demo: {A: track}
+        try:
+            config = self.build([{"type": "ticks", "start": 6400, "end": 6720,
+                                  "camera": {"shot": "follow", "subject": "liam", "collision": False}}])
+        finally:
+            positions.load_tracks = original
+        seq = config["sequences"][0]
+        cfg = seq["cfg"].split("\n")
+        self.assertEqual(seq["playerCameras"][0]["playerSteamId"], A)          # spectate the subject...
+        self.assertIn(f"mirv_cmd addAtTick {6400 - 32 + 2} spec_mode 3", cfg)   # ...in chase mode (model visible)
+        self.assertIn("mirv_cmd addAtTick 6400 mirv_campath offset current", cfg)
+        self.assertIn("cl_drawhud 0", cfg)
+        self.assertEqual(cfg.count("mirv_cmd clear"), 1)                       # view lines must not wipe the campath sync
+        self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
 
     def test_cli_round_trip(self):
         with tempfile.TemporaryDirectory() as tmp:
