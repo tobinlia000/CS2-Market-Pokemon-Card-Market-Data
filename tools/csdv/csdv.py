@@ -447,7 +447,13 @@ def cinematic_keys(clip: dict, shot: dict, sequence: dict, match: Match, demo_pa
     if subject["steamId"] not in tracks:
         raise CsdvError(f"Clip {clip_index + 1}: no positions for {subject['name']} in the demo.")
     geometry = map_geometry(match.summary.get("map", "")) if shot.get("collision", True) else None
-    params = {k: v for k, v in shot.items() if k not in ("shot", "subject", "collision", "interp", "hideViewmodel", "hud")}
+    params = {k: v for k, v in shot.items() if k not in ("shot", "subject", "collision", "interp", "hideViewmodel", "hud",
+                                                           "over", "why", "technique")}
+    if shot.get("over"):
+        over = match.player(shot["over"])
+        if over["steamId"] not in tracks:
+            raise CsdvError(f"Clip {clip_index + 1}: no positions for {over['name']} in the demo.")
+        params["overTrack"] = tracks[over["steamId"]]
     try:
         result = cine.build(shot["shot"], tracks[subject["steamId"]], campath_start_tick(sequence), sequence["endTick"],
                             match.tickrate, params, geometry)
@@ -801,6 +807,67 @@ def command_validate(args) -> int:
     return 1 if errors else 0
 
 
+def command_suggest(args) -> int:
+    """Analyze a stretch of a demo and suggest shots per beat; writes a ready-to-build spec with alternatives."""
+    import positions
+    import scene
+
+    summary = load_json(args.summary)
+    match = Match(summary)
+    tickrate = match.tickrate
+    subject = match.player(args.subject)
+    start = parse_time(args.start, tickrate) if args.start else 1
+    end = parse_time(args.end, tickrate) if args.end else int(summary.get("tickCount") or 0)
+    demo = args.demo or summary.get("demoPath")
+    tracks = positions.load_tracks(demo)
+    if subject["steamId"] not in tracks:
+        raise CsdvError(f"No positions for {subject['name']} in {demo}.")
+    geometry = None if args.no_geometry else map_geometry(summary.get("map", ""))
+    events = []
+    for k in summary.get("kills", []):
+        if k.get("victimSteamId") == subject["steamId"]:
+            events.append({"type": "death", "tick": int(k["tick"])})
+        elif k.get("killerSteamId") == subject["steamId"]:
+            events.append({"type": "kill", "tick": int(k["tick"])})
+    planned = scene.plan(tracks, subject["steamId"], start, end, args.mood, geometry, events, args.top, tickrate)
+
+    name = args.name or re.sub(r"[^A-Za-z0-9._-]", "-", f"{summary.get('name', 'demo')}-{args.mood}-suggested")
+    clips, lines = [], [f"# Shot suggestions: {summary.get('name')} / {subject['name']} / mood {args.mood}", ""]
+    for number, (beat, options) in enumerate(planned, start=1):
+        when = f"{format_seconds(beat.start / tickrate)}-{format_seconds(beat.end / tickrate)}"
+        head = f"Beat {number}  {when} ({beat.seconds:.1f}s)  tension {beat.tension:.1f}  " \
+               f"[{', '.join(sorted(beat.tags)) or '-'}]"
+        print(head)
+        print(f"  {beat.describe(subject['name'])}")
+        lines += [f"## {head}", "", beat.describe(subject["name"]), ""]
+        if not options:
+            print("  (no shot keeps the subject in view here)")
+            lines += ["(no shot keeps the subject in view here)", ""]
+            continue
+        for rank, option in enumerate(options, start=1):
+            marker = "*" if rank == 1 else " "
+            print(f"  {marker}{rank}. {option.recipe.technique:<42} shot={option.camera['shot']:<10} "
+                  f"score {option.score:.2f}  visible {option.visible:.0%}")
+            print(f"       {option.why}")
+            lines.append(f"{rank}. **{option.recipe.technique}** (`{option.camera['shot']}`, score {option.score:.2f}): "
+                         f"{option.why}")
+        lines.append("")
+        best = options[0]
+        clips.append({
+            "type": "ticks", "start": beat.start, "end": beat.end,
+            "camera": {**best.camera, "why": best.why},
+            "beat": beat.describe(subject["name"]),
+            "alternatives": [{**o.camera, "why": o.why} for o in options[1:]],
+        })
+    spec = {"name": name, "summary": str(Path(args.summary).as_posix()), "outputFileName": name,
+            "concatenate": True, "order": "spec", "clips": clips}
+    out = REPO_ROOT / "videos" / "specs" / f"{name}.json"
+    write_json(out, spec)
+    (out.with_suffix(".md")).write_text("\n".join(lines), encoding="utf-8")
+    print(f"\nWrote {out} (top pick per beat; alternatives listed per clip) and {out.with_suffix('.md').name}")
+    return 0
+
+
 # ---------------------------------------------------------------------------
 
 
@@ -822,6 +889,19 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("validate", help="check a CS:DM video config")
     p.add_argument("config")
     p.set_defaults(func=command_validate)
+
+    p = sub.add_parser("suggest", help="analyze a demo stretch and suggest cinematic shots per beat")
+    p.add_argument("summary", help="videos/demos/<name>.summary.json")
+    p.add_argument("--subject", required=True, help="player name or SteamID64")
+    p.add_argument("--start", help="demo time (m:ss) or seconds; default: demo start")
+    p.add_argument("--end", help="demo time (m:ss) or seconds; default: demo end")
+    p.add_argument("--mood", default="neutral", choices=["neutral", "horror"],
+                   help="horror adds horror/thriller techniques, weighted by each beat's tension")
+    p.add_argument("--top", type=int, default=3)
+    p.add_argument("--name", help="output spec name")
+    p.add_argument("--demo", help="override the .dem path")
+    p.add_argument("--no-geometry", action="store_true")
+    p.set_defaults(func=command_suggest)
 
     args = parser.parse_args(argv)
     # Player names are often non-ASCII; don't crash on legacy Windows consoles.

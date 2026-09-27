@@ -356,3 +356,11 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   pan 1, lead 1.5, follow 1, all framed fine. **Verification method:** phase-correlate each frame against frame 0
   (`scratchpad/shake.py` idea: ffmpeg → 320x180 gray raw → FFT); consecutive-frame shifts round to 0. The static
   handheld drifted 32×48 px in 3 s at 1440p vs 0 px for the locked-off static.
+- **Shot suggestions (2026-09-27):** the user wants horror/thriller techniques used selectively, and wants me to
+  suggest shots automatically from scene context. Research → `videos/HORROR-CAMERA.md`. `tools/csdv/scene.py`
+  (analyze → 0.5 s windows, segment → 2–8 s beats, suggest → ranked recipes test-built with cine) + `csdv suggest`
+  CLI. New shots: `dolly_zoom` (auto angle keeps the longest move), `stalker` (hidden telephoto watcher tucked
+  against a wall; uses the real watcher's position for "watched" beats), `ots` (`over`). Horror weight =
+  clip((tension-0.8)/1.6, 0, 1.3); repeats ×0.55 per use. On Brycetopher: 22 beats, ~6 horror picks, all at tense
+  moments. Whole-demo analysis takes ~2 min (mostly test-building candidates).
+  Brycetopher context: umbass is noclipping (flies); the players are close around 0:21–0:26 and 1:10–1:24.

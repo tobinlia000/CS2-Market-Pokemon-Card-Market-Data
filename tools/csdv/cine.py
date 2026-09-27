@@ -486,12 +486,110 @@ def shot_ground(geometry, sub, p, f, kps):
     return np.tile(cam, (n, 1)), np.full(n, pitch), np.full(n, yaw), np.full(n, fov), warnings
 
 
-PLACED_SHOTS = {"static": shot_static, "overhead": shot_overhead, "drone": shot_drone, "ground": shot_ground}
+def shot_dolly_zoom(geometry, sub, p, f, kps):
+    """Vertigo / dolly zoom: the camera moves along a fixed line while the lens zooms the other way, so the subject
+    keeps its size and the background stretches (dolly in + zoom out) or compresses (dolly out + zoom in)."""
+    travel = _travel(sub)
+    d0, d1 = (float(v) for v in p.get("distance", [320.0, 110.0]))
+    distance = d0 + (d1 - d0) * (f * f * (3 - 2 * f))
+    height = float(p.get("height", 4.0))
+
+    def attempt(angle):
+        direction = _rot(travel[None], np.array([_angle(angle)]))[0]
+        wanted = np.c_[sub.aim[:, :2] + direction * distance[:, None], sub.aim[:, 2] + height]
+        placed, pulled_mask = _resolve(geometry, sub.aim, wanted, kps)
+        placed = gaussian_filter1d(placed, sigma=0.12 * kps, axis=0, mode="nearest")
+        dist = np.linalg.norm(placed - sub.aim, axis=1)
+        return placed, pulled_mask, dist
+
+    if p.get("angle", "auto") == "auto":  # the angle that keeps most of the move (walls shorten it)
+        options = [attempt(a) for a in ("front", "front-right", "front-left", "right", "left", "back")]
+        cam, pulled, real = max(options, key=lambda o: abs(o[2][0] - o[2][-1]))
+    else:
+        cam, pulled, real = attempt(p["angle"])
+    fov0 = math.radians(float(p.get("fov", 28.0)))  # 4:3 horizontal FOV at the start distance
+    fov = np.degrees(2 * np.arctan(np.tan(fov0 / 2) * real[0] / np.maximum(real, 1.0)))
+    pitch, yaw = _look(cam, sub.aim)
+    warnings = ["walls shortened the dolly zoom"] if pulled.mean() > 0.3 else []
+    return cam, pitch, yaw, np.clip(fov, 8.0, 120.0), warnings
+
+
+def place_stalker(geometry, sub, p) -> np.ndarray:
+    """A hidden watcher's spot: sees the subject, tucked against a wall or corner (foreground edge in frame),
+    preferably behind the subject, at a distance."""
+    anchor = sub.aim[np.argmin(np.linalg.norm(sub.aim - sub.aim.mean(axis=0), axis=1))]
+    base = _travel(sub)
+    want = float(p.get("distance", 650.0))
+    samples = sub.aim[:: max(1, len(sub.aim) // 25)]
+    best, best_score = None, -1e9
+    for angle in range(0, 360, 20):
+        direction = _rot(base[None], np.array([float(angle)]))[0]
+        for scale in (0.7, 1.0, 1.4):
+            for dz in (10.0, 40.0, 110.0):
+                cam = np.r_[anchor[:2] + direction * want * scale, anchor[2] + dz]
+                if geometry is None:
+                    return cam
+                floor = geometry.floor_z(*cam, depth=2000.0)
+                if floor is None or cam[2] - floor < 20.0 or not geometry.clear(anchor, cam):
+                    continue
+                visible = np.mean([geometry.clear(cam, s) for s in samples])
+                # tucked: a wall close beside the lens (within 70 units) in some horizontal direction
+                near = []
+                for a in range(0, 360, 45):
+                    ray = np.array([math.cos(math.radians(a)), math.sin(math.radians(a)), 0.0]) * 70.0
+                    hit = geometry.first_hit(cam, cam + ray, see_through_blocks=True)
+                    near.append(hit is not None)
+                behind = abs(((angle + 180) % 360) - 180) > 110  # camera behind the subject's travel direction
+                score = visible * 6 + (1.5 if any(near) else 0) + (1.0 if behind else 0) - abs(math.log(scale)) \
+                    - (0.5 if dz > 60 else 0)
+                if score > best_score:
+                    best, best_score = cam, score
+    if best is None:
+        raise ShotError("No hidden watcher position found; give \"pos\" explicitly.")
+    return best
+
+
+def shot_stalker(geometry, sub, p, f, kps):
+    """Stalker vision: a hidden observer at a distance, telephoto, slow lagging pan, a slight unsteady hold."""
+    n = len(f)
+    cam = np.asarray(p["pos"], float) if p.get("pos") else place_stalker(geometry, sub, p)
+    target = gaussian_filter1d(sub.aim, sigma=float(p.get("lag", 0.7)) * kps, axis=0, mode="nearest")
+    pitch, yaw = _look(np.tile(cam, (n, 1)), target)
+    dist = float(np.median(np.linalg.norm(sub.aim - cam, axis=1)))
+    fov = hfov_for_size(dist, p.get("size", "full"))
+    return np.tile(cam, (n, 1)), pitch, yaw, np.full(n, fov), []
+
+
+def shot_ots(geometry, sub, p, f, kps):
+    """Over the shoulder of another player (the threat) looking at the subject (the victim)."""
+    over = p.get("_over")
+    if over is None:
+        raise ShotError("\"ots\" needs \"over\": the player whose shoulder the camera looks over.")
+    n = len(f)
+    eye = over + [0, 0, 60.0]
+    to_subject = sub.aim[:, :2] - eye[:, :2]
+    direction = _unit(gaussian_filter1d(_unit(to_subject), sigma=0.3 * kps, axis=0, mode="nearest"))
+    side = np.c_[direction[:, 1], -direction[:, 0]] * (1 if p.get("shoulder", "right") == "right" else -1)
+    cam = np.c_[eye[:, :2] - direction * float(p.get("back", 55.0)) + side * float(p.get("offset", 20.0)),
+                eye[:, 2] + float(p.get("height", 6.0))]
+    cam = gaussian_filter1d(cam, sigma=0.15 * kps, axis=0, mode="nearest")
+    target = gaussian_filter1d(sub.aim, sigma=0.2 * kps, axis=0, mode="nearest")
+    pitch, yaw = _look(cam, target)
+    dist = float(np.median(np.linalg.norm(sub.aim - cam, axis=1)))
+    fov = float(p["fov"]) if p.get("fov") else hfov_for_size(dist, p.get("size", "full"))
+    return cam, pitch, yaw, np.full(n, max(fov, 20.0)), []
+
+
+PLACED_SHOTS = {"static": shot_static, "overhead": shot_overhead, "drone": shot_drone, "ground": shot_ground,
+                "dolly_zoom": shot_dolly_zoom, "stalker": shot_stalker, "ots": shot_ots}
 SHOT_DEFAULTS.update({
     "static": dict(angle="front-left", distance=650.0, height=60.0, margin=1.15),
     "overhead": dict(fov169=60.0, margin=1.2, spin=0.0),
     "drone": dict(move="flyover", altitude=380.0, distance=900.0, offset=250.0, lag=1.0, fov=70.0),
     "ground": dict(facing="away", back=48.0, side=14.0, lens=6.0, fov=80.0, lookAhead=0.45),
+    "dolly_zoom": dict(angle="auto", distance=[320.0, 110.0], height=4.0, fov=28.0),
+    "stalker": dict(distance=650.0, size="full", lag=0.7, handheld=0.3),
+    "ots": dict(back=55.0, offset=20.0, height=6.0, shoulder="right", size="full"),
 })
 SHOTS.update(PLACED_SHOTS)
 
@@ -525,6 +623,11 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
     t = (key_ticks - start_tick) / tickrate
     f = t / max(t[-1], 1e-9)
     keys_per_second = tickrate / step
+
+    if isinstance(p.get("overTrack"), Track):  # second player for over-the-shoulder shots
+        other = p["overTrack"]
+        oi = np.searchsorted(other.tick, key_ticks).clip(0, len(other.tick) - 1)
+        p["_over"] = gaussian_filter1d(other.pos[oi], sigma=0.2 * keys_per_second, axis=0, mode="nearest")
 
     if kind in PLACED_SHOTS:
         cam, pitch, yaw, fov, extra = PLACED_SHOTS[kind](geometry, sub, p, f, keys_per_second)
