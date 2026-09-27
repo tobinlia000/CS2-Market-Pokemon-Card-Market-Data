@@ -254,7 +254,12 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
 - With a custom location, CS:DM's HLAE "Update" downloads into that same folder, and for HLAE+FFmpeg video output it
   writes `<hlaeDir>\ffmpeg\ffmpeg.ini`. Program Files needs admin rights → likely to fail. Recommended: keep HLAE in a
   user-writable folder (e.g. `C:\Users\<user>\HLAE\2.192.6`) and point Settings > Video > HLAE > Change at it.
-- 2026-09-27: user downloaded the HLAE 2.192.6 zip to install manually.
+- 2026-09-27: user downloaded the HLAE 2.192.6 zip to install manually; the browser blocked it as "Virus detected".
+  I fetched the same GitHub asset in the cloud and checked it: `hlae_2_192_6.zip`, 8,989,218 bytes,
+  SHA256 `b3acae70babb536e3b4a34fbbbe4ca8e55a1028068eaaf5fc98817775b72f4fa`; HLAE.exe version
+  `2.192.6.0+a9683e59c02c42146af4b73aa520daaf21615d05` = the official v2.192.6 tag commit; normal layout (HLAE.exe,
+  injector.exe x86/x64, x64/AfxHookSource2.dll, MS runtimes, changelogs). Antivirus flags are the usual
+  injector/hook false positives. Fix used: folder exclusion + download via PowerShell + Get-FileHash compare.
 
 ## 15. Render log (append: date, demo, what worked / broke)
 - (none yet)
