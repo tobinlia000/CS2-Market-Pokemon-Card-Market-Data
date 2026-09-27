@@ -247,5 +247,14 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   - Settings > Maps: add/edit maps (radar, posX/posY/scale, thresholdZ, thumbnail) — needed for 2D viewer.
   - Settings > Cameras: pick a map, add/edit cameras (x, y, z, pitch, yaw, color, preview), "Start CS2 on <map>".
 
-## 14. Render log (append: date, demo, what worked / broke)
+## 14. User's machine (from screenshots)
+- 2026-09-27 Settings > Video: HLAE custom location **C:\Program Files (x86)\HLAE\HLAE.exe** (HLAE installer),
+  config folder off, no parameters. FFmpeg custom location **C:\Program Files (x86)\HLAE FFMPEG\ffmpeg\bin\ffmpeg.exe**.
+  Default recording settings were still 1280x720, X-ray on, player voices on (CS:DM defaults; our csdv configs override).
+- With a custom location, CS:DM's HLAE "Update" downloads into that same folder, and for HLAE+FFmpeg video output it
+  writes `<hlaeDir>\ffmpeg\ffmpeg.ini`. Program Files needs admin rights → likely to fail. Recommended: keep HLAE in a
+  user-writable folder (e.g. `C:\Users\<user>\HLAE\2.192.6`) and point Settings > Video > HLAE > Change at it.
+- 2026-09-27: user downloaded the HLAE 2.192.6 zip to install manually.
+
+## 15. Render log (append: date, demo, what worked / broke)
 - (none yet)
