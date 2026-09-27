@@ -120,6 +120,40 @@ class ShotTest(unittest.TestCase):
         self.assertTrue((np.diff(d) < 1.0).all())
         self.assertGreater(d[0] - d[-1], 40)
 
+    def test_static_is_locked_off_and_frames_the_whole_action(self):
+        g = geometry()
+        r = cine.build("static", straight_track(), 64, 320, TICKRATE, {}, g)
+        k = r.keys[0]
+        self.assertTrue(all((x.pitch, x.yaw, x.fov, x.x) == (k.pitch, k.yaw, k.fov, k.x) for x in r.keys))
+        self.assertTrue(cine._in_frame(r.cam[0], k.pitch, k.yaw, k.fov * 1.05, r.aim).all())
+
+    def test_overhead_looks_straight_down_from_above(self):
+        r = cine.build("overhead", straight_track(), 64, 320, TICKRATE, {}, geometry())
+        self.assertTrue(all(k.pitch == 89.0 for k in r.keys))
+        self.assertGreater(r.cam[:, 2].min(), 250)
+        self.assertAlmostEqual(r.keys[0].yaw % 360, 0.0, delta=1.0)     # travel (+x) points 'up' the frame
+
+    def test_overhead_is_lowered_under_a_ceiling(self):
+        roof = np.array([[(-5000, -5000, 400), (5000, -5000, 400), (5000, 5000, 400)],
+                         [(-5000, -5000, 400), (5000, 5000, 400), (-5000, 5000, 400)]], dtype=float)
+        r = cine.build("overhead", straight_track(), 64, 320, TICKRATE, {}, geometry(roof))
+        self.assertLess(r.cam[:, 2].max(), 400)
+        self.assertTrue(r.warnings)
+
+    def test_ground_camera_sits_on_the_floor_and_watches_the_runner_leave(self):
+        r = cine.build("ground", straight_track(), 64, 320, TICKRATE, {}, geometry())
+        self.assertAlmostEqual(r.cam[0, 2], 6.0, places=3)
+        self.assertTrue(np.allclose(r.cam, r.cam[0]))
+        d = np.linalg.norm(r.aim[:, :2] - r.cam[0, :2], axis=1)
+        self.assertGreater(d[-1], d[len(d) // 3])                      # running away from the lens
+
+    def test_drone_flies_its_own_path_above_the_action(self):
+        r = cine.build("drone", straight_track(), 64, 320, TICKRATE, {}, geometry())
+        self.assertGreater((r.cam[:, 2] - r.subject[:, 2]).min(), 200)
+        self.assertGreater(np.linalg.norm(r.cam[-1] - r.cam[0]), 500)
+        with self.assertRaises(cine.ShotError):
+            cine.build("drone", straight_track(), 64, 320, TICKRATE, {"move": "loop"}, None)
+
     def test_tripod_is_fixed_and_pans(self):
         r = cine.build("tripod", straight_track(), 64, 320, TICKRATE, {"pos": [300, -400, 60]}, None)
         self.assertTrue(np.allclose(r.cam, r.cam[0]))

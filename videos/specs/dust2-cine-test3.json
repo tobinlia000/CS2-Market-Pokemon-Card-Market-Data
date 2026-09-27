@@ -1,0 +1,12 @@
+{
+  "name": "dust2-cine-test3",
+  "summary": "videos/demos/Brycetopher.summary.json",
+  "outputFileName": "dust2-cine-test3",
+  "concatenate": false,
+  "clips": [
+    { "type": "ticks", "start": 1274, "end": 1735, "camera": { "shot": "overhead", "subject": "Caillou", "track": true } },
+    { "type": "ticks", "start": 2038, "end": 2460, "camera": { "shot": "ground", "subject": "Caillou" } },
+    { "type": "ticks", "start": 3447, "end": 3800, "camera": { "shot": "static", "subject": "Caillou" } },
+    { "type": "ticks", "start": 4662, "end": 5252, "camera": { "shot": "drone", "subject": "Caillou" } }
+  ]
+}

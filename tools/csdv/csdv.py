@@ -480,7 +480,10 @@ def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: st
     else:
         import cine
 
-        if shot.get("shot") in cine.SHOTS:
+        # "static" exists in both: with a subject (or a clip POV) it is the placed cinematic shot, otherwise the
+        # plain coordinate shot from campath ("pos" + "lookAt").
+        has_subject = bool(shot.get("subject") or clip.get("pov") or clip.get("player"))
+        if shot.get("shot") in cine.SHOTS and (shot.get("shot") != "static" or has_subject):
             keys = cinematic_keys(clip, shot, sequence, match, demo_path, spec_name, clip_index, write_files)
         else:
             try:
