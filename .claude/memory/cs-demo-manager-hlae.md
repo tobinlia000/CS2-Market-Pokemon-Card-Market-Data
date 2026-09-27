@@ -383,3 +383,14 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   `Join-Sequences` (`_common.ps1`) joins in number order with `-c copy`, escaping `'` as `'\''`, writes
   `<Folder>\<name>.mp4` and moves the shots to `<name>-shots\`. render.ps1 now fails if the log says "FFmpeg error".
   Contiguous beats (next start = previous end) rendered fine.
+- **OTS fix (2026-09-27, user: "the back of the character's head is basically invisible"):** a lens chosen for the
+  far subject (~13° half-width) put the over-player's head (~20° off-axis) outside the frame. Now: back 70,
+  offset 16, height 8; the aim sits between head and subject (headWeight 0.45); the lens is fitted after aiming so
+  both land within 70% of the half-width, with a max-filter so it never crops. Totemlake beat 7: head in frame
+  99% (was mostly out), subject 100%. Not re-rendered yet.
+- **Map semantics (what I can read):** (1) collision geometry, (2) entities with class + model names
+  (prop_dynamic/doors/lights/spawns/buttons), (3) static detail in world-node meshes named by content, e.g.
+  `n0_lr0_agg_merge_exit_ceiling_0`. Exporting a single agg mesh gives meaningless positions (instances); export
+  `maps/<map>/world.vwrld_c` to glb (138 MB for totemlake, ~3 s, `videos/maps/<map>/render/`), apply node matrices,
+  and convert glTF meters/y-up to Source: x=x/0.0254, y=-z/0.0254, z=y/0.0254. Totemlake: one ceiling exit sign
+  at (1426, 1266, 902), size 5×22×13. Colour isn't in the names (verify with a test frame, or read materials).

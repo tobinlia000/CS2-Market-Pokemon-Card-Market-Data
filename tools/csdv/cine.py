@@ -19,7 +19,7 @@ import math
 from dataclasses import dataclass, field
 
 import numpy as np
-from scipy.ndimage import gaussian_filter1d, minimum_filter1d
+from scipy.ndimage import gaussian_filter1d, maximum_filter1d, minimum_filter1d
 
 import campath
 from positions import Track
@@ -574,10 +574,26 @@ def shot_ots(geometry, sub, p, f, kps):
                 eye[:, 2] + float(p.get("height", 6.0))]
     cam = gaussian_filter1d(cam, sigma=0.15 * kps, axis=0, mode="nearest")
     target = gaussian_filter1d(sub.aim, sigma=0.2 * kps, axis=0, mode="nearest")
-    pitch, yaw = _look(cam, target)
-    dist = float(np.median(np.linalg.norm(sub.aim - cam, axis=1)))
-    fov = float(p["fov"]) if p.get("fov") else hfov_for_size(dist, p.get("size", "full"))
-    return cam, pitch, yaw, np.full(n, max(fov, 20.0)), []
+    # Composition: the threat's head/shoulder on one third, the subject on the other. Aim between the two and pick
+    # a lens wide enough for both (a lens chosen for the far subject alone left the head outside the frame).
+    head = eye - [0, 0, 4.0]
+    _, yaw_subject = _look(cam, target)
+    _, yaw_head = _look(cam, head)
+    rel_head = (yaw_head - yaw_subject + 180) % 360 - 180         # degrees; + = head to the left of the subject
+    yaw = yaw_subject + rel_head * float(p.get("headWeight", 0.45))
+    yaw = gaussian_filter1d(yaw, sigma=0.1 * kps, mode="nearest")
+    # Lens from where both actually land after the aim is settled: the farther one sits at ~70% of the half-width.
+    off_subject = np.abs((yaw_subject - yaw + 180) % 360 - 180)
+    off_head = np.abs((yaw_head - yaw + 180) % 360 - 180)
+    half = np.maximum(np.maximum(off_subject, off_head) / 0.7, 6.0)
+    fov = np.degrees(2 * np.arctan(np.tan(np.radians(2 * half) / 2) * 0.75))
+    if p.get("fov"):
+        fov = np.full(n, float(p["fov"]))
+    else:  # open early, close slowly: never crop the head or the subject
+        fov = gaussian_filter1d(maximum_filter1d(fov, size=max(3, int(0.6 * kps) | 1), mode="nearest"),
+                                sigma=0.2 * kps, mode="nearest")
+    pitch, _ = _look(cam, target * 0.8 + head * 0.2)
+    return cam, pitch, yaw, np.clip(fov, 20.0, 100.0), []
 
 
 def shot_pov(geometry, sub, p, f, kps):
@@ -606,7 +622,7 @@ SHOT_DEFAULTS.update({
     "ground": dict(facing="away", back=48.0, side=14.0, lens=6.0, fov=80.0, lookAhead=0.45),
     "dolly_zoom": dict(angle="auto", distance=[320.0, 110.0], height=4.0, fov=28.0),
     "stalker": dict(distance=650.0, size="full", lag=0.7, handheld=0.3),
-    "ots": dict(back=55.0, offset=20.0, height=6.0, shoulder="right", size="full"),
+    "ots": dict(back=70.0, offset=16.0, height=8.0, shoulder="right", headWeight=0.45),
     "pov": dict(fov=95.0, handheld=0.7, inertia=0.12, pitchScale=0.8),
 })
 SHOTS.update(PLACED_SHOTS)
