@@ -229,5 +229,23 @@ Available `mirv_*` commands: `mirv_streams, mirv_campath, mirv_camio, mirv_death
 - Triage: exact error text → update HLAE → retry → try with "Use HLAE" off (Settings > Playback) → check `csdm.log`
   in `<CS2>/game/bin/win64/` and CS:DM logs.
 
-## 13. Render log (append: date, demo, what worked / broke)
+## 13. UI map (from CS:DM v3.20.1 UI source, src/ui — verify with the user's screenshots)
+RULE: never give the user a click path from memory. Check `src/ui` in the cloned repo (or ask for a screenshot) first.
+(2026-09-27: I wrongly said Settings > Video has an HLAE update button — it doesn't.)
+- Sidebar pages: Matches, Demos, Players, Teams, Search, Ban, Analyses, Downloads (Valve/FACEIT/Renown/5EPlay/Pending),
+  Videos (the generation queue), pinned player.
+- Match page tabs: Overview, Rounds, Players, Heatmap, Duels, Weapons, Grenades, 2D viewer, **Video**, Chat, Economy.
+- **Match > Video**: recording system (HLAE / CS), output, encoder, resolution, fps, concatenate, output file name…
+  When recording system = **HLAE** (Windows) a box appears with the HLAE version and **Install / Update / Browse**
+  buttons (Update is disabled unless CS:DM detects a newer GitHub release), config folder, parameters.
+  Also FFmpeg and VirtualDub boxes, match comment, and the sequences timeline.
+- Settings tabs: UI, Folders, Tags, Maps, Download, Playback, Analyze, Video, Cameras, Ban, Integrations, About
+  (+ Database).
+  - Settings > Video: HLAE location (custom hlae.exe), HLAE config folder, HLAE parameters; FFmpeg location;
+    default recording settings. **No install/update button here.**
+  - Settings > Playback: resolution/display mode, launch parameters, "Use HLAE" for watching, CS2 plugin version…
+  - Settings > Maps: add/edit maps (radar, posX/posY/scale, thresholdZ, thumbnail) — needed for 2D viewer.
+  - Settings > Cameras: pick a map, add/edit cameras (x, y, z, pitch, yaw, color, preview), "Start CS2 on <map>".
+
+## 14. Render log (append: date, demo, what worked / broke)
 - (none yet)
