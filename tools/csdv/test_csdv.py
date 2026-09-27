@@ -105,7 +105,8 @@ class CsdvTest(unittest.TestCase):
             [
                 {"type": "round", "round": 2, "player": "carl"},
                 {"type": "time", "start": "0:10", "end": "0:20", "pov": B, "povSwitches": [{"time": 15, "player": C}]},
-            ]
+            ],
+            view="first",
         )
         first, second = config["sequences"]
         self.assertEqual((first["startTick"], first["endTick"]), (640, 1280))
@@ -173,6 +174,27 @@ class CsdvTest(unittest.TestCase):
         self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
         with self.assertRaises(csdv.CsdvError):
             self.build([{"type": "kills", "player": A, "camera": {"shot": "static", "pos": [0, 0, 0]}}])
+
+    def test_third_person_is_default_and_starts_before_recording(self):
+        config = self.build([{"type": "time", "start": "0:10", "end": "0:20", "pov": B,
+                              "povSwitches": [{"time": 15, "player": C}]}])
+        seq = config["sequences"][0]
+        self.assertEqual([c["tick"] for c in seq["playerCameras"]], [640 - 32, 960])
+        cfg = seq["cfg"].split("\n")
+        self.assertEqual(cfg[0], "mirv_cmd clear")
+        self.assertIn("mirv_cmd addAtTick 610 spec_mode 3", cfg)
+        self.assertIn("mirv_cmd addAtTick 962 spec_mode 3", cfg)
+        self.assertEqual(csdv.validate_config(config), [])
+
+    def test_first_person_and_campath_clips_get_no_view_switch(self):
+        config = self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A, "view": "first"}])
+        self.assertEqual(config["sequences"][0]["cfg"], "mirv_cmd clear")
+        self.assertEqual(config["sequences"][0]["playerCameras"][0]["tick"], 6400)
+        config = self.build([{"type": "ticks", "start": 6400, "end": 6720,
+                              "camera": {"shot": "static", "pos": [0, 0, 64], "lookAt": [100, 0, 64]}}])
+        self.assertNotIn("spec_mode", config["sequences"][0]["cfg"])
+        with self.assertRaises(csdv.CsdvError):
+            self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A, "view": "side"}])
 
     def test_cli_round_trip(self):
         with tempfile.TemporaryDirectory() as tmp:

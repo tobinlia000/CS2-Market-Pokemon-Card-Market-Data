@@ -13,9 +13,11 @@ HLAE is a cheat to VAC. Read and obey the SAFETY section of `CLAUDE.md` before a
 - `render.ps1` refuses to start while CS2 is running; after every session remind the user:
   close CS2 → `.\scripts\safety-check.ps1` → launch CS2 from Steam for online play.
 
-You cannot run CS2, HLAE or CS Demo Manager (CS:DM) here — this is a Linux cloud container and HLAE is Windows-only.
-Your job is the programming: choose the moments, author clip specs, build and validate CS:DM configs, and push them.
-The user runs two PowerShell scripts on Windows. Git is the hand-off in both directions.
+**Where you run decides the loop.** On the user's Windows PC (local session, since 2026-09-27), run
+`export-demo.ps1` and `render.ps1` yourself. Ask before each render, because CS2 takes over the screen. Then check the
+output (ffprobe, extracted frames) and run `safety-check.ps1` afterwards. Never start CS2/HLAE any other way. In a
+cloud container you can't run CS2, HLAE or CS Demo Manager (CS:DM): do the programming (moments, specs, configs), push,
+and let the user run the two scripts. Git is the hand-off.
 
 **Read `.claude/memory/cs-demo-manager-hlae.md` first** — it has how CS:DM drives HLAE, every setting, the
 `mirv_*` commands and known gotchas. Update it (and its "Last updated" line) whenever a render teaches you something.
@@ -93,6 +95,11 @@ Rules the builder enforces/assumes:
 ## Camerawork and stories (custom cameras, workshop maps)
 Coordinates are plain world coordinates (x, y, z; z up; yaw 0 = +x, 90 = +y; pitch + = looking down). They work on
 **any** map, official or workshop — CS:DM's "map support" only matters for its 2D viewer/radar, not for cameras.
+
+**Third person is the user's main style** and the profile default (`"view": "third"`). Set it per clip or per spec
+(`"view": "first"` for POV). It uses CS2's chase camera (`spec_mode 3`, sent through `mirv_cmd addAtTick` a couple of
+ticks after each player camera; the first camera is moved 0.5 s before the recording start). Clips with a `"camera"`
+ignore `view`.
 
 Add `"camera"` to a `round`/`ticks`/`time` clip (one sequence). csdv writes an HLAE campath XML to
 `videos/campaths/<spec>-clip<N>.xml` and adds cfg that loads it and anchors keyframe 0 to the sequence start tick via

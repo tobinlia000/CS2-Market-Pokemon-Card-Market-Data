@@ -446,6 +446,39 @@ def attach_camera(clip: dict, sequences: list[dict], match: Match, spec_name: st
     sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), *lines]))
 
 
+# Third person: CS:DM always selects a player with `spec_mode 1` + `spec_player` (first person). HLAE's mirv_cmd then
+# switches to CS2's chase camera (`spec_mode 3`, verified 2026-09-27; `spec_mode 5` stays first person) a couple of
+# ticks after each player selection. The first selection is moved before the recording start so frame 1 is already
+# third person.
+VIEW_PREROLL_TICKS = 32
+VIEW_SWITCH_DELAY_TICKS = 2
+SPEC_MODE_BY_VIEW = {"third": 3}
+
+
+def apply_view(clip: dict, sequences: list[dict], default_view: str) -> None:
+    view = clip.get("view", default_view)
+    if view not in ("first", "third"):
+        raise CsdvError(f"Unknown view '{view}'. Use \"first\" or \"third\".")
+    if clip.get("camera"):
+        return  # an HLAE campath drives the view instead of the spectator camera (attach_camera clears mirv_cmd)
+    if view == "first":
+        # Drop switches scheduled by earlier sequences: with order "spec" CS:DM can seek back over their ticks.
+        for sequence in sequences:
+            sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), "mirv_cmd clear"]))
+        return
+    for sequence in sequences:
+        cameras = sequence["playerCameras"]
+        if not cameras:
+            continue
+        if cameras[0]["tick"] == sequence["startTick"]:
+            cameras[0]["tick"] = max(1, sequence["startTick"] - VIEW_PREROLL_TICKS)
+        lines = ["mirv_cmd clear"] + [
+            f"mirv_cmd addAtTick {cam['tick'] + VIEW_SWITCH_DELAY_TICKS} spec_mode {SPEC_MODE_BY_VIEW[view]}"
+            for cam in cameras
+        ]
+        sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), *lines]))
+
+
 def players_options(match: Match, highlight: set[str], voice: bool) -> list[dict]:
     return [
         {
@@ -473,6 +506,7 @@ def build_config(spec: dict, profile: dict, summary: dict | None, write_files: b
     for index, clip in enumerate(spec.get("clips", [])):
         clip_sequences = build_clip(clip, match, seq_settings, spec.get("cfg"))
         attach_camera(clip, clip_sequences, match, spec_name, index, write_files)
+        apply_view(clip, clip_sequences, spec.get("view", settings.get("view", "first")))
         sequences.extend(clip_sequences)
     if not sequences:
         raise CsdvError("The spec has no clips.")
@@ -654,7 +688,8 @@ def validate_config(config: dict) -> list[str]:
         for cam in sequence.get("playerCameras") or []:
             if not re.fullmatch(r"\d{17}", str(cam.get("playerSteamId", ""))):
                 error(f"{label}: playerCameras entry has an invalid SteamID64: {cam}")
-            if isinstance(start, int) and isinstance(end, int) and not (start <= cam.get("tick", 0) <= end):
+            # Up to 1 s before the start is fine: CS:DM seeks to startTick - tickrate (third-person pre-roll uses it).
+            if isinstance(start, int) and isinstance(end, int) and not (start - 64 <= cam.get("tick", 0) <= end):
                 warn(f"{label}: camera switch at tick {cam.get('tick')} is outside the sequence")
         for line in str(sequence.get("cfg") or "").split("\n"):
             if line.strip().startswith(("startmovie", "endmovie", "mirv_streams record start", "mirv_streams record end")):

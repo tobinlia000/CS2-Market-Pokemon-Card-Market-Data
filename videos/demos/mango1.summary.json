@@ -1,0 +1,47 @@
+{
+  "summaryVersion": 1,
+  "name": "mango1",
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\mango1.dem",
+  "checksum": "a829120f4815145d",
+  "game": "CS2",
+  "map": "totemlake",
+  "date": "2026-09-19T02:39:03.000Z",
+  "source": "unknown",
+  "tickrate": 64,
+  "tickCount": 28776,
+  "duration": "7:29",
+  "teams": [
+    {
+      "name": "Team A",
+      "score": 0
+    },
+    {
+      "name": "Team B",
+      "score": 0
+    }
+  ],
+  "players": [
+    {
+      "steamId": "76561198125088961",
+      "name": "Caillou (Canadian now)",
+      "team": "Team A",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "headshots": 0
+    },
+    {
+      "steamId": "76561198823971651",
+      "name": "David",
+      "team": "Team B",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "headshots": 0
+    }
+  ],
+  "rounds": [],
+  "multiKills": [],
+  "clutches": [],
+  "kills": []
+}

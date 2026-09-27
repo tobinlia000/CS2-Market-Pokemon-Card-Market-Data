@@ -18,17 +18,24 @@ function Get-Csdm {
 function Get-Python {
     foreach ($name in @('py', 'python', 'python3')) {
         $cmd = Get-Command $name -ErrorAction SilentlyContinue
-        if ($cmd -and $cmd.Source -notlike '*WindowsApps*') {
-            if ($name -eq 'py') { return @($cmd.Source, '-3') }
-            return @($cmd.Source)
+        if (-not $cmd) { continue }
+        # WindowsApps holds both the real Microsoft Store Python and the "install from Store" stub; only the real
+        # one answers --version with "Python 3.x".
+        if ($cmd.Source -like '*WindowsApps*') {
+            $ver = try { & $cmd.Source --version 2>&1 | Out-String } catch { '' }
+            if ($ver -notmatch 'Python 3') { continue }
         }
+        if ($name -eq 'py') { return @($cmd.Source, '-3') }
+        return @($cmd.Source)
     }
     throw "Python 3 not found. Install it with:  winget install Python.Python.3.12   (then open a NEW terminal)."
 }
 
 function Invoke-Csdv {
-    param([Parameter(ValueFromRemainingArguments = $true)][string[]]$CsdvArgs)
-    $py = Get-Python
+    # Plain function on purpose: a [Parameter()] attribute would make it an advanced function, and PowerShell would
+    # then grab csdv flags like -o as its own common parameters (-OutVariable/-OutBuffer).
+    $CsdvArgs = $args
+    $py = @(Get-Python)   # @() keeps a one-item result as an array (else $py[0] is the first letter)
     $exe = $py[0]
     $pre = @($py | Select-Object -Skip 1)
     # Send output to the host so only the exit code is returned from this function.

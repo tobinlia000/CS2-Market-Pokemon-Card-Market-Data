@@ -1,0 +1,10 @@
+{
+  "name": "mango1-test",
+  "summary": "videos/demos/mango1.summary.json",
+  "outputFileName": "mango1-test-3p",
+  "concatenate": false,
+  "clips": [
+    { "type": "time", "start": "1:00", "end": "1:10", "pov": "Caillou",
+      "povSwitches": [{ "time": "1:05", "player": "David" }] }
+  ]
+}

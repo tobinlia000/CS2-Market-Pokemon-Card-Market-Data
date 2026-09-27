@@ -1,0 +1,68 @@
+{
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\mango1.dem",
+  "recordingSystem": "HLAE",
+  "recordingOutput": "video",
+  "encoderSoftware": "FFmpeg",
+  "framerate": 60,
+  "width": 2560,
+  "height": 1440,
+  "closeGameAfterRecording": true,
+  "trueView": false,
+  "concatenateSequences": false,
+  "outputFileName": "mango1-test-3p",
+  "ffmpegSettings": {
+    "customLocationEnabled": false,
+    "customExecutableLocation": "",
+    "audioBitrate": 256,
+    "constantRateFactor": 18,
+    "videoContainer": "mp4",
+    "videoCodec": "libx264",
+    "audioCodec": "aac",
+    "inputParameters": "",
+    "outputParameters": ""
+  },
+  "sequences": [
+    {
+      "number": 1,
+      "startTick": 3840,
+      "endTick": 4480,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "David",
+          "steamId": "76561198823971651",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 3808,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        },
+        {
+          "tick": 4160,
+          "playerSteamId": "76561198823971651",
+          "playerName": "David"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_cmd clear\nmirv_cmd addAtTick 3810 spec_mode 3\nmirv_cmd addAtTick 4162 spec_mode 3"
+    }
+  ],
+  "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"
+}

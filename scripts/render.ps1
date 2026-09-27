@@ -45,18 +45,27 @@ foreach ($file in $Config) {
         throw "Repo path '$repoForward' contains '//' or '#', which CS:DM strips from configs. Clone it to a plain local folder."
     }
     $raw = Get-Content $file -Raw
-    $runFile = $file
-    if ($raw.Contains('{REPO}')) {
-        $runFile = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetFileName($file))
-        [IO.File]::WriteAllText($runFile, $raw.Replace('{REPO}', $repoForward), (New-Object System.Text.UTF8Encoding $false))
-        foreach ($m in [regex]::Matches($raw, '\{REPO\}/([^"\\]+\.xml)')) {
-            $xml = Join-Path $RepoRoot $m.Groups[1].Value
-            if (-not (Test-Path $xml)) { throw "Camera path file missing: $xml (git pull?)" }
+    foreach ($m in [regex]::Matches($raw, '\{REPO\}/([^"\\]+\.xml)')) {
+        $xml = Join-Path $RepoRoot $m.Groups[1].Value
+        if (-not (Test-Path $xml)) { throw "Camera path file missing: $xml (git pull?)" }
+    }
+    $raw = $raw.Replace('{REPO}', $repoForward)
+    # CS:DM ignores --output when a config file is used (2026-09-27: the files landed next to the demo), so the
+    # folder goes into the config's outputFolderPath instead.
+    $folder = if ($OutputFolder) { $OutputFolder } else { $cfg.outputFolderPath }
+    if ($folder) {
+        New-Item -ItemType Directory -Force -Path $folder | Out-Null
+        $folderJson = (Resolve-Path $folder).Path | ConvertTo-Json
+        if ($raw -match '"outputFolderPath"\s*:') {
+            $raw = [regex]::Replace($raw, '"outputFolderPath"\s*:\s*"(?:[^"\\]|\\.)*"', { '"outputFolderPath": ' + $folderJson })
+        } else {
+            $raw = ([regex]'\{').Replace($raw, { '{' + "`n  " + '"outputFolderPath": ' + $folderJson + ',' }, 1)
         }
     }
+    $runFile = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetFileName($file))
+    [IO.File]::WriteAllText($runFile, $raw, (New-Object System.Text.UTF8Encoding $false))
 
     $cliArgs = @('video', '--config-file', $runFile)
-    if ($OutputFolder) { $cliArgs += @('--output', (Resolve-Path $OutputFolder).Path) }
     $log = Join-Path $logDir (([IO.Path]::GetFileNameWithoutExtension($file)) + '.log')
     Write-Host "Rendering $file ($($cfg.sequences.Count) sequences, $($cfg.width)x$($cfg.height)@$($cfg.framerate))..." -ForegroundColor Cyan
     # Windows PowerShell turns redirected stderr into errors; don't let that abort the render.

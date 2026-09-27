@@ -275,4 +275,21 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   csdm.log is at `C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\bin\win64\csdm.log`.
 
 ## 15. Render log (append: date, demo, what worked / broke)
-- (none yet)
+- **2026-09-27, mango1.dem (totemlake, workshop map), first real render: WORKED.** `render.ps1` → `csdm video
+  --config-file` → HLAE 2.192.6 → FFmpeg pipe. 3 × 8 s clips came out 2560x1440, 60 fps, h264 + aac, about 20–25 MB each,
+  and CS2/HLAE closed by themselves. Findings:
+  - **Third person = `spec_mode 3`** (CS2 chase cam). `spec_mode 5` stays first person. Sent with
+    `mirv_cmd addAtTick <tick> spec_mode 3` from the sequence cfg it switches exactly at that tick (a visible cut from
+    first person). csdv now has `"view": "third"` (profile default, user's main style): the first player camera moves
+    32 ticks before startTick and spec_mode 3 fires 2 ticks after each player camera.
+    UNVERIFIED: whether 2 ticks is enough after CS:DM's `spec_mode 1; spec_player` (render mango1-test with view third).
+  - **CS:DM ignores `--output` with `--config-file`**: files were written next to the demo (the csgo folder). With
+    `concatenateSequences` false, they're named `sequence-<N>-tick-<start>-to-<end>.mp4`, with no video-id sub-folder.
+    `render.ps1` now writes `outputFolderPath` into the run config. Profile default: `C:\Users\Liam's PC\Videos\CS2 Renders`.
+  - **Self-recorded demos (the "?" Source column in CS:DM) fail analysis with `UnknownSource`** → `export-demo.ps1 -Source valve`.
+    The summary still says source "unknown". A workshop map shows under its plain map name (`totemlake`).
+  - mango1 has 2 players, no rounds or kills (a free-roam session), and runs 7:29. `csda -positions` returned **no
+    playerPositions**; it seems to sample only inside rounds. For demos like this, camera coordinates must be scouted in-game.
+  - PC scripts: Python is the Microsoft Store 3.13 (a WindowsApps alias). Two `_common.ps1` bugs are fixed:
+    WindowsApps was skipped, and a one-item `Get-Python` result was indexed as a string (`$py[0]` = "C"). Also
+    `Invoke-Csdv` had `-o` swallowed as `-OutVariable`.

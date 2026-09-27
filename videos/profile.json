@@ -8,8 +8,9 @@
   "height": 1440,
   "closeGameAfterRecording": true,
   "trueView": false,
+  "view": "third",
   "concatenateSequences": true,
-  "outputFolder": "",
+  "outputFolder": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders",
   "ffmpegSettings": {
     "videoContainer": "mp4",
     "videoCodec": "libx264",
