@@ -478,3 +478,27 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   the suggester's preferences unless asked. Maps: 4000 px, shared lettered grid (256 u squares), L# landmarks with
   a legend, routes with 5 s arrows / 15 s labels. Bug fixed: grid column names looped forever for negative
   indices (scenery west of the grid) → "off-grid".
+
+## 17. Limits test: signs, look direction, knife, jumps (2026-09-27, mango1/totemlake)
+- **Demo events in a free-roam demo:** only `weapon_fire`, `item_equip`, `player_footstep` (no `player_jump`).
+  Per tick (demoparser2): X/Y/Z, pitch/yaw, ducking, is_walking, is_airborne, velocity_Z, active_weapon_name, is_scoped.
+  `move_type` stayed 2 (walk) all demo.
+- **Jumps:** airborne start with velocity_Z > 150 = jump, else a drop off a ledge. mango1: Caillou 17 airborne events, David 30
+  (mostly bunny-hops at 5:20–7:19). Oddities to check before scripting: David airborne 10 s at 6:47 and 2.9 s rising 314 u at 7:04
+  (a lift/trigger push?).
+- **Knife swings = `weapon_fire` with a knife.** Wall vs air: ray from the eye (z+64, +46 crouched) along the view, 48 u reach,
+  `MapGeometry.first_hit`. mango1: 25 swings, all air. Closest: David 3:29 (wall 70 u) and 6:34 (50 u, looking down 34°).
+  Slash and stab can't be told apart directly.
+- **Signs:** totemlake store names are 3D letter models (addon `models/ocb_sign/*`: buffet, cartoys, famousfootwear, rosslogo,
+  totemlakemalls) in plain materials (white_1, primary_red, metal_basic_1), plus texture overlays (gottschalks, tlm_remodel,
+  bathroom signs). Read them this way:
+  1. Copy the addon `3581521200_*.vpk` to scratch as `pak01_*.vpk`, and write a gameinfo.gi whose SearchPaths are that folder
+     plus game/csgo and game/core.
+  2. `Source2Viewer-CLI -i <nested totemlake.vpk> -f maps/totemlake/world.vwrld_c -d --game <gi> --gltf_export_format gltf
+     --gltf_export_materials -o <dir>\w.gltf`. This gives 1.4 GB and 824 textures; the shader VCS v72 warnings are harmless.
+  3. Blender 5.2 in the background (`scratchpad/signs_render.py`, `letters_render.py`): collect the triangles per material,
+     cluster them, and point an ortho camera down the PCA normal (both sides), in Workbench (TEXTURE for decals,
+     MATERIAL+STUDIO for letters).
+  Result: I read "Old Country Buffet" at (963,1972) and (2075,2154) and "CAR TOYS" at (1055,6181). Famous Footwear and Ross
+  were not found yet: shared materials make clusters swallow walls. Better next step: locate the model instances by their
+  vertex signature, or take an in-game still via CS:DM.
