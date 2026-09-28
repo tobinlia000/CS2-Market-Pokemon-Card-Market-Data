@@ -14,7 +14,7 @@
   "ffmpegSettings": {
     "videoContainer": "mp4",
     "videoCodec": "libx264",
-    "constantRateFactor": 18,
+    "constantRateFactor": 14,
     "audioCodec": "aac",
     "audioBitrate": 256,
     "inputParameters": "",

@@ -41,7 +41,11 @@ def filters(look: str, size: tuple[int, int], letterbox: bool, stamp: str) -> st
     if look == "downscale":
         return f"scale={w}:{h}:flags=lanczos"
     if look == "cinematic":
-        chain = [f"scale={w}:{h}:flags=lanczos",
+        # 16-bit processing + deband: dark gradients recorded in 8-bit show contour "banding" (the user's note on
+        # the first sample); smoothing them in 16-bit and exporting 10-bit keeps the gradient smooth.
+        chain = ["format=gbrp16le",
+                 f"scale={w}:{h}:flags=lanczos",
+                 "deband=1thr=0.015:2thr=0.015:3thr=0.015:range=24:blur=1",
                  "eq=contrast=1.07:saturation=0.9:gamma=0.98",
                  "colorbalance=rs=0.015:bs=-0.015:rh=0.02:bh=-0.02",   # a touch warm in the highlights
                  "vignette=angle=PI/5:mode=backward",
@@ -81,14 +85,18 @@ def main(argv=None) -> int:
     ap.add_argument("--letterbox", action="store_true")
     ap.add_argument("--stamp", default="SEP 27 1996")
     ap.add_argument("--crf", type=int, default=16)
+    ap.add_argument("--bits", type=int, choices=[8, 10], default=10,
+                    help="10 (default): smooth dark gradients, fine for YouTube/editors; 8: widest player support")
     ap.add_argument("-o", "--output")
     args = ap.parse_args(argv)
     src = Path(args.input)
     out = Path(args.output) if args.output else src.with_name(f"{src.stem}-{args.look}{src.suffix}")
     w, h = (int(v) for v in args.size.lower().split("x"))
+    pix = "yuv420p10le" if args.bits == 10 else "yuv420p"
+    vf = filters(args.look, (w, h), args.letterbox, args.stamp) + f",format={pix}"
     cmd = [ffmpeg_path(), "-hide_banner", "-loglevel", "error", "-y", "-i", str(src),
-           "-vf", filters(args.look, (w, h), args.letterbox, args.stamp),
-           "-c:v", "libx264", "-preset", "slow", "-crf", str(args.crf), "-pix_fmt", "yuv420p", "-c:a", "copy", str(out)]
+           "-vf", vf,
+           "-c:v", "libx264", "-preset", "slow", "-crf", str(args.crf), "-pix_fmt", pix, "-c:a", "copy", str(out)]
     result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
     if result.returncode != 0:
         print(result.stderr[-2000:], file=sys.stderr)

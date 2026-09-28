@@ -70,7 +70,7 @@ foreach ($file in $Config) {
     [IO.File]::WriteAllText($runFile, $raw, (New-Object System.Text.UTF8Encoding $false))
 
     # ReShade (loaded by HLAE via CS:DM's HLAE parameters): pick this render's preset, "off" unless the spec asked.
-    $reshadePreset = 'off'
+    $reshadePreset = 'clean'   # deband only: smooth dark gradients in every render (banding fix)
     $sidecar = $file -replace '\.csdm\.json$', '.reshade'   # written by csdv build (spec "reshade": "<preset>")
     if (Test-Path $sidecar) { $reshadePreset = (Get-Content $sidecar -Raw).Trim() }
     Set-ReShadePreset $reshadePreset
@@ -83,7 +83,7 @@ foreach ($file in $Config) {
     & $csdm @cliArgs --verbose 2>&1 | ForEach-Object { "$_" } | Tee-Object -FilePath $log
     $exitCode = $LASTEXITCODE
     $ErrorActionPreference = 'Stop'
-    Set-ReShadePreset 'off'
+    Set-ReShadePreset 'clean'
     if ($exitCode -eq 0 -and (Select-String -Path $log -Pattern 'FFmpeg error' -Quiet)) { $exitCode = 3 }  # csdm exits 0 anyway
     if ($exitCode -ne 0) {
         Write-Host "FAILED - log: $log (commit it so Claude can debug)" -ForegroundColor Red

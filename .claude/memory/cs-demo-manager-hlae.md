@@ -459,3 +459,10 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   ~3 min, the grade ~1.7 min. The user rarely wants the camcorder grade. Visibility now also requires the subject
   inside the frame (not only line of sight) except for pov/ground shots; I still swapped beat 5's lagging tripod
   pan for a slow zoom by hand (spec keeps the old pick in `alternatives`).
+- **Banding fix (user note on the sample: "wavy things on the wall" in low light = colour banding).** Measured:
+  already in the raw 8-bit capture (83% equal neighbours on a dark wall); the old 8-bit grade hid some with grain.
+  Fixes: post.py cinematic now works in 16-bit (gbrp16le) + `deband` (thr 0.015, range 24) + grain, exported
+  **10-bit H.264 (High 10) by default** (`--bits 8` for compatibility) → 575 vs 142 levels on the same wall, smooth in
+  contrast-boosted crops. At the source: ReShade `Deband@Deband.fx` added to the look preset, a new
+  `csdv-clean.ini` (Deband only) is now the default/resting preset in render.ps1 (every render, and demo watching),
+  and profile CRF 18 → 14. In-game deband + CRF 14 are not yet verified in a render.
