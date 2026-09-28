@@ -1,234 +1,286 @@
 [1m[92m    Updating[0m crates.io index
 [1m[92m Downloading[0m crates ...
-[1m[92m  Downloaded[0m bitter v0.7.1
-[1m[92m  Downloaded[0m iana-time-zone-haiku v0.1.2
-[1m[92m  Downloaded[0m bit_reverse v0.1.8
-[1m[92m  Downloaded[0m android_system_properties v0.1.5
-[1m[92m  Downloaded[0m lazy_static v1.5.0
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
+[1m[93mwarning[0m: spurious network error (3 tries remaining): [55] Failed sending data to the peer (Failed receiving HTTP2 data: 56(Failure when receiving data from the peer))
 [1m[92m  Downloaded[0m bytemuck_derive v1.10.2
-[1m[92m  Downloaded[0m chrono-tz-build v0.2.1
-[1m[92m  Downloaded[0m convert_case v0.4.0
-[1m[92m  Downloaded[0m errno v0.3.14
-[1m[92m  Downloaded[0m percent-encoding v2.3.2
-[1m[92m  Downloaded[0m hex v0.4.3
-[1m[92m  Downloaded[0m either v1.15.0
+[1m[92m  Downloaded[0m chrono v0.4.42
+[1m[92m  Downloaded[0m itertools v0.14.0
 [1m[92m  Downloaded[0m bitflags v2.10.0
-[1m[92m  Downloaded[0m ahash v0.8.12
-[1m[92m  Downloaded[0m rand_distr v0.4.3
-[1m[92m  Downloaded[0m rustversion v1.0.22
-[1m[92m  Downloaded[0m bytemuck v1.24.0
-[1m[92m  Downloaded[0m log v0.4.28
-[1m[92m  Downloaded[0m derive_more v0.99.20
-[1m[92m  Downloaded[0m thiserror v1.0.69
-[1m[92m  Downloaded[0m bytes v1.11.0
-[1m[92m  Downloaded[0m dyn-clone v1.0.20
-[1m[92m  Downloaded[0m equivalent v1.0.2
-[1m[92m  Downloaded[0m allocator-api2 v0.2.21
-[1m[92m  Downloaded[0m version_check v0.9.5
-[1m[92m  Downloaded[0m redox_syscall v0.5.18
-[1m[92m  Downloaded[0m heck v0.5.0
-[1m[92m  Downloaded[0m multimap v0.10.1
-[1m[92m  Downloaded[0m aho-corasick v1.1.4
-[1m[92m  Downloaded[0m phf_shared v0.11.3
-[1m[92m  Downloaded[0m memchr v2.7.6
-[1m[92m  Downloaded[0m r-efi v5.3.0
-[1m[92m  Downloaded[0m rayon-core v1.13.0
-[1m[92m  Downloaded[0m home v0.5.12
-[1m[92m  Downloaded[0m lz4 v1.28.1
-[1m[92m  Downloaded[0m document-features v0.2.12
-[1m[92m  Downloaded[0m crossbeam-epoch v0.9.18
-[1m[92m  Downloaded[0m array-init-cursor v0.2.1
-[1m[92m  Downloaded[0m phf_generator v0.11.3
-[1m[92m  Downloaded[0m zstd v0.13.3
-[1m[92m  Downloaded[0m multiversion v0.7.4
-[1m[92m  Downloaded[0m multiversion-macros v0.7.4
-[1m[92m  Downloaded[0m polars-compute v0.41.3
-[1m[92m  Downloaded[0m indoc v2.0.7
-[1m[92m  Downloaded[0m memmap2 v0.7.1
-[1m[92m  Downloaded[0m polars-arrow-format v0.1.0
-[1m[92m  Downloaded[0m sysinfo v0.30.13
-[1m[92m  Downloaded[0m js-sys v0.3.83
-[1m[92m  Downloaded[0m windows-targets v0.52.6
-[1m[92m  Downloaded[0m cfg-if v1.0.4
-[1m[92m  Downloaded[0m bumpalo v3.19.0
-[1m[92m  Downloaded[0m hashbrown v0.14.5
-[1m[92m  Downloaded[0m memoffset v0.9.1
-[1m[92m  Downloaded[0m unicode-ident v1.0.22
-[1m[92m  Downloaded[0m parking_lot v0.12.5
-[1m[92m  Downloaded[0m zerocopy-derive v0.8.31
-[1m[92m  Downloaded[0m wit-bindgen v0.46.0
-[1m[92m  Downloaded[0m core-foundation-sys v0.8.7
-[1m[92m  Downloaded[0m find-msvc-tools v0.1.5
-[1m[92m  Downloaded[0m getrandom v0.3.4
-[1m[92m  Downloaded[0m num-traits v0.2.19
-[1m[92m  Downloaded[0m fastrand v2.3.0
-[1m[92m  Downloaded[0m litrs v1.0.0
-[1m[92m  Downloaded[0m fixedbitset v0.5.7
-[1m[92m  Downloaded[0m base64 v0.22.1
 [1m[92m  Downloaded[0m fallible-streaming-iterator v0.1.9
-[1m[92m  Downloaded[0m now v0.1.3
-[1m[92m  Downloaded[0m phf_codegen v0.11.3
-[1m[92m  Downloaded[0m pkg-config v0.3.32
-[1m[92m  Downloaded[0m lock_api v0.4.14
+[1m[92m  Downloaded[0m getrandom v0.2.16
+[1m[92m  Downloaded[0m chrono-tz-build v0.2.1
+[1m[92m  Downloaded[0m bumpalo v3.19.0
 [1m[92m  Downloaded[0m phf_macros v0.11.3
-[1m[92m  Downloaded[0m windows-strings v0.5.1
-[1m[92m  Downloaded[0m atoi v2.0.0
-[1m[92m  Downloaded[0m xxhash-rust v0.8.15
-[1m[92m  Downloaded[0m ar_archive_writer v0.2.0
-[1m[92m  Downloaded[0m glob v0.3.3
-[1m[92m  Downloaded[0m parquet-format-safe v0.2.4
-[1m[92m  Downloaded[0m cc v1.2.48
-[1m[92m  Downloaded[0m crossbeam-channel v0.5.15
-[1m[92m  Downloaded[0m parking_lot_core v0.9.12
-[1m[92m  Downloaded[0m autocfg v1.5.0
-[1m[92m  Downloaded[0m wasm-bindgen v0.2.106
-[1m[92m  Downloaded[0m itertools v0.13.0
-[1m[92m  Downloaded[0m ntapi v0.4.1
-[1m[92m  Downloaded[0m windows_aarch64_gnullvm v0.52.6
-[1m[92m  Downloaded[0m windows_i686_gnullvm v0.52.6
 [1m[92m  Downloaded[0m crossbeam-queue v0.3.12
 [1m[92m  Downloaded[0m argminmax v0.6.3
-[1m[92m  Downloaded[0m itoap v1.0.1
-[1m[92m  Downloaded[0m parse-zoneinfo v0.3.1
-[1m[92m  Downloaded[0m wasm-bindgen-macro v0.2.106
-[1m[92m  Downloaded[0m fast-float v0.2.0
-[1m[92m  Downloaded[0m wasm-bindgen-macro-support v0.2.106
-[1m[92m  Downloaded[0m enum_dispatch v0.3.13
-[1m[92m  Downloaded[0m libm v0.2.15
-[1m[92m  Downloaded[0m unindent v0.2.4
-[1m[92m  Downloaded[0m wasi v0.11.1+wasi-snapshot-preview1
-[1m[92m  Downloaded[0m hashbrown v0.16.1
-[1m[92m  Downloaded[0m indexmap v2.12.1
-[1m[92m  Downloaded[0m once_cell v1.21.3
-[1m[92m  Downloaded[0m crossbeam-deque v0.8.6
 [1m[92m  Downloaded[0m anyhow v1.0.100
-[1m[92m  Downloaded[0m windows-core v0.62.2
-[1m[92m  Downloaded[0m comfy-table v7.2.1
-[1m[92m  Downloaded[0m crossterm v0.29.0
-[1m[92m  Downloaded[0m object v0.32.2
-[1m[92m  Downloaded[0m memmap2 v0.9.9
-[1m[92m  Downloaded[0m chrono v0.4.42
-[1m[92m  Downloaded[0m uuid v1.18.1
-[1m[92m  Downloaded[0m foreign_vec v0.1.0
-[1m[92m  Downloaded[0m windows-result v0.4.1
-[1m[92m  Downloaded[0m itertools v0.14.0
-[1m[92m  Downloaded[0m crossterm_winapi v0.9.1
-[1m[92m  Downloaded[0m iana-time-zone v0.1.64
-[1m[92m  Downloaded[0m lz4-sys v1.11.1+lz4-1.10.0
-[1m[92m  Downloaded[0m planus v0.3.1
-[1m[92m  Downloaded[0m recursive v0.1.1
-[1m[92m  Downloaded[0m windows-interface v0.59.3
-[1m[92m  Downloaded[0m wasip2 v1.0.1+wasi-0.2.4
-[1m[92m  Downloaded[0m thiserror-impl v1.0.69
-[1m[92m  Downloaded[0m strength_reduce v0.2.4
-[1m[92m  Downloaded[0m phf v0.11.3
-[1m[92m  Downloaded[0m wasm-bindgen-shared v0.2.106
-[1m[92m  Downloaded[0m atoi_simd v0.15.6
+[1m[92m  Downloaded[0m crossbeam-channel v0.5.15
+[1m[92m  Downloaded[0m document-features v0.2.12
 [1m[92m  Downloaded[0m chrono-tz v0.8.6
-[1m[92m  Downloaded[0m getrandom v0.2.16
-[1m[92m  Downloaded[0m ethnum v1.5.3
-[1m[92m  Downloaded[0m semver v1.0.27
-[1m[92m  Downloaded[0m unicode-width v0.2.2
-[1m[92m  Downloaded[0m libc v0.2.177
-[1m[92m  Downloaded[0m petgraph v0.7.1
-[1m[92m  Downloaded[0m serde_core v1.0.228
-[1m[92m  Downloaded[0m windows_x86_64_gnullvm v0.52.6
-[1m[92m  Downloaded[0m rand_core v0.6.4
-[1m[92m  Downloaded[0m rustc_version v0.4.1
-[1m[92m  Downloaded[0m strum v0.26.3
-[1m[92m  Downloaded[0m protobuf-support v3.7.2
-[1m[92m  Downloaded[0m siphasher v1.0.1
-[1m[92m  Downloaded[0m pyo3-macros v0.27.2
-[1m[92m  Downloaded[0m recursive-proc-macro-impl v0.1.1
+[1m[92m  Downloaded[0m comfy-table v7.2.1
+[1m[92m  Downloaded[0m object v0.32.2
+[1m[92m  Downloaded[0m quote v1.0.42
+[1m[92m  Downloaded[0m cfg-if v1.0.4
+[1m[92m  Downloaded[0m iana-time-zone v0.1.64
+[1m[92m  Downloaded[0m ar_archive_writer v0.2.0
+[1m[92m  Downloaded[0m crossbeam-epoch v0.9.18
 [1m[92m  Downloaded[0m windows-link v0.2.1
+[1m[92m  Downloaded[0m wasm-bindgen v0.2.106
+[1m[92m  Downloaded[0m windows-core v0.62.2
+[1m[92m  Downloaded[0m ahash v0.8.12
+[1m[92m  Downloaded[0m dyn-clone v1.0.20
+[1m[92m  Downloaded[0m pyo3-macros-backend v0.27.2
+[1m[92m  Downloaded[0m bytes v1.11.0
+[1m[92m  Downloaded[0m wasip2 v1.0.1+wasi-0.2.4
+[1m[92m  Downloaded[0m allocator-api2 v0.2.21
+[1m[92m  Downloaded[0m cc v1.2.48
+[1m[92m  Downloaded[0m bytemuck v1.24.0
+[1m[92m  Downloaded[0m convert_case v0.4.0
+[1m[92m  Downloaded[0m phf_codegen v0.11.3
+[1m[92m  Downloaded[0m wasm-bindgen-macro-support v0.2.106
+[1m[92m  Downloaded[0m bitter v0.7.1
+[1m[92m  Downloaded[0m core-foundation-sys v0.8.7
+[1m[92m  Downloaded[0m find-msvc-tools v0.1.5
+[1m[92m  Downloaded[0m target-lexicon v0.13.3
+[1m[92m  Downloaded[0m bit_reverse v0.1.8
+[1m[92m  Downloaded[0m ntapi v0.4.1
+[1m[92m  Downloaded[0m lz4 v1.28.1
 [1m[92m  Downloaded[0m windows-implement v0.60.2
-[1m[92m  Downloaded[0m itoa v1.0.15
-[1m[92m  Downloaded[0m rand_chacha v0.3.1
-[1m[92m  Downloaded[0m static_assertions v1.1.0
-[1m[92m  Downloaded[0m jobserver v0.1.34
+[1m[92m  Downloaded[0m array-init-cursor v0.2.1
+[1m[92m  Downloaded[0m either v1.15.0
+[1m[92m  Downloaded[0m ethnum v1.5.3
+[1m[92m  Downloaded[0m fastrand v2.3.0
+[1m[92m  Downloaded[0m getrandom v0.3.4
+[1m[92m  Downloaded[0m memmap2 v0.9.9
+[1m[92m  Downloaded[0m aho-corasick v1.1.4
+[1m[92m  Downloaded[0m heck v0.5.0
+[1m[92m  Downloaded[0m hex v0.4.3
+[1m[92m  Downloaded[0m windows-core v0.52.0
+[1m[92m  Downloaded[0m parquet-format-safe v0.2.4
+[1m[92m  Downloaded[0m fixedbitset v0.5.7
 [1m[92m  Downloaded[0m crossbeam-utils v0.8.21
-[1m[92m  Downloaded[0m polars-lazy v0.41.3
-[1m[92m  Downloaded[0m polars-mem-engine v0.41.3
-[1m[92m  Downloaded[0m ppv-lite86 v0.2.21
-[1m[92m  Downloaded[0m prost-derive v0.13.5
-[1m[92m  Downloaded[0m ryu v1.0.20
-[1m[92m  Downloaded[0m scopeguard v1.2.0
-[1m[92m  Downloaded[0m shlex v1.3.0
-[1m[92m  Downloaded[0m simdutf8 v0.1.5
-[1m[92m  Downloaded[0m streaming-decompression v0.1.2
-[1m[92m  Downloaded[0m zstd-safe v7.2.4
-[1m[92m  Downloaded[0m polars-error v0.41.3
-[1m[92m  Downloaded[0m polars-row v0.41.3
-[1m[92m  Downloaded[0m polars-utils v0.41.3
-[1m[92m  Downloaded[0m prost v0.13.5
-[1m[92m  Downloaded[0m psm v0.1.28
-[1m[92m  Downloaded[0m pyo3-build-config v0.27.2
-[1m[92m  Downloaded[0m smartstring v1.0.1
-[1m[92m  Downloaded[0m stacker v0.1.22
+[1m[92m  Downloaded[0m foreign_vec v0.1.0
+[1m[92m  Downloaded[0m sysinfo v0.30.13
+[1m[92m  Downloaded[0m js-sys v0.3.83
+[1m[92m  Downloaded[0m atoi v2.0.0
 [1m[92m  Downloaded[0m streaming-iterator v0.1.9
 [1m[92m  Downloaded[0m strum_macros v0.26.4
-[1m[92m  Downloaded[0m polars-expr v0.41.3
-[1m[92m  Downloaded[0m polars-time v0.41.3
-[1m[92m  Downloaded[0m snap v1.1.1
-[1m[92m  Downloaded[0m target-features v0.1.6
-[1m[92m  Downloaded[0m target-lexicon v0.13.3
-[1m[92m  Downloaded[0m tempfile v3.23.0
-[1m[92m  Downloaded[0m prost-build v0.13.5
-[1m[92m  Downloaded[0m prost-types v0.13.5
-[1m[92m  Downloaded[0m quote v1.0.42
-[1m[92m  Downloaded[0m unicode-segmentation v1.12.0
-[1m[92m  Downloaded[0m polars-sql v0.41.3
-[1m[92m  Downloaded[0m pyo3-ffi v0.27.2
-[1m[92m  Downloaded[0m smallvec v1.15.1
-[1m[92m  Downloaded[0m zerocopy v0.8.31
-[1m[92m  Downloaded[0m polars-pipe v0.41.3
-[1m[92m  Downloaded[0m prettyplease v0.2.37
-[1m[92m  Downloaded[0m proc-macro2 v1.0.103
-[1m[92m  Downloaded[0m pyo3-macros-backend v0.27.2
-[1m[92m  Downloaded[0m rand v0.8.5
-[1m[92m  Downloaded[0m serde_derive v1.0.228
-[1m[92m  Downloaded[0m polars-core v0.41.3
-[1m[92m  Downloaded[0m polars-io v0.41.3
-[1m[92m  Downloaded[0m python3-dll-a v0.2.14
-[1m[92m  Downloaded[0m raw-cpuid v11.6.0
-[1m[92m  Downloaded[0m polars v0.41.3
-[1m[92m  Downloaded[0m polars-ops v0.41.3
+[1m[92m  Downloaded[0m errno v0.3.14
+[1m[92m  Downloaded[0m multimap v0.10.1
+[1m[92m  Downloaded[0m percent-encoding v2.3.2
+[1m[92m  Downloaded[0m phf v0.11.3
+[1m[92m  Downloaded[0m phf_generator v0.11.3
+[1m[92m  Downloaded[0m smartstring v1.0.1
+[1m[92m  Downloaded[0m unindent v0.2.4
+[1m[92m  Downloaded[0m memoffset v0.9.1
+[1m[92m  Downloaded[0m rustversion v1.0.22
+[1m[92m  Downloaded[0m rustc_version v0.4.1
+[1m[92m  Downloaded[0m version_check v0.9.5
 [1m[92m  Downloaded[0m regex v1.12.2
-[1m[92m  Downloaded[0m unicode-reverse v1.0.9
-[1m[92m  Downloaded[0m portable-atomic v1.11.1
+[1m[92m  Downloaded[0m now v0.1.3
+[1m[92m  Downloaded[0m planus v0.3.1
+[1m[92m  Downloaded[0m glob v0.3.3
+[1m[92m  Downloaded[0m autocfg v1.5.0
+[1m[92m  Downloaded[0m windows-interface v0.59.3
+[1m[92m  Downloaded[0m iana-time-zone-haiku v0.1.2
+[1m[92m  Downloaded[0m thiserror-impl v1.0.69
+[1m[92m  Downloaded[0m itertools v0.13.0
+[1m[92m  Downloaded[0m itoap v1.0.1
+[1m[92m  Downloaded[0m log v0.4.28
+[1m[92m  Downloaded[0m tempfile v3.23.0
+[1m[92m  Downloaded[0m android_system_properties v0.1.5
+[1m[92m  Downloaded[0m rand v0.8.5
+[1m[92m  Downloaded[0m rand_core v0.6.4
+[1m[92m  Downloaded[0m wasm-bindgen-macro v0.2.106
+[1m[92m  Downloaded[0m multiversion v0.7.4
+[1m[92m  Downloaded[0m num-traits v0.2.19
+[1m[92m  Downloaded[0m fast-float v0.2.0
+[1m[92m  Downloaded[0m libm v0.2.15
+[1m[92m  Downloaded[0m unicode-segmentation v1.12.0
+[1m[92m  Downloaded[0m crossbeam-deque v0.8.6
+[1m[92m  Downloaded[0m derive_more v0.99.20
+[1m[92m  Downloaded[0m enum_dispatch v0.3.13
+[1m[92m  Downloaded[0m serde v1.0.228
+[1m[92m  Downloaded[0m itoa v1.0.15
+[1m[92m  Downloaded[0m rand_distr v0.4.3
+[1m[92m  Downloaded[0m simdutf8 v0.1.5
+[1m[92m  Downloaded[0m windows-result v0.4.1
+[1m[92m  Downloaded[0m rayon v1.11.0
+[1m[92m  Downloaded[0m atoi_simd v0.15.6
+[1m[92m  Downloaded[0m memmap2 v0.7.1
+[1m[92m  Downloaded[0m lz4-sys v1.11.1+lz4-1.10.0
+[1m[92m  Downloaded[0m phf_shared v0.11.3
+[1m[92m  Downloaded[0m snap v1.1.1
+[1m[92m  Downloaded[0m home v0.5.12
+[1m[92m  Downloaded[0m shlex v1.3.0
+[1m[92m  Downloaded[0m rayon-core v1.13.0
+[1m[92m  Downloaded[0m streaming-decompression v0.1.2
+[1m[92m  Downloaded[0m recursive v0.1.1
+[1m[92m  Downloaded[0m ryu v1.0.20
 [1m[92m  Downloaded[0m serde_json v1.0.145
-[1m[92m  Downloaded[0m windows-core v0.52.0
+[1m[92m  Downloaded[0m syn v2.0.111
+[1m[92m  Downloaded[0m stacker v0.1.22
+[1m[92m  Downloaded[0m strum v0.26.3
+[1m[92m  Downloaded[0m lock_api v0.4.14
+[1m[92m  Downloaded[0m unicode-width v0.2.2
+[1m[92m  Downloaded[0m wasm-bindgen-shared v0.2.106
+[1m[92m  Downloaded[0m serde_derive v1.0.228
+[1m[92m  Downloaded[0m sqlparser v0.47.0
+[1m[92m  Downloaded[0m static_assertions v1.1.0
+[1m[92m  Downloaded[0m base64 v0.22.1
+[1m[92m  Downloaded[0m lazy_static v1.5.0
+[1m[92m  Downloaded[0m multiversion-macros v0.7.4
+[1m[92m  Downloaded[0m redox_syscall v0.5.18
+[1m[92m  Downloaded[0m wasi v0.11.1+wasi-snapshot-preview1
+[1m[92m  Downloaded[0m jobserver v0.1.34
+[1m[92m  Downloaded[0m target-features v0.1.6
+[1m[92m  Downloaded[0m unicode-ident v1.0.22
+[1m[92m  Downloaded[0m smallvec v1.15.1
+[1m[92m  Downloaded[0m crossterm_winapi v0.9.1
+[1m[92m  Downloaded[0m pkg-config v0.3.32
+[1m[92m  Downloaded[0m parking_lot v0.12.5
+[1m[92m  Downloaded[0m litrs v1.0.0
+[1m[92m  Downloaded[0m indexmap v2.12.1
+[1m[92m  Downloaded[0m indoc v2.0.7
+[1m[92m  Downloaded[0m r-efi v5.3.0
+[1m[92m  Downloaded[0m memchr v2.7.6
+[1m[92m  Downloaded[0m once_cell v1.21.3
+[1m[92m  Downloaded[0m parking_lot_core v0.9.12
+[1m[92m  Downloaded[0m parse-zoneinfo v0.3.1
+[1m[92m  Downloaded[0m python3-dll-a v0.2.14
+[1m[92m  Downloaded[0m hashbrown v0.16.1
+[1m[92m  Downloaded[0m serde_core v1.0.228
+[1m[92m  Downloaded[0m recursive-proc-macro-impl v0.1.1
+[1m[92m  Downloaded[0m crossterm v0.29.0
+[1m[92m  Downloaded[0m petgraph v0.7.1
+[1m[92m  Downloaded[0m libc v0.2.177
+[1m[92m  Downloaded[0m raw-cpuid v11.6.0
+[1m[92m  Downloaded[0m rand_chacha v0.3.1
+[1m[92m  Downloaded[0m unicode-reverse v1.0.9
+[1m[92m  Downloaded[0m scopeguard v1.2.0
+[1m[92m  Downloaded[0m strength_reduce v0.2.4
+[1m[92m  Downloaded[0m syn v1.0.109
+[1m[92m  Downloaded[0m hashbrown v0.14.5
+[1m[92m  Downloaded[0m semver v1.0.27
+[1m[92m  Downloaded[0m siphasher v1.0.1
+[1m[92m  Downloaded[0m rustix v1.1.2
+[1m[92m  Downloaded[0m linux-raw-sys v0.11.0
+[1m[92m  Downloaded[0m thiserror v1.0.69
+[1m[92m  Downloaded[0m regex-syntax v0.8.8
+[1m[92m  Downloaded[0m uuid v1.18.1
+[1m[92m  Downloaded[0m winapi v0.3.9
+[1m[92m  Downloaded[0m winapi-i686-pc-windows-gnu v0.4.0
+[1m[92m  Downloaded[0m regex-automata v0.4.13
+[1m[92m  Downloaded[0m winapi-x86_64-pc-windows-gnu v0.4.0
+[1m[92m  Downloaded[0m windows v0.52.0
+[1m[92m  Downloaded[0m equivalent v1.0.2
+[1m[92m  Downloaded[0m zerocopy-derive v0.8.31
+[1m[92m  Downloaded[0m polars-lazy v0.41.3
+[1m[92m  Downloaded[0m xxhash-rust v0.8.15
+[1m[92m  Downloaded[0m polars-mem-engine v0.41.3
+[1m[92m  Downloaded[0m proc-macro2 v1.0.103
+[1m[92m  Downloaded[0m polars-arrow v0.41.3
+[1m[92m  Downloaded[0m windows-targets v0.52.6
+[1m[92m  Downloaded[0m pyo3-build-config v0.27.2
+[1m[92m  Downloaded[0m windows-strings v0.5.1
+[1m[92m  Downloaded[0m polars-error v0.41.3
+[1m[92m  Downloaded[0m zstd v0.13.3
+[1m[92m  Downloaded[0m protobuf-support v3.7.2
+[1m[92m  Downloaded[0m polars-pipe v0.41.3
+[1m[92m  Downloaded[0m prost-build v0.13.5
+[1m[92m  Downloaded[0m prost-derive v0.13.5
+[1m[92m  Downloaded[0m prost v0.13.5
+[1m[92m  Downloaded[0m polars-arrow-format v0.1.0
+[1m[92m  Downloaded[0m ppv-lite86 v0.2.21
+[1m[92m  Downloaded[0m pyo3-ffi v0.27.2
+[1m[92m  Downloaded[0m zstd-safe v7.2.4
+[1m[92m  Downloaded[0m psm v0.1.28
+[1m[92m  Downloaded[0m polars-sql v0.41.3
+[1m[92m  Downloaded[0m polars-expr v0.41.3
+[1m[92m  Downloaded[0m wit-bindgen v0.46.0
+[1m[92m  Downloaded[0m polars v0.41.3
+[1m[92m  Downloaded[0m zerocopy v0.8.31
+[1m[92m  Downloaded[0m prost-types v0.13.5
+[1m[92m  Downloaded[0m prettyplease v0.2.37
+[1m[92m  Downloaded[0m polars-core v0.41.3
+[1m[92m  Downloaded[0m windows_aarch64_gnullvm v0.52.6
+[1m[92m  Downloaded[0m zstd-sys v2.0.16+zstd.1.5.7
+[1m[92m  Downloaded[0m windows_x86_64_gnu v0.52.6
 [1m[92m  Downloaded[0m windows_x86_64_msvc v0.52.6
 [1m[92m  Downloaded[0m polars-parquet v0.41.3
+[1m[92m  Downloaded[0m polars-utils v0.41.3
 [1m[92m  Downloaded[0m winnow v0.7.14
-[1m[92m  Downloaded[0m linux-raw-sys v0.11.0
-[1m[92m  Downloaded[0m polars-arrow v0.41.3
-[1m[92m  Downloaded[0m rayon v1.11.0
-[1m[92m  Downloaded[0m sqlparser v0.47.0
-[1m[92m  Downloaded[0m winapi v0.3.9
 [1m[92m  Downloaded[0m polars-plan v0.41.3
-[1m[92m  Downloaded[0m winapi-i686-pc-windows-gnu v0.4.0
-[1m[92m  Downloaded[0m syn v1.0.109
-[1m[92m  Downloaded[0m syn v2.0.111
-[1m[92m  Downloaded[0m winapi-x86_64-pc-windows-gnu v0.4.0
-[1m[92m  Downloaded[0m windows_aarch64_msvc v0.52.6
-[1m[92m  Downloaded[0m serde v1.0.228
-[1m[92m  Downloaded[0m regex-syntax v0.8.8
-[1m[92m  Downloaded[0m rustix v1.1.2
-[1m[92m  Downloaded[0m regex-automata v0.4.13
-[1m[92m  Downloaded[0m pyo3 v0.27.2
-[1m[92m  Downloaded[0m zstd-sys v2.0.16+zstd.1.5.7
-[1m[92m  Downloaded[0m windows_i686_gnu v0.52.6
-[1m[92m  Downloaded[0m windows_i686_msvc v0.52.6
-[1m[92m  Downloaded[0m windows_x86_64_gnu v0.52.6
+[1m[92m  Downloaded[0m polars-time v0.41.3
 [1m[92m  Downloaded[0m windows-sys v0.59.0
+[1m[92m  Downloaded[0m polars-row v0.41.3
+[1m[92m  Downloaded[0m pyo3-macros v0.27.2
+[1m[92m  Downloaded[0m polars-compute v0.41.3
+[1m[92m  Downloaded[0m polars-ops v0.41.3
+[1m[92m  Downloaded[0m portable-atomic v1.11.1
+[1m[92m  Downloaded[0m polars-io v0.41.3
+[1m[92m  Downloaded[0m windows_x86_64_gnullvm v0.52.6
+[1m[92m  Downloaded[0m windows_i686_gnu v0.52.6
+[1m[92m  Downloaded[0m windows_i686_gnullvm v0.52.6
+[1m[92m  Downloaded[0m windows_i686_msvc v0.52.6
+[1m[92m  Downloaded[0m pyo3 v0.27.2
+[1m[92m  Downloaded[0m windows_aarch64_msvc v0.52.6
 [1m[92m  Downloaded[0m windows-sys v0.61.2
-[1m[92m  Downloaded[0m windows v0.52.0
 🐍 Found CPython 3.13 at C:\hostedtoolcache\windows\Python\3.13.15\x64\python.exe
 🔗 Found pyo3 bindings
 [1m[92m   Compiling[0m proc-macro2 v1.0.103
-[1m[92m   Compiling[0m unicode-ident v1.0.22
 [1m[92m   Compiling[0m quote v1.0.42
+[1m[92m   Compiling[0m unicode-ident v1.0.22
 [1m[92m   Compiling[0m find-msvc-tools v0.1.5
 [1m[92m   Compiling[0m shlex v1.3.0
 [1m[92m   Compiling[0m cc v1.2.48
@@ -236,37 +288,37 @@
 [1m[92m   Compiling[0m autocfg v1.5.0
 [1m[92m   Compiling[0m cfg-if v1.0.4
 [1m[92m   Compiling[0m getrandom v0.3.4
-[1m[92m   Compiling[0m zerocopy v0.8.31
 [1m[92m   Compiling[0m crossbeam-utils v0.8.21
-[1m[92m   Compiling[0m serde_core v1.0.228
+[1m[92m   Compiling[0m zerocopy v0.8.31
 [1m[92m   Compiling[0m memchr v2.7.6
+[1m[92m   Compiling[0m serde_core v1.0.228
 [1m[92m   Compiling[0m windows-link v0.2.1
-[1m[92m   Compiling[0m num-traits v0.2.19
 [1m[92m   Compiling[0m syn v2.0.111
-[1m[92m   Compiling[0m serde v1.0.228
+[1m[92m   Compiling[0m num-traits v0.2.19
 [1m[92m   Compiling[0m libc v0.2.177
-[1m[92m   Compiling[0m object v0.32.2
+[1m[92m   Compiling[0m serde v1.0.228
 [1m[92m   Compiling[0m crossbeam-epoch v0.9.18
-[1m[92m   Compiling[0m target-lexicon v0.13.3
-[1m[92m   Compiling[0m target-features v0.1.6
-[1m[92m   Compiling[0m rayon-core v1.13.0
+[1m[92m   Compiling[0m object v0.32.2
 [1m[92m   Compiling[0m windows_x86_64_msvc v0.52.6
+[1m[92m   Compiling[0m target-features v0.1.6
+[1m[92m   Compiling[0m target-lexicon v0.13.3
+[1m[92m   Compiling[0m rayon-core v1.13.0
 [1m[92m   Compiling[0m crossbeam-deque v0.8.6
-[1m[92m   Compiling[0m ar_archive_writer v0.2.0
 [1m[92m   Compiling[0m aho-corasick v1.1.4
 [1m[92m   Compiling[0m ahash v0.8.12
-[1m[92m   Compiling[0m regex-syntax v0.8.8
 [1m[92m   Compiling[0m thiserror v1.0.69
-[1m[92m   Compiling[0m once_cell v1.21.3
+[1m[92m   Compiling[0m ar_archive_writer v0.2.0
+[1m[92m   Compiling[0m regex-syntax v0.8.8
 [1m[92m   Compiling[0m either v1.15.0
-[1m[92m   Compiling[0m psm v0.1.28
+[1m[92m   Compiling[0m once_cell v1.21.3
 [1m[92m   Compiling[0m serde_derive v1.0.228
 [1m[92m   Compiling[0m thiserror-impl v1.0.69
 [1m[92m   Compiling[0m regex-automata v0.4.13
+[1m[92m   Compiling[0m psm v0.1.28
 [1m[92m   Compiling[0m python3-dll-a v0.2.14
-[1m[92m   Compiling[0m syn v1.0.109
-[1m[92m   Compiling[0m bitflags v2.10.0
 [1m[92m   Compiling[0m array-init-cursor v0.2.1
+[1m[92m   Compiling[0m bitflags v2.10.0
+[1m[92m   Compiling[0m syn v1.0.109
 [1m[92m   Compiling[0m planus v0.3.1
 [1m[92m   Compiling[0m pyo3-build-config v0.27.2
 [1m[92m   Compiling[0m windows-targets v0.52.6
@@ -278,11 +330,11 @@
 [1m[92m   Compiling[0m polars-arrow-format v0.1.0
 [1m[92m   Compiling[0m bytemuck_derive v1.10.2
 [1m[92m   Compiling[0m polars-utils v0.41.3
+[1m[92m   Compiling[0m static_assertions v1.1.0
 [1m[92m   Compiling[0m simdutf8 v0.1.5
 [1m[92m   Compiling[0m equivalent v1.0.2
-[1m[92m   Compiling[0m static_assertions v1.1.0
-[1m[92m   Compiling[0m hashbrown v0.16.1
 [1m[92m   Compiling[0m anyhow v1.0.100
+[1m[92m   Compiling[0m hashbrown v0.16.1
 [1m[92m   Compiling[0m allocator-api2 v0.2.21
 [1m[92m   Compiling[0m hashbrown v0.14.5
 [1m[92m   Compiling[0m multiversion-macros v0.7.4
@@ -292,61 +344,61 @@
 [1m[92m   Compiling[0m raw-cpuid v11.6.0
 [1m[92m   Compiling[0m chrono v0.4.42
 [1m[92m   Compiling[0m polars-arrow v0.41.3
+[1m[92m   Compiling[0m heck v0.5.0
 [1m[92m   Compiling[0m winapi v0.3.9
 [1m[92m   Compiling[0m parking_lot_core v0.9.12
-[1m[92m   Compiling[0m heck v0.5.0
 [1m[92m   Compiling[0m itertools v0.14.0
 [1m[92m   Compiling[0m multiversion v0.7.4
+[1m[92m   Compiling[0m strength_reduce v0.2.4
 [1m[92m   Compiling[0m itoa v1.0.15
-[1m[92m   Compiling[0m foreign_vec v0.1.0
-[1m[92m   Compiling[0m ryu v1.0.20
-[1m[92m   Compiling[0m ethnum v1.5.3
-[1m[92m   Compiling[0m atoi_simd v0.15.6
-[1m[92m   Compiling[0m smallvec v1.15.1
 [1m[92m   Compiling[0m scopeguard v1.2.0
 [1m[92m   Compiling[0m streaming-iterator v0.1.9
-[1m[92m   Compiling[0m strength_reduce v0.2.4
 [1m[92m   Compiling[0m dyn-clone v1.0.20
 [1m[92m   Compiling[0m fast-float v0.2.0
+[1m[92m   Compiling[0m foreign_vec v0.1.0
+[1m[92m   Compiling[0m smallvec v1.15.1
+[1m[92m   Compiling[0m ethnum v1.5.3
+[1m[92m   Compiling[0m atoi_simd v0.15.6
+[1m[92m   Compiling[0m ryu v1.0.20
 [1m[92m   Compiling[0m lock_api v0.4.14
 [1m[92m   Compiling[0m prost-derive v0.13.5
 [1m[92m   Compiling[0m polars-compute v0.41.3
 [1m[92m   Compiling[0m litrs v1.0.0
 [1m[92m   Compiling[0m document-features v0.2.12
 [1m[92m   Compiling[0m parking_lot v0.12.5
-[1m[92m   Compiling[0m bytes v1.11.0
 [1m[92m   Compiling[0m crossterm_winapi v0.9.1
+[1m[92m   Compiling[0m bytes v1.11.0
 [1m[92m   Compiling[0m prettyplease v0.2.37
-[1m[92m   Compiling[0m crossterm v0.29.0
 [1m[92m   Compiling[0m prost v0.13.5
 [1m[92m   Compiling[0m windows-sys v0.61.2
+[1m[92m   Compiling[0m crossterm v0.29.0
 [1m[92m   Compiling[0m polars-core v0.41.3
-[1m[92m   Compiling[0m fastrand v2.3.0
-[1m[92m   Compiling[0m fixedbitset v0.5.7
-[1m[92m   Compiling[0m rustversion v1.0.22
+[1m[92m   Compiling[0m unicode-width v0.2.2
 [1m[92m   Compiling[0m siphasher v1.0.1
 [1m[92m   Compiling[0m unicode-segmentation v1.12.0
-[1m[92m   Compiling[0m unicode-width v0.2.2
+[1m[92m   Compiling[0m fixedbitset v0.5.7
+[1m[92m   Compiling[0m fastrand v2.3.0
 [1m[92m   Compiling[0m rand_core v0.6.4
-[1m[92m   Compiling[0m tempfile v3.23.0
+[1m[92m   Compiling[0m rustversion v1.0.22
 [1m[92m   Compiling[0m rand v0.8.5
+[1m[92m   Compiling[0m tempfile v3.23.0
 [1m[92m   Compiling[0m comfy-table v7.2.1
-[1m[92m   Compiling[0m phf_shared v0.11.3
 [1m[92m   Compiling[0m petgraph v0.7.1
+[1m[92m   Compiling[0m phf_shared v0.11.3
 [1m[92m   Compiling[0m prost-types v0.13.5
 [1m[92m   Compiling[0m polars-row v0.41.3
 [1m[92m   Compiling[0m polars-ops v0.41.3
-[1m[92m   Compiling[0m multimap v0.10.1
 [1m[92m   Compiling[0m xxhash-rust v0.8.15
 [1m[92m   Compiling[0m log v0.4.28
+[1m[92m   Compiling[0m multimap v0.10.1
 [1m[92m   Compiling[0m prost-build v0.13.5
 [1m[92m   Compiling[0m phf_generator v0.11.3
-[1m[92m   Compiling[0m pyo3-ffi v0.27.2
 [1m[92m   Compiling[0m pyo3-macros-backend v0.27.2
+[1m[92m   Compiling[0m pyo3-ffi v0.27.2
 [1m[92m   Compiling[0m argminmax v0.6.3
 [1m[92m   Compiling[0m getrandom v0.2.16
-[1m[92m   Compiling[0m phf_macros v0.11.3
 [1m[92m   Compiling[0m strum_macros v0.26.4
+[1m[92m   Compiling[0m phf_macros v0.11.3
 [1m[92m   Compiling[0m csgoproto v0.1.5 (D:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\csgoproto)
 [1m[92m   Compiling[0m now v0.1.3
 [1m[92m   Compiling[0m atoi v2.0.0
@@ -357,29 +409,30 @@
 [1m[92m   Compiling[0m streaming-decompression v0.1.2
 [1m[92m   Compiling[0m home v0.5.12
 [1m[92m   Compiling[0m rand_chacha v0.3.1
-[1m[92m   Compiling[0m polars-time v0.41.3
-[1m[92m   Compiling[0m strum v0.26.3
 [1m[92m   Compiling[0m phf v0.11.3
+[1m[92m   Compiling[0m strum v0.26.3
+[1m[92m   Compiling[0m polars-time v0.41.3
 [1m[92m   Compiling[0m pyo3 v0.27.2
 [1m[92m   Compiling[0m winnow v0.7.14
 [1m[92m   Compiling[0m polars v0.41.3
-[1m[92m   Compiling[0m percent-encoding v2.3.2
-[1m[92m   Compiling[0m base64 v0.22.1
-[1m[92m   Compiling[0m convert_case v0.4.0
 [1m[92m   Compiling[0m parquet-format-safe v0.2.4
-[1m[92m   Compiling[0m memmap2 v0.7.1
 [1m[92m   Compiling[0m parser v0.1.1 (D:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser)
+[1m[92m   Compiling[0m percent-encoding v2.3.2
+[1m[92m   Compiling[0m convert_case v0.4.0
+[1m[92m   Compiling[0m base64 v0.22.1
+[1m[92m   Compiling[0m memmap2 v0.7.1
 [1m[92m   Compiling[0m polars-io v0.41.3
 [1m[92m   Compiling[0m polars-parquet v0.41.3
 [1m[92m   Compiling[0m derive_more v0.99.20
 [1m[92m   Compiling[0m pyo3-macros v0.27.2
 [1m[92m   Compiling[0m itertools v0.13.0
-[1m[92m   Compiling[0m bitter v0.7.1
-[1m[92m   Compiling[0m memmap2 v0.9.9
-[1m[92m   Compiling[0m lazy_static v1.5.0
 [1m[92m   Compiling[0m unindent v0.2.4
-[1m[92m   Compiling[0m indoc v2.0.7
 [1m[92m   Compiling[0m bit_reverse v0.1.8
+[1m[92m   Compiling[0m lazy_static v1.5.0
+[1m[92m   Compiling[0m memmap2 v0.9.9
+[1m[92m   Compiling[0m indoc v2.0.7
+[1m[92m   Compiling[0m bitter v0.7.1
+[1m[92m   Compiling[0m protobuf-support v3.7.2
 [1m[93mwarning[0m[1m[97m: unused import: `FrameParser`[0m
  [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\parse_demo.rs:1:38
   [1m[96m|[0m
@@ -399,28 +452,6 @@
   [1m[96m|[0m
 [1m[96m1[0m [1m[96m|[0m use crate::first_pass::prop_controller::ITEM_PURCHASE_DEF_IDX;
   [1m[96m|[0m     [1m[93m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
-
-[1m[91merror[E0609][0m[1m[97m: no field `customname` on type `&CEconItemPreviewDataBlock`[0m
-  [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\second_pass\other_netmessages.rs:45:35
-   [1m[96m|[0m
-[1m[96m45[0m [1m[96m|[0m                 custom_name: item.customname.clone(),
-   [1m[96m|[0m                                   [1m[91m^^^^^^^^^^[0m [1m[91munknown field[0m
-   [1m[96m|[0m
-[1m[96mhelp[0m: a field with a similar name exists
-   [1m[96m|[0m
-[1m[96m45[0m [1m[96m| [0m                custom_name: item.customname[92ms[0m.clone(),
-   [1m[96m|[0m                                             [92m+[0m
-
-[1m[91merror[E0609][0m[1m[97m: no field `customname` on type `&CEconItemPreviewDataBlock`[0m
-   [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\second_pass\other_netmessages.rs:105:43
-    [1m[96m|[0m
-[1m[96m105[0m [1m[96m|[0m                         custom_name: item.customname.clone(),
-    [1m[96m|[0m                                           [1m[91m^^^^^^^^^^[0m [1m[91munknown field[0m
-    [1m[96m|[0m
-[1m[96mhelp[0m: a field with a similar name exists
-    [1m[96m|[0m
-[1m[96m105[0m [1m[96m| [0m                        custom_name: item.customname[92ms[0m.clone(),
-    [1m[96m|[0m                                                     [92m+[0m
 
 [1m[93mwarning[0m[1m[97m: unused variable: `file_len`[0m
    [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\first_pass\parser.rs:335:39
@@ -448,10 +479,82 @@
 [1m[96m531[0m [1m[96m|[0m     qf_mapper: &mut QfMapper,
     [1m[96m|[0m     [1m[93m^^^^^^^^^[0m [1m[93mhelp: if this is intentional, prefix it with an underscore: `_qf_mapper`[0m
 
-[1m[97mFor more information about this error, try `rustc --explain E0609`.[0m
-[1m[93mwarning[0m: `parser` (lib) generated 7 warnings
-[1m[91merror[0m: could not compile `parser` (lib) due to 2 previous errors; 7 warnings emitted
-[1m[93mwarning[0m: build failed, waiting for other jobs to finish...
-💥 maturin failed
-  Caused by: Failed to build a native library through cargo
-  Caused by: Cargo build finished with "exit code: 101": `"cargo" "rustc" "--profile" "release" "--message-format" "json-render-diagnostics" "--manifest-path" "D:\\a\\CS2-Market-Pokemon-Card-Market-Data\\CS2-Market-Pokemon-Card-Market-Data\\demoparser\\src\\python\\Cargo.toml" "--lib"`
+[1m[93mwarning[0m[1m[97m: methods `second_pass_threaded_with_channels` and `second_pass_multi_threaded_no_channels` are never used[0m
+   [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\parse_demo.rs:151:8
+    [1m[96m|[0m
+[1m[96m 59[0m [1m[96m|[0m impl<'a> Parser<'a> {
+    [1m[96m|[0m [1m[96m-------------------[0m [1m[96mmethods in this implementation[0m
+[1m[96m...[0m
+[1m[96m151[0m [1m[96m|[0m     fn second_pass_threaded_with_channels(
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96m...[0m
+[1m[96m206[0m [1m[96m|[0m     fn second_pass_multi_threaded_no_channels(&self, outer_bytes: &[u8], first_pass_output: FirstPassOutput) -> Result<DemoOutput, [1m[96m...[0m
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    [1m[96m|[0m
+    [1m[96m= [0m[1m[97mnote[0m: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+[1m[93mwarning[0m[1m[97m: methods `cached_velocity_indicies`, `find_most_recent_coordinate_idx`, `find_last_coordinate_idx`, `find_wanted_indicies`, `velocity_from_indicies`, and `index_coordinates_from_propcol` are never used[0m
+   [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\second_pass\collect_data.rs:708:8
+    [1m[96m|[0m
+[1m[96m 58[0m [1m[96m|[0m impl<'a> SecondPassParser<'a> {
+    [1m[96m|[0m [1m[96m-----------------------------[0m [1m[96mmethods in this implementation[0m
+[1m[96m...[0m
+[1m[96m708[0m [1m[96m|[0m     fn cached_velocity_indicies<'b>(
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96m...[0m
+[1m[96m719[0m [1m[96m|[0m     fn find_most_recent_coordinate_idx(&self, optv: Option<&PropColumn>, wanted_steamid: u64) -> Option<usize> {
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96m...[0m
+[1m[96m731[0m [1m[96m|[0m     fn find_last_coordinate_idx(&self, optv: Option<&PropColumn>, wanted_steamid: u64, cur_idx: Option<usize>) -> Option<usize> {
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96m...[0m
+[1m[96m744[0m [1m[96m|[0m     fn find_wanted_indicies(&self, optv: Option<&PropColumn>, wanted_steamid: u64) -> Vec<usize> {
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96m...[0m
+[1m[96m753[0m [1m[96m|[0m     fn velocity_from_indicies(&self, indicies: &[usize], axis: CoordinateAxis) -> Result<Variant, PropCollectionError> {
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96m...[0m
+[1m[96m766[0m [1m[96m|[0m     fn index_coordinates_from_propcol(&self, propcol: &PropColumn, indicies: &[usize]) -> Option<(Option<f32>, Option<f32>)> {
+    [1m[96m|[0m        [1m[93m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+[1m[93mwarning[0m[1m[97m: hiding a lifetime that's elided elsewhere is confusing[0m
+  [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\first_pass\parser.rs:91:23
+   [1m[96m|[0m
+[1m[96m91[0m [1m[96m|[0m     pub fn parse_demo(&mut self, demo_bytes: &'a [u8], exit_early: bool) -> Result<FirstPassOutput, DemoParserError> {
+   [1m[96m|[0m                       [1m[93m^^^^^^^^^[0m [1m[93mthe lifetime is elided here[0m                        [1m[93m^^^^^^^^^^^^^^^[0m [1m[93mthe same lifetime is hidden here[0m
+   [1m[96m|[0m
+   [1m[96m= [0m[1m[97mhelp[0m: the same lifetime is referred to in inconsistent ways, making the signature confusing
+   [1m[96m= [0m[1m[97mnote[0m: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+[1m[96mhelp[0m: use `'_` for type paths
+   [1m[96m|[0m
+[1m[96m91[0m [1m[96m| [0m    pub fn parse_demo(&mut self, demo_bytes: &'a [u8], exit_early: bool) -> Result<FirstPassOutput[92m<'_>[0m, DemoParserError> {
+   [1m[96m|[0m                                                                                                   [92m++++[0m
+
+[1m[93mwarning[0m[1m[97m: hiding a lifetime that's elided elsewhere is confusing[0m
+   [1m[96m--> [0mD:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\parser\src\first_pass\parser.rs:207:37
+    [1m[96m|[0m
+[1m[96m207[0m [1m[96m|[0m     pub fn create_first_pass_output(&self) -> Result<FirstPassOutput, DemoParserError> {
+    [1m[96m|[0m                                     [1m[93m^^^^^[0m            [1m[93m^^^^^^^^^^^^^^^[0m [1m[93mthe same lifetime is hidden here[0m
+    [1m[96m|[0m                                     [1m[93m|[0m
+    [1m[96m|[0m                                     [1m[93mthe lifetime is elided here[0m
+    [1m[96m|[0m
+    [1m[96m= [0m[1m[97mhelp[0m: the same lifetime is referred to in inconsistent ways, making the signature confusing
+[1m[96mhelp[0m: use `'_` for type paths
+    [1m[96m|[0m
+[1m[96m207[0m [1m[96m| [0m    pub fn create_first_pass_output(&self) -> Result<FirstPassOutput[92m<'_>[0m, DemoParserError> {
+    [1m[96m|[0m                                                                     [92m++++[0m
+
+[1m[93mwarning[0m: `parser` (lib) generated 11 warnings (run `cargo fix --lib -p parser` to apply 9 suggestions)
+[1m[92m   Compiling[0m demoparser2 v0.42.0 (D:\a\CS2-Market-Pokemon-Card-Market-Data\CS2-Market-Pokemon-Card-Market-Data\demoparser\src\python)
+[1m[93mwarning[0m[1m[97m: unused variable: `py`[0m
+   [1m[96m--> [0msrc\lib.rs:129:32
+    [1m[96m|[0m
+[1m[96m129[0m [1m[96m|[0m     pub fn parse_header(&self, py: Python<'_>) -> PyResult<HashMap<String, String, RandomState>> {
+    [1m[96m|[0m                                [1m[93m^^[0m [1m[93mhelp: if this is intentional, prefix it with an underscore: `_py`[0m
+    [1m[96m|[0m
+    [1m[96m= [0m[1m[97mnote[0m: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+[1m[93mwarning[0m: `demoparser2` (lib) generated 1 warning (run `cargo fix --lib -p demoparser2` to apply 1 suggestion)
+[1m[92m    Finished[0m `release` profile [optimized] target(s) in 7m 46s
+📖 Found type stub file at demoparser2.pyi
+📦 Built wheel for CPython 3.13 to wheels\demoparser2-0.42.0-cp313-cp313-win_amd64.whl
