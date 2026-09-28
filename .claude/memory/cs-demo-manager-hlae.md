@@ -394,3 +394,17 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   `maps/<map>/world.vwrld_c` to glb (138 MB for totemlake, ~3 s, `videos/maps/<map>/render/`), apply node matrices,
   and convert glTF meters/y-up to Source: x=x/0.0254, y=-z/0.0254, z=y/0.0254. Totemlake: one ceiling exit sign
   at (1426, 1266, 902), size 5×22×13. Colour isn't in the names (verify with a test frame, or read materials).
+- **Gap scene (user request, 2026-09-27) rendered: `totemlake-gap-scene.mp4`, 15 shots.** "The CT leaves the T and
+  stands still in the corner; that spot must never be in view, even when he isn't there." CT = Caillou (team 3),
+  T = David. Corner N1 = (-1528, 3351, 773), CT still 4:55–5:03 (walls 43–136 u on most sides, open to the NW).
+  `csdv suggest ... --start 4:28 --end 5:04 --mood backrooms --hide N1 --while-hidden David`. Independent check
+  (campath XML × zone points × collision): N1 on screen in 0 frames in all 15 shots.
+- **Exit signs on totemlake = green light entities** (6 light_omni2 with colour [0,255,0], each at a sign). The
+  mesh named `exit_ceiling` is a different ceiling fixture; my first zoom from (1726,1266,837) rendered pure black
+  (the camera was inside render-only geometry the collision mesh lacks). A LESSON: prefer camera spots already
+  proven by a render, or check with a test frame. The glowing EXIT above the doorway = (-1455, 2966, 905); the
+  zoom from (-1141, 2995, 829), FOV 75→10 over 5 s, worked (`totemlake-exit-sign`). Located by casting a ray
+  from a rendered frame's camera through the sign's pixel — a reusable trick for "that thing in the shot".
+- **Map overview** (`tools/csdv/mapview.py`, output in videos/maps/<map>/overview/): levels the players use,
+  spaces (room/corridor/nook) with IDs, borders, grid, doors, exit signs (green lights), props, routes with time
+  marks, still spots, hidden zones. Known limit: wide-open halls stay one big space (C13) → use grid coordinates.

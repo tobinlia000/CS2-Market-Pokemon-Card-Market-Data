@@ -181,6 +181,13 @@ def landmarks(map_name: str, g: mapgeo.MapGeometry) -> list[dict]:
                 continue
             kind = words[0]
         marks.append({"kind": kind, "name": base, "pos": origin.tolist()})
+    for e in mapgeo.export_entities(map_name):
+        # Exit signs glow green: a green-dominant light entity sits at each one (totemlake: 6, all at signs;
+        # the mesh named "exit_ceiling" is a separate ceiling fixture).
+        if e.get("classname", "").startswith("light"):
+            col = mapgeo._vec(e.get("color"), (0, 0, 0))
+            if col[1] > 60 and col[1] > 1.4 * max(col[0], col[2], 1):
+                marks.append({"kind": "exit", "name": "EXIT sign (green light)", "pos": mapgeo._vec(e.get("origin")).tolist()})
     world = mapgeo.MAPS_DIR / map_name / "render" / "world.glb"
     if world.is_file():
         marks += _world_landmarks(world)
@@ -206,6 +213,8 @@ def _world_landmarks(glb: Path) -> list[dict]:
         W = (M @ np.c_[V, np.ones(len(V))].T).T[:, :3]
         S = np.c_[W[:, 0], -W[:, 2], W[:, 1]] / 0.0254       # glTF meters, y-up -> Source units, z-up
         groups = fcluster(linkage(S, "single"), 96, "distance") if len(S) > 1 else np.array([1])
+        if "exit" in low:  # named exit meshes are fixtures; the lit signs come from green lights above
+            words = ["sign"]
         short = re.sub(r"^n\d+_lr\d+_(agg_merge_)?|_\d+$|_color$", "", Path(name).stem.split(".")[0])
         for gid in np.unique(groups):
             q = S[groups == gid]
@@ -317,7 +326,7 @@ def build_overview(map_name: str, res: float = 8.0, routes: dict | None = None, 
             big = m["kind"] == "exit"
             ax.scatter(m["pos"][0], m["pos"][1], marker=style[0], c=style[1], s=160 if big else 30, zorder=8 if big else 5,
                        edgecolors="black" if big else "white")
-            label = f"EXIT sign (ceiling, z {m['pos'][2]:.0f})" if big else m["name"].replace("_", " ")[:22]
+            label = f"EXIT (z {m['pos'][2]:.0f})" if big else m["name"].replace("_", " ")[:22]
             ax.annotate(label, (m["pos"][0], m["pos"][1]), xytext=(8, -12) if big else (4, 4), textcoords="offset points",
                         fontsize=9 if big else 6, color=style[1], weight="bold" if big else "normal", zorder=9,
                         bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="green") if big else None)
