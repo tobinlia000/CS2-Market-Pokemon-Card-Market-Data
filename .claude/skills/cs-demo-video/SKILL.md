@@ -28,6 +28,24 @@ and let the user run the two scripts. Git is the hand-off.
   (`showOnlyDeathNotices`) with the focused player's kills highlighted. Change a default only when asked,
   and record the preference in the memory file.
 
+## THE USER'S WORKFLOW (2026-09-27; follow this for every new demo)
+1. **Receive a demo → maps first.** `export-demo.ps1 -Demo <dem> [-Source valve]`, then
+   `python tools/csdv/csdv.py maps videos/demos/<demo>.summary.json` → `videos/maps/<map>/overview-<demo>/`:
+   one high-res PNG per floor the players use (spaces with IDs, a lettered grid shared by all floors, numbered
+   landmarks L# with a legend, every player's route with direction arrows and m:ss labels, still spots, hidden
+   zones) + `<demo>-movement.md` (every 5 s: floor·space, grid square, still/walk/run, inside a hidden zone) +
+   `<map>-spaces.json`. Send the PNGs (SendUserFile). Accuracy of layout + movement matters most; expect back and
+   forth. Fix mislabelled spaces/landmarks when the user points them out.
+2. **The user writes the script** (shots, lengths, places by space ID / grid square / landmark number). If they send
+   a draft first: identify every referenced object/place on the maps (landmark IDs, squares, coordinates) and
+   confirm before building.
+3. **Build shot-by-shot as directed** (videos/SHOT-CATALOG.md lists every shot, sorted by frequency). Their
+   direction overrides the suggester; use `suggest` only when asked. Keep the checks (hidden zones, subject in
+   frame, visibility).
+4. **Render the final version by default**: profile.json has reshade "look", motionBlur 240→60, finish cinematic +
+   letterbox (render.ps1 writes `<name>-final.mp4`). A spec can turn each off (`"reshade": "off"`,
+   `"motionBlur": false`, `"finish": false`). Send the final file.
+
 ## The loop
 
 ```

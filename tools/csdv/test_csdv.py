@@ -65,6 +65,7 @@ class CsdvTest(unittest.TestCase):
     def setUp(self):
         self.summary = csdv.summarize_match(EXPORT)
         self.profile = json.loads((csdv.REPO_ROOT / "videos" / "profile.json").read_text())
+        self.profile.pop("motionBlur", None)  # mechanics tests; the default look has its own test
 
     def build(self, clips, **spec):
         return csdv.build_config({"name": "t", "clips": clips, **spec}, self.profile, self.summary)
@@ -236,6 +237,17 @@ class CsdvTest(unittest.TestCase):
         self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
         with self.assertRaises(csdv.CsdvError):
             self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A, "motionBlur": {"inputFps": 100}}])
+
+    def test_final_look_is_the_profile_default(self):
+        profile = json.loads((csdv.REPO_ROOT / "videos" / "profile.json").read_text())
+        self.assertEqual(profile["reshade"], "look")
+        self.assertTrue(profile["finish"]["letterbox"])
+        config = csdv.build_config({"name": "t", "clips": [{"type": "ticks", "start": 6400, "end": 6720, "pov": A}]},
+                                   profile, self.summary)
+        self.assertIn("mirv_streams record fps 240", config["sequences"][0]["cfg"])
+        config = csdv.build_config({"name": "t", "motionBlur": False,
+                                    "clips": [{"type": "ticks", "start": 6400, "end": 6720, "pov": A}]}, profile, self.summary)
+        self.assertNotIn("csdvBlur", config["sequences"][0]["cfg"])
 
     def test_cli_round_trip(self):
         with tempfile.TemporaryDirectory() as tmp:

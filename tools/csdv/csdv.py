@@ -638,7 +638,8 @@ def build_config(spec: dict, profile: dict, summary: dict | None, write_files: b
         sequences.sort(key=lambda s: s["startTick"])
     for number, sequence in enumerate(sequences, start=1):
         sequence["number"] = number
-        blur = sequence.pop("_motionBlur", None) or spec.get("motionBlur")
+        spec_blur = spec["motionBlur"] if "motionBlur" in spec else settings.get("motionBlur")  # profile default
+        blur = sequence.pop("_motionBlur", None) or spec_blur
         if blur:
             sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), *motion_blur_lines(blur, number, settings)]))
 
@@ -695,14 +696,26 @@ def command_build(args) -> int:
     write_json(output, config)
     # ReShade look for this render (render.ps1 switches the preset, then back to "off"). A sidecar file, because
     # CS:DM's config file should only contain keys CS:DM knows.
-    sidecar = Path(output).with_suffix("").with_suffix(".reshade")
-    if spec.get("reshade") and spec["reshade"] != "off":
-        if not re.fullmatch(r"[A-Za-z0-9_-]+", str(spec["reshade"])):
-            raise CsdvError(f"reshade preset name '{spec['reshade']}' must be a plain name (e.g. look).")
-        sidecar.write_text(str(spec["reshade"]), encoding="utf-8")
-        print(f"  ReShade preset: csdv-{spec['reshade']}.ini")
+    # The final look is the default (profile.json): ReShade "look", motion blur, cinematic 10-bit grade. A spec can
+    # override each: "reshade": "off"|"clean"|"<preset>", "motionBlur": false, "finish": false|{look, letterbox}.
+    base = Path(output).with_suffix("").with_suffix("")
+    reshade = spec.get("reshade", profile.get("reshade"))
+    sidecar = base.with_suffix(".reshade")
+    if reshade and reshade != "off":
+        if not re.fullmatch(r"[A-Za-z0-9_-]+", str(reshade)):
+            raise CsdvError(f"reshade preset name '{reshade}' must be a plain name (e.g. look).")
+        sidecar.write_text(str(reshade), encoding="utf-8")
+        print(f"  ReShade preset: csdv-{reshade}.ini")
     elif sidecar.exists():
         sidecar.unlink()
+    finish = spec.get("finish", profile.get("finish"))
+    finish_file = base.with_suffix(".finish.json")
+    if finish:
+        write_json(finish_file, finish)
+        print(f"  Finish: {finish.get('look', 'cinematic')}" + (" + letterbox" if finish.get("letterbox") else "")
+              + " (render.ps1 writes <name>-final.mp4)")
+    elif finish_file.exists():
+        finish_file.unlink()
     print_plan(config, output)
     return 0
 
@@ -851,6 +864,38 @@ def command_validate(args) -> int:
     return 1 if errors else 0
 
 
+def command_maps(args) -> int:
+    """Step 1 of the workflow: high-res labelled floor maps + movement timeline for one demo."""
+    import mapview
+    import positions
+
+    summary = load_json(args.summary)
+    map_name = summary.get("map", "")
+    demo = args.demo or summary.get("demoPath")
+    tracks = positions.load_tracks(demo)
+    side = {3: "CT", 2: "T"}
+    routes = {f"{side.get(t.team, '?')} {t.name}": (t.tick, t.pos) for t in tracks.values()}
+    still = [dict(s, name=f"{side.get(t.team, '?')} {t.name.split(' ')[0]}") for t in tracks.values()
+             for s in positions.still_spots(t, 0, int(t.tick[-1]), min_seconds=6)]
+    name = re.sub(r"[^A-Za-z0-9._-]", "-", summary.get("name") or Path(demo).stem)
+    out_dir = REPO_ROOT / "videos" / "maps" / map_name / f"overview-{name}"
+    zones = []
+    old = out_dir / f"{map_name}-spaces.json"
+    if old.is_file():
+        zones = load_json(old).get("zones", [])       # keep hidden zones named while scripting
+    result = mapview.build_overview(map_name, args.res, routes, still, out_dir=out_dir, zones=zones)
+    table = mapview.movement_table(result, tracks, 1, int(summary.get("tickCount") or max(t.tick[-1] for t in tracks.values())),
+                                   every=args.every)
+    md = out_dir / f"{name}-movement.md"
+    md.write_text(f"# {name} ({map_name}) — where everyone is, every {args.every:g} s\n\n"
+                  "Cell = floor·space grid-square state (e.g. `C·C18 F7 walk`). Spaces/landmarks: see the floor maps.\n\n"
+                  + table + "\n", encoding="utf-8")
+    for image in result["images"]:
+        print(image)
+    print(md)
+    return 0
+
+
 def parse_hide(value: str, summary: dict) -> dict:
     """'x,y,z[,radius]' or a zone id from videos/maps/<map>/overview/<map>-spaces.json (e.g. N1)."""
     import cine
@@ -862,8 +907,8 @@ def parse_hide(value: str, summary: dict) -> dict:
             return {"center": nums[:3], "radius": nums[3]}
         center = nums[:3]
     else:
-        spaces = REPO_ROOT / "videos" / "maps" / summary.get("map", "") / "overview" / f"{summary.get('map', '')}-spaces.json"
-        if spaces.is_file():
+        map_dir = REPO_ROOT / "videos" / "maps" / summary.get("map", "")
+        for spaces in sorted(map_dir.glob(f"overview*/{summary.get('map', '')}-spaces.json")):
             for zone in load_json(spaces).get("zones", []):
                 if zone["id"].lower() == value.lower():
                     if zone.get("polygon"):
@@ -961,6 +1006,13 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("validate", help="check a CS:DM video config")
     p.add_argument("config")
     p.set_defaults(func=command_validate)
+
+    p = sub.add_parser("maps", help="step 1: high-res labelled floor maps + movement timeline for a demo")
+    p.add_argument("summary", help="videos/demos/<name>.summary.json")
+    p.add_argument("--demo", help="override the .dem path")
+    p.add_argument("--res", type=float, default=4.0, help="world units per pixel of the floor raster (default 4)")
+    p.add_argument("--every", type=float, default=5.0, help="movement timeline step in seconds (default 5)")
+    p.set_defaults(func=command_maps)
 
     p = sub.add_parser("suggest", help="analyze a demo stretch and suggest cinematic shots per beat")
     p.add_argument("summary", help="videos/demos/<name>.summary.json")

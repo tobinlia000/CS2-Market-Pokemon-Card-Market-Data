@@ -100,5 +100,22 @@ foreach ($file in $Config) {
         $joined = Join-Sequences -Folder $dest -Name $name -Config $cfg
         Write-Host "Joined $($cfg.sequences.Count) shots -> $joined (separate shots in $name-shots\)" -ForegroundColor Green
     }
+    # Final look (default from profile.json): cinematic 16-bit/10-bit grade (+ letterbox) -> <name>-final.mp4
+    $finishFile = $file -replace '\.csdm\.json$', '.finish.json'
+    if (Test-Path $finishFile) {
+        $finish = Get-Content $finishFile -Raw | ConvertFrom-Json
+        $look = if ($finish.look) { $finish.look } else { 'cinematic' }
+        $ext = if ($cfg.ffmpegSettings.videoContainer) { $cfg.ffmpegSettings.videoContainer } else { 'mp4' }
+        $targets = if ($joinAfter) { @($joined) } else {
+            $cfg.sequences | ForEach-Object { Join-Path $dest ("sequence-{0}-tick-{1}-to-{2}.{3}" -f $_.number, $_.startTick, $_.endTick, $ext) } }
+        foreach ($target in $targets) {
+            $final = [IO.Path]::Combine([IO.Path]::GetDirectoryName($target), [IO.Path]::GetFileNameWithoutExtension($target) + "-final.mp4")
+            $postArgs = @($target, '--look', $look, '-o', $final)
+            if ($finish.letterbox) { $postArgs += '--letterbox' }
+            Write-Host "Grading ($look$(if ($finish.letterbox) { ' + letterbox' })) -> $final" -ForegroundColor Cyan
+            $code = Invoke-Post @postArgs
+            if ($code -ne 0) { throw "Grading failed for $target" }
+        }
+    }
     Write-Host "Done. Output is in: $dest" -ForegroundColor Green
 }

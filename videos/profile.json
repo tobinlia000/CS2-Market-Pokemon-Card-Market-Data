@@ -1,5 +1,5 @@
 {
-  "_about": "Default render profile used by tools/csdv/csdv.py build. A spec's \"overrides\" object is deep-merged on top.",
+  "_about": "Default render profile used by tools/csdv/csdv.py build. A spec's \"overrides\" object is deep-merged on top. Final look by default: reshade (ReShade preset), motionBlur (HLAE sampler), finish (post.py grade); a spec overrides each with its own reshade / motionBlur / finish keys (false or \"off\" to disable).",
   "recordingSystem": "HLAE",
   "recordingOutput": "video",
   "encoderSoftware": "FFmpeg",
@@ -29,5 +29,14 @@
     "deathNoticesDuration": 5,
     "playerVoicesEnabled": false,
     "recordAudio": true
+  },
+  "reshade": "look",
+  "motionBlur": {
+    "inputFps": 240,
+    "shutter": 0.5
+  },
+  "finish": {
+    "look": "cinematic",
+    "letterbox": true
   }
 }

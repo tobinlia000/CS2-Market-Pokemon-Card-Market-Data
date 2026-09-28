@@ -471,3 +471,10 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   files ~80% bigger → reverted to 18. ReShade clean/deband stays (harmless). **The fix that works is the 16-bit
   deband + 10-bit grade in post.py** (576 levels, smooth). Always deliver through post.py cinematic (10-bit).
   Output: `Videos\CS2 Renders\sample-v3\gap-scene-cinematic.mp4`.
+- **User workflow (2026-09-27), now in SKILL.md:** demo → high-res floor maps + movement timeline (`csdv maps`) →
+  user reviews and writes a shot-by-shot script (or sends a draft for me to resolve places/objects) → I render the
+  final version (default: ReShade look + motion blur + cinematic 10-bit grade + letterbox → `<name>-final.mp4`).
+  The shot list with frequencies is in `videos/SHOT-CATALOG.md`. The user will direct each shot, so don't lean on
+  the suggester's preferences unless asked. Maps: 4000 px, shared lettered grid (256 u squares), L# landmarks with
+  a legend, routes with 5 s arrows / 15 s labels. Bug fixed: grid column names looped forever for negative
+  indices (scenery west of the grid) → "off-grid".

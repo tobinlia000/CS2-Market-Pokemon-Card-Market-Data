@@ -55,6 +55,13 @@ function Get-FFmpeg {
     throw "FFmpeg not found (set it in CS Demo Manager > Settings > Video)."
 }
 
+function Invoke-Post {
+    # tools/csdv/post.py (grades / looks). Plain function like Invoke-Csdv so -o etc. pass through.
+    $py = @(Get-Python)
+    & $py[0] @($py | Select-Object -Skip 1) (Join-Path $RepoRoot 'tools\csdv\post.py') @args | Out-Host
+    return $LASTEXITCODE
+}
+
 $ReShadeDir = Join-Path $env:USERPROFILE 'Tools\ReShade'
 
 function Set-ReShadePreset {
