@@ -1,0 +1,36 @@
+name: build-demoparser
+# Builds a patched demoparser2 wheel for Windows / Python 3.13 and commits it to wheels/ on this branch.
+on:
+  push:
+    branches: [demoparser-fix]
+    paths-ignore: ['wheels/**']
+permissions:
+  contents: write
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: arduino/setup-protoc@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+          architecture: x64
+      - name: Build wheel
+        uses: PyO3/maturin-action@v1
+        with:
+          command: build
+          target: x64
+          args: --release -i 3.13 -m demoparser/src/python/Cargo.toml -o wheels
+      - name: Commit wheel
+        shell: bash
+        run: |
+          ls -la wheels
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add wheels
+          git commit -m "Built patched demoparser2 wheel [skip ci]"
+          git push
