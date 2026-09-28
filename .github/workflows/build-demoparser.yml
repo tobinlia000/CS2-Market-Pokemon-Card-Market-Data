@@ -20,17 +20,19 @@ jobs:
           python-version: '3.13'
           architecture: x64
       - name: Build wheel
-        uses: PyO3/maturin-action@v1
-        with:
-          command: build
-          target: x64
-          args: --release -i 3.13 -m demoparser/src/python/Cargo.toml -o wheels
-      - name: Commit wheel
         shell: bash
         run: |
-          ls -la wheels
+          pip install "maturin>=1.0,<2.0"
+          set -o pipefail
+          maturin build --release -i python -m demoparser/src/python/Cargo.toml -o wheels 2>&1 | tee build.log
+      - name: Commit wheel (or build log on failure)
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p wheels
+          tail -c 200000 build.log > wheels/build.log || true
           git config user.name "github-actions[bot]"
           git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
           git add wheels
-          git commit -m "Built patched demoparser2 wheel [skip ci]"
+          git commit -m "Build output [skip ci]"
           git push
