@@ -350,9 +350,13 @@ def build_overview(map_name: str, res: float = 8.0, routes: dict | None = None, 
                             xytext=(6, 6), textcoords="offset points", fontsize=7, weight="bold")
         for zone in zones or []:
             if abs(zone["center"][2] - z) < 60:
-                from matplotlib.patches import Circle
-                ax.add_patch(Circle(zone["center"][:2], zone.get("radius", 32) + 24, fill=True, fc=(0.9, 0.1, 0.1, 0.25),
-                                    ec="darkred", lw=2, ls="--", zorder=7))
+                from matplotlib.patches import Circle, Polygon
+                if zone.get("polygon"):
+                    ax.add_patch(Polygon(zone["polygon"], closed=True, fc=(0.9, 0.1, 0.1, 0.3), ec="darkred", lw=2,
+                                         ls="--", zorder=7))
+                else:
+                    ax.add_patch(Circle(zone["center"][:2], zone.get("radius", 32) + 24, fill=True,
+                                        fc=(0.9, 0.1, 0.1, 0.25), ec="darkred", lw=2, ls="--", zorder=7))
                 ax.annotate(f"{zone['id']}: {zone.get('label', 'hidden zone')}", zone["center"][:2], xytext=(-10, -22),
                             textcoords="offset points", fontsize=9, weight="bold", color="darkred", zorder=9,
                             bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="darkred"))

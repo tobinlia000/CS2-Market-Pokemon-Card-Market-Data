@@ -61,7 +61,7 @@
     {
       "number": 2,
       "startTick": 17376,
-      "endTick": 17536,
+      "endTick": 17664,
       "showXRay": false,
       "showAssists": true,
       "showOnlyDeathNotices": true,
@@ -92,48 +92,12 @@
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip2.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17368 mirv_campath offset current\nmirv_cmd addAtTick 17536 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 17536 cl_drawhud 1\nmirv_cmd addAtTick 17346 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip2.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17368 mirv_campath offset current\nmirv_cmd addAtTick 17664 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 17664 cl_drawhud 1\nmirv_cmd addAtTick 17346 spec_mode 3"
     },
     {
       "number": 3,
-      "startTick": 17536,
-      "endTick": 17664,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "David",
-          "steamId": "76561198823971651",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 17504,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
-        }
-      ],
-      "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip3.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17528 mirv_campath offset current\nmirv_cmd addAtTick 17664 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 17664 cl_drawhud 1\nmirv_cmd addAtTick 17506 spec_mode 3"
-    },
-    {
-      "number": 4,
       "startTick": 17664,
-      "endTick": 17792,
+      "endTick": 17856,
       "showXRay": false,
       "showAssists": true,
       "showOnlyDeathNotices": true,
@@ -164,47 +128,11 @@
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip4.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17656 mirv_campath offset current\nmirv_cmd addAtTick 17792 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 17792 cl_drawhud 1\nmirv_cmd addAtTick 17634 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip3.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17656 mirv_campath offset current\nmirv_cmd addAtTick 17856 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 17856 cl_drawhud 1\nmirv_cmd addAtTick 17634 spec_mode 3"
     },
     {
-      "number": 5,
-      "startTick": 17792,
-      "endTick": 17920,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "David",
-          "steamId": "76561198823971651",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 17760,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
-        }
-      ],
-      "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip5.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17784 mirv_campath offset current\nmirv_cmd addAtTick 17920 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 17920 cl_drawhud 1\nmirv_cmd addAtTick 17762 spec_mode 3"
-    },
-    {
-      "number": 6,
-      "startTick": 17920,
+      "number": 4,
+      "startTick": 17856,
       "endTick": 18048,
       "showXRay": false,
       "showAssists": true,
@@ -230,18 +158,18 @@
       ],
       "playerCameras": [
         {
-          "tick": 17888,
+          "tick": 17824,
           "playerSteamId": "76561198125088961",
           "playerName": "Caillou (Canadian now)"
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip6.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17912 mirv_campath offset current\nmirv_cmd addAtTick 18048 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18048 cl_drawhud 1\nmirv_cmd addAtTick 17890 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip4.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17848 mirv_campath offset current\nmirv_cmd addAtTick 18048 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18048 cl_drawhud 1\nmirv_cmd addAtTick 17826 spec_mode 3"
     },
     {
-      "number": 7,
+      "number": 5,
       "startTick": 18048,
-      "endTick": 18208,
+      "endTick": 18240,
       "showXRay": false,
       "showAssists": true,
       "showOnlyDeathNotices": true,
@@ -272,12 +200,84 @@
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip7.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18040 mirv_campath offset current\nmirv_cmd addAtTick 18208 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18208 cl_drawhud 1\nmirv_cmd addAtTick 18018 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip5.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18040 mirv_campath offset current\nmirv_cmd addAtTick 18240 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18240 cl_drawhud 1\nmirv_cmd addAtTick 18018 spec_mode 3"
+    },
+    {
+      "number": 6,
+      "startTick": 18240,
+      "endTick": 18464,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "David",
+          "steamId": "76561198823971651",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 18208,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip6.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18232 mirv_campath offset current\nmirv_cmd addAtTick 18464 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18464 cl_drawhud 1\nmirv_cmd addAtTick 18210 spec_mode 3"
+    },
+    {
+      "number": 7,
+      "startTick": 18464,
+      "endTick": 18784,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "David",
+          "steamId": "76561198823971651",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 18432,
+          "playerSteamId": "76561198823971651",
+          "playerName": "David"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip7.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18456 mirv_campath offset current\nmirv_cmd addAtTick 18784 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18784 cl_drawhud 1\nmirv_cmd addAtTick 18434 spec_mode 3"
     },
     {
       "number": 8,
-      "startTick": 18208,
-      "endTick": 18368,
+      "startTick": 18784,
+      "endTick": 19040,
       "showXRay": false,
       "showAssists": true,
       "showOnlyDeathNotices": true,
@@ -302,18 +302,18 @@
       ],
       "playerCameras": [
         {
-          "tick": 18176,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
+          "tick": 18752,
+          "playerSteamId": "76561198823971651",
+          "playerName": "David"
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip8.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18200 mirv_campath offset current\nmirv_cmd addAtTick 18368 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18368 cl_drawhud 1\nmirv_cmd addAtTick 18178 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip8.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18776 mirv_campath offset current\nmirv_cmd addAtTick 19040 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19040 cl_drawhud 1\nmirv_cmd addAtTick 18754 spec_mode 3"
     },
     {
       "number": 9,
-      "startTick": 18368,
-      "endTick": 18496,
+      "startTick": 19040,
+      "endTick": 19232,
       "showXRay": false,
       "showAssists": true,
       "showOnlyDeathNotices": true,
@@ -338,18 +338,18 @@
       ],
       "playerCameras": [
         {
-          "tick": 18368,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
+          "tick": 19008,
+          "playerSteamId": "76561198823971651",
+          "playerName": "David"
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip9.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18360 mirv_campath offset current\nmirv_cmd addAtTick 18496 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18496 cl_drawhud 1"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip9.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 19032 mirv_campath offset current\nmirv_cmd addAtTick 19232 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19232 cl_drawhud 1\nmirv_cmd addAtTick 19010 spec_mode 3"
     },
     {
       "number": 10,
-      "startTick": 18496,
-      "endTick": 18688,
+      "startTick": 19232,
+      "endTick": 19520,
       "showXRay": false,
       "showAssists": true,
       "showOnlyDeathNotices": true,
@@ -374,193 +374,85 @@
       ],
       "playerCameras": [
         {
-          "tick": 18464,
+          "tick": 19200,
+          "playerSteamId": "76561198823971651",
+          "playerName": "David"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip10.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 19224 mirv_campath offset current\nmirv_cmd addAtTick 19520 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19520 cl_drawhud 1\nmirv_cmd addAtTick 19202 spec_mode 3"
+    },
+    {
+      "number": 11,
+      "startTick": 19520,
+      "endTick": 19712,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "David",
+          "steamId": "76561198823971651",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 19488,
+          "playerSteamId": "76561198823971651",
+          "playerName": "David"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip11.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 19512 mirv_campath offset current\nmirv_cmd addAtTick 19712 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19712 cl_drawhud 1\nmirv_cmd addAtTick 19490 spec_mode 3"
+    },
+    {
+      "number": 12,
+      "startTick": 19712,
+      "endTick": 19968,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "David",
+          "steamId": "76561198823971651",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 19680,
           "playerSteamId": "76561198125088961",
           "playerName": "Caillou (Canadian now)"
         }
       ],
       "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip10.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18488 mirv_campath offset current\nmirv_cmd addAtTick 18688 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18688 cl_drawhud 1\nmirv_cmd addAtTick 18466 spec_mode 3"
-    },
-    {
-      "number": 11,
-      "startTick": 18688,
-      "endTick": 18816,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "David",
-          "steamId": "76561198823971651",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 18656,
-          "playerSteamId": "76561198823971651",
-          "playerName": "David"
-        }
-      ],
-      "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip11.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18680 mirv_campath offset current\nmirv_cmd addAtTick 18816 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18816 cl_drawhud 1\nmirv_cmd addAtTick 18658 spec_mode 3"
-    },
-    {
-      "number": 12,
-      "startTick": 18816,
-      "endTick": 18944,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "David",
-          "steamId": "76561198823971651",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 18784,
-          "playerSteamId": "76561198823971651",
-          "playerName": "David"
-        }
-      ],
-      "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip12.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18808 mirv_campath offset current\nmirv_cmd addAtTick 18944 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18944 cl_drawhud 1\nmirv_cmd addAtTick 18786 spec_mode 3"
-    },
-    {
-      "number": 13,
-      "startTick": 18944,
-      "endTick": 19200,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "David",
-          "steamId": "76561198823971651",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 18944,
-          "playerSteamId": "76561198823971651",
-          "playerName": "David"
-        }
-      ],
-      "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip13.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18936 mirv_campath offset current\nmirv_cmd addAtTick 19200 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19200 cl_drawhud 1"
-    },
-    {
-      "number": 14,
-      "startTick": 19200,
-      "endTick": 19328,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "David",
-          "steamId": "76561198823971651",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 19168,
-          "playerSteamId": "76561198823971651",
-          "playerName": "David"
-        }
-      ],
-      "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip14.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 19192 mirv_campath offset current\nmirv_cmd addAtTick 19328 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19328 cl_drawhud 1\nmirv_cmd addAtTick 19170 spec_mode 3"
-    },
-    {
-      "number": 15,
-      "startTick": 19328,
-      "endTick": 19456,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "David",
-          "steamId": "76561198823971651",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 19296,
-          "playerSteamId": "76561198823971651",
-          "playerName": "David"
-        }
-      ],
-      "cameras": [],
-      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip15.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 19320 mirv_campath offset current\nmirv_cmd addAtTick 19456 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19456 cl_drawhud 1\nmirv_cmd addAtTick 19298 spec_mode 3"
+      "cfg": "mirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip12.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 19704 mirv_campath offset current\nmirv_cmd addAtTick 19968 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 19968 cl_drawhud 1\nmirv_cmd addAtTick 19682 spec_mode 3"
     }
   ],
   "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"

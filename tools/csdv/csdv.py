@@ -811,15 +811,26 @@ def command_validate(args) -> int:
 
 def parse_hide(value: str, summary: dict) -> dict:
     """'x,y,z[,radius]' or a zone id from videos/maps/<map>/overview/<map>-spaces.json (e.g. N1)."""
+    import cine
+
+    center = None
     if re.fullmatch(r"\s*-?[\d.]+\s*,\s*-?[\d.]+\s*,\s*-?[\d.]+(\s*,\s*[\d.]+)?\s*", value):
         nums = [float(v) for v in value.split(",")]
-        return {"center": nums[:3], "radius": nums[3] if len(nums) > 3 else 40.0}
-    spaces = REPO_ROOT / "videos" / "maps" / summary.get("map", "") / "overview" / f"{summary.get('map', '')}-spaces.json"
-    if spaces.is_file():
-        for zone in load_json(spaces).get("zones", []):
-            if zone["id"].lower() == value.lower():
-                return {"center": zone["center"], "radius": zone.get("radius", 40.0)}
-    raise CsdvError(f"Unknown hidden zone '{value}' (use x,y,z[,r] or a zone id from the map overview).")
+        if len(nums) > 3:  # explicit radius: a plain circle zone
+            return {"center": nums[:3], "radius": nums[3]}
+        center = nums[:3]
+    else:
+        spaces = REPO_ROOT / "videos" / "maps" / summary.get("map", "") / "overview" / f"{summary.get('map', '')}-spaces.json"
+        if spaces.is_file():
+            for zone in load_json(spaces).get("zones", []):
+                if zone["id"].lower() == value.lower():
+                    if zone.get("polygon"):
+                        return zone
+                    center = zone["center"]
+        if center is None:
+            raise CsdvError(f"Unknown hidden zone '{value}' (use x,y,z[,r] or a zone id from the map overview).")
+    # A spot -> the whole pocket around it (walls up to its mouth), measured from the map geometry.
+    return cine.nook_zone(map_geometry(summary.get("map", "")), center)
 
 
 def command_suggest(args) -> int:

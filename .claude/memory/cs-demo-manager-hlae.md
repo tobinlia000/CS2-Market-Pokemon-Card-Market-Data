@@ -408,3 +408,17 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
 - **Map overview** (`tools/csdv/mapview.py`, output in videos/maps/<map>/overview/): levels the players use,
   spaces (room/corridor/nook) with IDs, borders, grid, doors, exit signs (green lights), props, routes with time
   marks, still spots, hidden zones. Known limit: wide-open halls stay one big space (C13) → use grid coordinates.
+- **USER STYLE PREFERENCE (2026-09-27, strong): still or slightly zooming shots; avoid cameras pinned to /
+  moving with the character (follow, lead, side, camcorder POV/follow, drone, arc, and even tripod pans). Special
+  shots only for intense moments.** Implemented in scene.py: MOVE_WEIGHT 0.35, max 1 move in a row, ANCHOR_SHARE
+  0.7, SPECIAL_SHARE 0.15, specials need beat tension >= 2.0, beats >= 3 s; new "slow zoom" recipes (static,
+  `"zoom": [1.0, 0.8]` = the lens creeps in, the camera stays still); tripod pans down-weighted.
+- **Hidden place = the whole pocket, not the spot** (user: "we still saw inside the gap"). The 40 u circle missed
+  most of the pocket (walls E/S up to 104–126 u, open NW). `cine.nook_zone(geometry, spot)` measures it: 72 rays at
+  chest height, depth = the farthest nearby wall (166 u here), open directions cut at that depth (the mouth line),
+  up to the ceiling → a polygon; `hide_points` = 16 u grid × 4 heights + inner-wall points. Placement for locked-off
+  shots checks the exact frame (`view_shows_zone`), not "can see any of it", otherwise open halls allow no camera.
+  LOS results are cached per camera spot. Re-check of the old render: the pocket was on screen in 8 of 15 shots.
+  New plan (4:28–5:12, CT reappears): 10/12 still shots, 2 specials; dense independent check (3636 pts): 0 frames.
+- Verification gotcha: campath XML parsed with a regex of x|y|z|fov|rx|ry|rz has no `t` column — parse all
+  attributes into dicts when time matters.

@@ -300,9 +300,56 @@ def _in_frame(cam, pitch, yaw, h43, points) -> np.ndarray:
 
 # --- hidden zones: a place that must never be on screen (e.g. the nook a player hides in) --------------------------
 
+def nook_zone(geometry, spot, enclosed_max: float = 200.0, rays: int = 72) -> dict:
+    """The hidden place around a spot, measured from the geometry: its walls where there are walls, and its mouth
+    where it opens. Rays at chest height; the pocket depth = the farthest nearby wall (< enclosed_max), and open
+    directions are cut there, so the zone is the pocket up to its mouth line. Returns a JSON-able zone."""
+    spot = np.asarray(spot, float)
+    eye = spot + [0, 0, 40.0]
+    dists = []
+    for k in range(rays):
+        a = 2 * math.pi * k / rays
+        ray = np.array([math.cos(a), math.sin(a), 0.0]) * 600.0
+        hit = geometry.first_hit(eye, eye + ray, see_through_blocks=True) if geometry is not None else None
+        dists.append(600.0 if hit is None else hit * 600.0)
+    dists = np.array(dists)
+    walls = dists[dists < enclosed_max]
+    depth = float(np.clip(walls.max() if len(walls) else 96.0, 60.0, enclosed_max))
+    reach = np.minimum(dists, depth)
+    angles = 2 * np.pi * np.arange(rays) / rays
+    polygon = [[round(float(spot[0] + r * math.cos(a)), 1), round(float(spot[1] + r * math.sin(a)), 1)]
+               for a, r in zip(angles, reach)]
+    ceiling = geometry.first_hit(eye, eye + [0, 0, 400.0], see_through_blocks=True) if geometry is not None else None
+    height = float(min(400.0 * ceiling + 40.0 if ceiling is not None else 180.0, 180.0))
+    return {"polygon": polygon, "floor": float(spot[2]), "height": round(height, 1), "center": spot.round(1).tolist(),
+            "radius": round(depth, 1)}
+
+
+def in_zone(zone: dict, xy) -> np.ndarray:
+    """Which xy points are inside the zone (polygon zones; circle zones use center + radius)."""
+    xy = np.atleast_2d(np.asarray(xy, float))[:, :2]
+    if zone.get("polygon"):
+        from matplotlib.path import Path as _Path
+        return _Path(np.asarray(zone["polygon"])).contains_points(xy)
+    c = np.asarray(zone["center"], float)
+    return np.linalg.norm(xy - c[:2], axis=1) < float(zone.get("radius", 32.0))
+
+
 def hide_points(zone: dict) -> np.ndarray:
-    """Sample points filling a hidden zone {"center": [x, y, floor_z], "radius": r}: the spot, a ring around it,
-    at ankle, chest and head height."""
+    """Sample points filling a hidden zone: for polygon zones a 12-unit grid over the whole pocket plus points just
+    in front of its walls, from floor to near the ceiling; for circle zones the spot and a ring around it."""
+    if zone.get("polygon"):
+        poly = np.asarray(zone["polygon"], float)
+        floor = float(zone["floor"])
+        heights = np.linspace(4.0, max(float(zone.get("height", 150.0)) - 10.0, 20.0), 4)
+        lo, hi = poly.min(axis=0), poly.max(axis=0)
+        gx, gy = np.meshgrid(np.arange(lo[0], hi[0] + 1, 16.0), np.arange(lo[1], hi[1] + 1, 16.0))
+        grid = np.c_[gx.ravel(), gy.ravel()]
+        grid = grid[in_zone(zone, grid)]
+        centre = np.asarray(zone["center"], float)[:2]
+        edge = poly + (centre - poly) / np.maximum(np.linalg.norm(centre - poly, axis=1), 1e-6)[:, None] * 4.0
+        flat = np.vstack([grid, edge[::2]])
+        return np.array([[x, y, floor + h] for x, y in flat for h in heights])
     c = np.asarray(zone["center"], float)
     r = float(zone.get("radius", 32.0))
     ring = [(0.0, 0.0)] + [(r * math.cos(a), r * math.sin(a)) for a in np.radians(np.arange(0, 360, 45))]
@@ -318,14 +365,37 @@ def sees_zone(geometry, cam: np.ndarray, p: dict) -> bool:
     return any(geometry.clear(cam, q) for q in pts)
 
 
+_LOS_CACHE: dict = {}
+
+
+def _visible_points(geometry, cam, pts, candidates) -> bool:
+    """Is any of pts[candidates] in clear line of sight from cam? Cached per (camera spot, zone)."""
+    key = (round(float(cam[0])), round(float(cam[1])), round(float(cam[2])), id(pts), len(pts))
+    cache = _LOS_CACHE.setdefault(key, {})
+    for j in np.flatnonzero(candidates):
+        if j not in cache:
+            cache[j] = geometry.clear(cam, pts[j])
+        if cache[j]:
+            return True
+    return False
+
+
 def zone_exposure(geometry, cam, pitch, yaw, fov, pts) -> np.ndarray:
     """Per key: is any hidden-zone point inside the frame AND not blocked by geometry?"""
     exposed = np.zeros(len(cam), bool)
     for i in range(len(cam)):
         framed = _in_frame(cam[i], float(pitch[i]), float(yaw[i]), float(fov[i]) * 1.08, pts)
         if framed.any():
-            exposed[i] = geometry is None or any(geometry.clear(cam[i], q) for q in pts[framed])
+            exposed[i] = geometry is None or _visible_points(geometry, cam[i], pts, framed)
     return exposed
+
+
+def view_shows_zone(geometry, cam, pitch, yaw, fov, p: dict) -> bool:
+    """Exact check for a locked-off view: is any hidden-zone point on screen?"""
+    pts = p.get("_hide_pts")
+    if pts is None:
+        return False
+    return bool(zone_exposure(geometry, np.atleast_2d(cam), [pitch], [yaw], [fov], pts)[0])
 
 
 def place_static(geometry, sub, p) -> np.ndarray:
@@ -349,13 +419,13 @@ def place_static(geometry, sub, p) -> np.ndarray:
                     floor = geometry.floor_z(*cam, depth=3000.0)
                     if floor is None or cam[2] - floor < 24.0 or not geometry.clear(anchor, cam):
                         continue
-                    if sees_zone(geometry, cam, p):
-                        continue
                     visible = np.mean([geometry.clear(cam, s) for s in samples])
                 else:
                     visible = 1.0
                 pitch, yaw = campath.look_at(tuple(cam), tuple(centre))
                 fov = fit_fov(cam, pitch, yaw, pts, float(p.get("margin", 1.15)))
+                if geometry is not None and view_shows_zone(geometry, cam, pitch, yaw, min(fov, 100.0), p):
+                    continue  # the locked-off frame would show the hidden place
                 score = visible * 10 - max(fov - 60.0, 0) / 15 - abs(d_angle) / 180 - scale / 10
                 if score > best_score:
                     best, best_score = cam, score
@@ -378,7 +448,8 @@ def shot_static(geometry, sub, p, f, kps):
                         "the frame. Use a shorter clip or a pan (tripod).")
         fov = 100.0
     n = len(f)
-    return np.tile(cam, (n, 1)), np.full(n, pitch), np.full(n, yaw), np.full(n, max(fov, 15.0)), warnings
+    fov_track = max(fov, 15.0) * _ramp(p.get("zoom", 1.0), f)   # "zoom": [1.0, 0.8] = slow creep in, camera still
+    return np.tile(cam, (n, 1)), np.full(n, pitch), np.full(n, yaw), fov_track, warnings
 
 
 def shot_overhead(geometry, sub, p, f, kps):
@@ -486,10 +557,10 @@ def shot_ground(geometry, sub, p, f, kps):
                 return None
             floor = found
         cam = np.r_[xy, floor + float(p.get("lens", 6.0))]
-        if sees_zone(geometry, cam, p):
-            return None
         target = sub.feet[look_index] + [0, 0, float(p.get("targetHeight", 36.0))]
         pitch, yaw = campath.look_at(tuple(cam), tuple(target))
+        if view_shows_zone(geometry, cam, float(pitch), float(yaw), fov, p):
+            return None
         return cam, float(pitch), float(yaw)
 
     # Where along the route to put the camera: the spot from which the subject stays visible and in frame longest
@@ -520,7 +591,7 @@ def shot_ground(geometry, sub, p, f, kps):
     if best_score < 0.6:
         warnings.append("the subject is in view for under 60% of the ground shot (route turns away); "
                         "use a straighter stretch or a shorter clip")
-    return np.tile(cam, (n, 1)), np.full(n, pitch), np.full(n, yaw), np.full(n, fov), warnings
+    return np.tile(cam, (n, 1)), np.full(n, pitch), np.full(n, yaw), fov * _ramp(p.get("zoom", 1.0), f), warnings
 
 
 def shot_dolly_zoom(geometry, sub, p, f, kps):
@@ -804,11 +875,13 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
 
 
 def _inside_zone(sub: Subject, p: dict) -> np.ndarray:
+    """Subject inside (or stepping into) the hidden zone: there they are supposed to be out of view."""
     zone = p.get("hide")
     if not zone:
         return np.zeros(len(sub.feet), bool)
-    c = np.asarray(zone["center"], float)
-    return np.linalg.norm(sub.feet[:, :2] - c[:2], axis=1) < float(zone.get("radius", 32.0)) + 32.0
+    c = np.asarray(zone["center"], float)[:2]
+    toward = sub.feet[:, :2] + (c - sub.feet[:, :2]) / np.maximum(np.linalg.norm(c - sub.feet[:, :2], axis=1), 1e-6)[:, None] * 24.0
+    return in_zone(zone, sub.feet[:, :2]) | in_zone(zone, toward)
 
 
 def _visible_outside_zone(geometry, cam, sub: Subject, p: dict, aim=None) -> float:

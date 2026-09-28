@@ -110,7 +110,11 @@ tight/open/indoor, watched/chase/face-off/approach, deaths) and ranks feasible s
 writes `videos/specs/<name>.json` (top pick per beat, with `why`, `beat` and `alternatives`) plus a readable `.md`.
 Show the user the beats + picks, let them swap in alternatives, then build. Horror recipes (`videos/HORROR-CAMERA.md`)
 only appear with `--mood horror` and scale with tension; repeated signature moves are penalized.
-PACING (user rule): mostly plain, static-feeling shots so the special ones keep their effect. The suggester enforces
+PACING (user rule, strong): STILL or SLOWLY ZOOMING shots by default; avoid cameras that move with/are pinned
+to the character (follow/lead/side/POV/drone, even tripod pans). Specials only at intense moments.
+Hidden places: `--hide <zone id|x,y,z>` hides the whole measured pocket (cine.nook_zone), never just a spot;
+`--while-hidden <player>` covers the other player meanwhile. Map overview: tools/csdv/mapview.py.
+Mostly plain, static-feeling shots so the special ones keep their effect. The suggester enforces
 it (anchors >= ~50%, specials <= ~25%, never two specials in a row); keep that when hand-editing a plan.
 Shot types: follow, lead, side, arc, crane, push, pull, tripod, static, overhead, drone (flyover/orbit/rise), ground
 (away/toward), dolly_zoom, stalker, ots, pov (camcorder) (`"over": "<player>"`); any of them + `"handheld": 0.5–2`, `"roll"` (dutch).

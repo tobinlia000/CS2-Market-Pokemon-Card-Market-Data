@@ -21,8 +21,8 @@ import cine
 from positions import Track
 
 WINDOW_TICKS = 32            # analysis step (0.5 s at 64 tick)
-MIN_BEAT_SECONDS = 2.0
-MAX_BEAT_SECONDS = 8.0
+MIN_BEAT_SECONDS = 3.0       # user: still shots, held; fewer cuts
+MAX_BEAT_SECONDS = 9.0
 EYE = 60.0
 
 WALK_SPEED = 40.0
@@ -321,7 +321,7 @@ RECIPES = [
            why="shows speed and the space they move through"),
     Recipe("leading shot", "Lead / walk-and-talk", "lead", {}, {"walk": 0.7, "run": 0.6},
            why="shows their face and where they come from"),
-    Recipe("tripod pan", "Tripod pan", "tripod", {"size": "full"}, {"walk": 0.7, "run": 0.8, "corner": 0.8},
+    Recipe("tripod pan", "Tripod pan", "tripod", {"size": "full"}, {"walk": 0.45, "run": 0.5, "corner": 0.5},
            why="a fixed observer panning with the action"),
     Recipe("locked-off wide", "Static wide", "static", {}, {"still": 0.9, "walk": 0.6, "searching": 0.6},
            why="lets the action play inside a still frame"),
@@ -332,6 +332,12 @@ RECIPES = [
            moods=("neutral", "horror")),
     Recipe("drone orbit", "Aerial orbit", "drone", {"move": "orbit"}, {"still": 0.7, "searching": 0.5},
            needs={"open"}, avoid={"indoor"}, why="circles the scene to set it up", moods=("neutral", "horror")),
+    Recipe("slow zoom", "Slow zoom (camera still)", "static", {"zoom": [1.0, 0.8]},
+           {"still": 1.1, "walk": 1.0, "run": 0.8, "searching": 1.1, "corner": 0.9},
+           why="a still camera whose lens creeps in: attention builds without any camera movement"),
+    Recipe("slow zoom medium", "Slow zoom, medium (camera still)", "static",
+           {"margin": 1.1, "distance": 450.0, "zoom": [1.0, 0.85]}, {"still": 1.0, "walk": 0.8, "searching": 1.0},
+           why="a closer still frame, gently tightening on them"),
     Recipe("locked-off medium", "Static medium", "static", {"margin": 1.05, "distance": 450.0},
            {"still": 0.8, "walk": 0.7, "searching": 0.7, "run": 0.4},
            why="a plain, still frame: the calm between the bigger moments"),
@@ -387,7 +393,7 @@ RECIPES = [
            {"run": 0.9, "walk": 0.6}, horror=True, needs={"alone"},
            why="the camera stays behind as they leave; the empty frame that remains is unsettling"),
     Recipe("nervous observer", "Unsteady observer", "tripod", {"handheld": 0.8, "size": "medium"},
-           {"searching": 1.1, "still": 0.8, "watched": 0.9}, horror=True,
+           {"searching": 0.8, "still": 0.5, "watched": 0.6}, horror=True,
            why="a slightly shaky, lagging observer makes calm moments feel unsafe"),
 
     # Backrooms / found footage (mood "backrooms"): camcorder language + restrained, empty, liminal frames.
@@ -443,9 +449,11 @@ def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "
             continue
         if (recipe.over_other or recipe.subject_is_other or recipe.requires_other) and not beat.other:
             continue
+        if category(recipe) == "special" and beat.tension < SPECIAL_MIN_TENSION:
+            continue  # special shots only for intense moments
         if tense:
-            # Genre shots are for tense beats: ~0 at tension 0.8, ~0.75 at 2.0, >1 for chases/watchers/deaths.
-            score = base * float(np.clip((beat.tension - 0.8) / 1.6, 0.0, 1.3))
+            # Genre shots are for tense beats: ~0 at tension 1.2, ~0.6 at 2.0, >1 for chases/watchers/deaths.
+            score = base * float(np.clip((beat.tension - 1.2) / 1.3, 0.0, 1.3))
             if score <= 0.05:
                 continue
         else:
@@ -463,7 +471,7 @@ def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "
     scored.sort(key=lambda s: -s[0])
 
     results = []
-    for score, recipe in scored[: top * 3]:
+    for score, recipe in scored[: max(top * 3, 10)]:
         subject = beat.other["steamId"] if recipe.subject_is_other else subject_id
         params = dict(recipe.params)
         if hide:
@@ -501,11 +509,10 @@ def plan(tracks: dict[str, Track], subject_id: str, start: int, end: int, mood: 
     while_hidden: steamId of the player the shots follow while the subject is inside that zone."""
     windows = analyze(tracks, subject_id, start, end, geometry, events, tickrate)
     if hide:
-        c, r = np.asarray(hide["center"], float), float(hide.get("radius", 32.0)) + 32.0
         sub = tracks[subject_id]
         for w in windows:
             i = _at(sub, np.array([w.tick + WINDOW_TICKS // 2]))[0]
-            w.inside = bool(np.linalg.norm(sub.pos[i, :2] - c[:2]) < r)
+            w.inside = bool(cine.in_zone(hide, sub.pos[i, :2])[0])
     beats = []
     for beat in segment(windows):
         if beat.label == "hidden" and while_hidden:
@@ -529,15 +536,19 @@ def plan(tracks: dict[str, Track], subject_id: str, start: int, end: int, mood: 
     return out
 
 
-ANCHOR_SHARE = 0.5     # at least half the beats are calm, static-feeling coverage
-SPECIAL_SHARE = 0.25   # at most a quarter are attention-grabbing shots
-MAX_MOVES_IN_A_ROW = 2
+# User preference (2026-09-27): "a very big preference for still, or slightly zooming camera shots, rather than
+# shots pinned to the character that move with them. Every special shot is reserved for intense moments."
+ANCHOR_SHARE = 0.7     # most beats are still / slowly zooming frames
+SPECIAL_SHARE = 0.15   # attention-grabbing shots are rare
+MAX_MOVES_IN_A_ROW = 1
+MOVE_WEIGHT = 0.35     # camera that travels with the character: strongly discouraged
+SPECIAL_MIN_TENSION = 2.0
 
 
 def pacing(classes: list[str]) -> dict[str, float]:
     """Score multipliers per pacing class so the big shots stay rare and land: open on an anchor, never two
     specials in a row, a breather after every special, and enough anchors overall."""
-    pace = {"anchor": 1.0, "move": 1.0, "special": 1.0}
+    pace = {"anchor": 1.0, "move": MOVE_WEIGHT, "special": 1.0}
     n = len(classes)
     if n == 0:
         pace["anchor"] *= 1.4                      # open with an establishing, still frame
