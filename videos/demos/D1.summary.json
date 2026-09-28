@@ -1,0 +1,47 @@
+{
+  "summaryVersion": 1,
+  "name": "D1",
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\D1.dem",
+  "checksum": "c0309ec9a9fc8972",
+  "game": "CS2",
+  "map": "cs_insertion2",
+  "date": "2026-09-28T22:01:51.000Z",
+  "source": "valve",
+  "tickrate": 64,
+  "tickCount": 24244,
+  "duration": "6:18",
+  "teams": [
+    {
+      "name": "Team A",
+      "score": 0
+    },
+    {
+      "name": "Team B",
+      "score": 0
+    }
+  ],
+  "players": [
+    {
+      "steamId": "76561198125088961",
+      "name": "Caillou (Canadian now)",
+      "team": "Team B",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "headshots": 0
+    },
+    {
+      "steamId": "76561197972134749",
+      "name": "Lightning Lemur",
+      "team": "Team B",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "headshots": 0
+    }
+  ],
+  "rounds": [],
+  "multiKills": [],
+  "clutches": [],
+  "kills": []
+}

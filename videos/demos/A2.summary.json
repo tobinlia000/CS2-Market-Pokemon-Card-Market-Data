@@ -1,0 +1,47 @@
+{
+  "summaryVersion": 1,
+  "name": "A2",
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\A2.dem",
+  "checksum": "c847a64bb6154652",
+  "game": "CS2",
+  "map": "ze_backrooms_insomnia",
+  "date": "2026-09-28T21:28:05.000Z",
+  "source": "valve",
+  "tickrate": 64,
+  "tickCount": 24708,
+  "duration": "6:26",
+  "teams": [
+    {
+      "name": "Team A",
+      "score": 0
+    },
+    {
+      "name": "Team B",
+      "score": 0
+    }
+  ],
+  "players": [
+    {
+      "steamId": "76561198125088961",
+      "name": "Caillou (Canadian now)",
+      "team": "Team B",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "headshots": 0
+    },
+    {
+      "steamId": "76561197972134749",
+      "name": "Lightning Lemur",
+      "team": "Team B",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "headshots": 0
+    }
+  ],
+  "rounds": [],
+  "multiKills": [],
+  "clutches": [],
+  "kills": []
+}

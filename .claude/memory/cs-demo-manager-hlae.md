@@ -502,3 +502,30 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   Result: I read "Old Country Buffet" at (963,1972) and (2075,2154) and "CAR TOYS" at (1055,6181). Famous Footwear and Ross
   were not found yet: shared materials make clusters swallow walls. Better next step: locate the model instances by their
   vertex signature, or take an in-game still via CS:DM.
+
+## 18. Big workshop maps: demoparser2 entity-handle bug + patched build (2026-09-28)
+- **Symptom:** in A1/A2/D1 Caillou had no positions, in C1 Lemur had none, and in G1 neither player did (no X column).
+  Cause: demoparser2 (0.41.3 and 0.42.0) masks CS2 entity handles with `& 0x7FF` (index <= 2047). On big maps the
+  player pawns sit above 2047 (e.g. 3120, 2072, 2378), so they resolve to the wrong entity. The correct mask is 0x3FFF.
+  CS:DM's `csda -positions` doesn't help: it only records positions during rounds.
+- **Fix:** patched source (all `& 0x7FF` masks become `& 0x3FFF`, and the "missing" constants 2047 become 16383) on the
+  orphan branch `demoparser-fix` of the user's repo.
+  - GitHub Actions builds a Windows/py3.13 wheel into `wheels/` and commits `wheels/build.log` even on failure.
+  - The CS2 protobufs are pinned to GameTracking-CS2 d8e2c7a4 (2026-09-09), because the 2026-09-23 rename
+    `customname` -> `customnames` breaks the build (upstream CI is broken too).
+  - Wheel: `demoparser2-0.42.0-cp313-cp313-win_amd64.whl`. Before the main install is upgraded it runs from the
+    scratch venv `dp042` (needs pillow, scipy, matplotlib). Undo: `pip install demoparser2==0.41.3`.
+  - I can't push to GitHub; the permission classifier blocks it, so the user pushes. PowerShell 5.1 has no `&&`:
+    use `; if ($?) { ... }`.
+  - Actions status can be read unauthenticated via api.github.com (runs/jobs/annotations); job logs need auth, hence
+    the committed build.log.
+- mapgeo `_read_glb`: an entity model with no geometry exports a glb without a BIN chunk. It's now handled (cs_insertion2).
+- New demos (all with Caillou + Lightning Lemur; Lemur is the one who mostly stands still):
+  | Demo | Map | Length | Floors |
+  |---|---|---|---|
+  | A1 | ze_backrooms_insomnia | 16:01 | 5 |
+  | A2 | ze_backrooms_insomnia | 6:26 | 9 |
+  | C1 | de_02school | 8:32 | 5 (Lemur never leaves (-290,-839,396) but looks around) |
+  | D1 | cs_insertion2 | 6:18 | 6 |
+  | G1 | de_lord | 5:28 | 4 |
+  First-time geometry: backrooms 4m50s, school 1m20s, insertion2 1m50s, lord 33s.

@@ -248,7 +248,8 @@ def _read_glb(path: Path):
     json_len = struct.unpack_from("<I", data, 12)[0]
     gltf = json.loads(data[20:20 + json_len])
     offset = 20 + json_len
-    bin_len = struct.unpack_from("<I", data, offset)[0]
+    # A model with no geometry exports as a glb with no BIN chunk (seen on cs_insertion2).
+    bin_len = struct.unpack_from("<I", data, offset)[0] if len(data) >= offset + 8 else 0
     binary = data[offset + 8: offset + 8 + bin_len]
 
     def accessor(index):
@@ -292,7 +293,7 @@ class MapGeometry:
         """(triangles (N,3,3) in the file's raw Source units, opaque (N,)) with clip/sky groups removed."""
         gltf, accessor = _read_glb(Path(glb))
         tris, opaque = [], []
-        for node in gltf["nodes"]:
+        for node in gltf.get("nodes", []):
             if "mesh" not in node:
                 continue
             name = node.get("name", "").lower()
