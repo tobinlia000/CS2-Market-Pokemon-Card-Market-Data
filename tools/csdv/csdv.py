@@ -693,6 +693,16 @@ def command_build(args) -> int:
         return 1
     output = args.output or str(REPO_ROOT / "videos" / "configs" / f"{spec.get('name') or spec_path.stem}.csdm.json")
     write_json(output, config)
+    # ReShade look for this render (render.ps1 switches the preset, then back to "off"). A sidecar file, because
+    # CS:DM's config file should only contain keys CS:DM knows.
+    sidecar = Path(output).with_suffix("").with_suffix(".reshade")
+    if spec.get("reshade") and spec["reshade"] != "off":
+        if not re.fullmatch(r"[A-Za-z0-9_-]+", str(spec["reshade"])):
+            raise CsdvError(f"reshade preset name '{spec['reshade']}' must be a plain name (e.g. look).")
+        sidecar.write_text(str(spec["reshade"]), encoding="utf-8")
+        print(f"  ReShade preset: csdv-{spec['reshade']}.ini")
+    elif sidecar.exists():
+        sidecar.unlink()
     print_plan(config, output)
     return 0
 

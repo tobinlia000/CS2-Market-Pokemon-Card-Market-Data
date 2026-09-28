@@ -438,3 +438,18 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
     wobble, fringing, noise, scanlines, PLAY ▶ + date + counter; Consolas lacks ▶ → Segoe UI Symbol).
   - ReShade_advancedfx (DOF / AO / grading with real depth): not installed yet; loads via HLAE's custom loader as a
     second DLL (never in the game folder); needs MSAA + FSR off; CS:DM launch integration unverified.
+- **ReShade WORKS (2026-09-27).** Setup in `%USERPROFILE%\Tools\ReShade\`: ReShade 6.8.0 add-on DLL (extracted
+  from the setup archive, never installed) named `dxgi.dll` → its config/log/presets stay in that folder; cache in
+  C:\Temp\ReShade. HLAE add-on ReShade_advancedfx 1.4.1, shaders reshade-shaders (slim) + qUINT. CS:DM
+  Settings > Video > HLAE parameters = `-hookDllPath "C:\Users\Liam's PC\Tools\ReShade\dxgi.dll"` (HLAE accepts
+  -hookDllPath repeatedly and injects in order: hlae/Program.cs; CS:DM appends this string raw). Recording-only
+  cs2_video.txt (~/.csdm/cfg/cfg): MSAA off, CMAA2 on (backup `.before-reshade-2026-09-27`). Log confirms: loads
+  from Tools, add-on registers, shaders compile. DisplayDepth test: normals/depth correct → depth works.
+  **Opt-in per render:** spec `"reshade": "look"` → csdv writes `videos/configs/<name>.reshade`; render.ps1
+  `Set-ReShadePreset` switches PresetPath to `csdv-<name>.ini` and back to `csdv-off.ini` afterwards (default off,
+  so watching demos and other renders are unaffected). Preset copies are in `videos/reshade/`.
+  Look preset = MXAO (ambient occlusion: wall/ceiling/floor creases darken, the flat room reads 3D), ADOF
+  (autofocus at the frame centre: subtle unless near subject + far background), Lightroom (mild).
+  Gotchas: `sed 's/...\csdv/'` mangles `\c` → edit ReShade.ini with Python/regex. PowerShell
+  ChangeExtension($f, $null) passes "" (not null). "Wider" look in comparisons was AO revealing room edges — the
+  framing was pixel-identical.

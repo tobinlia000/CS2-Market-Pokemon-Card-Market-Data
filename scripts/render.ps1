@@ -69,6 +69,12 @@ foreach ($file in $Config) {
     $runFile = Join-Path ([IO.Path]::GetTempPath()) ([IO.Path]::GetFileName($file))
     [IO.File]::WriteAllText($runFile, $raw, (New-Object System.Text.UTF8Encoding $false))
 
+    # ReShade (loaded by HLAE via CS:DM's HLAE parameters): pick this render's preset, "off" unless the spec asked.
+    $reshadePreset = 'off'
+    $sidecar = $file -replace '\.csdm\.json$', '.reshade'   # written by csdv build (spec "reshade": "<preset>")
+    if (Test-Path $sidecar) { $reshadePreset = (Get-Content $sidecar -Raw).Trim() }
+    Set-ReShadePreset $reshadePreset
+
     $cliArgs = @('video', '--config-file', $runFile)
     $log = Join-Path $logDir (([IO.Path]::GetFileNameWithoutExtension($file)) + '.log')
     Write-Host "Rendering $file ($($cfg.sequences.Count) sequences, $($cfg.width)x$($cfg.height)@$($cfg.framerate))..." -ForegroundColor Cyan
@@ -77,6 +83,7 @@ foreach ($file in $Config) {
     & $csdm @cliArgs --verbose 2>&1 | ForEach-Object { "$_" } | Tee-Object -FilePath $log
     $exitCode = $LASTEXITCODE
     $ErrorActionPreference = 'Stop'
+    Set-ReShadePreset 'off'
     if ($exitCode -eq 0 -and (Select-String -Path $log -Pattern 'FFmpeg error' -Quiet)) { $exitCode = 3 }  # csdm exits 0 anyway
     if ($exitCode -ne 0) {
         Write-Host "FAILED - log: $log (commit it so Claude can debug)" -ForegroundColor Red

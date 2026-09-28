@@ -1,0 +1,18 @@
+{
+  "summary": "videos/demos/mango1.summary.json",
+  "concatenate": false,
+  "name": "fx-reshade",
+  "outputFileName": "fx-reshade",
+  "clips": [
+    {
+      "type": "ticks",
+      "start": 17152,
+      "end": 17376,
+      "pov": "Caillou",
+      "camera": {
+        "file": "videos/campaths/totemlake-gap-scene-clip1.xml"
+      }
+    }
+  ],
+  "reshade": "look"
+}

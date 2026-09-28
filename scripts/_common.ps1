@@ -55,6 +55,21 @@ function Get-FFmpeg {
     throw "FFmpeg not found (set it in CS Demo Manager > Settings > Video)."
 }
 
+$ReShadeDir = Join-Path $env:USERPROFILE 'Tools\ReShade'
+
+function Set-ReShadePreset {
+    # Point ReShade (Tools\ReShade, loaded only by HLAE) at csdv-<name>.ini. No-op when ReShade isn't set up.
+    param([string]$Name)
+    $ini = Join-Path $ReShadeDir 'ReShade.ini'
+    if (-not (Test-Path $ini)) { return }
+    $preset = Join-Path $ReShadeDir "csdv-$Name.ini"
+    if (-not (Test-Path $preset)) { throw "ReShade preset not found: $preset" }
+    $text = [IO.File]::ReadAllText($ini)
+    $text = [regex]::Replace($text, '(?m)^PresetPath=.*$', { "PresetPath=.\csdv-$Name.ini" })
+    [IO.File]::WriteAllText($ini, $text, (New-Object System.Text.UTF8Encoding $false))
+    if ($Name -ne 'off') { Write-Host "ReShade preset: csdv-$Name.ini" -ForegroundColor Cyan }
+}
+
 function Join-Sequences {
     # Join a render's sequence files in order (lossless, -c copy) into <Folder>\<Name>.<ext> and move the separate
     # shots into <Folder>\<Name>-shots\. Paths are escaped for FFmpeg's concat list (an apostrophe becomes '\'').
