@@ -19,6 +19,14 @@ jobs:
         with:
           python-version: '3.13'
           architecture: x64
+      - name: Pin CS2 protobufs (before the 2026-09-23 customname -> customnames rename)
+        shell: bash
+        run: |
+          d=demoparser/src/csgoproto/GameTracking-CS2
+          git init -q "$d"
+          git -C "$d" remote add origin https://github.com/SteamDatabase/GameTracking-CS2.git
+          git -C "$d" fetch -q --depth=1 origin d8e2c7a4f9b86e60d5a1b584a83ee0e15f59cc54
+          git -C "$d" checkout -q FETCH_HEAD
       - name: Build wheel
         shell: bash
         run: |
