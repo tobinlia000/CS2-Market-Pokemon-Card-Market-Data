@@ -513,8 +513,9 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   - GitHub Actions builds a Windows/py3.13 wheel into `wheels/` and commits `wheels/build.log` even on failure.
   - The CS2 protobufs are pinned to GameTracking-CS2 d8e2c7a4 (2026-09-09), because the 2026-09-23 rename
     `customname` -> `customnames` breaks the build (upstream CI is broken too).
-  - Wheel: `demoparser2-0.42.0-cp313-cp313-win_amd64.whl`. Before the main install is upgraded it runs from the
-    scratch venv `dp042` (needs pillow, scipy, matplotlib). Undo: `pip install demoparser2==0.41.3`.
+  - Wheel: `demoparser2-0.42.0-cp313-cp313-win_amd64.whl`, kept in `C:\Users\Liam's PC\Tools\demoparser2-fixed\`.
+    **Installed into the main Python on 2026-09-28** (logged in findings.md). Undo: `pip install demoparser2==0.41.3`.
+    Never `pip install -U demoparser2` from PyPI; that brings the bug back unless upstream has fixed it.
   - I can't push to GitHub; the permission classifier blocks it, so the user pushes. PowerShell 5.1 has no `&&`:
     use `; if ($?) { ... }`.
   - Actions status can be read unauthenticated via api.github.com (runs/jobs/annotations); job logs need auth, hence
