@@ -228,8 +228,7 @@ class CsdvTest(unittest.TestCase):
     def test_motion_blur_wraps_csdm_preset(self):
         config = self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A, "motionBlur": {"inputFps": 240}}])
         seq = config["sequences"][0]
-        cfg = seq["cfg"].split("
-")
+        cfg = seq["cfg"].split("\n")
         n = seq["number"]
         self.assertIn(f"mirv_streams settings edit csdvBlur{n} settings csdmPreset{n}", cfg)
         self.assertIn(f"mirv_streams record screen settings csdvBlur{n}", cfg)
