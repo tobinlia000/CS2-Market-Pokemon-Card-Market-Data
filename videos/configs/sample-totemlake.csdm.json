@@ -14,7 +14,7 @@
     "customLocationEnabled": false,
     "customExecutableLocation": "",
     "audioBitrate": 256,
-    "constantRateFactor": 18,
+    "constantRateFactor": 14,
     "videoContainer": "mp4",
     "videoCodec": "libx264",
     "audioCodec": "aac",

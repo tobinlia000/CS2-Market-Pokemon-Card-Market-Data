@@ -466,3 +466,8 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   contrast-boosted crops. At the source: ReShade `Deband@Deband.fx` added to the look preset, a new
   `csdv-clean.ini` (Deband only) is now the default/resting preset in render.ps1 (every render, and demo watching),
   and profile CRF 18 → 14. In-game deband + CRF 14 are not yet verified in a render.
+- **Banding, verified 2026-09-27 (sample-v3 render):** in-game ReShade Deband + CRF 14 did NOT reduce banding in
+  the raw capture (still 142 levels, same contours; the game's 8-bit output is already quantized). CRF 14 made raw
+  files ~80% bigger → reverted to 18. ReShade clean/deband stays (harmless). **The fix that works is the 16-bit
+  deband + 10-bit grade in post.py** (576 levels, smooth). Always deliver through post.py cinematic (10-bit).
+  Output: `Videos\CS2 Renders\sample-v3\gap-scene-cinematic.mp4`.
