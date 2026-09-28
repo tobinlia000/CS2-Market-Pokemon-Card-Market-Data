@@ -1,0 +1,63 @@
+{
+ "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\mango1.dem",
+ "recordingSystem": "HLAE",
+ "recordingOutput": "video",
+ "encoderSoftware": "FFmpeg",
+ "framerate": 60,
+ "width": 2560,
+ "height": 1440,
+ "closeGameAfterRecording": true,
+ "trueView": false,
+ "concatenateSequences": false,
+ "outputFileName": "fx-blur-debug",
+ "ffmpegSettings": {
+  "customLocationEnabled": false,
+  "customExecutableLocation": "",
+  "audioBitrate": 256,
+  "constantRateFactor": 18,
+  "videoContainer": "mp4",
+  "videoCodec": "libx264",
+  "audioCodec": "aac",
+  "inputParameters": "",
+  "outputParameters": ""
+ },
+ "sequences": [
+  {
+   "number": 1,
+   "startTick": 17152,
+   "endTick": 17280,
+   "showXRay": false,
+   "showAssists": true,
+   "showOnlyDeathNotices": true,
+   "deathNoticesDuration": 5,
+   "playerVoicesEnabled": false,
+   "recordAudio": true,
+   "playersOptions": [
+    {
+     "playerName": "Caillou (Canadian now)",
+     "steamId": "76561198125088961",
+     "showKill": true,
+     "highlightKill": false,
+     "isVoiceEnabled": false
+    },
+    {
+     "playerName": "David",
+     "steamId": "76561198823971651",
+     "showKill": true,
+     "highlightKill": false,
+     "isVoiceEnabled": false
+    }
+   ],
+   "playerCameras": [
+    {
+     "tick": 17120,
+     "playerSteamId": "76561198125088961",
+     "playerName": "Caillou (Canadian now)"
+    }
+   ],
+   "cameras": [],
+   "cfg": "con_logfile csdv_console.log\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/totemlake-gap-scene-clip1.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17144 mirv_campath offset current\nmirv_cmd addAtTick 17280 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 17280 cl_drawhud 1\nmirv_cmd addAtTick 17122 spec_mode 3\nhost_framerate 240\nmirv_streams settings add sampler csdvBlur1\nmirv_streams settings edit csdvBlur1 settings csdmPreset1\nmirv_streams settings edit csdvBlur1 fps 60\nmirv_streams settings edit csdvBlur1 exposure 0.5\nmirv_streams settings edit csdvBlur1 strength 1.0\nmirv_streams settings edit afxDefault settings csdvBlur1\nmirv_streams settings edit csdvBlur1\nmirv_streams settings edit afxDefault\nmirv_streams print\nhost_framerate\nmirv_cmd addAtTick 17184 host_framerate\nmirv_cmd addAtTick 17184 mirv_streams settings edit afxDefault"
+  }
+ ],
+ "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"
+}

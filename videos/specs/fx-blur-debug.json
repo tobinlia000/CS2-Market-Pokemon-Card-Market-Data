@@ -1,0 +1,22 @@
+{
+  "summary": "videos/demos/mango1.summary.json",
+  "concatenate": false,
+  "name": "fx-blur-debug",
+  "outputFileName": "fx-blur-debug",
+  "clips": [
+    {
+      "type": "ticks",
+      "start": 17152,
+      "end": 17280,
+      "pov": "Caillou",
+      "camera": {
+        "file": "videos/campaths/totemlake-gap-scene-clip1.xml"
+      },
+      "motionBlur": {
+        "inputFps": 240,
+        "shutter": 0.5
+      },
+      "cfg": "con_logfile csdv_console.log"
+    }
+  ]
+}

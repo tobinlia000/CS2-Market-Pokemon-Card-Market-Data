@@ -225,6 +225,19 @@ class CsdvTest(unittest.TestCase):
         self.assertEqual(cfg.count("mirv_cmd clear"), 1)                       # view lines must not wipe the campath sync
         self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
 
+    def test_motion_blur_wraps_csdm_preset(self):
+        config = self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A, "motionBlur": {"inputFps": 240}}])
+        seq = config["sequences"][0]
+        cfg = seq["cfg"].split("
+")
+        n = seq["number"]
+        self.assertIn(f"mirv_streams settings edit csdvBlur{n} settings csdmPreset{n}", cfg)
+        self.assertIn(f"mirv_streams record screen settings csdvBlur{n}", cfg)
+        self.assertEqual(cfg[-1], "mirv_streams record fps 240")      # last: overrides CS:DM's record fps
+        self.assertEqual([p for p in csdv.validate_config(config) if p.startswith("ERROR")], [])
+        with self.assertRaises(csdv.CsdvError):
+            self.build([{"type": "ticks", "start": 6400, "end": 6720, "pov": A, "motionBlur": {"inputFps": 100}}])
+
     def test_cli_round_trip(self):
         with tempfile.TemporaryDirectory() as tmp:
             export = Path(tmp) / "match.json"

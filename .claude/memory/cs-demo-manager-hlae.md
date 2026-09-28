@@ -422,3 +422,19 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   New plan (4:28–5:12, CT reappears): 10/12 still shots, 2 specials; dense independent check (3636 pts): 0 frames.
 - Verification gotcha: campath XML parsed with a regex of x|y|z|fov|rx|ry|rz has no `t` column — parse all
   attributes into dicts when time matters.
+- **Look/quality tests (2026-09-27):**
+  - **Supersampling via a larger window does NOT work:** 3840x2160 in the CS:DM config rendered 2560x1440 (the game
+    clamps the window to the 1440p monitor). The only route is NVIDIA DSR/DLDSR (a driver/display change → ask first).
+  - **Motion blur WORKS** (`"motionBlur": {"inputFps": 240, "shutter": 0.5}` on a clip or spec). CS:DM's CS2+HLAE
+    path (read from app.asar): `mirv_streams record screen settings csdmPreset<N>` + `mirv_streams record fps <fps>`,
+    then the sequence cfg. So: add sampler csdvBlur<N> → settings csdmPreset<N>, fps 60, exposure 0.5 (180°),
+    strength 1 → `record screen settings csdvBlur<N>` → `record fps 240` (HLAE sets host_framerate from it; my
+    first try with host_framerate + afxDefault did nothing). Sampler options from HLAE source
+    shared/RecordingSettings.cpp: settings, fps, method rectangle|trapezoid, exposure 0..1, strength 0..1.
+    Verified: limbs visibly smeared; sharpness moving/static drops. ~4x render time at 240.
+  - `con_logfile` in a sequence cfg writes nothing (CS:DM runs cfg through its server plugin) → read CS:DM's code instead.
+  - Post looks: `tools/csdv/post.py <clip> --look downscale|cinematic|camcorder [--letterbox] [--stamp ...]`
+    (FFmpeg; cinematic = gentle contrast/warmth, vignette, grain, 2.39:1 bars; camcorder = 4:3 640x480 look,
+    wobble, fringing, noise, scanlines, PLAY ▶ + date + counter; Consolas lacks ▶ → Segoe UI Symbol).
+  - ReShade_advancedfx (DOF / AO / grading with real depth): not installed yet; loads via HLAE's custom loader as a
+    second DLL (never in the game folder); needs MSAA + FSR off; CS:DM launch integration unverified.

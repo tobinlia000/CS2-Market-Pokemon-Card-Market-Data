@@ -1,0 +1,21 @@
+{
+  "summary": "videos/demos/mango1.summary.json",
+  "concatenate": false,
+  "name": "fx-4k",
+  "outputFileName": "fx-4k",
+  "overrides": {
+    "width": 3840,
+    "height": 2160
+  },
+  "clips": [
+    {
+      "type": "ticks",
+      "start": 17152,
+      "end": 17376,
+      "pov": "Caillou",
+      "camera": {
+        "file": "videos/campaths/totemlake-gap-scene-clip1.xml"
+      }
+    }
+  ]
+}

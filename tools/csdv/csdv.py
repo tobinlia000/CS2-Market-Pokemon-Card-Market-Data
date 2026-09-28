@@ -563,6 +563,32 @@ def apply_view(clip: dict, sequences: list[dict], default_view: str) -> None:
         sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), *lines]))
 
 
+def motion_blur_lines(blur, number: int, settings: dict) -> list[str]:
+    """Real motion blur: the game runs at inputFps, HLAE's sampler blends the frames down to the output frame rate
+    with a shutter (exposure 0.5 = 180°, the film standard). CS:DM (v3.20.1) sets host_framerate, creates the ffmpeg
+    preset csdmPreset<N> and points afxDefault at it before the sequence cfg runs, so the sampler is inserted
+    between afxDefault and that preset here. Render time grows with inputFps / fps."""
+    blur = {} if blur is True else dict(blur)
+    fps = int(settings["framerate"])
+    input_fps = int(blur.get("inputFps", fps * 4))
+    if input_fps < fps * 2 or input_fps % fps:
+        raise CsdvError(f"motionBlur inputFps must be a multiple of the output fps ({fps}) and at least 2x.")
+    name = f"csdvBlur{number}"
+    if settings.get("recordingOutput") != "video" or settings.get("encoderSoftware") != "FFmpeg":
+        raise CsdvError("motionBlur needs recordingOutput video + FFmpeg (it wraps CS:DM's csdmPreset).")
+    # CS2 + HLAE path in CS:DM: "mirv_streams record screen settings csdmPreset<N>" and "mirv_streams record fps <fps>"
+    # (HLAE sets host_framerate from record fps when recording starts, so host_framerate alone is overridden).
+    return [
+        f"mirv_streams settings add sampler {name}",
+        f"mirv_streams settings edit {name} settings csdmPreset{number}",
+        f"mirv_streams settings edit {name} fps {fps}",
+        f"mirv_streams settings edit {name} exposure {float(blur.get('shutter', 0.5))}",
+        f"mirv_streams settings edit {name} strength {float(blur.get('strength', 1.0))}",
+        f"mirv_streams record screen settings {name}",
+        f"mirv_streams record fps {input_fps}",
+    ]
+
+
 def players_options(match: Match, highlight: set[str], voice: bool) -> list[dict]:
     return [
         {
@@ -590,6 +616,9 @@ def build_config(spec: dict, profile: dict, summary: dict | None, write_files: b
     for index, clip in enumerate(spec.get("clips", [])):
         clip_sequences = build_clip(clip, match, seq_settings, spec.get("cfg"))
         attach_camera(clip, clip_sequences, match, spec_name, index, write_files, demo_path)
+        if clip.get("motionBlur"):
+            for sequence in clip_sequences:
+                sequence["_motionBlur"] = clip["motionBlur"]
         apply_view(clip, clip_sequences, spec.get("view", settings.get("view", "first")))
         sequences.extend(clip_sequences)
     if not sequences:
@@ -609,6 +638,9 @@ def build_config(spec: dict, profile: dict, summary: dict | None, write_files: b
         sequences.sort(key=lambda s: s["startTick"])
     for number, sequence in enumerate(sequences, start=1):
         sequence["number"] = number
+        blur = sequence.pop("_motionBlur", None) or spec.get("motionBlur")
+        if blur:
+            sequence["cfg"] = "\n".join(filter(None, [sequence.get("cfg"), *motion_blur_lines(blur, number, settings)]))
 
     ffmpeg = settings["ffmpegSettings"]
     config = {
