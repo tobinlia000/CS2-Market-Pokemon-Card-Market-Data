@@ -787,7 +787,9 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
                                                    int(p.get("seed", 7)))
         keys = [campath.Key(float(t[i]), *map(float, cam[i]), float(pitch[i]), float(yaw[i]), float(roll[i]),
                             float(fov[i])) for i in range(len(t))]
-        visible = _visible_outside_zone(geometry, cam, sub, p)
+        # POV shows the subject's own view; ground lock-offs let the subject walk into / out of frame on purpose
+        framed_check = None if kind in ("pov", "ground") else (pitch, yaw, fov)
+        visible = _visible_outside_zone(geometry, cam, sub, p, view=framed_check)
         if visible < 0.9:
             warnings.append(f"subject hidden behind geometry in {100 * (1 - visible):.0f}% of the shot")
         exposed = _exposed(geometry, cam, pitch, yaw, fov, p, warnings)
@@ -864,7 +866,7 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
     keys = [campath.Key(float(t[i]), *map(float, cam[i]), float(pitch[i]), float(yaw[i]), float(roll[i]), float(fov[i]))
             for i in range(len(t))]
 
-    visible = _visible_outside_zone(geometry, cam, sub, p, aim)
+    visible = _visible_outside_zone(geometry, cam, sub, p, aim, view=(pitch, yaw, fov))
     if visible < 0.9:
         warnings.append(f"subject hidden behind geometry in {100 * (1 - visible):.0f}% of the shot")
     exposed = _exposed(geometry, cam, pitch, yaw, fov, p, warnings)
@@ -884,16 +886,22 @@ def _inside_zone(sub: Subject, p: dict) -> np.ndarray:
     return in_zone(zone, sub.feet[:, :2]) | in_zone(zone, toward)
 
 
-def _visible_outside_zone(geometry, cam, sub: Subject, p: dict, aim=None) -> float:
-    """Share of keys with a clear view of the subject, ignoring moments they are inside a hidden zone (there
-    they are *supposed* to be out of view)."""
+def _visible_outside_zone(geometry, cam, sub: Subject, p: dict, aim=None, view=None) -> float:
+    """Share of keys where the subject is on screen: a clear line of sight AND, when view=(pitch, yaw, fov) is
+    given, inside the frame (a lagging pan once had a clear line to a subject who had walked out of the picture).
+    Moments inside a hidden zone are ignored (there they are *supposed* to be out of view)."""
     aim = sub.aim if aim is None else aim
-    if geometry is None:
-        return 1.0
     keys = np.flatnonzero(~_inside_zone(sub, p))
     if len(keys) == 0:
         return 1.0
-    return float(np.mean([geometry.clear(cam[i], aim[i]) for i in keys]))
+    ok = np.ones(len(keys), bool)
+    if view is not None:
+        pitch, yaw, fov = (np.asarray(v, float) for v in view)
+        chest = sub.feet + [0.0, 0.0, 44.0]
+        ok &= np.array([_in_frame(cam[i], pitch[i], yaw[i], fov[i], chest[i:i + 1])[0] for i in keys])
+    if geometry is not None:
+        ok &= np.array([geometry.clear(cam[i], aim[i]) for i in keys])
+    return float(ok.mean())
 
 
 def _exposed(geometry, cam, pitch, yaw, fov, p: dict, warnings: list) -> float:

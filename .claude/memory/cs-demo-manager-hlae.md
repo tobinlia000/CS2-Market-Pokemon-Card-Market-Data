@@ -453,3 +453,9 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   Gotchas: `sed 's/...\csdv/'` mangles `\c` → edit ReShade.ini with Python/regex. PowerShell
   ChangeExtension($f, $null) passes "" (not null). "Wider" look in comparisons was AO revealing room edges — the
   framing was pixel-identical.
+- **Sample clip (2026-09-27): `Videos\CS2 Renders\sample\sample-totemlake-cinematic.mp4`** (48.5 s, 13 shots:
+  EXIT slow-zoom opener + gap scene 4:28–5:12). Stack: suggester (backrooms mood, still-shot pacing, `--hide N1`,
+  `--while-hidden David`) + ReShade look + motion blur 240→60 (180°) + post.py cinematic --letterbox. Render took
+  ~3 min, the grade ~1.7 min. The user rarely wants the camcorder grade. Visibility now also requires the subject
+  inside the frame (not only line of sight) except for pov/ground shots; I still swapped beat 5's lagging tripod
+  pan for a slow zoom by hand (spec keeps the old pick in `alternatives`).
