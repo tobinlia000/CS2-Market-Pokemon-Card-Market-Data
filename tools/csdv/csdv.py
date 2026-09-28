@@ -761,7 +761,7 @@ def validate_config(config: dict) -> list[str]:
         if isinstance(start, int) and isinstance(end, int):
             if start < 1 or end <= start:
                 error(f"{label}: needs 1 <= startTick < endTick")
-            if start <= previous_end:
+            if start < previous_end:  # back-to-back beats (start == previous end) are fine
                 warn(f"{label}: overlaps the previous sequence (ticks {start}-{end})")
             previous_end = max(previous_end, end)
             if start < 64:
@@ -809,6 +809,19 @@ def command_validate(args) -> int:
     return 1 if errors else 0
 
 
+def parse_hide(value: str, summary: dict) -> dict:
+    """'x,y,z[,radius]' or a zone id from videos/maps/<map>/overview/<map>-spaces.json (e.g. N1)."""
+    if re.fullmatch(r"\s*-?[\d.]+\s*,\s*-?[\d.]+\s*,\s*-?[\d.]+(\s*,\s*[\d.]+)?\s*", value):
+        nums = [float(v) for v in value.split(",")]
+        return {"center": nums[:3], "radius": nums[3] if len(nums) > 3 else 40.0}
+    spaces = REPO_ROOT / "videos" / "maps" / summary.get("map", "") / "overview" / f"{summary.get('map', '')}-spaces.json"
+    if spaces.is_file():
+        for zone in load_json(spaces).get("zones", []):
+            if zone["id"].lower() == value.lower():
+                return {"center": zone["center"], "radius": zone.get("radius", 40.0)}
+    raise CsdvError(f"Unknown hidden zone '{value}' (use x,y,z[,r] or a zone id from the map overview).")
+
+
 def command_suggest(args) -> int:
     """Analyze a stretch of a demo and suggest shots per beat; writes a ready-to-build spec with alternatives."""
     import positions
@@ -831,7 +844,10 @@ def command_suggest(args) -> int:
             events.append({"type": "death", "tick": int(k["tick"])})
         elif k.get("killerSteamId") == subject["steamId"]:
             events.append({"type": "kill", "tick": int(k["tick"])})
-    planned = scene.plan(tracks, subject["steamId"], start, end, args.mood, geometry, events, args.top, tickrate)
+    hide = parse_hide(args.hide, summary) if args.hide else None
+    while_hidden = match.player(args.while_hidden)["steamId"] if args.while_hidden else None
+    planned = scene.plan(tracks, subject["steamId"], start, end, args.mood, geometry, events, args.top, tickrate,
+                         hide, while_hidden)
 
     name = args.name or re.sub(r"[^A-Za-z0-9._-]", "-", f"{summary.get('name', 'demo')}-{args.mood}-suggested")
     clips, lines = [], [f"# Shot suggestions: {summary.get('name')} / {subject['name']} / mood {args.mood}", ""]
@@ -840,8 +856,9 @@ def command_suggest(args) -> int:
         head = f"Beat {number}  {when} ({beat.seconds:.1f}s)  tension {beat.tension:.1f}  " \
                f"[{', '.join(sorted(beat.tags)) or '-'}]"
         print(head)
-        print(f"  {beat.describe(subject['name'])}")
-        lines += [f"## {head}", "", beat.describe(subject["name"]), ""]
+        print(f"  {beat.describe(tracks[beat.subject].name if beat.subject else subject['name'])}")
+        who = tracks[beat.subject].name if beat.subject else subject["name"]
+        lines += [f"## {head}", "", beat.describe(who), ""]
         if not options:
             print("  (no shot keeps the subject in view here)")
             lines += ["(no shot keeps the subject in view here)", ""]
@@ -903,6 +920,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--name", help="output spec name")
     p.add_argument("--demo", help="override the .dem path")
     p.add_argument("--no-geometry", action="store_true")
+    p.add_argument("--hide", help="place that must never be on screen: x,y,z[,radius] or a map-overview zone id")
+    p.add_argument("--while-hidden", help="player to follow while the subject is inside the --hide zone")
     p.set_defaults(func=command_suggest)
 
     args = parser.parse_args(argv)

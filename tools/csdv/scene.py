@@ -44,6 +44,7 @@ class Window:
     alive: bool = True
     events: list = field(default_factory=list)   # ("death" | "kill", tick)
     teleport: bool = False
+    inside: bool = False          # the subject is inside the hidden zone
 
 
 @dataclass
@@ -55,6 +56,7 @@ class Beat:
     tension: float
     windows: list
     other: dict | None = None     # the most relevant other player (watcher / chaser / opponent)
+    subject: str | None = None    # who the shots follow in this beat (None: the scene's subject)
 
     @property
     def motion(self) -> str:
@@ -85,12 +87,12 @@ class Beat:
 MOTION_TEXT = {"still": "is standing still", "walk": "is walking", "run": "is running", "searching": "is looking around",
                "corner": "turns a corner", "startle": "stops suddenly", "watched": "is being watched",
                "chase": "is being chased", "approach": "is being approached", "face_off": "faces someone",
-               "death": "dies", "kill": "gets a kill"}
+               "death": "dies", "kill": "gets a kill", "hidden": "is hidden"}
 OTHER_TEXT = {"watched": "behind them with line of sight", "chase": "running after them",
               "approach": "closing in", "face_off": "in front of them"}
-LABEL_PRIORITY = ["death", "kill", "chase", "watched", "face_off", "approach", "startle", "searching", "corner",
-                  "run", "walk", "still"]
-TENSION = {"death": 3.0, "kill": 2.0, "chase": 3.0, "watched": 2.6, "face_off": 2.2, "approach": 2.0, "startle": 2.0,
+LABEL_PRIORITY = ["hidden", "death", "kill", "chase", "watched", "face_off", "approach", "startle", "searching",
+                  "corner", "run", "walk", "still"]
+TENSION = {"hidden": 2.2, "death": 3.0, "kill": 2.0, "chase": 3.0, "watched": 2.6, "face_off": 2.2, "approach": 2.0, "startle": 2.0,
            "searching": 1.5, "corner": 1.0, "run": 1.0, "walk": 0.4, "still": 0.6}
 
 
@@ -164,6 +166,8 @@ def analyze(tracks: dict[str, Track], subject_id: str, start: int, end: int, geo
 
 
 def window_label(w: Window, prev: Window | None) -> tuple[str, set, dict | None]:
+    if w.inside:
+        return "hidden", {"hidden"}, None
     tags = set()
     if w.openness is not None:
         tags.add("tight" if w.openness < 260 else "open" if w.openness > 650 else "medium")
@@ -421,7 +425,7 @@ class Suggestion:
 
 def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "neutral", geometry=None,
             history: list[tuple[str, str]] | None = None, top: int = 3, tickrate: float = 64.0,
-            pace: dict | None = None) -> list[Suggestion]:
+            pace: dict | None = None, hide: dict | None = None) -> list[Suggestion]:
     history = history or []
     pace = pace or {}
     horror = mood in ("horror", "backrooms")
@@ -462,6 +466,8 @@ def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "
     for score, recipe in scored[: top * 3]:
         subject = beat.other["steamId"] if recipe.subject_is_other else subject_id
         params = dict(recipe.params)
+        if hide:
+            params["hide"] = hide
         if recipe.over_other:
             params["overTrack"] = tracks[beat.other["steamId"]]
         if recipe.shot == "stalker" and beat.label == "watched" and beat.other:
@@ -473,7 +479,7 @@ def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "
             result = cine.build(recipe.shot, tracks[subject], beat.start, beat.end, tickrate, params, geometry)
         except cine.ShotError:
             continue
-        if result.visible < 0.75:
+        if result.visible < 0.75 or result.exposed > 0:
             continue
         final = score * (0.5 + 0.5 * result.visible) * (1.0 - 0.4 * result.pulled)
         camera = {"shot": recipe.shot, "subject": tracks[subject].name, "technique": recipe.technique}
@@ -487,15 +493,35 @@ def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "
 
 
 def plan(tracks: dict[str, Track], subject_id: str, start: int, end: int, mood: str = "neutral", geometry=None,
-         events: list[dict] | None = None, top: int = 3, tickrate: float = 64.0):
-    """Analyze + segment + suggest. Returns [(beat, [suggestions])]."""
+         events: list[dict] | None = None, top: int = 3, tickrate: float = 64.0, hide: dict | None = None,
+         while_hidden: str | None = None):
+    """Analyze + segment + suggest. Returns [(beat, [suggestions])].
+
+    hide: {"center": [x, y, z], "radius": r} that must never be on screen in any shot of the scene.
+    while_hidden: steamId of the player the shots follow while the subject is inside that zone."""
     windows = analyze(tracks, subject_id, start, end, geometry, events, tickrate)
-    beats = segment(windows)
+    if hide:
+        c, r = np.asarray(hide["center"], float), float(hide.get("radius", 32.0)) + 32.0
+        sub = tracks[subject_id]
+        for w in windows:
+            i = _at(sub, np.array([w.tick + WINDOW_TICKS // 2]))[0]
+            w.inside = bool(np.linalg.norm(sub.pos[i, :2] - c[:2]) < r)
+    beats = []
+    for beat in segment(windows):
+        if beat.label == "hidden" and while_hidden:
+            # while the subject is in the hidden place, cover the other player instead (re-read from their side)
+            for b in segment(analyze(tracks, while_hidden, beat.start, beat.end, geometry, events, tickrate)):
+                b.subject = while_hidden
+                b.other = None
+                beats.append(b)
+        else:
+            beats.append(beat)
     history: list[tuple[str, str]] = []  # (shot type, recipe name) of each beat's top pick
     classes: list[str] = []               # pacing class of each beat's top pick
     out = []
     for beat in beats:
-        options = suggest(beat, tracks, subject_id, mood, geometry, history, top, tickrate, pacing(classes))
+        options = suggest(beat, tracks, beat.subject or subject_id, mood, geometry, history, top, tickrate,
+                          pacing(classes), hide)
         if options:
             history.append((options[0].recipe.shot, options[0].recipe.name))
             classes.append(category(options[0].recipe))

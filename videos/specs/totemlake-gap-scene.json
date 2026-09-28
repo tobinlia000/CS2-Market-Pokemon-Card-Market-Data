@@ -1,0 +1,843 @@
+{
+  "name": "totemlake-gap-scene",
+  "summary": "videos/demos/mango1.summary.json",
+  "outputFileName": "totemlake-gap-scene",
+  "concatenate": true,
+  "order": "spec",
+  "clips": [
+    {
+      "type": "ticks",
+      "start": 17152,
+      "end": 17376,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Liminal lock-off",
+        "facing": "toward",
+        "lens": 56.0,
+        "fov": 100.0,
+        "lookAhead": 0.7,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 153 u away) ~191 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Ground-level lock-off",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+        },
+        {
+          "shot": "pov",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 17376,
+      "end": 17536,
+      "camera": {
+        "shot": "dolly_zoom",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Dolly zoom (Vertigo)",
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Dolly zoom (Vertigo): the background warps while they stay the same size: the moment of realisation."
+      },
+      "beat": "Caillou (Canadian now) faces someone indoors (David in front of them, 228 u away) ~236 u/s",
+      "alternatives": [
+        {
+          "shot": "pov",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        },
+        {
+          "shot": "ots",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Over the threat's shoulder",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "over": "David",
+          "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 17536,
+      "end": 17664,
+      "camera": {
+        "shot": "ground",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Ground-level lock-off",
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Ground-level lock-off: the lens rests on the floor while they run away from it."
+      },
+      "beat": "Caillou (Canadian now) faces someone in open space indoors (David in front of them, 317 u away) ~199 u/s",
+      "alternatives": [
+        {
+          "shot": "pov",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 17664,
+      "end": 17792,
+      "camera": {
+        "shot": "stalker",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Stalker vision / voyeur",
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "pos": [
+          -126.01043701171875,
+          3179.447021484375,
+          831.03125
+        ],
+        "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+      },
+      "beat": "Caillou (Canadian now) is being watched in open space indoors (David behind them with line of sight, 325 u away) ~210 u/s",
+      "alternatives": [
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Negative space behind the subject",
+          "lead": -0.3,
+          "distance": 210.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Negative space behind the subject: framing them to one side leaves empty space behind them, where the audience expects the threat."
+        },
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Unsteady observer",
+          "handheld": 0.8,
+          "size": "medium",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Unsteady observer: a slightly shaky, lagging observer makes calm moments feel unsafe."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 17792,
+      "end": 17920,
+      "camera": {
+        "shot": "lead",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Negative space behind the subject",
+        "lead": -0.3,
+        "distance": 210.0,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Negative space behind the subject: framing them to one side leaves empty space behind them, where the audience expects the threat."
+      },
+      "beat": "Caillou (Canadian now) is being watched in open space indoors (David behind them with line of sight, 399 u away) ~148 u/s",
+      "alternatives": [
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Unsteady observer",
+          "handheld": 0.8,
+          "size": "medium",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Unsteady observer: a slightly shaky, lagging observer makes calm moments feel unsafe."
+        },
+        {
+          "shot": "pov",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 17920,
+      "end": 18048,
+      "camera": {
+        "shot": "ots",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Over the threat's shoulder",
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "over": "David",
+        "why": "Over the threat's shoulder: the audience sees the threat and the unaware victim together (dramatic irony)."
+      },
+      "beat": "Caillou (Canadian now) faces someone in open space indoors (David in front of them, 181 u away) ~216 u/s",
+      "alternatives": [
+        {
+          "shot": "dolly_zoom",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Dolly zoom (Vertigo)",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Dolly zoom (Vertigo): the background warps while they stay the same size: the moment of realisation."
+        },
+        {
+          "shot": "pov",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 18048,
+      "end": 18208,
+      "camera": {
+        "shot": "tripod",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Unsteady observer",
+        "handheld": 0.8,
+        "size": "medium",
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Unsteady observer: a slightly shaky, lagging observer makes calm moments feel unsafe."
+      },
+      "beat": "Caillou (Canadian now) is being watched in open space indoors (David behind them with line of sight, 455 u away) ~205 u/s",
+      "alternatives": [
+        {
+          "shot": "stalker",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Stalker vision / voyeur",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "pos": [
+            -50.6505126953125,
+            3741.881591796875,
+            831.03125
+          ],
+          "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+        },
+        {
+          "shot": "lead",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Negative space behind the subject",
+          "lead": -0.3,
+          "distance": 210.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Negative space behind the subject: framing them to one side leaves empty space behind them, where the audience expects the threat."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 18208,
+      "end": 18368,
+      "camera": {
+        "shot": "stalker",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Stalker vision / voyeur",
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "pos": [
+          -227.91595458984375,
+          3672.182861328125,
+          831.03125
+        ],
+        "why": "Stalker vision / voyeur: a hidden watcher's long lens from behind cover: someone is observing them."
+      },
+      "beat": "Caillou (Canadian now) is being watched indoors (David behind them with line of sight, 843 u away) ~192 u/s",
+      "alternatives": [
+        {
+          "shot": "pov",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        },
+        {
+          "shot": "follow",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Found-footage follow (second camera)",
+          "distance": 70.0,
+          "height": 6.0,
+          "fov": 95.0,
+          "handheld": 0.8,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 18368,
+      "end": 18496,
+      "camera": {
+        "shot": "pov",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is being watched indoors (David behind them with line of sight, 1038 u away) ~91 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Empty-room wide",
+          "margin": 1.6,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 18496,
+      "end": 18688,
+      "camera": {
+        "shot": "static",
+        "subject": "Caillou (Canadian now)",
+        "technique": "Empty-room wide",
+        "margin": 1.6,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+      },
+      "beat": "Caillou (Canadian now) is walking indoors ~86 u/s",
+      "alternatives": [
+        {
+          "shot": "tripod",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Tripod pan",
+          "size": "full",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Tripod pan: a fixed observer panning with the action."
+        },
+        {
+          "shot": "static",
+          "subject": "Caillou (Canadian now)",
+          "technique": "Static medium",
+          "margin": 1.05,
+          "distance": 450.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Static medium: a plain, still frame: the calm between the bigger moments."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 18688,
+      "end": 18816,
+      "camera": {
+        "shot": "follow",
+        "subject": "David",
+        "technique": "Found-footage follow (second camera)",
+        "distance": 70.0,
+        "height": 6.0,
+        "fov": 95.0,
+        "handheld": 0.8,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+      },
+      "beat": "Caillou (Canadian now) is walking indoors ~50 u/s",
+      "alternatives": [
+        {
+          "shot": "ground",
+          "subject": "David",
+          "technique": "Liminal lock-off",
+          "facing": "toward",
+          "lens": 56.0,
+          "fov": 100.0,
+          "lookAhead": 0.7,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+        },
+        {
+          "shot": "follow",
+          "subject": "David",
+          "technique": "Steadicam follow",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Steadicam follow: stays with them through the space."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 18816,
+      "end": 18944,
+      "camera": {
+        "shot": "ground",
+        "subject": "David",
+        "technique": "Liminal lock-off",
+        "facing": "toward",
+        "lens": 56.0,
+        "fov": 100.0,
+        "lookAhead": 0.7,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Liminal lock-off: a still, wide eye-level frame down an empty space they slowly walk into: dread from the space itself."
+      },
+      "beat": "Caillou (Canadian now) turns a corner in open space indoors ~111 u/s",
+      "alternatives": [
+        {
+          "shot": "tripod",
+          "subject": "David",
+          "technique": "Tripod pan",
+          "size": "full",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Tripod pan: a fixed observer panning with the action."
+        },
+        {
+          "shot": "pov",
+          "subject": "David",
+          "technique": "Found-footage camcorder POV",
+          "handheld": 0.7,
+          "fov": 95.0,
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 18944,
+      "end": 19200,
+      "camera": {
+        "shot": "pov",
+        "subject": "David",
+        "technique": "Found-footage camcorder POV",
+        "handheld": 0.7,
+        "fov": 95.0,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Found-footage camcorder POV: the character's own camcorder at eye height, wide lens, sweeping when they look around."
+      },
+      "beat": "Caillou (Canadian now) is walking in open space indoors ~79 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "David",
+          "technique": "Steadicam follow",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Steadicam follow: stays with them through the space."
+        },
+        {
+          "shot": "side",
+          "subject": "David",
+          "technique": "Dolly track",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Dolly track: shows speed and the space they move through."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 19200,
+      "end": 19328,
+      "camera": {
+        "shot": "static",
+        "subject": "David",
+        "technique": "Empty-room wide",
+        "margin": 1.6,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Empty-room wide: a wide, still frame where the room dwarfs them: vast and claustrophobic at once."
+      },
+      "beat": "Caillou (Canadian now) is walking indoors ~59 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "David",
+          "technique": "Steadicam follow",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Steadicam follow: stays with them through the space."
+        },
+        {
+          "shot": "side",
+          "subject": "David",
+          "technique": "Dolly track",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Dolly track: shows speed and the space they move through."
+        }
+      ]
+    },
+    {
+      "type": "ticks",
+      "start": 19328,
+      "end": 19456,
+      "camera": {
+        "shot": "follow",
+        "subject": "David",
+        "technique": "Found-footage follow (second camera)",
+        "distance": 70.0,
+        "height": 6.0,
+        "fov": 95.0,
+        "handheld": 0.8,
+        "hide": {
+          "center": [
+            -1528,
+            3351,
+            773
+          ],
+          "radius": 40
+        },
+        "why": "Found-footage follow (second camera): someone filming right behind them at eye level, like the second person in found footage."
+      },
+      "beat": "Caillou (Canadian now) turns a corner indoors ~48 u/s",
+      "alternatives": [
+        {
+          "shot": "follow",
+          "subject": "David",
+          "technique": "Steadicam follow",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Steadicam follow: stays with them through the space."
+        },
+        {
+          "shot": "tripod",
+          "subject": "David",
+          "technique": "Tripod pan",
+          "size": "full",
+          "hide": {
+            "center": [
+              -1528,
+              3351,
+              773
+            ],
+            "radius": 40
+          },
+          "why": "Tripod pan: a fixed observer panning with the action."
+        }
+      ]
+    }
+  ]
+}

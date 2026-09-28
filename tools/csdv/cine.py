@@ -67,6 +67,7 @@ class ShotResult:
     visible: float               # fraction of keys with clear line of sight to the subject's chest
     pulled: float                # fraction of keys where collision pulled the camera in
     warnings: list = field(default_factory=list)
+    exposed: float = 0.0         # fraction of keys where a "hide" zone is on screen (must be 0 for a valid shot)
 
 
 # --- helpers ------------------------------------------------------------------------------------------------------
@@ -201,7 +202,7 @@ def place_tripod(geometry, sub: Subject, params: dict) -> np.ndarray:
                 floor = geometry.floor_z(*cam, depth=2000.0)
                 if floor is None or cam[2] - floor < 24.0:
                     continue
-                if not geometry.clear(centroid, cam):
+                if not geometry.clear(centroid, cam) or sees_zone(geometry, cam, params):
                     continue
                 visible = np.mean([geometry.clear(cam, p) for p in samples])
                 score = visible * 10 - abs(d_angle) / 90.0 - abs(math.log(scale)) - (dz - height) / 200.0
@@ -297,6 +298,36 @@ def _in_frame(cam, pitch, yaw, h43, points) -> np.ndarray:
     return (z > 1) & (np.abs(rel @ right) / zs < tan_h) & (np.abs(rel @ up) / zs < tan_v)
 
 
+# --- hidden zones: a place that must never be on screen (e.g. the nook a player hides in) --------------------------
+
+def hide_points(zone: dict) -> np.ndarray:
+    """Sample points filling a hidden zone {"center": [x, y, floor_z], "radius": r}: the spot, a ring around it,
+    at ankle, chest and head height."""
+    c = np.asarray(zone["center"], float)
+    r = float(zone.get("radius", 32.0))
+    ring = [(0.0, 0.0)] + [(r * math.cos(a), r * math.sin(a)) for a in np.radians(np.arange(0, 360, 45))]
+    return np.array([[c[0] + dx, c[1] + dy, c[2] + h] for dx, dy in ring for h in (10.0, 38.0, 66.0)])
+
+
+def sees_zone(geometry, cam: np.ndarray, p: dict) -> bool:
+    """True if a camera position has a clear line of sight to any point of the hidden zone (conservative: a
+    placement that can see into it at all is rejected, whatever it is aimed at)."""
+    pts = p.get("_hide_pts")
+    if pts is None or geometry is None:
+        return False
+    return any(geometry.clear(cam, q) for q in pts)
+
+
+def zone_exposure(geometry, cam, pitch, yaw, fov, pts) -> np.ndarray:
+    """Per key: is any hidden-zone point inside the frame AND not blocked by geometry?"""
+    exposed = np.zeros(len(cam), bool)
+    for i in range(len(cam)):
+        framed = _in_frame(cam[i], float(pitch[i]), float(yaw[i]), float(fov[i]) * 1.08, pts)
+        if framed.any():
+            exposed[i] = geometry is None or any(geometry.clear(cam[i], q) for q in pts[framed])
+    return exposed
+
+
 def place_static(geometry, sub, p) -> np.ndarray:
     """A locked-off spot that sees all of the action with the narrowest lens: back off far enough and high enough."""
     lo, hi = sub.aim.min(axis=0), sub.aim.max(axis=0)
@@ -317,6 +348,8 @@ def place_static(geometry, sub, p) -> np.ndarray:
                 if geometry is not None:
                     floor = geometry.floor_z(*cam, depth=3000.0)
                     if floor is None or cam[2] - floor < 24.0 or not geometry.clear(anchor, cam):
+                        continue
+                    if sees_zone(geometry, cam, p):
                         continue
                     visible = np.mean([geometry.clear(cam, s) for s in samples])
                 else:
@@ -415,6 +448,8 @@ def shot_drone(geometry, sub, p, f, kps):
             if geometry is not None:  # the flight path itself must not pass through geometry
                 hits = sum(not geometry.clear(cams[i], cams[i + 4]) for i in range(0, len(cams) - 4, 4))
                 score -= hits * 0.2
+                if p.get("_hide_pts") is not None:
+                    score -= 5.0 * np.mean([sees_zone(geometry, cams[i], p) for i in range(0, len(cams), 4)])
             if score > best_score:
                 best, best_score = cams, score
     cam = gaussian_filter1d(best, sigma=0.2 * kps, axis=0, mode="nearest")
@@ -451,6 +486,8 @@ def shot_ground(geometry, sub, p, f, kps):
                 return None
             floor = found
         cam = np.r_[xy, floor + float(p.get("lens", 6.0))]
+        if sees_zone(geometry, cam, p):
+            return None
         target = sub.feet[look_index] + [0, 0, float(p.get("targetHeight", 36.0))]
         pitch, yaw = campath.look_at(tuple(cam), tuple(target))
         return cam, float(pitch), float(yaw)
@@ -531,6 +568,8 @@ def place_stalker(geometry, sub, p) -> np.ndarray:
                     return cam
                 floor = geometry.floor_z(*cam, depth=2000.0)
                 if floor is None or cam[2] - floor < 20.0 or not geometry.clear(anchor, cam):
+                    continue
+                if sees_zone(geometry, cam, p):
                     continue
                 visible = np.mean([geometry.clear(cam, s) for s in samples])
                 # tucked: a wall close beside the lens (within 70 units) in some horizontal direction
@@ -635,6 +674,8 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
     if kind not in SHOT_DEFAULTS:
         raise ShotError(f"Unknown cinematic shot '{kind}'. Use one of {sorted(SHOTS)}.")
     p = {**SHOT_DEFAULTS[kind], **(params or {})}
+    if p.get("hide"):
+        p["_hide_pts"] = hide_points(p["hide"])
     pad = int(PAD_SECONDS * tickrate)
     window = track.window(start_tick - pad, end_tick + pad)
     if len(window.tick) == 0 or window.tick[0] > start_tick or window.tick[-1] < end_tick:
@@ -675,10 +716,11 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
                                                    int(p.get("seed", 7)))
         keys = [campath.Key(float(t[i]), *map(float, cam[i]), float(pitch[i]), float(yaw[i]), float(roll[i]),
                             float(fov[i])) for i in range(len(t))]
-        visible = 1.0 if geometry is None else float(np.mean([geometry.clear(cam[i], sub.aim[i]) for i in range(len(t))]))
+        visible = _visible_outside_zone(geometry, cam, sub, p)
         if visible < 0.9:
             warnings.append(f"subject hidden behind geometry in {100 * (1 - visible):.0f}% of the shot")
-        return ShotResult(keys, cam, sub.aim, sub.feet, visible, 0.0, warnings)
+        exposed = _exposed(geometry, cam, pitch, yaw, fov, p, warnings)
+        return ShotResult(keys, cam, sub.aim, sub.feet, visible, 0.0, warnings, exposed)
 
     if kind == "tripod":
         cam = np.tile(np.asarray(p["pos"], float) if p.get("pos") else place_tripod(geometry, sub, p), (len(t), 1))
@@ -717,6 +759,9 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
                 placed = sub.aim + (placed - sub.aim) / np.maximum(got, 1e-9)[:, None] * mono[:, None]
             placed = gaussian_filter1d(placed, sigma=0.12 * keys_per_second, axis=0, mode="nearest")
             lost = np.linalg.norm(wanted - placed, axis=1).mean() / max(float(distance.mean()), 1.0)
+            if p.get("_hide_pts") is not None:  # rough check (aim at the subject); the exact one runs at the end
+                pch, yw = _look(placed, sub.aim)
+                lost += 10.0 * zone_exposure(geometry, placed, pch, yw, np.full(len(placed), 70.0), p["_hide_pts"]).mean()
             return placed, pulled_mask, lost
 
         if p["angle"] == "auto":
@@ -748,15 +793,44 @@ def build(kind: str, track: Track, start_tick: int, end_tick: int, tickrate: flo
     keys = [campath.Key(float(t[i]), *map(float, cam[i]), float(pitch[i]), float(yaw[i]), float(roll[i]), float(fov[i]))
             for i in range(len(t))]
 
-    visible = 1.0
-    if geometry is not None:
-        visible = float(np.mean([geometry.clear(cam[i], aim[i]) for i in range(len(t))]))
-        if visible < 0.9:
-            warnings.append(f"subject hidden behind geometry in {100 * (1 - visible):.0f}% of the shot")
+    visible = _visible_outside_zone(geometry, cam, sub, p, aim)
+    if visible < 0.9:
+        warnings.append(f"subject hidden behind geometry in {100 * (1 - visible):.0f}% of the shot")
+    exposed = _exposed(geometry, cam, pitch, yaw, fov, p, warnings)
     if pulled.mean() > 0.3:
         warnings.append(f"walls pulled the camera in for {100 * pulled.mean():.0f}% of the shot; "
                         "try another angle or a shorter distance")
-    return ShotResult(keys, cam, aim, sub.feet, visible, float(pulled.mean()), warnings)
+    return ShotResult(keys, cam, aim, sub.feet, visible, float(pulled.mean()), warnings, exposed)
+
+
+def _inside_zone(sub: Subject, p: dict) -> np.ndarray:
+    zone = p.get("hide")
+    if not zone:
+        return np.zeros(len(sub.feet), bool)
+    c = np.asarray(zone["center"], float)
+    return np.linalg.norm(sub.feet[:, :2] - c[:2], axis=1) < float(zone.get("radius", 32.0)) + 32.0
+
+
+def _visible_outside_zone(geometry, cam, sub: Subject, p: dict, aim=None) -> float:
+    """Share of keys with a clear view of the subject, ignoring moments they are inside a hidden zone (there
+    they are *supposed* to be out of view)."""
+    aim = sub.aim if aim is None else aim
+    if geometry is None:
+        return 1.0
+    keys = np.flatnonzero(~_inside_zone(sub, p))
+    if len(keys) == 0:
+        return 1.0
+    return float(np.mean([geometry.clear(cam[i], aim[i]) for i in keys]))
+
+
+def _exposed(geometry, cam, pitch, yaw, fov, p: dict, warnings: list) -> float:
+    pts = p.get("_hide_pts")
+    if pts is None:
+        return 0.0
+    exposed = float(zone_exposure(geometry, cam, np.asarray(pitch), np.asarray(yaw), np.asarray(fov), pts).mean())
+    if exposed > 0:
+        warnings.append(f"the hidden zone is on screen in {100 * exposed:.0f}% of the shot")
+    return exposed
 
 
 def preview(result: ShotResult, png_path, geometry=None, title: str = "") -> None:
