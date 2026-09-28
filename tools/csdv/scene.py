@@ -487,7 +487,7 @@ def suggest(beat: Beat, tracks: dict[str, Track], subject_id: str, mood: str = "
             result = cine.build(recipe.shot, tracks[subject], beat.start, beat.end, tickrate, params, geometry)
         except cine.ShotError:
             continue
-        if result.visible < 0.75 or result.exposed > 0:
+        if result.visible < 0.9 or result.exposed > 0:  # 0.75 let a pan end on a wall (gap scene v2 shot 5)
             continue
         final = score * (0.5 + 0.5 * result.visible) * (1.0 - 0.4 * result.pulled)
         camera = {"shot": recipe.shot, "subject": tracks[subject].name, "technique": recipe.technique}
