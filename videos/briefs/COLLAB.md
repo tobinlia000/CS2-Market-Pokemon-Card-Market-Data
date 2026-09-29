@@ -89,6 +89,8 @@ script beat; standing shots are only scripted lines, about 3–4 s each.
 4. **#49 fixed:** the creature now walks into frame from behind the camera (back of its head) before the last smoke.
 
 **Still open:**
+- **#53 (slow-mo fall):** looks down the pit shaft. The bottom is pure black, but a ledge plank is visible. OK under
+  "never show the pit bottom", or frame it tighter?
 - The pit-scene opening ("246, 247", the pit reveal, backing into the corner) isn't in A1 and needs a new recording.
 - A2 (Poolrooms): waiting for your cleaned-up shot list; otherwise I'll plan it from the bible (scene 9).
 
@@ -128,6 +130,10 @@ script beat; standing shots are only scripted lines, about 3–4 s each.
   show his face); #50's POV faces the room, not the pit.
 
 ## 6. Render log
+- 2026-09-29 · **A1 v4** · `A1-v4-final.mp4` + `-final-8bit.mp4` (53 shots, ~3:50) + clean plate `A1-v4-plate32-final.mp4`.
+  v3 was recorded but not shipped: four shots lost their campath (~64-tick gap bug, chase cam showed LL's face), and
+  LL was at the frame edge in #8 and #25. v4 fixes all of these and was reviewed frame by frame. #8 (the abyss, new
+  spot: dark corridor toward the mumbling) and #41 were re-shot and spliced in.
 - 2026-09-28 · **A1 v2.1d** · `A1-v2.1d-final.mp4` (+720p preview) · v2.1b plus the 7 lore-audit shots re-shot and
   spliced in (#7, #8, #9, #22, #34, #54, #55). Audit: 0 frames where LL's front reads.
 - 2026-09-28 · **A1 v2.1c** · v2.1b with #22 re-shot (slow, subtle glide behind LL). `A1-v2.1c-final.mp4`.

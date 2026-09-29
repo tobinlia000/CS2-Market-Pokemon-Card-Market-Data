@@ -85,11 +85,10 @@ def main():
     S(7, "1:32.3", "1:38", shot_ots_c(tk("1:32.3"), tk("1:38")), "OTS as he backs away (custom-map prank line)")
     # the abyss: aim down the dark part of the corridor, the lit doorway where LL stands kept out of frame
     # the abyss: aim down the dark part of the corridor, well left of the lit doorway where LL stands (LL out of frame)
-    # v4: aim turned 12 deg away from the lit doorway (v3's frame had LL's front at the right edge for ~2 s)
-    _v = np.array([-3086.0, 1124.0, -5846.0]) - (C_WALL + [0, 60, 0])
-    _r = math.radians(12)
-    abyss_aim = C_WALL + [0, 60, 0] + [_v[0] * math.cos(_r) - _v[1] * math.sin(_r), _v[0] * math.sin(_r) + _v[1] * math.cos(_r), _v[2]]
-    abyss = fixed("1:44", "1:49", C_WALL + [0, 60, 0], abyss_aim, 50.0, zoom=0.8)
+    # v4: the old spot (C_WALL) looked at a wall ~100 u away with LL's lit doorway at the edge. New spot beside C, facing
+    # toward the mumbling: a ~600 u deep corridor, LL hidden behind the wall (geometry search, strict check clean)
+    _cam8 = np.array([-2977.0, 892.0, -5842.0])
+    abyss = fixed("1:44", "1:49", _cam8, _cam8 + [339.0, 212.0, -4.0], 50.0, zoom=0.8)
     S(8, "1:44", "1:49", abyss, "the abyss: slow zoom into the dark (\"No.\" at the end); LL out of frame")
     S(9, "1:51", "1:55", ll_out("1:51", "1:55", absb=53, dists=(160, 220, 300), margin=1.3),
       "\"did you really think...\" (then the console insert)")
@@ -164,7 +163,7 @@ def main():
     t40 = np.arange(tk("13:17.5"), tk("13:21") + 1, 2)
     S(40, "13:17.5", "13:21", fixed("13:17.5", "13:21", SMOKE, sample(TC, t40)[0].mean(0) + [0, 0, 46], 70.0),
       "the smoke fills the frame (transition to Ancient)")
-    S(41, "13:43", "13:49.2", ll_out("13:43", "13:49.2", absb=90, dists=(250, 350, 450), heights=(90, 130), margin=1.6,
+    S(41, "13:43", "13:49.2", ll_out("13:43", "13:49.2", absb=0, dists=(300, 420, 550), margin=1.6,
                                   fov_range=(30, 85)),
       "back in the corner: lobs a smoke, singing")
     S(42, "13:49.2", "13:51.3", shot_creature_lead(tk("13:49.2"), tk("13:51.3")), "creature lead: distant footsteps")

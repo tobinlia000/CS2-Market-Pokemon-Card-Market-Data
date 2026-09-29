@@ -1,0 +1,157 @@
+{
+ "name": "a1-v4-fix",
+ "summary": "videos/demos/A1.summary.json",
+ "outputFileName": "a1-v4-fix",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 6656,
+   "end": 6976,
+   "pov": "Caillou (Canadian now)",
+   "why": "#8 the abyss: slow zoom into the dark (\"No.\" at the end); LL out of frame",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2977.0,
+       892.0,
+       -5842.0
+      ],
+      "pitch": 0.573,
+      "yaw": 32.021,
+      "roll": 0.0,
+      "fov": 50.0
+     },
+     {
+      "t": 1.25,
+      "pos": [
+       -2977.0,
+       892.0,
+       -5842.0
+      ],
+      "pitch": 0.573,
+      "yaw": 32.021,
+      "roll": 0.0,
+      "fov": 48.621
+     },
+     {
+      "t": 2.5,
+      "pos": [
+       -2977.0,
+       892.0,
+       -5842.0
+      ],
+      "pitch": 0.573,
+      "yaw": 32.021,
+      "roll": 0.0,
+      "fov": 45.533
+     },
+     {
+      "t": 3.75,
+      "pos": [
+       -2977.0,
+       892.0,
+       -5842.0
+      ],
+      "pitch": 0.573,
+      "yaw": 32.021,
+      "roll": 0.0,
+      "fov": 42.374
+     },
+     {
+      "t": 5.0,
+      "pos": [
+       -2977.0,
+       892.0,
+       -5842.0
+      ],
+      "pitch": 0.573,
+      "yaw": 32.021,
+      "roll": 0.0,
+      "fov": 40.916
+     }
+    ]
+   }
+  },
+  {
+   "type": "ticks",
+   "start": 52672,
+   "end": 53069,
+   "pov": "Caillou (Canadian now)",
+   "why": "#41 back in the corner: lobs a smoke, singing",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -940.5,
+       5073.9,
+       -5836.1
+      ],
+      "pitch": 2.845,
+      "yaw": -180.0,
+      "roll": 0.0,
+      "fov": 36.105
+     },
+     {
+      "t": 1.5312,
+      "pos": [
+       -940.5,
+       5073.9,
+       -5836.1
+      ],
+      "pitch": 2.845,
+      "yaw": -180.0,
+      "roll": 0.0,
+      "fov": 36.105
+     },
+     {
+      "t": 3.0938,
+      "pos": [
+       -940.5,
+       5073.9,
+       -5836.1
+      ],
+      "pitch": 2.845,
+      "yaw": -180.0,
+      "roll": 0.0,
+      "fov": 36.105
+     },
+     {
+      "t": 4.6562,
+      "pos": [
+       -940.5,
+       5073.9,
+       -5836.1
+      ],
+      "pitch": 2.845,
+      "yaw": -180.0,
+      "roll": 0.0,
+      "fov": 36.105
+     },
+     {
+      "t": 6.1875,
+      "pos": [
+       -940.5,
+       5073.9,
+       -5836.1
+      ],
+      "pitch": 2.845,
+      "yaw": -180.0,
+      "roll": 0.0,
+      "fov": 36.105
+     }
+    ]
+   }
+  }
+ ],
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": false
+}
