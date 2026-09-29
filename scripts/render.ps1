@@ -118,6 +118,8 @@ foreach ($file in $Config) {
             $final = [IO.Path]::Combine([IO.Path]::GetDirectoryName($target), [IO.Path]::GetFileNameWithoutExtension($target) + "-final.mp4")
             $postArgs = @($target, '--look', $look, '-o', $final)
             if ($finish.letterbox) { $postArgs += '--letterbox' }
+            if ($finish.curves) { $postArgs += @('--curves', $finish.curves) }
+            if ($finish.vignette -eq $false) { $postArgs += '--no-vignette' }
             Write-Host "Grading ($look$(if ($finish.letterbox) { ' + letterbox' })) -> $final" -ForegroundColor Cyan
             $code = Invoke-Post @postArgs
             if ($code -ne 0) { throw "Grading failed for $target" }

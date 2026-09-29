@@ -36,7 +36,7 @@ def ffmpeg_path() -> str:
     return found
 
 
-def filters(look: str, size: tuple[int, int], letterbox: bool, stamp: str) -> str:
+def filters(look: str, size: tuple[int, int], letterbox: bool, stamp: str, curves: str = "", vignette: bool = True) -> str:
     w, h = size
     if look == "downscale":
         return f"scale={w}:{h}:flags=lanczos"
@@ -45,11 +45,16 @@ def filters(look: str, size: tuple[int, int], letterbox: bool, stamp: str) -> st
         # the first sample); smoothing them in 16-bit and exporting 10-bit keeps the gradient smooth.
         chain = ["format=gbrp16le",
                  f"scale={w}:{h}:flags=lanczos",
-                 "deband=1thr=0.015:2thr=0.015:3thr=0.015:range=24:blur=1",
+                 "deband=1thr=0.015:2thr=0.015:3thr=0.015:range=24:blur=1"]
+        if curves:
+            # restores a map's own tone curve when its post-process is switched off (e.g. to drop its vignette)
+            chain.append(f"curves=all='{curves}'")
+        chain += [
                  "eq=contrast=1.07:saturation=0.9:gamma=0.98",
                  "colorbalance=rs=0.015:bs=-0.015:rh=0.02:bh=-0.02",   # a touch warm in the highlights
-                 "vignette=angle=PI/5:mode=backward",
                  "noise=alls=5:allf=t+u"]                             # fine, moving grain
+        if vignette:
+            chain.insert(-1, "vignette=angle=PI/5:mode=backward")
         if letterbox:
             bar = round(h * (1 - (w / 2.39) / h) / 2)
             chain += [f"drawbox=x=0:y=0:w=iw:h={bar}:color=black:t=fill",
@@ -83,6 +88,8 @@ def main(argv=None) -> int:
     ap.add_argument("--look", required=True, choices=["downscale", "cinematic", "camcorder"])
     ap.add_argument("--size", default="2560x1440")
     ap.add_argument("--letterbox", action="store_true")
+    ap.add_argument("--no-vignette", action="store_true", help="cinematic only: skip the soft vignette")
+    ap.add_argument("--curves", default="", help="cinematic only: ffmpeg curves points, e.g. '0/0 0.09/0.035 1/1'")
     ap.add_argument("--stamp", default="SEP 27 1996")
     ap.add_argument("--crf", type=int, default=16)
     ap.add_argument("--bits", type=int, choices=[8, 10], default=10,
@@ -93,7 +100,7 @@ def main(argv=None) -> int:
     out = Path(args.output) if args.output else src.with_name(f"{src.stem}-{args.look}{src.suffix}")
     w, h = (int(v) for v in args.size.lower().split("x"))
     pix = "yuv420p10le" if args.bits == 10 else "yuv420p"
-    vf = filters(args.look, (w, h), args.letterbox, args.stamp) + f",format={pix}"
+    vf = filters(args.look, (w, h), args.letterbox, args.stamp, args.curves, not args.no_vignette) + f",format={pix}"
     cmd = [ffmpeg_path(), "-hide_banner", "-loglevel", "error", "-y", "-i", str(src),
            "-vf", vf,
            "-c:v", "libx264", "-preset", "slow", "-crf", str(args.crf), "-pix_fmt", pix, "-c:a", "copy", str(out)]

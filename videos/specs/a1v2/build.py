@@ -440,18 +440,19 @@ def main():
     add(14, "2:21", "2:26", st("2:21", "2:26", rel="ahead", anchor="end", dists=(140, 220, 300), need_c=0.7,
                                fov_range=(40, 85), margin=1.3, avoid_yaw=(90, 35)),
         "arrival, ahead on his path, W25 corridor out of frame")
-    s15 = shot_behind_ll(tk("2:26"), tk("2:30.5"), dist=50, side=0, up=6, weight=0.9)
+    s15 = shot_behind_ll(tk("2:26"), tk("2:30.5"), dist=120, side=-18, up=14, weight=0.97, fov=35)
     add(15, "2:26", "2:30.5", s15, "THE REVEAL: behind LL's head, C far")
-    add(16, "2:30.5", "2:33.5", st("2:30.5", "2:33.5", absb=90, dists=(70, 100, 140), margin=1.25, fov_range=(25, 80)),
+    add(16, "2:30.5", "2:33.5", st("2:30.5", "2:33.5", absb=90, dists=(80, 100, 120), fit=False, fixed_fov=38, need_c=0.8,
+                                   aim_point=sample(TC, np.arange(tk("2:30.5"), tk("2:33.5"), 8))[0].mean(0) + [0, 0, 62]),
         "close on C's face, LL behind the camera")
     add(17, "2:34", "2:38", reuse(s15, "2:34", "2:38"), "hold, same frame as #15, C gone")
     add(18, "2:40", "2:45", shot_cine("ground", tk("2:40"), tk("2:45"), {"facing": "away"}), "ground lock-off, runs away")
-    add(19, "2:48", "2:54", shot_cine("tripod", tk("2:48"), tk("2:54"), {"angle": "front-left"}), "tripod pan, sprint north")
+    add(19, "2:48", "2:54", shot_cine("tripod", tk("2:48"), tk("2:54"), {"angle": "front-right", "distance": 850}), "tripod pan, sprint north")
     add(20, "2:54", "3:01", st("2:54", "3:01", rel="ahead", anchor="end", dists=(150, 250, 350), need_c=0.55, fit=False,
                                fixed_fov=82), "liminal, runs through")
     add(21, "3:03", "3:10.3", st("3:03", "3:10.3", absb=90, anchor="end", dists=(200, 300, 400), need_c=0.8, margin=1.4),
         "arrival, north of U19 (ends before LL arrives)")
-    add(22, "3:11.5", "3:17.3", shot_behind_ll(tk("3:11.5"), tk("3:17.3"), dist=70, side=30, weight=0.95),
+    add(22, "3:11.5", "3:17.3", shot_behind_ll(tk("3:11.5"), tk("3:17.3"), dist=60, side=30, up=8, weight=0.95, static=False, fov=55),
         "IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp")
     add(23, "3:25.5", "3:34", shot_pull(tk("3:25.5"), tk("3:34"), bearing_deg=-90, d0=150, d1=560, h0=50, h1=280, fov=58),
         "pull-out/rise; LL at T14 in darkness (render showed him invisible)")
@@ -502,9 +503,9 @@ def main():
     add(47, "14:10", "14:16", st("14:10", "14:16", rel="front-left", dists=(180, 250), margin=1.3), "corner, front-side")
     add(48, "14:20", "14:25", st("14:20", "14:25", rel="front-left", dists=(80, 110, 140), margin=1.1, fov_range=(18, 80)),
         "tight; he snaps back east at 14:23.8")
-    add(49, "14:34.5", "14:38.2", fixed("14:34.5", "14:38.2", [-460.0, 5060.0, -5850.0],
+    add(49, "14:34.5", "14:38.2", fixed("14:34.5", "14:38.2", [-1290.0, 5060.0, -5836.0],
                                         sample(TC, np.arange(tk("14:34.5"), tk("14:38.2"), 8))[0].mean(0) + [0, 0, 46], 45.0),
-        "CHANGED: he walks backwards to the pit, so shot from the pit side; cut 14:38.2")
+        "from the corner: he backs away toward the pit; cut 14:38.2")
     add(50, "14:36.5", "14:38.2", "native_pov", "POV: he faces NW back at the room while backing up; cut 14:38.2")
     add(51, "14:42.6", "14:46", st("14:42.6", "14:46", absb=0, dists=(300, 400, 500), margin=1.4),
         "back to the corner, after the push-out")
@@ -517,18 +518,22 @@ def main():
         "over C's shoulder toward the smoke landing")
     add(55, "15:27.5", "15:34", shot_behind_ll(tk("15:29.6"), tk("15:34"), dist=60, side=12, weight=0.9),
         "behind LL at AC8 as C turns to face him (LL settles 15:29.6; clip starts 15:27.5)")
-    add(56, "15:34", "15:39.5", fixed("15:34", "15:39.5", [-460.0, 5100.0, -5850.0],
+    add(56, "15:34", "15:39.5", fixed("15:34", "15:39.5", [-1290.0, 5060.0, -5836.0],
                                       sample(TC, np.arange(tk("15:34"), tk("15:39.5"), 8))[0].mean(0) + [0, 0, 46], 40.0),
-        "across the pit, he backs toward camera")
-    add(57, "15:39.5", "15:42.1", fixed("15:39.5", "15:42.1", [-580.0, 5280.0, -5760.0], [-470.0, 5095.0, -5980.0], 85.0),
+        "from the corner: he backs away into the smoke, toward the pit")
+    add(57, "15:39.5", "15:42.1", fixed("15:39.5", "15:42.1", [-420.0, 5260.0, -5800.0], [-430.0, 5090.0, -5950.0], 90.0),
         "SLOW MOTION 2x: over the edge 15:40.5, cut 15:42.1",
         cfg="demo_timescale 0.5")
     s35p = reuse(s35, "11:00", "11:04")
     add("35p", "11:00", "11:04", s35p, "CLEAN PLATE of #35's frame (nobody in frame) - not part of the edit",
         cfg="demo_timescale 1")
 
-    spec = {"name": "a1-v2", "summary": "videos/demos/A1.summary.json", "outputFileName": "A1-v2",
-            "concatenate": True, "order": "spec", "clips": CLIPS}
+    spec = {"name": "a1-v2", "summary": "videos/demos/A1.summary.json", "outputFileName": "A1-v2.1",
+            "concatenate": True, "order": "spec", "clips": CLIPS,
+            # map maker's post-process off (its vignette), its tone curve restored in our grade (measured 2026-09-28)
+            "cfg": "r_csgo_postprocess_enable 0",
+            "finish": {"look": "cinematic", "letterbox": True, "vignette": False,
+                       "curves": "0/0 0.088/0.035 0.136/0.075 0.193/0.136 0.293/0.254 0.409/0.401 1/1"}}
     out = REPO / "videos" / "specs" / "a1-v2.json"
     out.write_text(json.dumps(spec, indent=1), encoding="utf-8")
     lines = ["| # | time | check | note |", "|---|---|---|---|"] + [

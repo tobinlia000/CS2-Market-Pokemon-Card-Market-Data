@@ -14,14 +14,14 @@
 | 12 | 2:06–2:14 | C 100% | LL 0% | front 0% | wide, small in the room, not toward W25 |
 | 13 | 2:14–2:21 | C 100% | LL 0% | front 0% | front-side medium |
 | 14 | 2:21–2:26 | C 74% | LL 0% | front 0% | C visible only 74% | arrival, ahead on his path, W25 corridor out of frame |
-| 15 | 2:26–2:30.5 | C 92% | LL 100% | front 0% | LL in frame 100% | THE REVEAL: behind LL's head, C far |
-| 16 | 2:30.5–2:33.5 | C 100% | LL 0% | front 0% | close on C's face, LL behind the camera |
+| 15 | 2:26–2:30.5 | C 100% | LL 100% | front 0% | LL in frame 100% | THE REVEAL: behind LL's head, C far |
+| 16 | 2:30.5–2:33.5 | C 82% | LL 0% | front 0% | C visible only 82% | close on C's face, LL behind the camera |
 | 17 | 2:34–2:38 | C 0% | LL 100% | front 0% | C visible only 0%; LL in frame 100% | hold, same frame as #15, C gone |
 | 18 | 2:40–2:45 | C 56% | LL 0% | front 0% | C visible only 56% | ground lock-off, runs away |
-| 19 | 2:48–2:54 | C 82% | LL 0% | front 0% | C visible only 82% | tripod pan, sprint north |
+| 19 | 2:48–2:54 | C 78% | LL 0% | front 0% | C visible only 78% | tripod pan, sprint north |
 | 20 | 2:54–3:01 | C 100% | LL 0% | front 0% | liminal, runs through |
 | 21 | 3:03–3:10.3 | C 100% | LL 0% | front 0% | arrival, north of U19 (ends before LL arrives) |
-| 22 | 3:11.5–3:17.3 | C 100% | LL 68% | front 13% | LL in frame 68%; LL FRONT 13% | IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp |
+| 22 | 3:11.5–3:17.3 | C 100% | LL 97% | front 10% | LL in frame 97%; LL FRONT 10% | IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp |
 | 23 | 3:25.5–3:34 | C 100% | LL 85% | front 74% | LL in frame 85%; LL FRONT 74% | pull-out/rise; LL at T14 in darkness (render showed him invisible) |
 | 24 | 3:34–3:43 | C 100% | LL 0% | front 0% | side-on from the west |
 | 25 | 3:43–3:53 | C 96% | LL 0% | front 0% | push toward his face 100->70 (north of him) |
@@ -48,13 +48,13 @@
 | 46 | 13:50.5–13:54.5 | C 100% | LL 0% | front 0% | side-on; his real head turn E->NE at 13:51.5-13:53.5 |
 | 47 | 14:10–14:16 | C 94% | LL 0% | front 0% | corner, front-side |
 | 48 | 14:20–14:25 | C 93% | LL 0% | front 0% | tight; he snaps back east at 14:23.8 |
-| 49 | 14:34.5–14:38.2 | C 100% | LL 0% | front 0% | CHANGED: he walks backwards to the pit, so shot from the pit side; cut 14:38.2 |
+| 49 | 14:34.5–14:38.2 | C 100% | LL 0% | front 0% | from the corner: he backs away toward the pit; cut 14:38.2 |
 | 50 | 14:36.5–14:38.2 | native POV | POV: he faces NW back at the room while backing up; cut 14:38.2 |
 | 51 | 14:42.6–14:46 | C 100% | LL 0% | front 0% | back to the corner, after the push-out |
 | 52 | 15:09.3–15:11.4 | C 8% | LL 0% | front 0% | C visible only 8% | creature lead, LL's walk-in |
 | 53 | 15:19.5–15:24.5 | C 100% | LL 0% | front 0% | LL walks into frame from behind the camera, C beyond |
 | 54 | 15:24.5–15:27.5 | C 100% | LL 0% | front 0% | over C's shoulder toward the smoke landing |
 | 55 | 15:27.5–15:34 | C 83% | LL 88% | front 0% | C visible only 83%; LL in frame 88% | behind LL at AC8 as C turns to face him (LL settles 15:29.6; clip starts 15:27.5) |
-| 56 | 15:34–15:39.5 | C 100% | LL 17% | front 17% | LL in frame 17%; LL FRONT 17% | across the pit, he backs toward camera |
-| 57 | 15:39.5–15:42.1 | C 79% | LL 0% | front 0% | C visible only 79% | SLOW MOTION 2x: over the edge 15:40.5, cut 15:42.1 |
+| 56 | 15:34–15:39.5 | C 100% | LL 10% | front 0% | LL in frame 10% | from the corner: he backs away into the smoke, toward the pit |
+| 57 | 15:39.5–15:42.1 | C 71% | LL 0% | front 0% | C visible only 71% | SLOW MOTION 2x: over the edge 15:40.5, cut 15:42.1 |
 | 35p | 11:00–11:04 | C 0% | LL 0% | front 0% | C visible only 0% | CLEAN PLATE of #35's frame (nobody in frame) - not part of the edit |
