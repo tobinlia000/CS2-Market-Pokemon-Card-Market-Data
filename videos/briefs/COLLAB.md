@@ -20,14 +20,14 @@
   (space ID / grid square / L#).
 - The cameraman may change cameras freely. Story changes (dropping or adding a beat, reordering) need the CD's OK.
 
-**Version:** v2 · 2026-09-28 · by Cameraman · Drive copy: "COLLAB v2 (Cameraman)"
+**Version:** v3 · 2026-09-28 · by Cameraman · Drive copy: "COLLAB v3 (Cameraman)"
 
 ---
 
 ## 1. Status board
 | Demo | Map | State |
 |---|---|---|
-| A1 | ze_backrooms_insomnia | **v2 rendered** (5:24, 57 shots + clean plate). 7 shots flagged by the cameraman for reshoot (see §6). Vignette removal being tested. Awaiting the user's feedback |
+| A1 | ze_backrooms_insomnia | **v2.1b rendered** (5:29): the map vignette is removed, 7 shots are fixed, and #23 is re-shot. **Awaiting the user's feedback and CD answers (§3)** |
 | A2 | ze_backrooms_insomnia (upper floors) | Maps done; not planned yet |
 | C1 | de_02school | Maps done; not planned |
 | D1 | cs_insertion2 | Maps done; not planned |
@@ -68,17 +68,30 @@ back, walking to the pit, backing into the corner). It needs a new recording.
 5. **C walks backwards into the pit, facing LL**, not away from him. v2 keeps it as it happened. Does the story
    still work?
 6. Dialogue: there's no voice track in the demo. Please keep giving line timings, so I can cut on them.
+7. **#57, the slow-mo fall:** C's own smoke sits right at the pit edge, so no angle shows the fall cleanly; it
+   reads as "swallowed by the smoke". Keep that, or should I try a shot from inside the pit looking up?
+8. **New fact:** at 3:25–3:34 LL stands at the lit far end of the pillar hall and shows as a tiny silhouette. He
+   only disappears into the dark from about 3:36. #23 is now framed away from him. Do you want that silhouette
+   as another glimpse anywhere?
 
 ## 4. CD → Cameraman (Creative Director writes here)
 _(empty)_
 
 ## 5. Decisions log
+- 2026-09-28 · User: remove the map's black vignette. Cameraman: done with `r_csgo_postprocess_enable 0` plus a restored tone curve.
+- 2026-09-28 · User: the cameraman is in charge of shooting and keeps this file (shared in Google Drive).
 - 2026-09-28 · CD: LL's front is never readable; face-safe angles only (exceptions #7 and #9, the tiny silhouette).
 - 2026-09-28 · CD: specials limited to the whip pan (#27–28), the handheld surge (#34) and the slow-mo fall (#57).
 - 2026-09-28 · Cameraman: #49 changed from an OTS to a shot from the pit side (he walks backwards, so an OTS would
   show his face); #50's POV faces the room, not the pit.
 
 ## 6. Render log
+- 2026-09-28 · **A1 v2.1b** · `A1-v2.1b-final.mp4` (5:29). Changes from v2:
+  - The map maker's post-process is off (`r_csgo_postprocess_enable 0`), which removes its vignette. Its tone
+    curve is restored in our grade (measured), and our own vignette is off.
+  - Re-shot: #15 (LL's back in the foreground, C beyond), #16 (real close-up), #19 (tripod set back), #22 (the
+    camera drifts behind LL), #49 and #56 (from the corner, C backs into the smoke), #57 (clear of the smoke).
+  - #23 re-shot from the SW because LL was visible in the lit far end (v2.1 → v2.1b splice).
 - 2026-09-28 · **A1 v2 rendered** · `A1-v2-final.mp4` (5:24, 1440p60, final look) + 720p preview. Cameraman review:
   - **Good:** most shots, including #1, #3–#10, #12–#14, #17, #20–#21, #23–#48, #50–#55 and the clean plate #35p.
   - **Reshoot in v2.1:**

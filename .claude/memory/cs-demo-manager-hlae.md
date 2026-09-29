@@ -578,3 +578,14 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   - `r_csgo_postprocess_enable 0`: **vignette gone**, but the map grade goes too. The image is brighter and flatter,
     and the shadows lift. That could reveal LL in the "invisible" dark pillar hall (#23, #27); re-check before using it.
   - Both are plain client cvars. Set them per clip in `cfg`; they persist, so set them explicitly on every clip.
+
+## 23. A1 v2.1b (2026-09-28)
+- `render.ps1` finish.json now takes `curves` (ffmpeg curves points) and `vignette: false`; post.py `--curves`, `--no-vignette`.
+- The ze_backrooms restore curve (post off -> original, measured on frame centres):
+  `0/0 0.088/0.035 0.136/0.075 0.193/0.136 0.293/0.254 0.409/0.401 1/1`. Spec-level `"cfg": "r_csgo_postprocess_enable 0"`.
+- Smoke blocks the camera: my geometry checks ignore smokes. Keep lines of sight about 150 u clear of a smoke centre, and
+  cameras about 170 u away, for about 18 s after it lands. v2 #49/#56/#57 rendered as pure smoke.
+- Splicing one re-shot shot: render a one-clip spec with `finish: false`, copy its sequence file over the same name in
+  `<name>-shots/`, re-join (ffmpeg concat, `-c copy`), then run post.py with the same finish args. Much faster than a
+  full re-render (the map load dominates).
+- LL is visible as a silhouette at the lit end of the pillar hall at 3:25-3:34 (#23 re-shot from the SW).

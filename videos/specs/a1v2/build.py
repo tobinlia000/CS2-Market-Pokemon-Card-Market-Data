@@ -454,8 +454,8 @@ def main():
         "arrival, north of U19 (ends before LL arrives)")
     add(22, "3:11.5", "3:17.3", shot_behind_ll(tk("3:11.5"), tk("3:17.3"), dist=60, side=30, up=8, weight=0.95, static=False, fov=55),
         "IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp")
-    add(23, "3:25.5", "3:34", shot_pull(tk("3:25.5"), tk("3:34"), bearing_deg=-90, d0=150, d1=560, h0=50, h1=280, fov=58),
-        "pull-out/rise; LL at T14 in darkness (render showed him invisible)")
+    add(23, "3:25.5", "3:34", shot_pull(tk("3:25.5"), tk("3:34"), bearing_deg=-150, d0=150, d1=420, h0=50, h1=220, fov=58),
+        "pull-out/rise from the SW; framed away from the lit end of the pillar hall where LL stands")
     s24 = st("3:34", "3:43", absb=180, dists=(160, 220, 300), margin=1.3)
     add(24, "3:34", "3:43", s24, "side-on from the west")
     add(25, "3:43", "3:53", st("3:43", "3:53", absb=90, dists=(120, 170, 230), margin=1.3, zoom=0.7, fov_range=(25, 85)),

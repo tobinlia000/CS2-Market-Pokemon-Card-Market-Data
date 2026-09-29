@@ -22,7 +22,7 @@
 | 20 | 2:54–3:01 | C 100% | LL 0% | front 0% | liminal, runs through |
 | 21 | 3:03–3:10.3 | C 100% | LL 0% | front 0% | arrival, north of U19 (ends before LL arrives) |
 | 22 | 3:11.5–3:17.3 | C 100% | LL 97% | front 10% | LL in frame 97%; LL FRONT 10% | IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp |
-| 23 | 3:25.5–3:34 | C 100% | LL 85% | front 74% | LL in frame 85%; LL FRONT 74% | pull-out/rise; LL at T14 in darkness (render showed him invisible) |
+| 23 | 3:25.5–3:34 | C 100% | LL 0% | front 0% | pull-out/rise from the SW; framed away from the lit end of the pillar hall where LL stands |
 | 24 | 3:34–3:43 | C 100% | LL 0% | front 0% | side-on from the west |
 | 25 | 3:43–3:53 | C 96% | LL 0% | front 0% | push toward his face 100->70 (north of him) |
 | 26 | 3:53–3:57.4 | C 100% | LL 0% | front 0% | same framing as #24, hold |
