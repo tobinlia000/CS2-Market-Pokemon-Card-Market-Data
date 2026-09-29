@@ -50,7 +50,17 @@ the final say and reviews each render.)
   background.
 - **(2026-09-29) Show C moving:** avoid shots that just watch a player standing still. Show C when he moves;
   standing only where the script demands it (a line or a beat), and then briefly. Shots too long or redundant = cut.
-- The Part 1 script is in `videos/briefs/PART1-script.md` (A1 beat mapping at its end).
+- The Part 1 script is in `videos/briefs/PART1-script.md` (A1 beat mapping at its end). The user's shot-by-shot
+  direction for A1 is in `videos/briefs/A1-direction.md`: read it before touching A1.
+- **(2026-09-29) Geography first:** establish an anchor (e.g. the spawn corner) and keep framing tied to it until the
+  story moves the character (the creature drives him away). If the demo's footage wanders off the anchor during a
+  scripted beat, reuse or reorder anchor footage to follow the script, or ask for a reshoot. Never cut shots that
+  leave the audience lost unless the scene is about being lost. Make a zoomed path map (`A1-map-*.png` style) before
+  planning a demo.
+- **(2026-09-29) First person = bodycam only:** avoid POV; prefer over-the-shoulder or third person. If POV is
+  used: no crosshair dot, and show part of the model (hands).
+- **(2026-09-29) Check frames for non-canon map glitches** (walls popping in) and distracting decals (the smiley
+  spray at LL's corridor mouth); cut or frame around them.
 
 ## Roles (user, 2026-09-29: the CD role merged into me)
 **I am the Cameraman AND the Creative Director.** No more back-and-forth with a separate claude.ai chat. I own the
