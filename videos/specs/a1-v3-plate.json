@@ -1,0 +1,90 @@
+{
+ "name": "a1-v3-plate",
+ "summary": "videos/demos/A1.summary.json",
+ "outputFileName": "A1-v3-plate32",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 42240,
+   "end": 42496,
+   "pov": "Caillou (Canadian now)",
+   "why": "#32p clean plate of #32 for the second still-life composite",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -4093.7,
+       2881.5,
+       -5826.1
+      ],
+      "pitch": 1.387,
+      "yaw": -150.239,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 1.0,
+      "pos": [
+       -4093.7,
+       2881.5,
+       -5826.1
+      ],
+      "pitch": 1.387,
+      "yaw": -150.239,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 2.0,
+      "pos": [
+       -4093.7,
+       2881.5,
+       -5826.1
+      ],
+      "pitch": 1.387,
+      "yaw": -150.239,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 3.0,
+      "pos": [
+       -4093.7,
+       2881.5,
+       -5826.1
+      ],
+      "pitch": 1.387,
+      "yaw": -150.239,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 4.0,
+      "pos": [
+       -4093.7,
+       2881.5,
+       -5826.1
+      ],
+      "pitch": 1.387,
+      "yaw": -150.239,
+      "roll": 0.0,
+      "fov": 40.0
+     }
+    ]
+   },
+   "cfg": "demo_timescale 1"
+  }
+ ],
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": {
+  "look": "cinematic",
+  "letterbox": true,
+  "vignette": false,
+  "curves": "0/0 0.088/0.035 0.136/0.075 0.193/0.136 0.293/0.254 0.409/0.401 1/1"
+ }
+}

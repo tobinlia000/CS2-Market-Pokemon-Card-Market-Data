@@ -601,3 +601,15 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
 - Windows Films & TV / Media Player can't play our 10-bit H.264 masters (error 0xc1010103). render.ps1 now also writes
   `<name>-final-8bit.mp4` (ed-dithered yuv420p, High profile, CRF 16, faststart). Send or recommend that copy for
   viewing; keep the 10-bit file for editing and uploads.
+
+## 26. A1 v3 (2026-09-29): noclip windows and the rules
+- Real noclip in A1 (after dropping single-tick step-ups of about 6 u and ordinary jumps):
+  - C: dashes at 2:44.4-2:45.1 and 2:48.2-2:48.9 (900 u/s airborne, vz ~0, right as he bolts).
+  - LL: 3:09.8-3:11.1 (in behind C), a hop at 3:13.4, 3:19.5-3:25.5, **4:27.8-4:34.9 (the whole "charge")**,
+    7:03-7:45, 9:23-10:28.
+- v3 (`videos/specs/a1v2/build_v3.py`, 52 shots, about 3:40) is cut to the Part 1 script:
+  - Dropped: the "right behind you" beat (#22; LL arrives by noclip) and the charge.
+  - The second sighting now uses LL standing at Q19 at 4:40-4:44 (after his noclip), shot from behind him.
+  - The abyss and the whips are aimed away from LL.
+  - The clean plate is its own spec (`a1-v3-plate.json`).
+- The strict LL rule in `build_v3.strict_ll`: LL visible and the camera less than 120 deg behind him = violation.
