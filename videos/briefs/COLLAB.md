@@ -133,6 +133,9 @@ script beat; standing shots are only scripted lines, about 3–4 s each.
   show his face); #50's POV faces the room, not the pit.
 
 ## 6. Render log
+- 2026-09-29 · **A1 v5** · `A1-v5-final.mp4` + `-final-8bit.mp4` + `-preview-720p.mp4` (49 shots, 3:52). Rebuilt to the
+  user's v4 review (`A1-direction.md`) plus the A11 B-roll: spawn corner as the anchor, a two-camera reveal behind
+  LL, the run into the hiding corner, and the footstep whips. Four render passes joined by `join_v5.py`.
 - 2026-09-29 · **A1 v4** · `A1-v4-final.mp4` + `-final-8bit.mp4` (53 shots, ~3:50) + clean plate `A1-v4-plate32-final.mp4`.
   v3 was recorded but not shipped: four shots lost their campath (~64-tick gap bug, chase cam showed LL's face), and
   LL was at the frame edge in #8 and #25. v4 fixes all of these and was reviewed frame by frame. #8 (the abyss, new
