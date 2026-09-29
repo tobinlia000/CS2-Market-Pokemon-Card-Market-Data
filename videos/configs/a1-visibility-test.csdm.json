@@ -1,0 +1,243 @@
+{
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\A1.dem",
+  "recordingSystem": "HLAE",
+  "recordingOutput": "video",
+  "encoderSoftware": "FFmpeg",
+  "framerate": 60,
+  "width": 2560,
+  "height": 1440,
+  "closeGameAfterRecording": true,
+  "trueView": false,
+  "concatenateSequences": true,
+  "outputFileName": "a1-visibility-test",
+  "ffmpegSettings": {
+    "customLocationEnabled": false,
+    "customExecutableLocation": "",
+    "audioBitrate": 256,
+    "constantRateFactor": 18,
+    "videoContainer": "mp4",
+    "videoCodec": "libx264",
+    "audioCodec": "aac",
+    "inputParameters": "",
+    "outputParameters": ""
+  },
+  "sequences": [
+    {
+      "number": 1,
+      "startTick": 5504,
+      "endTick": 5696,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 5504,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_cmd clear\nmirv_streams settings add sampler csdvBlur1\nmirv_streams settings edit csdvBlur1 settings csdmPreset1\nmirv_streams settings edit csdvBlur1 fps 60\nmirv_streams settings edit csdvBlur1 exposure 0.5\nmirv_streams settings edit csdvBlur1 strength 1.0\nmirv_streams record screen settings csdvBlur1\nmirv_streams record fps 240"
+    },
+    {
+      "number": 2,
+      "startTick": 9536,
+      "endTick": 9728,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 9536,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_cmd clear\nmirv_streams settings add sampler csdvBlur2\nmirv_streams settings edit csdvBlur2 settings csdmPreset2\nmirv_streams settings edit csdvBlur2 fps 60\nmirv_streams settings edit csdvBlur2 exposure 0.5\nmirv_streams settings edit csdvBlur2 strength 1.0\nmirv_streams record screen settings csdvBlur2\nmirv_streams record fps 240"
+    },
+    {
+      "number": 3,
+      "startTick": 13824,
+      "endTick": 14016,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 13824,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_cmd clear\nmirv_streams settings add sampler csdvBlur3\nmirv_streams settings edit csdvBlur3 settings csdmPreset3\nmirv_streams settings edit csdvBlur3 fps 60\nmirv_streams settings edit csdvBlur3 exposure 0.5\nmirv_streams settings edit csdvBlur3 strength 1.0\nmirv_streams record screen settings csdvBlur3\nmirv_streams record fps 240"
+    },
+    {
+      "number": 4,
+      "startTick": 15168,
+      "endTick": 15360,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 15168,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_cmd clear\nmirv_streams settings add sampler csdvBlur4\nmirv_streams settings edit csdvBlur4 settings csdmPreset4\nmirv_streams settings edit csdvBlur4 fps 60\nmirv_streams settings edit csdvBlur4 exposure 0.5\nmirv_streams settings edit csdvBlur4 strength 1.0\nmirv_streams record screen settings csdvBlur4\nmirv_streams record fps 240"
+    },
+    {
+      "number": 5,
+      "startTick": 17216,
+      "endTick": 17408,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 17216,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_cmd clear\nmirv_streams settings add sampler csdvBlur5\nmirv_streams settings edit csdvBlur5 settings csdmPreset5\nmirv_streams settings edit csdvBlur5 fps 60\nmirv_streams settings edit csdvBlur5 exposure 0.5\nmirv_streams settings edit csdvBlur5 strength 1.0\nmirv_streams record screen settings csdvBlur5\nmirv_streams record fps 240"
+    },
+    {
+      "number": 6,
+      "startTick": 59136,
+      "endTick": 59328,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 59136,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "mirv_cmd clear\nmirv_streams settings add sampler csdvBlur6\nmirv_streams settings edit csdvBlur6 settings csdmPreset6\nmirv_streams settings edit csdvBlur6 fps 60\nmirv_streams settings edit csdvBlur6 exposure 0.5\nmirv_streams settings edit csdvBlur6 strength 1.0\nmirv_streams record screen settings csdvBlur6\nmirv_streams record fps 240"
+    }
+  ],
+  "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"
+}

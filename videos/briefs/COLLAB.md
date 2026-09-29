@@ -20,22 +20,25 @@
   (space ID / grid square / L#).
 - The cameraman may change cameras freely. Story changes (dropping or adding a beat, reordering) need the CD's OK.
 
-**Version:** v4 · 2026-09-28 · by Cameraman · Drive copy: "COLLAB v4 (Cameraman)"
+**Version:** v5 · 2026-09-29 · by Cameraman · Drive copy: "COLLAB v5 (Cameraman)"
+
+**Story bible:** the CD's LORE & STORY BRIEFING is saved on the PC as `videos/briefs/LORE.md` and governs every shot.
 
 ---
 
-## 0. Lore rules (from the user, 2026-09-28; they apply to every shot)
-- **Caillou is the main character.** Any angle.
-- **LL is a still-life: his face is NEVER seen.** Only from behind his head, with his face hidden behind something,
-  or as a silhouette (small or dark enough that no face or front detail reads).
-- **Both use the same player model**, so a scene must never be confusing: when both are in frame, C is clearly the
-  subject (sharp, lit, framed) and LL clearly the other (back of head, soft foreground, silhouette).
-- The cameraman audits every shot for this before each render (LL's front, apparent size, in-frame time).
+## 0. Rules for every shot (user + story bible, 2026-09-29)
+- **Still-life (LL): front/face never readable.** The camera is clearly behind him (more than 120° from his facing,
+  checked every frame) or he's out of frame. There are no silhouette exceptions in A1 any more (user: "I still see
+  LL's face sometimes").
+- **No noclip on screen** (user): footage where either player is noclipping is unusable.
+- **Caillou is shown moving;** standing only for a scripted line, briefly. No long or redundant shots.
+- Same player model: when both are in frame, C is the sharp subject and LL is a back-of-head foreground shape.
+- Never show the pit bottom. Mostly static shots and slow zooms; specials are rare (the whip pan, the slow-mo fall).
 
 ## 1. Status board
 | Demo | Map | State |
 |---|---|---|
-| A1 | ze_backrooms_insomnia | **v2.1d rendered**: CD-approved cut plus the lore audit (6 shots fixed). **Awaiting the user's feedback.** Still missing: the pit-scene opening (needs a new recording). Candidate for a better angle: #55 (C half-hidden by a pillar) |
+| A1 | ze_backrooms_insomnia | **v4 cut to the Part 1 script** (53 shots, ~3:45). v3 is recording; the two v4 shots get spliced in after. Still missing: the pit-scene opening (needs a new recording) |
 | A2 | ze_backrooms_insomnia (upper floors) = **the Poolrooms scene** | Maps done; the CD will post a cleaned-up shot list as a separate doc when we're ready |
 | C1 | de_02school | Maps done; not planned |
 | D1 | cs_insertion2 | Maps done; not planned |
@@ -67,12 +70,27 @@ comes from your notes. ✔ = used in the v2 cut; ? = your call.
 **Not in A1** (and not in A2 either: A2 happens on the upper floors): the pit-scene opening ("246, 247", staring
 back, walking to the pit, backing into the corner). It needs a new recording.
 
-## 3. Cameraman → CD: open questions
-1. **#55 (15:29–15:34, behind LL as C turns to face him):** lore-safe (only the back of LL's head), but C is
-   half-hidden behind a pillar. I can offer an alternative: a static behind LL from further left so C is fully in
-   view, with LL's head soft in the foreground. OK to swap if it stays face-safe?
+## 3. Cameraman → CD: A1 v4, my calls and your checks
+**Rebuilt from the script** (v2's 57 shots were too long and redundant; the user's review). Every shot is cut to a
+script beat; standing shots are only scripted lines, about 3–4 s each.
 
-_(Questions 1–8 of v3 were answered in CD reply 3; see §4.)_
+**What the new rules removed (story impact, please confirm):**
+1. **The charge (4:27.8–4:34.9) can't be shown:** LL noclips for the entire move. v4 implies it instead: C runs,
+   skids to a stop (#31, ends 4:27.7), then cuts to **#32: the still-life at the far end of the hallway, its back to
+   us** (LL standing at Q19, 4:40–4:44). This matches your script's "At the far end of the hallway stands a
+   still-life, its back to us… The T backpedals and sprints the other way" (#33–#34). A clean plate (#32p) is
+   rendered for the second still-life easter egg. **OK that the "charge" becomes this sighting?**
+2. **The "No." silhouette (1:24–1:31):** out. The abyss shot (#8) looks into the dark with LL out of frame; "No."
+   plays over the dark. The first time the audience sees the still-life is the reveal (#13, back of its head).
+3. **"Right behind you" (D):** LL's arrival is noclip (3:09.8–3:11.1), so it can't be shown. **v4 #21 (3:14.2–3:17.3)**
+   picks it up after he's arrived and is standing: static, behind LL, his back in the foreground and C beyond, over
+   "Calm down, calm down. This has to be a prank…". C never turns. Face-safe in every frame. This is the bible's
+   "the still-life stands unseen right behind him".
+4. **#49 fixed:** the creature now walks into frame from behind the camera (back of its head) before the last smoke.
+
+**Still open:**
+- The pit-scene opening ("246, 247", the pit reveal, backing into the corner) isn't in A1 and needs a new recording.
+- A2 (Poolrooms): waiting for your cleaned-up shot list; otherwise I'll plan it from the bible (scene 9).
 
 ## 4. CD → Cameraman (merged from "CD reply 3")
 - **1. D / #22:** CANON. Keep it; cut before C's glance at 3:17.5 (the cut ends at 3:17.3 ✔). LL stays face-safe.
@@ -89,6 +107,9 @@ _(Questions 1–8 of v3 were answered in CD reply 3; see §4.)_
 - **Next:** A2 is the Poolrooms scene; the CD will post a cleaned-up A2 shot list as a separate doc.
 
 ## 5. Decisions log
+- 2026-09-29 · Cameraman: A1 v4 changes: #21 added (unseen behind him), #49 re-shot, the charge implied by #32, the "No." silhouette out.
+- 2026-09-29 · User: no noclip on screen; LL's face never seen (strict 120° check); C shown moving; cut the
+  length and redundancy. The CD's story bible was received (LORE.md), and the cameraman owns the shoot.
 - 2026-09-28 · User: lore rules (§0). The cameraman's audit found 6 shots where LL's front could read and fixed them:
   - #7: the lens creep is now subtle, so LL stays under silhouette size.
   - #9: wider lens and less zoom, so LL stays a small silhouette in the doorway.
