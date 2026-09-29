@@ -248,6 +248,12 @@ def col_name(i: int) -> str:
     return name
 
 
+def sign_level(z: float, levels: list[dict]) -> dict:
+    """The floor a wall sign belongs to: the highest floor at most 16 u above it (signs hang 0-150 u up)."""
+    below = [lv for lv in levels if lv["z"] - 16 <= z]
+    return max(below, key=lambda lv: lv["z"]) if below else min(levels, key=lambda lv: abs(lv["z"] - z))
+
+
 class Grid:
     """Map-wide lettered grid: columns A, B, C... west to east, rows 1, 2, 3... north to south."""
 
@@ -454,7 +460,8 @@ def build_overview(map_name: str, res: float = 4.0, routes: dict | None = None, 
                             weight="bold", zorder=11, bbox=dict(boxstyle="round,pad=0.15", fc="#fff6c8", ec="#aa8"))
         # landmarks: numbered markers
         # signs hang on this floor's walls (centre 0-150 u above the floor); other marks keep the looser band
-        here = [m for m in kept if (-16 <= m["pos"][2] - z <= 150 if m["kind"] == "sign" else abs(m["pos"][2] - z) <= 170)
+        here = [m for m in kept if (sign_level(m["pos"][2], levels)["z"] == z if m["kind"] == "sign"
+                                    else abs(m["pos"][2] - z) <= 170)
                 and lo[0] <= m["pos"][0] <= hi[0] and lo[1] <= m["pos"][1] <= hi[1]]
         for m in here:
             colour = {"door": "#8b4513", "exit": "#0a8f2a", "button": "#c00000", "sign": "#0b7fa8"}.get(m["kind"], "#6a3d9a")

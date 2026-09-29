@@ -547,3 +547,11 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
     other are de-duplicated.
 - **Cost:** scan 1.5–9 min per map. Reading takes about 10 sheets for a good map. Insertion2 floods (foliage, props,
   windows), so I made focus sheets filtered by material.
+
+## 20. Planning brief for the other chat (2026-09-28)
+- `tools/csdv/brief.py <demo>` writes a PDF (HTML printed by Edge headless: `msedge --headless --print-to-pdf`,
+  `--no-pdf-header-footer`). It is one PDF per demo because the 5-demo combined version was 107 pages, and claude.ai
+  only processes PDF visuals up to 100 pages. Sizes: 2-4.4 MB, 15-33 pages.
+- Script format the planning chat returns: `# | start-end | shot (catalogue #/name) | subject | camera place | options`,
+  plus `HIDDEN:` lines. Places: space ID / grid square / L# / auto.
+- `mapview.sign_level`: a sign belongs to the highest floor <= its z + 16 (it was on two floors before).

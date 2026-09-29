@@ -47,6 +47,11 @@ and let the user run the two scripts. Git is the hand-off.
    `landmarks-visual.json` is committed. Tune `KEYWORDS/EXCLUDE/PROPS` in signs.py when a map floods the sheets.
    Done: de_02school (87), ze_backrooms_insomnia (58), cs_insertion2 (27, focus pass; store/station interiors
    only spot-checked). de_lord has no signs (castle ruin).
+   **Hand-off to the user's planning chat (claude.ai):** `python tools/csdv/brief.py <demo> -o
+   videos/briefs/brief-<demo>.pdf` builds one self-contained PDF per demo: the guide (map conventions, style, the
+   script format to send back), the shot catalogue, key moments (jumps, knife, shots, damage, teleports), every
+   floor map with landmark/space lists, and the timeline. Edge headless prints it. Keep each PDF under 100 pages
+   (claude.ai only reads the visuals up to 100); that's why it's one per demo. Send with SendUserFile.
 2. **The user writes the script** (shots, lengths, places by space ID / grid square / landmark number). If they send
    a draft first: identify every referenced object/place on the maps (landmark IDs, squares, coordinates) and
    confirm before building.
