@@ -31,7 +31,11 @@ and let the user run the two scripts. Git is the hand-off.
 ## Roles (user, 2026-09-28)
 **I am the Cameraman.** The claude.ai chat is the **Creative Director** (lore and story). I own the shooting:
 cameras, framing, reading the demos (takes, repeats, improvised additions, dead space) and reporting them for
-lore checks. The shared file is `videos/briefs/COLLAB.md`. I keep it: bump the version, merge the CD's replies
+lore checks. The shared file is `videos/briefs/COLLAB.md` (local master). **The shared copy is in Google Drive:** folder
+"CS2 Demo Videos — Cameraman ⇄ Creative Director" (id 1uOg9NRGon0K_byiLHCTjBrWcxAO7adKd). My Drive connector can
+create and read files but can't edit an existing doc's text, so each update is a new Google Doc `COLLAB vN (Cameraman)`
+(create_file with parentId, contentMimeType text/markdown). Before each update, search the folder
+(`parentId = '<id>'`) for `CD reply N` docs and merge them into §4. I keep it: bump the version, merge the CD's replies
 (the user relays them), and keep the status board and logs current. The goal per demo is a full render; the user
 gives feedback after. Story changes need the CD's OK; camera changes are mine. Scripted shot lists are built with
 a per-demo builder (e.g. `videos/specs/a1v2/build.py`: solver + checks: C visible, LL out or face-safe,

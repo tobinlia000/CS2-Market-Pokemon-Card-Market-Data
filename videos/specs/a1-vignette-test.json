@@ -1,0 +1,675 @@
+{
+ "name": "a1-vignette-test",
+ "summary": "videos/demos/A1.summary.json",
+ "outputFileName": "a1-vignette-test",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 13696,
+   "end": 13824,
+   "pov": "Caillou (Canadian now)",
+   "why": "orig #24 side-on from the west",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 6.75,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 9.0,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 0; r_csgo_postprocess_enable 1"
+  },
+  {
+   "type": "ticks",
+   "start": 8064,
+   "end": 8192,
+   "pov": "Caillou (Canadian now)",
+   "why": "orig #12 wide, small in the room, n",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 2.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 4.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 6.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 8.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 0; r_csgo_postprocess_enable 1"
+  },
+  {
+   "type": "ticks",
+   "start": 49984,
+   "end": 50112,
+   "pov": "Caillou (Canadian now)",
+   "why": "orig #41 wide from the pit side, LL",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 6.75,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 9.0,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 0; r_csgo_postprocess_enable 1"
+  },
+  {
+   "type": "ticks",
+   "start": 13696,
+   "end": 13824,
+   "pov": "Caillou (Canadian now)",
+   "why": "nopost #24 side-on from the west",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 6.75,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 9.0,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 1; r_csgo_postprocess_enable 1"
+  },
+  {
+   "type": "ticks",
+   "start": 8064,
+   "end": 8192,
+   "pov": "Caillou (Canadian now)",
+   "why": "nopost #12 wide, small in the room, n",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 2.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 4.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 6.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 8.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 1; r_csgo_postprocess_enable 1"
+  },
+  {
+   "type": "ticks",
+   "start": 49984,
+   "end": 50112,
+   "pov": "Caillou (Canadian now)",
+   "why": "nopost #41 wide from the pit side, LL",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 6.75,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 9.0,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 1; r_csgo_postprocess_enable 1"
+  },
+  {
+   "type": "ticks",
+   "start": 13696,
+   "end": 13824,
+   "pov": "Caillou (Canadian now)",
+   "why": "csgopost0 #24 side-on from the west",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 6.75,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     },
+     {
+      "t": 9.0,
+      "pos": [
+       -3345.6,
+       2578.0,
+       -5836.1
+      ],
+      "pitch": 5.178,
+      "yaw": 0.0,
+      "roll": 0.0,
+      "fov": 49.052
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 0; r_csgo_postprocess_enable 0"
+  },
+  {
+   "type": "ticks",
+   "start": 8064,
+   "end": 8192,
+   "pov": "Caillou (Canadian now)",
+   "why": "csgopost0 #12 wide, small in the room, n",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 2.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 4.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 6.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     },
+     {
+      "t": 8.0,
+      "pos": [
+       -2681.2,
+       665.8,
+       -5836.1
+      ],
+      "pitch": 2.076,
+      "yaw": 157.959,
+      "roll": 0.0,
+      "fov": 46.799
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 0; r_csgo_postprocess_enable 0"
+  },
+  {
+   "type": "ticks",
+   "start": 49984,
+   "end": 50112,
+   "pov": "Caillou (Canadian now)",
+   "why": "csgopost0 #41 wide from the pit side, LL",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 6.75,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     },
+     {
+      "t": 9.0,
+      "pos": [
+       -718.7,
+       5077.8,
+       -5836.1
+      ],
+      "pitch": 1.661,
+      "yaw": -179.999,
+      "roll": 0.0,
+      "fov": 31.016
+     }
+    ]
+   },
+   "cfg": "cl_disable_postprocessing 0; r_csgo_postprocess_enable 0"
+  }
+ ]
+}

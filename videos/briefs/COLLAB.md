@@ -6,23 +6,28 @@
   dead space. Keeps this file.
 - **Creative Director** (claude.ai chat): owns lore and story. Checks the cameraman's reading of each demo for
   story and lore consistency, decides which takes and scenes are canon, and writes scene intent.
-- **The user** relays this file between the two chats and gives feedback after each full render.
+- **The user** gives feedback after each full render.
 
-**How to use this file**
-- The user uploads the latest version to the CD chat. The CD replies in its own section (or as a pasted block);
-  the user pastes the reply back to the cameraman, who merges it here and bumps the version.
+**How to use this file (Google Drive, no copy-pasting)**
+- Everything lives in the Drive folder **"CS2 Demo Videos — Cameraman ⇄ Creative Director"**.
+- The cameraman posts each new version as a Google Doc named `COLLAB vN (Cameraman)`. **The newest number is the
+  current state.**
+- **Creative Director:** reply by creating a Google Doc in the same folder named `CD reply N` (N = the version
+  you're answering). If your Drive access is read-only, write your reply in a doc there by hand, or have the user
+  paste it. Either way the cameraman searches the folder for it.
+- The cameraman merges every CD reply into the next COLLAB version (§4) and bumps the version.
 - Newest entries go at the top of each log. Use shot numbers (`#12`), demo times (`m:ss.s`) and map places
   (space ID / grid square / L#).
 - The cameraman may change cameras freely. Story changes (dropping or adding a beat, reordering) need the CD's OK.
 
-**Version:** v1 · 2026-09-28 · by Cameraman
+**Version:** v2 · 2026-09-28 · by Cameraman · Drive copy: "COLLAB v2 (Cameraman)"
 
 ---
 
 ## 1. Status board
 | Demo | Map | State |
 |---|---|---|
-| A1 | ze_backrooms_insomnia | **Rendering the full v2 shot list** (57 shots + a clean plate). Awaiting the user's feedback after it |
+| A1 | ze_backrooms_insomnia | **v2 rendered** (5:24, 57 shots + clean plate). 7 shots flagged by the cameraman for reshoot (see §6). Vignette removal being tested. Awaiting the user's feedback |
 | A2 | ze_backrooms_insomnia (upper floors) | Maps done; not planned yet |
 | C1 | de_02school | Maps done; not planned |
 | D1 | cs_insertion2 | Maps done; not planned |
@@ -74,7 +79,16 @@ _(empty)_
   show his face); #50's POV faces the room, not the pit.
 
 ## 6. Render log
-- 2026-09-28 · **A1 v2** · 57 shots + clean plate (#35p at 11:00–11:04), about 5.5 min of footage,
-  final look. In progress.
+- 2026-09-28 · **A1 v2 rendered** · `A1-v2-final.mp4` (5:24, 1440p60, final look) + 720p preview. Cameraman review:
+  - **Good:** most shots, including #1, #3–#10, #12–#14, #17, #20–#21, #23–#48, #50–#55 and the clean plate #35p.
+  - **Reshoot in v2.1:**
+    - #15: LL's head blocks C.
+    - #16: not a close-up.
+    - #19: C runs into the lens.
+    - #22: LL isn't a clean foreground shape.
+    - #49, #56, #57: the camera sits in C's own smoke, so the pit shots show only smoke. New angles needed;
+      the smoke at AE9 covers the pit's near edge.
+  - **Map vignette** (the map maker's post-process "nino2": vignette -0.77, plus a tone map, bloom and colour grade):
+    comparing `cl_disable_postprocessing` and `r_csgo_postprocess_enable 0` against the original.
 - 2026-09-28 · A1 visibility test (6 POV clips): LL is a silhouette at 1:26 and 2:29, invisible at 3:36 and 3:57,
   clear at 4:30 and 15:24.
