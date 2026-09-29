@@ -37,3 +37,35 @@ Maps: `A1-map-1-trapped.png` (0:00–2:48) and `A1-map-2-run.png` (2:44–6:42).
 - **#19:** scrap.
 - **#20:** wrong part of the demo for the scene. **#21:** both players walking together; not part of the scene.
   **#22:** confusing. The user will direct 3:07+ from the maps.
+
+# Review of v5 (2026-09-29), shot numbers = v5 outline
+- **#1:** wrong take. A11 opens with him backed against the wall and walking forward, in a couple of takes. THAT is
+  the "seen from his right side" shot: **static, at character height**. It's the through-the-wall transition from
+  the previous scene. (v5's #1 isn't bad and may be kept elsewhere if useful.)
+- **#2:** good pan, but #1/#2 show **knife marks on the wall before he has knifed it**. Continuity: use A11 (clean
+  walls) for the shots before the knifing (#4).
+- **#3:** scrap the over-the-shoulder shot. Better: make the OTS from the **same movement shown in #2**, switching
+  when he peeks around the corner (continuous action across the cut).
+- **#4:** good (he makes the knife marks here; earlier shots must not show them). **#5:** good.
+- **#6:** after he swivels toward the mumbling, add a **slow zoom on the empty corridor** the mumbling comes from.
+- **#7 order:** swivel → corridor shot (him in frame or not) → backing up → corridor again (#8 as it is).
+- **#9–#12:** fine.
+- **#13/#14:** LL sliding into frame looks unnatural. Start when LL is already there; **the camera backs up to reveal
+  the back of his head**.
+- **#15:** good. **#16:** more centered, less torso, more straight behind LL's head (a little of the left side is OK).
+- **#17:** good. **#18:** wider. **#19:** good, but just show him crossing; cut before he retraces his steps.
+- **#20:** too dark, LL's head can't be seen. Angle it so **LL's silhouette reads in the foreground** against light.
+- **#21–#28:** good.
+- **#29:** the first whip is aimed too far left; aim it further right. **#30:** the whip back should show only the
+  **empty spot**; the NEXT shot shows him running away.
+- **#31:** shows him retracing his steps: cut it short or change it.
+- **#32, #33:** fine. **#34:** cut much shorter; end when he walks into the dark the first time (no walking
+  backwards for no reason).
+- **Missing between #34 and #35:** him approaching pillar 247, then going into the corner for the first time (right
+  now it's a jump cut to him in the corner). He must **look down into the pit, or the huge pit must be shown**.
+  Then he backs up, throws the smoke, transition, and later we return.
+- **#38:** a little wider and further back. **#39:** no aggressive back-and-forth swinging; a smooth zoom
+  traversing corners from further back (even very far back) is fine.
+- **#40:** good. **#41:** fine. **#42:** doesn't make sense (it cuts back to him in the corner); show him walking back.
+- **The ending (#43–#50) should be:** a close LL reveal from behind its head (or from the front if its eyes are
+  hidden behind the pillar), a smoke already up, he walks backwards away from it and accidentally falls into the pit.
