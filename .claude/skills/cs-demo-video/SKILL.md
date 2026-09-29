@@ -28,6 +28,12 @@ and let the user run the two scripts. Git is the hand-off.
   (`showOnlyDeathNotices`) with the focused player's kills highlighted. Change a default only when asked,
   and record the preference in the memory file.
 
+## Storage (user request 2026-09-28)
+C: is getting full (115 GB free of 953 GB on 2026-09-28). **Check free space on C: before every render and every
+big export, and tell the user when it's low.** render.ps1 prints free space, warns below 50 GB and refuses below
+15 GB; signs.py refuses a textured export below 15 GB. Delete regenerable scratch files (textured exports,
+copied VPKs) after use. Mention the free space in the render report.
+
 ## THE USER'S WORKFLOW (2026-09-27; follow this for every new demo)
 1. **Receive a demo → maps first.** `export-demo.ps1 -Demo <dem> [-Source valve]`, then
    `python tools/csdv/csdv.py maps videos/demos/<demo>.summary.json` → `videos/maps/<map>/overview-<demo>/`:

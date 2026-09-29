@@ -71,6 +71,10 @@ def export_textured(map_name: str) -> Path:
     gltf = out / "w.gltf"
     if gltf.is_file():
         return gltf
+    free_gb = shutil.disk_usage(out.anchor or "C:\\").free / 2**30
+    print(f"Drive {out.anchor} {free_gb:.1f} GB free (textured export needs about 3 GB)")
+    if free_gb < 15:
+        raise GeometryError(f"Only {free_gb:.1f} GB free - not exporting (needs about 3 GB; user asked to protect C:)")
     vpks = mapgeo.map_vpks(map_name)
     csgo = mapgeo.cs2_csgo_dir()
     search = []

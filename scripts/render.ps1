@@ -26,6 +26,12 @@ if (Get-Process cs2 -ErrorAction SilentlyContinue) {
     throw "CS2 is already running. Close it completely (it may be a normal online session), then run this again."
 }
 
+# Storage check (user request 2026-09-28: C: is getting full). Warn below 50 GB free, refuse below 15 GB.
+$freeGB = (Get-PSDrive C).Free / 1GB
+Write-Host ("Drive C: {0:N1} GB free" -f $freeGB)
+if ($freeGB -lt 15) { throw ("Only {0:N1} GB free on C: - free up space before rendering (recordings need room while CS2 writes them)." -f $freeGB) }
+if ($freeGB -lt 50) { Write-Warning ("LOW DISK: only {0:N1} GB free on C:." -f $freeGB) }
+
 $csdm = Get-Csdm
 $logDir = Join-Path $RepoRoot 'videos\logs'
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
