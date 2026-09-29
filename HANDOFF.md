@@ -1,3 +1,25 @@
+## ▶ CURRENT (2026-09-29, before the user's PC restart)
+- A1 v4 rendered (`A1-v4-final*.mp4`) and reviewed by the user. Their shot notes: `videos/briefs/A1-direction.md`.
+  Maps: `videos/briefs/A1-map-1-trapped.png`, `A1-map-2-run.png`. I'm now Cameraman + Creative Director (no Drive
+  loop). Usage rules: memory `usage-budget`.
+- **Waiting on the user's B-roll demos** (solo, recorded as demos): (1) spawn corner, backing into it facing N while
+  acting out the prank/fly/stupid command/relief lines; (2) the #31 hiding corner (map 2, about -5186,2415), back to
+  the wall, talking to himself, then bolting S/E toward #33/#34; (3) the "246, 247" pit opening.
+- **Agreed plan (v5):**
+  - #1 from C's right side at 0:25.9, held.
+  - #2 behind C in the spawn corner, panning north toward LL's spot.
+  - #3 over the shoulder, not POV.
+  - #4–#6 keep.
+  - Reveal: one camera behind LL, 1:16–1:23 (he steps in) + 2:22–2:33 (C enters and notices); tighter, smiley
+    (-2636,1076) out of frame.
+  - Back to the #15 angle sooner; #16 ends before the wall glitch; #19 scrapped.
+  - The run 4:00–4:27 right→left as one continuous movement, plus a behind-LL's-head shot (LL at T14 -3472,3921,
+    3:26–4:25) where C never looks his way.
+  - The hiding corner (B-roll), a footstep, a whip east (empty, around 4:26), a whip back: C gone, running toward
+    #33/#34 (demo 5:41–5:52 or the B-roll).
+  - Old #20–#22, the charge, and #32 are dropped.
+- Don't start rebuilding until the user says so ("let me record them first before doing anything").
+
 # Handoff: CS Demo Manager + HLAE project → local Claude session on the user's PC
 
 Written 2026-09-27 by the cloud session "CS DEMO MANAGER and HLAE skill". Everything below is on branch
