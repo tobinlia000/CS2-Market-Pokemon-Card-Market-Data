@@ -555,3 +555,17 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
 - Script format the planning chat returns: `# | start-end | shot (catalogue #/name) | subject | camera place | options`,
   plus `HIDDEN:` lines. Places: space ID / grid square / L# / auto.
 - `mapview.sign_level`: a sign belongs to the highest floor <= its z + 16 (it was on two floors before).
+
+## 21. A1 plan review (2026-09-28)
+- The planning chat sent a 42-shot A1 script plus 10 questions. I answered them from the data and checked every
+  shot: `videos/briefs/A1-answers.md` plus visibility contact sheets.
+- Method (scratchpad/a1/common.py): per-tick tracks, a 4-point body line-of-sight test (feet, waist, chest, head)
+  with MapGeometry.clear, and a +-53 deg view cone. For LL facing, compare his bearing to C with his yaw.
+- LL audio: shift-walk is about 130 u/s (silent) and running 250 (footsteps); >300 u/s is noclip.
+  parse_voice returned nothing, so there is no voice data.
+- A geometric line of sight does not mean visible: backrooms is very dark. Verify with a short POV test render
+  (`videos/specs/a1-visibility-test.json`: 6x3 s, about 19 min wall time with a long first load). Result: LL is a
+  silhouette in a lit doorway at 1:26/2:29, invisible in the dark pillar hall at 3:36/3:57, and clear at
+  4:30 and 15:24. The T model wears a balaclava.
+- Key A1 facts: C leaves the wall at 0:26.3 and bolts at 3:59.3. LL is right behind C at 3:11-3:19 and charges
+  C at 4:30.5. The pit fall is 15:40.5-15:42.2. Map restart at 10:00.2. C never crouches in the corner.

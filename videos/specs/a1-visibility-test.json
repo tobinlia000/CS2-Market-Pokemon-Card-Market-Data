@@ -1,0 +1,15 @@
+{
+  "name": "a1-visibility-test",
+  "summary": "videos/demos/A1.summary.json",
+  "outputFileName": "a1-visibility-test",
+  "concatenate": true,
+  "order": "spec",
+  "clips": [
+    { "type": "time", "start": "1:26", "end": "1:29", "pov": "Caillou" },
+    { "type": "time", "start": "2:29", "end": "2:32", "pov": "Caillou" },
+    { "type": "time", "start": "3:36", "end": "3:39", "pov": "Caillou" },
+    { "type": "time", "start": "3:57", "end": "4:00", "pov": "Caillou" },
+    { "type": "time", "start": "4:29", "end": "4:32", "pov": "Caillou" },
+    { "type": "time", "start": "15:24", "end": "15:27", "pov": "Caillou" }
+  ]
+}
