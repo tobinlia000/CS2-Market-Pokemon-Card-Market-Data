@@ -1,0 +1,84 @@
+{
+ "name": "a1-v5-p2",
+ "summary": "videos/demos/A1.summary.json",
+ "outputFileName": "A1-V5-P2",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 4992,
+   "end": 5312,
+   "pov": "Caillou (Canadian now)",
+   "why": "#13 slow push; the still-life steps into view, back of its head (corner out of frame)",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2565.0,
+       1194.0,
+       -5838.0
+      ],
+      "pitch": 2.873,
+      "yaw": -143.159,
+      "roll": 0.0,
+      "fov": 30.0
+     },
+     {
+      "t": 1.25,
+      "pos": [
+       -2565.0,
+       1194.0,
+       -5838.0
+      ],
+      "pitch": 2.873,
+      "yaw": -143.159,
+      "roll": 0.0,
+      "fov": 29.328
+     },
+     {
+      "t": 2.5,
+      "pos": [
+       -2565.0,
+       1194.0,
+       -5838.0
+      ],
+      "pitch": 2.873,
+      "yaw": -143.159,
+      "roll": 0.0,
+      "fov": 27.841
+     },
+     {
+      "t": 3.75,
+      "pos": [
+       -2565.0,
+       1194.0,
+       -5838.0
+      ],
+      "pitch": 2.873,
+      "yaw": -143.159,
+      "roll": 0.0,
+      "fov": 26.344
+     },
+     {
+      "t": 5.0,
+      "pos": [
+       -2565.0,
+       1194.0,
+       -5838.0
+      ],
+      "pitch": 2.873,
+      "yaw": -143.159,
+      "roll": 0.0,
+      "fov": 25.661
+     }
+    ]
+   }
+  }
+ ],
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": false
+}
