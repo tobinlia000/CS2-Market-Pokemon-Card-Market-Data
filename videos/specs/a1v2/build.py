@@ -82,6 +82,9 @@ def cam_ok(p) -> bool:
 
 # --- evaluation ---------------------------------------------------------------------------------------------------
 
+LL_MARGIN = 1.15  # LL checks: count him as in frame even when only an edge of his body is (v3 #8 lesson)
+
+
 def evaluate(ticks, cam, pitch, yaw, fov, ll_policy="out", step=6):
     """Per sampled tick: C visible+in frame, LL visible+in frame, LL front visible."""
     idx = np.arange(0, len(ticks), step)
@@ -93,7 +96,7 @@ def evaluate(ticks, cam, pitch, yaw, fov, ll_policy="out", step=6):
         c, p_, y_, f_ = cam[i], float(pitch[i]), float(yaw[i]), float(fov[i])
         inf = cine._in_frame(c, p_, y_, f_, cb[k])
         cvis.append(sum(1 for j in range(4) if inf[j] and G.clear(c, cb[k][j])) >= 2)
-        linf = cine._in_frame(c, p_, y_, f_, lb[k])
+        linf = cine._in_frame(c, p_, y_, f_, lb[k], margin=LL_MARGIN)
         seen = any(linf[j] and G.clear(c, lb[k][j]) for j in range(4))
         lin.append(seen)
         face = abs(adiff(bearing(lb[k][3], c), lyaw[k])) < 100  # camera in front of LL's face

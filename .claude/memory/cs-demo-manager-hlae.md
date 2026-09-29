@@ -5,7 +5,7 @@ source code, not only the docs, so they are precise but tied to the versions bel
 
 - **CS Demo Manager** v3.20.1 — github.com/akiver/cs-demo-manager (commit 10fc2a9, 2026-09-25). Docs: cs-demo-manager.com/docs (guides/video, cli).
 - **HLAE** (Half-Life Advanced Effects, "advancedfx") — github.com/advancedfx/advancedfx (commit 96e13a0, 2026-09-27). Manual: github.com/advancedfx/advancedfx/wiki.
-- Last updated: 2026-09-27 (safety, cameras, launch-error research added).
+- Last updated: 2026-09-29 (§27 A1 v3 review: campath gap bug, LL frame margin, story bible).
 
 ## 0. SAFETY (top priority — see CLAUDE.md for the binding rules)
 Verified in source (2026-09-27):
@@ -613,3 +613,21 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   - The abyss and the whips are aimed away from LL.
   - The clean plate is its own spec (`a1-v3-plate.json`).
 - The strict LL rule in `build_v3.strict_ll`: LL visible and the camera less than 120 deg behind him = violation.
+
+## 27. A1 v3 review → v4 (2026-09-29)
+- **Story bible:** `videos/briefs/LORE.md` (the CD's lore & story briefing + the user's standing rules). The user made
+  the cameraman fully responsible for shot choices; the CD is checked only on LL visibility, beat order, or meaning.
+- **Campath lost on ~64-tick gaps (CS:DM):** CS:DM jumps to the next sequence at previous `endTick + 64`. In v3,
+  every clip that started 64 ticks after the previous one ended (#29, #30, #50, #52) ran WITHOUT its campath and
+  showed the fallback chase cam (in #50/#52 that put LL's face on screen). Gaps of 0 (back-to-back), 6, 13, 32, 128
+  and 192 ticks were fine. Rule: gaps must be 0 or outside 40–100 ticks. `build_v4.py` flags them. Always check the
+  rendered frames against the planned camera.
+- **LL out-of-frame check was too lenient:** `cine._in_frame` shrinks the frame (margin 0.92, good for keeping
+  subjects inside it), and body points are centrelines, so LL could stand at the frame edge unflagged (v3 #8 had
+  his front readable for about 2 s; #25 too). There's now a `margin` argument, and LL checks use
+  `build.LL_MARGIN = 1.15` (evaluate + strict_ll, every tick).
+- **Composition review from contact sheets:** `scratchpad/sheet.py` style: 3 frames per shot, 4 shots per sheet
+  (ffmpeg xstack). It caught #32 (LL pressed against a wall filling a dark frame, re-framed from 700 u behind, fov 30)
+  and #38/#39/#41/#47, which were all one angle (the redundancy the user complained about).
+- v4 = 53 shots, about 3:50. Adds #21 "unseen right behind him" (3:14.2–3:17.3, LL standing, not noclip). #49 now
+  has the creature walk into frame from behind the camera.

@@ -287,12 +287,13 @@ def _clear_fraction(geometry, cams: np.ndarray, targets: np.ndarray) -> float:
     return float(np.mean([geometry.clear(cams[i], targets[i]) for i in range(0, len(cams), step)]))
 
 
-def _in_frame(cam, pitch, yaw, h43, points) -> np.ndarray:
-    """Which points are inside a 16:9 frame (with a small safety margin)."""
+def _in_frame(cam, pitch, yaw, h43, points, margin: float = 0.92) -> np.ndarray:
+    """Which points are inside a 16:9 frame. margin < 1 = well inside (for subjects); use margin > 1 when checking
+    that something is OUT of frame, since the points are body centrelines and a shoulder can poke in first."""
     forward, right, up = _basis(pitch, yaw)
     rel = points - cam
     z = rel @ forward
-    tan_h = math.tan(math.radians(h43) / 2) / 0.75 * 0.92
+    tan_h = math.tan(math.radians(h43) / 2) / 0.75 * margin
     tan_v = tan_h * 9 / 16
     zs = np.maximum(z, 1e-6)
     return (z > 1) & (np.abs(rel @ right) / zs < tan_h) & (np.abs(rel @ up) / zs < tan_v)

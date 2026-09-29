@@ -22,14 +22,15 @@ NOCLIP = [(164.4, 165.1), (168.2, 168.9),                       # C: 2:44.4, 2:4
 BEHIND_DEG = 120.0
 
 
-def strict_ll(s, step=2):
+def strict_ll(s, step=1):
     """(ticks where LL is visible and the camera is less than 120 deg behind him, max apparent size)."""
     bad, worst = 0, 0.0
     ticks = s["ticks"]
     lb = B.body(TL, ticks)
     _, lyaw, _, _ = sample(TL, ticks)
     for i in range(0, len(ticks), step):
-        inf = B.cine._in_frame(s["cam"][i], float(s["pitch"][i]), float(s["yaw"][i]), float(s["fov"][i]), lb[i])
+        inf = B.cine._in_frame(s["cam"][i], float(s["pitch"][i]), float(s["yaw"][i]), float(s["fov"][i]), lb[i],
+                                 margin=B.LL_MARGIN)
         if not any(inf[j] and B.G.clear(s["cam"][i], lb[i][j]) for j in range(4)):
             continue
         off = abs(B.adiff(B.bearing(lb[i][3], s["cam"][i]), lyaw[i]))

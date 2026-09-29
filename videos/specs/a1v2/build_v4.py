@@ -1,5 +1,5 @@
 """A1 v4 (2026-09-29): v3 re-checked against the story bible (videos/briefs/LORE.md).
-Changes from v3: #21 added (the still-life stands unseen right behind him; LL standing, no noclip), #49 re-shot
+Changes from v3: #8 and #25-26 re-aimed, #32 re-framed from far behind, #39/#41/#47 new angles (all four corner shots were one angle), (the old LL check shrank the frame; LL was at the edge), #21 added (the still-life stands unseen right behind him; LL standing, no noclip), #49 re-shot
 (v3's camera sat where LL stops, so he never walked into frame).
 
 v3: cut to the Part 1 script beats under the user's rules.
@@ -26,14 +26,15 @@ NOCLIP = [(164.4, 165.1), (168.2, 168.9),                       # C: 2:44.4, 2:4
 BEHIND_DEG = 120.0
 
 
-def strict_ll(s, step=2):
+def strict_ll(s, step=1):
     """(ticks where LL is visible and the camera is less than 120 deg behind him, max apparent size)."""
     bad, worst = 0, 0.0
     ticks = s["ticks"]
     lb = B.body(TL, ticks)
     _, lyaw, _, _ = sample(TL, ticks)
     for i in range(0, len(ticks), step):
-        inf = B.cine._in_frame(s["cam"][i], float(s["pitch"][i]), float(s["yaw"][i]), float(s["fov"][i]), lb[i])
+        inf = B.cine._in_frame(s["cam"][i], float(s["pitch"][i]), float(s["yaw"][i]), float(s["fov"][i]), lb[i],
+                                 margin=B.LL_MARGIN)
         if not any(inf[j] and B.G.clear(s["cam"][i], lb[i][j]) for j in range(4)):
             continue
         off = abs(B.adiff(B.bearing(lb[i][3], s["cam"][i]), lyaw[i]))
@@ -84,7 +85,11 @@ def main():
     S(7, "1:32.3", "1:38", shot_ots_c(tk("1:32.3"), tk("1:38")), "OTS as he backs away (custom-map prank line)")
     # the abyss: aim down the dark part of the corridor, the lit doorway where LL stands kept out of frame
     # the abyss: aim down the dark part of the corridor, well left of the lit doorway where LL stands (LL out of frame)
-    abyss = fixed("1:44", "1:49", C_WALL + [0, 60, 0], np.array([-3086.0, 1124.0, -5846.0]), 50.0, zoom=0.8)
+    # v4: aim turned 12 deg away from the lit doorway (v3's frame had LL's front at the right edge for ~2 s)
+    _v = np.array([-3086.0, 1124.0, -5846.0]) - (C_WALL + [0, 60, 0])
+    _r = math.radians(12)
+    abyss_aim = C_WALL + [0, 60, 0] + [_v[0] * math.cos(_r) - _v[1] * math.sin(_r), _v[0] * math.sin(_r) + _v[1] * math.cos(_r), _v[2]]
+    abyss = fixed("1:44", "1:49", C_WALL + [0, 60, 0], abyss_aim, 50.0, zoom=0.8)
     S(8, "1:44", "1:49", abyss, "the abyss: slow zoom into the dark (\"No.\" at the end); LL out of frame")
     S(9, "1:51", "1:55", ll_out("1:51", "1:55", absb=53, dists=(160, 220, 300), margin=1.3),
       "\"did you really think...\" (then the console insert)")
@@ -101,7 +106,7 @@ def main():
     S(14, "2:30.5", "2:33.5", ll_out("2:30.5", "2:33.5", absb=90, dists=(80, 100, 120), fit=False, fixed_fov=38,
                                       need_c=0.8, aim_point=sample(TC, np.arange(tk("2:30.5"), tk("2:33.5"), 8))[0].mean(0)
                                       + [0, 0, 62]), "close: \"no, no, that's not right\"")
-    S(15, "2:34", "2:37", reuse(s13, "2:34", "2:37"), "the creature stands still, watching him go")
+    S(15, "2:34", "2:38", reuse(s13, "2:34", "2:38"), "the creature stands still, watching him go")
     # --- running sequence (no noclip: 2:44.4-2:45.1 and 2:48.2-2:48.9 excluded) ------------------------------------
     S(16, "2:38", "2:44.2", shot_cine("ground", tk("2:38"), tk("2:44.2"), {"facing": "away"}), "ground lock-off, runs away")
     S(17, "2:49.2", "2:54", shot_cine("tripod", tk("2:49.2"), tk("2:54"), {"angle": "front-right", "distance": 850}),
@@ -122,19 +127,22 @@ def main():
                                   fov_range=(25, 85)), "slow zoom in: \"is this place ACTUALLY real?\"")
     c = cpos("3:57.4")
     wcam = c + [-70.0, -20.0, 60.0]
-    S(25, "3:57.4", "3:58.9", shot_whip(tk("3:57.4"), tk("3:58.9"), wcam, c + [0, 0, 50], T14 + [900, 0, 0], whip=0.28, fov=50),
+    S(25, "3:57.4", "3:58.9", shot_whip(tk("3:57.4"), tk("3:58.9"), wcam, c + [0, 0, 50], T14 + [900, -400, 0], whip=0.28, fov=50),
       "WHIP PAN to the darkness (nothing visible)")
-    S(26, "3:58.9", "4:01", shot_whip(tk("3:58.9"), tk("4:01"), wcam, T14 + [900, 0, 0], c + [0, 0, 45], whip=0.28, fov=50),
+    S(26, "3:58.9", "4:01", shot_whip(tk("3:58.9"), tk("4:01"), wcam, T14 + [900, -400, 0], c + [0, 0, 45], whip=0.28, fov=50),
       "WHIP PAN back: he's already running")
     S(27, "4:05", "4:09.5", shot_cine("ground", tk("4:05"), tk("4:09.5"), {"facing": "toward"}), "running, toward the lens")
-    S(28, "4:10", "4:14", ll_out("4:10", "4:14", rel="front-left", dists=(350, 500, 650), fit=False, fixed_fov=80,
+    S(28, "4:10", "4:15", ll_out("4:10", "4:15", rel="front-left", dists=(350, 500, 650), fit=False, fixed_fov=80,
                                   need_c=0.8), "running through the generations (wide)")
-    S(29, "4:15", "4:18", shot_cine("tripod", tk("4:15"), tk("4:18"), {"angle": "front-left"}), "tripod pan")
+    S(29, "4:15", "4:19", shot_cine("tripod", tk("4:15"), tk("4:19"), {"angle": "front-left"}), "tripod pan")
     S(30, "4:19", "4:23", ll_out("4:19", "4:23", rel="behind-travel", anchor="start", dists=(120, 200), need_c=0.5,
                                   fit=False, fixed_fov=78, aim_point=cpos("4:22") + [0, 0, 50]), "rounds a corner")
     S(31, "4:25", "4:27.7", ll_out("4:25", "4:27.7", rel="left", dists=(200, 280, 360), margin=1.3), "skids to a stop")
     # --- the still-life at the far end of the hallway: LL standing at Q19 after his noclip ended (4:38-5:12) -------
-    s32 = shot_behind_ll(tk("4:40"), tk("4:44"), dist=220, side=0, up=10, weight=0.5, fov=40, follow_facing=True)
+    # v4: a long lens from 700 u straight behind him, so he reads as a small figure at the far end of the hallway
+    # (v3's 220 u framing put him against a wall filling a dark frame)
+    t32 = np.arange(tk("4:40"), tk("4:44") + 1, 2)
+    s32 = fixed("4:40", "4:44", [-3758.0, 3224.0, -5844.0], sample(TL, t32)[0].mean(0) + [0, 0, 40], 30.0)
     S(32, "4:40", "4:44", s32, "the still-life at the far end of the hallway, its back to us (easter-egg plate: #32p)")
     S("32p", "11:00", "11:04", reuse(s32, "11:00", "11:04"), "clean plate of #32 for the second still-life composite")
     S(33, "5:41", "5:46", ll_out("5:41", "5:46", rel="ahead", anchor="end", dists=(150, 250, 350), need_c=0.5, fit=False,
@@ -150,12 +158,14 @@ def main():
     # --- INT. THE BACKROOMS (SOLO): the corner ------------------------------------------------------------------------
     S(38, "13:01", "13:06", ll_out("13:01", "13:06", absb=0, dists=(500, 650, 800), margin=2.4, fov_range=(30, 85)),
       "\"I think I'm safe here\"")
-    S(39, "13:12", "13:17.5", ll_out("13:12", "13:17.5", absb=0, dists=(300, 400, 500), margin=1.6, zoom=0.8),
+    S(39, "13:12", "13:17.5", ll_out("13:12", "13:17.5", rel="front-left", dists=(110, 150, 200), margin=1.2, zoom=0.85,
+                                  fov_range=(25, 80)),
       "\"...wait... what if...\" readies the smoke")
     t40 = np.arange(tk("13:17.5"), tk("13:21") + 1, 2)
     S(40, "13:17.5", "13:21", fixed("13:17.5", "13:21", SMOKE, sample(TC, t40)[0].mean(0) + [0, 0, 46], 70.0),
       "the smoke fills the frame (transition to Ancient)")
-    S(41, "13:43", "13:48", ll_out("13:43", "13:48", absb=0, dists=(450, 600, 750), margin=1.8, zoom=0.85),
+    S(41, "13:43", "13:49.2", ll_out("13:43", "13:49.2", absb=90, dists=(250, 350, 450), heights=(90, 130), margin=1.6,
+                                  fov_range=(30, 85)),
       "back in the corner: lobs a smoke, singing")
     S(42, "13:49.2", "13:51.3", shot_creature_lead(tk("13:49.2"), tk("13:51.3")), "creature lead: distant footsteps")
     S(43, "13:51.5", "13:54", ll_out("13:51.5", "13:54", absb=90, dists=(200, 280, 360), margin=1.3),
@@ -167,7 +177,7 @@ def main():
     t46 = np.arange(tk("14:33.8"), tk("14:38.2"), 8)
     S(46, "14:33.8", "14:38.2", fixed("14:33.8", "14:38.2", [-1290.0, 5060.0, -5836.0],
                                       sample(TC, t46)[0].mean(0) + [0, 0, 46], 55.0), "he goes to check (cut before the edge)")
-    S(47, "14:42.6", "14:45", ll_out("14:42.6", "14:45", absb=0, dists=(300, 400, 500), margin=1.4),
+    S(47, "14:42.6", "14:45", ll_out("14:42.6", "14:45", rel="behind-travel", dists=(150, 220, 300), margin=1.4),
       "gives up, back to the corner")
     S(48, "15:09.3", "15:11.4", shot_creature_lead(tk("15:09.3"), tk("15:11.4")), "creature POV approaching; it stops")
     t49 = np.arange(tk("15:20.5"), tk("15:24.5") + 1, 2)
@@ -178,8 +188,8 @@ def main():
       "the last smoke (15:25.9)")
     S(51, "15:29", "15:33", shot_behind_ll(tk("15:29"), tk("15:33"), dist=90, side=40, up=6, weight=0.9),
       "he turns and sees it: \"How- how?\"")
-    t52 = np.arange(tk("15:34"), tk("15:39.5"), 8)
-    S(52, "15:34", "15:39.5", fixed("15:34", "15:39.5", [-1290.0, 5060.0, -5836.0],
+    t52 = np.arange(tk("15:33"), tk("15:39.5"), 8)
+    S(52, "15:33", "15:39.5", fixed("15:33", "15:39.5", [-1290.0, 5060.0, -5836.0],
                                     sample(TC, t52)[0].mean(0) + [0, 0, 46], 40.0), "backs up frantically through the smoke")
     S(53, "15:39.5", "15:40.6", fixed("15:39.5", "15:40.6", [-420.0, 5260.0, -5800.0], [-430.0, 5090.0, -5950.0], 90.0),
       "SLOW MOTION 2x: over the edge (cut before the teleport)", cfg="demo_timescale 0.5")
@@ -195,6 +205,13 @@ def main():
         elif s is None:
             problems.append(f"#{n}: no camera met the rules")
         add(n, a, b, s, note, cfg=cfg if cfg else ("demo_timescale 1" if n == "32p" else None))
+    # CS:DM jumps to the next sequence at previous endTick + 64; a clip starting ~1 s after the previous one ends missed
+    # its campath setup (gaps 6-32 and 128+ were fine) and fell back to the chase cam (v3 #29, #30, #50, #52: LL's face). Back-to-back (gap 0) is fine.
+    order = [c for c in CLIPS if not c["why"].startswith("#32p")]
+    for a, b in zip(order, order[1:]):
+        gap = b["start"] - a["end"]
+        if 40 <= gap <= 100:
+            problems.append(f"{b['why'].split()[0]}: starts {gap} ticks after the previous clip ends (v3: ~64-tick gaps lost the campath; make it 0 or > 100)")
     # 53 is slow motion: reset the timescale on the clean plate that follows it in the render order
     spec = {"name": "a1-v4", "summary": "videos/demos/A1.summary.json", "outputFileName": "A1-v4",
             "concatenate": True, "order": "spec", "clips": CLIPS,
