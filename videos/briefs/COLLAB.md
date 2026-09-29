@@ -35,7 +35,7 @@
 ## 1. Status board
 | Demo | Map | State |
 |---|---|---|
-| A1 | ze_backrooms_insomnia | **v2.1d in progress**: the CD approved the cut (reply 3); the lore audit fixed 6 shots (#7, #8, #9, #22, #34, #55; #54 extended). Then awaiting the user's feedback. Still missing: the pit-scene opening (needs a new recording) |
+| A1 | ze_backrooms_insomnia | **v2.1d rendered**: CD-approved cut plus the lore audit (6 shots fixed). **Awaiting the user's feedback.** Still missing: the pit-scene opening (needs a new recording). Candidate for a better angle: #55 (C half-hidden by a pillar) |
 | A2 | ze_backrooms_insomnia (upper floors) = **the Poolrooms scene** | Maps done; the CD will post a cleaned-up shot list as a separate doc when we're ready |
 | C1 | de_02school | Maps done; not planned |
 | D1 | cs_insertion2 | Maps done; not planned |
@@ -103,7 +103,8 @@ _(none open. Questions 1–8 of v3 were answered in CD reply 3; see §4)_
   show his face); #50's POV faces the room, not the pit.
 
 ## 6. Render log
-- 2026-09-28 · **A1 v2.1d** (in progress) · v2.1b plus the 7 lore-audit shots re-shot and spliced in.
+- 2026-09-28 · **A1 v2.1d** · `A1-v2.1d-final.mp4` (+720p preview) · v2.1b plus the 7 lore-audit shots re-shot and
+  spliced in (#7, #8, #9, #22, #34, #54, #55). Audit: 0 frames where LL's front reads.
 - 2026-09-28 · **A1 v2.1c** · v2.1b with #22 re-shot (slow, subtle glide behind LL). `A1-v2.1c-final.mp4`.
 - 2026-09-28 · **A1 v2.1b** · `A1-v2.1b-final.mp4` (5:29). Changes from v2:
   - The map maker's post-process is off (`r_csgo_postprocess_enable 0`), which removes its vignette. Its tone
