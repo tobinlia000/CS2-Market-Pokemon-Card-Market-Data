@@ -20,16 +20,15 @@
 | 18 | A1 | 2:49.2–2:54 | 77% | 0% | tripod pan, sprint north |
 | 19 | A1 | 2:54–2:59 | 56% | 0% | lost: runs through, checks behind |
 | 20 | A1 | 4:02.4–4:05 | 50% | 100% | far away in the dark, behind its head: it watches him dart past (he never looks) |
-| 21 | A11 | 1:41–1:45 | 100% | 0% | the run: tripod pan, right to left |
-| 22 | A11 | 1:45–1:49 | 82% | 0% | the run continues, wide from the south, right to left |
-| 23 | A11 | 1:49–1:53 | 64% | 0% | he ducks behind the corner |
-| 24 | A11 | 1:53–1:58 | 100% | 0% | 'What the hell was that thing? Its face... WHAT IS HAPPENING?' |
+| 21 | A11 | 1:43.8–1:47.3 | 100% | 0% | the run: he races past, right to left, checking behind him |
+| 22 | A11 | 1:47.3–1:52.5 | 86% | 0% | the run continues, right to left, and he ducks around the corner |
+| 24 | A11 | 1:52.5–1:58 | 100% | 0% | 'What the hell was that thing? Its face... WHAT IS HAPPENING?' |
 | 25 | A11 | 1:58–2:05 | 100% | 0% | close: 'Calm down, calm down... my heart's racing' |
 | 26 | A11 | 2:05–2:11 | 100% | 0% | camera pulls out: the scale of the place ('...it said Cache') |
 | 27 | A11 | 2:11–2:20 | 100% | 0% | 'If it was a custom map...' (after the B&W insert) |
 | 28 | A11 | 2:20–2:26.8 | 100% | 0% | slow zoom in: 'is this place ACTUALLY real?' |
-| 29 | A11 | 2:26.8–2:29.6 | 10% | 0% | WHIP to where he came from: nothing there |
-| 30 | A11 | 2:29.6–2:32 | 54% | 0% | WHIP back: his spot is empty, he's already sprinting away |
+| 29 | A11 | 2:26.8–2:29.6 | 7% | 0% | WHIP to where he came from: nothing there |
+| 30 | A11 | 2:29.6–2:32 | 52% | 0% | WHIP back: his spot is empty, he's already sprinting away |
 | 31 | A11 | 2:32–2:33.8 | 100% | 0% | ground lock-off: he sprints away toward the pillars |
 | 32 | A1 | 6:13–6:19 | 82% | 0% | 'I'm gonna get lost if I keep this up' (wide on the pillars) |
 | 33 | A1 | 6:21–6:25 | 86% | 0% | 'How? How? How? The pillars.' |
@@ -51,7 +50,7 @@
 | 49 | A1 | 15:33–15:39.5 | 100% | 9% | backs up frantically through the smoke |
 | 50 | A1 | 15:39.5–15:40.6 | 33% | 0% | SLOW MOTION 2x: over the edge |
 
-Edit length ~ 238 s
+Edit length ~ 236 s
 
 Problems:
 none

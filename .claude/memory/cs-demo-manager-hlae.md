@@ -631,3 +631,20 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   and #38/#39/#41/#47, which were all one angle (the redundancy the user complained about).
 - v4 = 53 shots, about 3:50. Adds #21 "unseen right behind him" (3:14.2–3:17.3, LL standing, not noclip). #49 now
   has the creature walk into frame from behind the camera.
+
+## 28. A1 v5: B-roll demos and multi-pass renders (2026-09-29)
+- **B-roll demos** (A11, solo): self-recorded, so export with `export-demo.ps1 -Source valve`. The user flies
+  (noclips) to each spot between takes: exclude those windows.
+- **Mixing demos in one cut:** one spec per demo, then join in story order (`videos/specs/a1v2/join_v5.py` reads
+  `a1-v5-order.json`). A demo without LL uses a stand-in LL track far below the map, so the LL checks pass.
+- **Overlapping or reused moments in one config are a problem:** csdv warns when a sequence overlaps the previous
+  one. `build_v5.py` splits clips into render passes (`-p2`) so each pass is increasing, non-overlapping, and has
+  no 40–100-tick gaps.
+- **Re-rendering a pass leaves stale sequence files** in `<NAME>-shots` (file names carry the sequence number +
+  ticks). Delete the folder's mp4s before a re-render, or the join finds two files for the same ticks.
+- **"Out of frame" checks for C need the arm reach** (about ±30 u) and margin ≥ 1.05: a hand at the frame edge
+  showed in a whip hold that the body-centreline check passed.
+- A right-to-left run needs the camera on the correct side of the path. The long A1/A11 corridor (y≈2400–2675)
+  has a solid south wall, so the pans there read as "toward the lens, then past on the left".
+- LL (at T14 in the pillar hall) can only see the U19 gap, not the long corridor. The clean "LL watches, C
+  never looks" moment is A1 4:02.4–4:05.

@@ -138,14 +138,22 @@ def main():
         cam = L + [60 * math.cos(r), 60 * math.sin(r), 70]
         return fixed("4:02.4", "4:05", cam, np.array([-3190.0, 2500.0, -5860.0]), 34.0)
     S(20, "A1", "4:02.4", "4:05", s20, "far away in the dark, behind its head: it watches him dart past (he never looks)")
-    S(21, "A11", "1:41", "1:45", lambda: shot_cine("tripod", tk("1:41"), tk("1:45"), {"angle": "front-left"}, track=B.TC),
-      "the run: tripod pan, right to left")
-    S(22, "A11", "1:45", "1:49", lambda: solve("1:45", "1:49", absb=-90, dists=(350, 500, 650), fit=False, fixed_fov=80,
-                                              need_c=0.8), "the run continues, wide from the south, right to left")
-    S(23, "A11", "1:49", "1:53", lambda: solve("1:49", "1:53", absb=-60, anchor="end", dists=(250, 350, 450),
-                                              need_c=0.6, margin=1.4), "he ducks behind the corner")
+    # the run, right to left: fixed cameras by the corridor's south wall pan with him (he runs straight west
+    # 1:43.8-1:51.5, checking behind him); the second pan catches him turning into the corner
+    def pan(a, b, cam, fov):
+        t = np.arange(tk(a), tk(b) + 1, 2)
+        c = B.smooth(B.eye(B.TC, t) - [0, 0, 14], 12)
+        camt = np.tile(np.asarray(cam, float), (len(t), 1))
+        p, y = B.look(camt, c)
+        s = dict(ticks=t, cam=camt, pitch=p, yaw=y, fov=np.full(len(t), float(fov)))
+        s["res"] = B.evaluate(t, s["cam"], s["pitch"], s["yaw"], s["fov"])
+        return s
+    S(21, "A11", "1:43.8", "1:47.3", lambda: pan("1:43.8", "1:47.3", [-3904.0, 2440.0, -5840.0], 60.0),
+      "the run: he races past, right to left, checking behind him")
+    S(22, "A11", "1:47.3", "1:52.5", lambda: pan("1:47.3", "1:52.5", [-4762.0, 2420.0, -5840.0], 60.0),
+      "the run continues, right to left, and he ducks around the corner")
     # hiding-corner B-roll: back to the wall, talking to himself
-    S(24, "A11", "1:53", "1:58", lambda: solve("1:53", "1:58", absb=-90, dists=(160, 220, 300), margin=1.3),
+    S(24, "A11", "1:52.5", "1:58", lambda: solve("1:52.5", "1:58", absb=-90, dists=(160, 220, 300), margin=1.3),
       "'What the hell was that thing? Its face... WHAT IS HAPPENING?'")
     S(25, "A11", "1:58", "2:05", lambda: solve("1:58", "2:05", rel="front-left", dists=(90, 120, 150), margin=1.15,
                                               fov_range=(25, 70)), "close: 'Calm down, calm down... my heart's racing'")
@@ -159,11 +167,11 @@ def main():
     # camera in the lane SW of his spot; whips N to the bend he came from (empty), then back through his empty
     # spot, landing on him sprinting away east (the whip back starts after he has left, ~2:29)
     WCAM = np.array([-5200.0, 2200.0, -5838.0])
-    BEND = np.array([-5100.0, 2600.0, -5850.0])  # far enough up the lane that he is out of frame on the hold
+    BEND = np.array([-5190.0, 2650.0, -5850.0])  # far enough up the lane that he is out of frame on the hold
     S(29, "A11", "2:26.8", "2:29.6", lambda: shot_whip(tk("2:26.8"), tk("2:29.6"), WCAM, cpos("2:26.8") + [0, 0, 40], BEND,
-                                                      whip=0.28, fov=55), "WHIP to where he came from: nothing there")
+                                                      whip=0.28, fov=45), "WHIP to where he came from: nothing there")
     S(30, "A11", "2:29.6", "2:32", lambda: shot_whip(tk("2:29.6"), tk("2:32"), WCAM, BEND,
-                                                    np.array([-5000.0, 2080.0, -5860.0]), whip=0.28, fov=55),
+                                                    np.array([-5000.0, 2080.0, -5860.0]), whip=0.28, fov=45),
       "WHIP back: his spot is empty, he's already sprinting away")
     S(31, "A11", "2:32", "2:33.8", lambda: shot_cine("ground", tk("2:32"), tk("2:33.8"), {"facing": "away"}, track=B.TC),
       "ground lock-off: he sprints away toward the pillars")
