@@ -569,3 +569,12 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   4:30 and 15:24. The T model wears a balaclava.
 - Key A1 facts: C leaves the wall at 0:26.3 and bolts at 3:59.3. LL is right behind C at 3:11-3:19 and charges
   C at 4:30.5. The pit fall is 15:40.5-15:42.2. Map restart at 10:00.2. C never crouches in the corner.
+
+## 22. Map vignette (ze_backrooms_insomnia, 2026-09-28)
+- The black corners come from the map maker's master post_processing_volume `postprocess/nino2.vpost`: vignette
+  -0.7712, tone map (shoulder .26 / linear .56 / toe .72), bloom 0.1, local contrast, and a 32^3 colour-correction LUT.
+- Test render (`videos/specs/a1-vignette-test.json`, comparison in `videos/briefs/A1-vignette-compare.jpg`):
+  - `cl_disable_postprocessing 1`: **no visible change** (vignette stays).
+  - `r_csgo_postprocess_enable 0`: **vignette gone**, but the map grade goes too. The image is brighter and flatter,
+    and the shadows lift. That could reveal LL in the "invisible" dark pillar hall (#23, #27); re-check before using it.
+  - Both are plain client cvars. Set them per clip in `cfg`; they persist, so set them explicitly on every clip.
