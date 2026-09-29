@@ -596,3 +596,8 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   front-facing (camera within 100 deg of LL's facing), and apparent height. Front AND >8% of frame height = violation.
 - For behind-LL shots, place the camera behind LL's *facing* (`follow_facing=True`), not behind the LL->C line: LL
   turns, and the line-based camera caught his face (#22 at 3:12.7).
+
+## 25. Playback (2026-09-29)
+- Windows Films & TV / Media Player can't play our 10-bit H.264 masters (error 0xc1010103). render.ps1 now also writes
+  `<name>-final-8bit.mp4` (ed-dithered yuv420p, High profile, CRF 16, faststart). Send or recommend that copy for
+  viewing; keep the 10-bit file for editing and uploads.

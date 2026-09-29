@@ -123,6 +123,14 @@ foreach ($file in $Config) {
             Write-Host "Grading ($look$(if ($finish.letterbox) { ' + letterbox' })) -> $final" -ForegroundColor Cyan
             $code = Invoke-Post @postArgs
             if ($code -ne 0) { throw "Grading failed for $target" }
+            # The 10-bit master avoids banding but Windows' built-in player can't decode 10-bit H.264 (0xc1010103):
+            # also write an 8-bit, dithered playback copy next to it.
+            $copy = $final -replace '\.mp4$', '-8bit.mp4'
+            $ErrorActionPreference = 'Continue'
+            & (Get-FFmpeg) -hide_banner -loglevel error -y -i $final -vf "scale=flags=lanczos:sws_dither=ed,format=yuv420p" `
+                -c:v libx264 -profile:v high -preset slow -crf 16 -c:a copy -movflags +faststart $copy
+            $ErrorActionPreference = 'Stop'
+            if (Test-Path $copy) { Write-Host "8-bit playback copy -> $copy" -ForegroundColor Cyan }
         }
     }
     Write-Host "Done. Output is in: $dest" -ForegroundColor Green
