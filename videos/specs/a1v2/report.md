@@ -7,7 +7,7 @@
 | 5 | 1:16–1:22.5 | C 100% | LL 0% | front 0% | low close along the wall |
 | 6 | 1:22.5–1:26 | C 100% | LL 0% | front 0% | side-on, corridor out of frame |
 | 7 | 1:26–1:31.4 | C 0% | LL 100% | front 100% | C visible only 0%; LL in frame 100%; LL FRONT 100% | POV + lens creep: LL tiny in the doorway (intended) |
-| 8 | 1:31.5–1:39 | C 98% | LL 12% | front 12% | LL in frame 12%; LL FRONT 12% | OTS right shoulder, backing away |
+| 8 | 1:32.3–1:39 | C 100% | LL 0% | front 0% | OTS right shoulder, backing away |
 | 9 | 1:44–1:51 | C 0% | LL 100% | front 100% | C visible only 0%; LL in frame 100%; LL FRONT 100% | the abyss: slow zoom on the W25 doorway, C not in frame, LL tiny (intended) |
 | 10 | 1:51–1:58 | C 100% | LL 0% | front 0% | from the NE, medium |
 | 11 | 1:58–2:06 | C 100% | LL 0% | front 0% | high angle (ceiling is only 144 u up, so as high as the room allows) |
@@ -21,7 +21,7 @@
 | 19 | 2:48–2:54 | C 78% | LL 0% | front 0% | C visible only 78% | tripod pan, sprint north |
 | 20 | 2:54–3:01 | C 100% | LL 0% | front 0% | liminal, runs through |
 | 21 | 3:03–3:10.3 | C 100% | LL 0% | front 0% | arrival, north of U19 (ends before LL arrives) |
-| 22 | 3:11.5–3:17.3 | C 100% | LL 97% | front 10% | LL in frame 97%; LL FRONT 10% | IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp |
+| 22 | 3:11.5–3:17.3 | C 100% | LL 65% | front 0% | LL in frame 65% | IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp |
 | 23 | 3:25.5–3:34 | C 100% | LL 0% | front 0% | pull-out/rise from the SW; framed away from the lit end of the pillar hall where LL stands |
 | 24 | 3:34–3:43 | C 100% | LL 0% | front 0% | side-on from the west |
 | 25 | 3:43–3:53 | C 96% | LL 0% | front 0% | push toward his face 100->70 (north of him) |
@@ -33,7 +33,7 @@
 | 31 | 4:15–4:18 | C 100% | LL 0% | front 0% | tripod pan |
 | 32 | 4:19–4:23 | C 91% | LL 0% | front 0% | liminal, looking west, runs into frame |
 | 33 | 4:25–4:29.5 | C 100% | LL 0% | front 0% | side-on, LL framed out |
-| 34 | 4:29.5–4:31.3 | C 100% | LL 100% | front 10% | LL in frame 100%; LL FRONT 10% | SURGE: behind LL, handheld |
+| 34 | 4:29.5–4:31.0 | C 100% | LL 89% | front 0% | LL in frame 89% | SURGE: behind LL, handheld |
 | 35 | 4:36–4:40.5 | C 88% | LL 84% | front 0% | LL in frame 84% | hold behind LL at Q19, C sprints away |
 | 36 | 5:41–5:48 | C 53% | LL 0% | front 0% | C visible only 53% | liminal, runs into frame |
 | 37 | 5:48–5:55 | C 95% | LL 0% | front 0% | ground lock-off, away |
@@ -53,8 +53,8 @@
 | 51 | 14:42.6–14:46 | C 100% | LL 0% | front 0% | back to the corner, after the push-out |
 | 52 | 15:09.3–15:11.4 | C 8% | LL 0% | front 0% | C visible only 8% | creature lead, LL's walk-in |
 | 53 | 15:19.5–15:24.5 | C 100% | LL 0% | front 0% | LL walks into frame from behind the camera, C beyond |
-| 54 | 15:24.5–15:27.5 | C 100% | LL 0% | front 0% | over C's shoulder toward the smoke landing |
-| 55 | 15:27.5–15:34 | C 83% | LL 88% | front 0% | C visible only 83%; LL in frame 88% | behind LL at AC8 as C turns to face him (LL settles 15:29.6; clip starts 15:27.5) |
+| 54 | 15:24.5–15:29.0 | C 68% | LL 0% | front 0% | C visible only 68% | over C's shoulder toward the smoke landing |
+| 55 | 15:29.0–15:34 | C 63% | LL 93% | front 0% | C visible only 63%; LL in frame 93% | behind LL at AC8 as C turns to face him (LL settles 15:29.6; clip starts 15:27.5) |
 | 56 | 15:34–15:39.5 | C 100% | LL 10% | front 0% | LL in frame 10% | from the corner: he backs away into the smoke, toward the pit |
 | 57 | 15:39.5–15:42.1 | C 71% | LL 0% | front 0% | C visible only 71% | SLOW MOTION 2x: over the edge 15:40.5, cut 15:42.1 |
 | 35p | 11:00–11:04 | C 0% | LL 0% | front 0% | C visible only 0% | CLEAN PLATE of #35's frame (nobody in frame) - not part of the edit |

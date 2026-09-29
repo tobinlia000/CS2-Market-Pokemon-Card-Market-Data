@@ -589,3 +589,10 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   `<name>-shots/`, re-join (ffmpeg concat, `-c copy`), then run post.py with the same finish args. Much faster than a
   full re-render (the map load dominates).
 - LL is visible as a silhouette at the lit end of the pillar hall at 3:25-3:34 (#23 re-shot from the SW).
+
+## 24. Lore audit (2026-09-28)
+- User rule: LL is a still-life (same model as C), never seen from the front. Only back of head / face hidden /
+  silhouette. C is the main character. `videos/specs/a1v2/audit.py` checks every clip per tick: LL visible in frame,
+  front-facing (camera within 100 deg of LL's facing), and apparent height. Front AND >8% of frame height = violation.
+- For behind-LL shots, place the camera behind LL's *facing* (`follow_facing=True`), not behind the LL->C line: LL
+  turns, and the line-based camera caught his face (#22 at 3:12.7).

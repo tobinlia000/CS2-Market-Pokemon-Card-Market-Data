@@ -28,6 +28,16 @@ and let the user run the two scripts. Git is the hand-off.
   (`showOnlyDeathNotices`) with the focused player's kills highlighted. Change a default only when asked,
   and record the preference in the memory file.
 
+## LORE RULES (user, 2026-09-28; apply to every demo with these two players)
+- **Caillou (C) is the main character.** Any angle is fine.
+- **Lightning Lemur (LL) plays a still-life: his face is NEVER seen.** He may only appear (a) from behind his head,
+  (b) with his face hidden behind something (C's head, a wall edge, a pillar), or (c) as a silhouette (small and/or
+  dark enough that no face or front detail reads).
+- **Both use the same player model**, so shots must never be confusing. When both are in frame, C must be clearly
+  the subject (sharp, lit, framed) and LL clearly the other (back of head, soft foreground, or a silhouette). Avoid
+  frames where a front-facing figure could be mistaken for LL.
+- Check every shot with the builder's LL checks (in frame, front, apparent size) and the rendered frames.
+
 ## Roles (user, 2026-09-28)
 **I am the Cameraman.** The claude.ai chat is the **Creative Director** (lore and story). I own the shooting:
 cameras, framing, reading the demos (takes, repeats, improvised additions, dead space) and reporting them for

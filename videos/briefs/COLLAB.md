@@ -20,15 +20,23 @@
   (space ID / grid square / L#).
 - The cameraman may change cameras freely. Story changes (dropping or adding a beat, reordering) need the CD's OK.
 
-**Version:** v3 · 2026-09-28 · by Cameraman · Drive copy: "COLLAB v3 (Cameraman)"
+**Version:** v4 · 2026-09-28 · by Cameraman · Drive copy: "COLLAB v4 (Cameraman)"
 
 ---
+
+## 0. Lore rules (from the user, 2026-09-28; they apply to every shot)
+- **Caillou is the main character.** Any angle.
+- **LL is a still-life: his face is NEVER seen.** Only from behind his head, with his face hidden behind something,
+  or as a silhouette (small or dark enough that no face or front detail reads).
+- **Both use the same player model**, so a scene must never be confusing: when both are in frame, C is clearly the
+  subject (sharp, lit, framed) and LL clearly the other (back of head, soft foreground, silhouette).
+- The cameraman audits every shot for this before each render (LL's front, apparent size, in-frame time).
 
 ## 1. Status board
 | Demo | Map | State |
 |---|---|---|
-| A1 | ze_backrooms_insomnia | **v2.1b rendered** (5:29): the map vignette is removed, 7 shots are fixed, and #23 is re-shot. **Awaiting the user's feedback and CD answers (§3)** |
-| A2 | ze_backrooms_insomnia (upper floors) | Maps done; not planned yet |
+| A1 | ze_backrooms_insomnia | **v2.1d in progress**: the CD approved the cut (reply 3); the lore audit fixed 6 shots (#7, #8, #9, #22, #34, #55; #54 extended). Then awaiting the user's feedback. Still missing: the pit-scene opening (needs a new recording) |
+| A2 | ze_backrooms_insomnia (upper floors) = **the Poolrooms scene** | Maps done; the CD will post a cleaned-up shot list as a separate doc when we're ready |
 | C1 | de_02school | Maps done; not planned |
 | D1 | cs_insertion2 | Maps done; not planned |
 | G1 | de_lord | Maps done; not planned |
@@ -60,24 +68,33 @@ comes from your notes. ✔ = used in the v2 cut; ? = your call.
 back, walking to the pit, backing into the corner). It needs a new recording.
 
 ## 3. Cameraman → CD: open questions
-1. **D (3:11–3:19), LL right behind C:** canon? It's in v2 as #22.
-2. **G (4:40–5:40), a slow second approach:** a take 2 we should use or ignore?
-3. **J (7:03–7:45), LL 30 u from C, then darting with footsteps:** a scene, or goofing?
-4. **O, the pit test drops at 13:55 and 14:36:** in-story (he tests the pit), or rehearsal to cut? v2 cuts before
-   each drop.
-5. **C walks backwards into the pit, facing LL**, not away from him. v2 keeps it as it happened. Does the story
-   still work?
-6. Dialogue: there's no voice track in the demo. Please keep giving line timings, so I can cut on them.
-7. **#57, the slow-mo fall:** C's own smoke sits right at the pit edge, so no angle shows the fall cleanly; it
-   reads as "swallowed by the smoke". Keep that, or should I try a shot from inside the pit looking up?
-8. **New fact:** at 3:25–3:34 LL stands at the lit far end of the pillar hall and shows as a tiny silhouette. He
-   only disappears into the dark from about 3:36. #23 is now framed away from him. Do you want that silhouette
-   as another glimpse anywhere?
+_(none open. Questions 1–8 of v3 were answered in CD reply 3; see §4)_
 
-## 4. CD → Cameraman (Creative Director writes here)
-_(empty)_
+## 4. CD → Cameraman (merged from "CD reply 3")
+- **1. D / #22:** CANON. Keep it; cut before C's glance at 3:17.5 (the cut ends at 3:17.3 ✔). LL stays face-safe.
+- **2. G (4:40–5:40):** IGNORE; it repeats the beat.
+- **3. J (7:03–7:45):** NOT A SCENE, cut. 7:03–7:31 stays a backup source for #22 only.
+- **4. The pit test drops:** REHEARSAL, cut. The push-back must never be visible (#49 ends 14:38.2, #51 starts
+  14:42.6 after the landing ✔).
+- **5. The backwards fall facing LL:** keep as recorded. It sets up an echo at the end of Part 1.
+- **6. Dialogue timings:** in `videos/briefs/A1-dialogue.md` (on the PC).
+- **7. #57:** "swallowed by the smoke" is the intended read. No shot from inside the pit (the pit stays a mystery).
+- **8. No extra glimpse** at 3:25–3:34; #23 stays framed away.
+- **Note:** camera choices are the cameraman's. Check in only when a change affects what the audience sees of LL,
+  or the order of beats. #22's drift must be subtle and slow; the preference is still mostly static.
+- **Next:** A2 is the Poolrooms scene; the CD will post a cleaned-up A2 shot list as a separate doc.
 
 ## 5. Decisions log
+- 2026-09-28 · User: lore rules (§0). The cameraman's audit found 6 shots where LL's front could read and fixed them:
+  - #7: the lens creep is now subtle, so LL stays under silhouette size.
+  - #9: wider lens and less zoom, so LL stays a small silhouette in the doorway.
+  - #8: starts at 1:32.3.
+  - #22: the camera now tracks behind LL's facing, so his face is never toward the camera.
+  - #34: ends at 4:31.0.
+  - #55: starts at 15:29.0; #54 now runs to 15:29.0.
+- 2026-09-28 · CD (reply 3): #22 canon; G, J and the pit test drops cut; the backwards fall facing LL stays; #57
+  "swallowed by the smoke" is intended, no in-pit shot; no extra glimpse at 3:25–3:34.
+- 2026-09-28 · Cameraman: #22's camera glide smoothed (was 515 u/s at LL's hop; now ≤32 u/s, ≤22°/s) per the CD's note.
 - 2026-09-28 · User: remove the map's black vignette. Cameraman: done with `r_csgo_postprocess_enable 0` plus a restored tone curve.
 - 2026-09-28 · User: the cameraman is in charge of shooting and keeps this file (shared in Google Drive).
 - 2026-09-28 · CD: LL's front is never readable; face-safe angles only (exceptions #7 and #9, the tiny silhouette).
@@ -86,6 +103,8 @@ _(empty)_
   show his face); #50's POV faces the room, not the pit.
 
 ## 6. Render log
+- 2026-09-28 · **A1 v2.1d** (in progress) · v2.1b plus the 7 lore-audit shots re-shot and spliced in.
+- 2026-09-28 · **A1 v2.1c** · v2.1b with #22 re-shot (slow, subtle glide behind LL). `A1-v2.1c-final.mp4`.
 - 2026-09-28 · **A1 v2.1b** · `A1-v2.1b-final.mp4` (5:29). Changes from v2:
   - The map maker's post-process is off (`r_csgo_postprocess_enable 0`), which removes its vignette. Its tone
     curve is restored in our grade (measured), and our own vignette is off.

@@ -222,7 +222,8 @@ def shot_ots_c(a, b, back=70, side=16, up=8, fov=60, ahead=500):
     return dict(ticks=ticks, cam=cam, pitch=pitch, yaw=yw, fov=fv, res=evaluate(ticks, cam, pitch, yw, fv))
 
 
-def shot_behind_ll(a, b, dist=60, side=10, up=6, fov=None, static=True, weight=0.85, handheld=0.0, follow_facing=False):
+def shot_behind_ll(a, b, dist=60, side=10, up=6, fov=None, static=True, weight=0.85, handheld=0.0, follow_facing=False,
+                   glide=4):
     """Camera just behind LL's head looking past him at C. static: one fixed spot (median)."""
     ticks = np.arange(a, b + 1, 2)
     le = eye(TL, ticks)
@@ -240,8 +241,11 @@ def shot_behind_ll(a, b, dist=60, side=10, up=6, fov=None, static=True, weight=0
         want = np.tile(want[m], (len(ticks), 1))
         cam = want
     else:
-        cam, _ = cine._resolve(G, le, smooth(want, 4), 32)
+        cam, _ = cine._resolve(G, le, smooth(want, glide), 32)
+        cam = smooth(cam, glide)
     target = weight * ce + (1 - weight) * le
+    if not static:
+        target = smooth(target, glide)
     if static:
         target = np.tile(target.mean(0), (len(ticks), 1))
     pitch, yw = look(cam, target)
@@ -425,10 +429,10 @@ def main():
                                  fov_range=(30, 85)), "low close along the wall")
     add(6, "1:22.5", "1:26", st("1:22.5", "1:26", absb=0, dists=(200, 280, 360), margin=1.4, avoid_yaw=(90, 50)),
         "side-on, corridor out of frame")
-    add(7, "1:26", "1:31.4", shot_pov_keys(tk("1:26"), tk("1:31.4"), fov0=90, zoom=0.85),
+    add(7, "1:26", "1:31.4", shot_pov_keys(tk("1:26"), tk("1:31.4"), fov0=90, zoom=0.97),
         "POV + lens creep: LL tiny in the doorway (intended)")
-    add(8, "1:31.5", "1:39", shot_ots_c(tk("1:31.5"), tk("1:39")), "OTS right shoulder, backing away")
-    add(9, "1:44", "1:51", fixed("1:44", "1:51", C_WALL, LL_W25, 70.0, zoom=0.75),
+    add(8, "1:32.3", "1:39", shot_ots_c(tk("1:32.3"), tk("1:39")), "OTS right shoulder, backing away")
+    add(9, "1:44", "1:51", fixed("1:44", "1:51", C_WALL, LL_W25, 90.0, zoom=0.85),
         "the abyss: slow zoom on the W25 doorway, C not in frame, LL tiny (intended)")
     add(10, "1:51", "1:58", st("1:51", "1:58", absb=53, dists=(160, 220, 300), margin=1.3), "from the NE, medium")
     add(11, "1:58", "2:06", fixed("1:58", "2:06", [-3112.0, 696.0, -5830.0],
@@ -452,7 +456,8 @@ def main():
                                fixed_fov=82), "liminal, runs through")
     add(21, "3:03", "3:10.3", st("3:03", "3:10.3", absb=90, anchor="end", dists=(200, 300, 400), need_c=0.8, margin=1.4),
         "arrival, north of U19 (ends before LL arrives)")
-    add(22, "3:11.5", "3:17.3", shot_behind_ll(tk("3:11.5"), tk("3:17.3"), dist=60, side=30, up=8, weight=0.95, static=False, fov=55),
+    add(22, "3:11.5", "3:17.3", shot_behind_ll(tk("3:11.5"), tk("3:17.3"), dist=90, side=-25, up=8, weight=0.95, static=False, fov=55, glide=40,
+                                               follow_facing=True),
         "IT'S RIGHT BEHIND YOU: LL's back foreground, C sharp")
     add(23, "3:25.5", "3:34", shot_pull(tk("3:25.5"), tk("3:34"), bearing_deg=-150, d0=150, d1=420, h0=50, h1=220, fov=58),
         "pull-out/rise from the SW; framed away from the lit end of the pillar hall where LL stands")
@@ -474,7 +479,7 @@ def main():
     add(32, "4:19", "4:23", st("4:19", "4:23", rel="behind-travel", anchor="start", dists=(120, 200), need_c=0.5, fit=False,
                                fixed_fov=78, aim_point=cpos("4:22") + [0, 0, 50]), "liminal, looking west, runs into frame")
     add(33, "4:25", "4:29.5", st("4:25", "4:29.5", rel="left", dists=(200, 280, 360), margin=1.3), "side-on, LL framed out")
-    add(34, "4:29.5", "4:31.3", shot_behind_ll(tk("4:29.5"), tk("4:31.3"), dist=90, side=18, up=10, static=False,
+    add(34, "4:29.5", "4:31.0", shot_behind_ll(tk("4:29.5"), tk("4:31.0"), dist=90, side=18, up=10, static=False,
                                                weight=0.8, handheld=1.0, fov=70), "SURGE: behind LL, handheld")
     s35 = shot_behind_ll(tk("4:36"), tk("4:38"), dist=90, side=-20, up=6, weight=0.85, fov=60)
     s35 = reuse(s35, "4:36", "4:40.5")
@@ -514,9 +519,9 @@ def main():
     add(53, "15:19.5", "15:24.5", fixed("15:19.5", "15:24.5", [-1150.0, 5300.0, -5838.0],
                                         sample(TC, t53)[0].mean(0) + [0, 0, 40], 45.0),
         "LL walks into frame from behind the camera, C beyond")
-    add(54, "15:24.5", "15:27.5", fixed("15:24.5", "15:27.5", cpos("15:24.5") + [-70.0, -18.0, 70.0], SMOKE, 62.0),
+    add(54, "15:24.5", "15:29.0", fixed("15:24.5", "15:29.0", cpos("15:24.5") + [-70.0, -18.0, 70.0], SMOKE, 62.0),
         "over C's shoulder toward the smoke landing")
-    add(55, "15:27.5", "15:34", shot_behind_ll(tk("15:29.6"), tk("15:34"), dist=60, side=12, weight=0.9),
+    add(55, "15:29.0", "15:34", shot_behind_ll(tk("15:29.0"), tk("15:34"), dist=60, side=12, weight=0.9),
         "behind LL at AC8 as C turns to face him (LL settles 15:29.6; clip starts 15:27.5)")
     add(56, "15:34", "15:39.5", fixed("15:34", "15:39.5", [-1290.0, 5060.0, -5836.0],
                                       sample(TC, np.arange(tk("15:34"), tk("15:39.5"), 8))[0].mean(0) + [0, 0, 46], 40.0),
