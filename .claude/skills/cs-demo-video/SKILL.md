@@ -37,6 +37,15 @@ and let the user run the two scripts. Git is the hand-off.
   the subject (sharp, lit, framed) and LL clearly the other (back of head, soft foreground, or a silhouette). Avoid
   frames where a front-facing figure could be mistaken for LL.
 - Check every shot with the builder's LL checks (in frame, front, apparent size) and the rendered frames.
+- **(2026-09-29) Stricter:** "I still see LL's face sometimes". The camera must be BEHIND LL, more than 120 deg from
+  his facing (a profile shows the face). He's allowed facing the camera only when he can't be picked out at all
+  (tiny and dark). Prefer framing LL out entirely when the script doesn't need him.
+- **(2026-09-29) No noclip:** if a player is noclipping (flying, or moving faster than about 300 u/s, through walls),
+  that footage is unusable. Exclude those windows entirely, even when the noclipping player is only in the
+  background.
+- **(2026-09-29) Show C moving:** avoid shots that just watch a player standing still. Show C when he moves;
+  standing only where the script demands it (a line or a beat), and then briefly. Shots too long or redundant = cut.
+- The Part 1 script is in `videos/briefs/PART1-script.md` (A1 beat mapping at its end).
 
 ## Roles (user, 2026-09-28)
 **I am the Cameraman.** The claude.ai chat is the **Creative Director** (lore and story). I own the shooting:
