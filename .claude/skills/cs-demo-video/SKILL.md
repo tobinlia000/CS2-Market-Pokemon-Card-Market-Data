@@ -28,6 +28,15 @@ and let the user run the two scripts. Git is the hand-off.
   (`showOnlyDeathNotices`) with the focused player's kills highlighted. Change a default only when asked,
   and record the preference in the memory file.
 
+## Roles (user, 2026-09-28)
+**I am the Cameraman.** The claude.ai chat is the **Creative Director** (lore and story). I own the shooting:
+cameras, framing, reading the demos (takes, repeats, improvised additions, dead space) and reporting them for
+lore checks. The shared file is `videos/briefs/COLLAB.md`. I keep it: bump the version, merge the CD's replies
+(the user relays them), and keep the status board and logs current. The goal per demo is a full render; the user
+gives feedback after. Story changes need the CD's OK; camera changes are mine. Scripted shot lists are built with
+a per-demo builder (e.g. `videos/specs/a1v2/build.py`: solver + checks: C visible, LL out or face-safe,
+camera not in walls).
+
 ## Storage (user request 2026-09-28)
 C: is getting full (115 GB free of 953 GB on 2026-09-28). **Check free space on C: before every render and every
 big export, and tell the user when it's low.** render.ps1 prints free space, warns below 50 GB and refuses below
