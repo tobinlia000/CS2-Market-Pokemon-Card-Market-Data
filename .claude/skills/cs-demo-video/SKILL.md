@@ -36,6 +36,17 @@ and let the user run the two scripts. Git is the hand-off.
    zones) + `<demo>-movement.md` (every 5 s: floor·space, grid square, still/walk/run, inside a hidden zone) +
    `<map>-spaces.json`. Send the PNGs (SendUserFile). Accuracy of layout + movement matters most; expect back and
    forth. Fix mislabelled spaces/landmarks when the user points them out.
+   **New map → named signs (once per map, before the maps):**
+   1. `python tools/csdv/signs.py scan <map>`. This exports the textured world (about 2–3 GB), renders every
+      sign/poster/decal/logo head-on in Blender, and makes contact sheets in `videos/maps/<map>/signs/sheets/`
+      (S<id>, number of copies, position, material). It takes 1–10 min.
+   2. Read the sheets. If there are too many, filter by material first (index.json) and make focus sheets.
+   3. Run `signs.py name <map> 12="Car Toys sign" ...` for everything worth naming. Translate foreign text and give
+      the original in quotes. Describe photos neutrally.
+   4. Run `signs.py clean <map>`, then regenerate the maps. Names appear as ✚ landmarks on their own floor.
+   `landmarks-visual.json` is committed. Tune `KEYWORDS/EXCLUDE/PROPS` in signs.py when a map floods the sheets.
+   Done: de_02school (87), ze_backrooms_insomnia (58), cs_insertion2 (27, focus pass; store/station interiors
+   only spot-checked). de_lord has no signs (castle ruin).
 2. **The user writes the script** (shots, lengths, places by space ID / grid square / landmark number). If they send
    a draft first: identify every referenced object/place on the maps (landmark IDs, squares, coordinates) and
    confirm before building.

@@ -1,0 +1,746 @@
+[
+ {
+  "sign": 4,
+  "kind": "sign",
+  "name": "graffiti 'Jeffelido'",
+  "pos": [
+   -1239,
+   1875,
+   -218
+  ],
+  "normal": [
+   0.0,
+   1.0,
+   0.0
+  ],
+  "size": [
+   328,
+   0,
+   80
+  ],
+  "instances": [
+   [
+    -1239,
+    1875,
+    -218
+   ]
+  ]
+ },
+ {
+  "sign": 6,
+  "kind": "sign",
+  "name": "disabled parking bay marking",
+  "pos": [
+   -5042,
+   3066,
+   -103
+  ],
+  "normal": [
+   -0.0,
+   -0.01,
+   1.0
+  ],
+  "size": [
+   136,
+   128,
+   3
+  ],
+  "instances": [
+   [
+    -5042,
+    3066,
+    -103
+   ]
+  ]
+ },
+ {
+  "sign": 7,
+  "kind": "sign",
+  "name": "disabled parking bay marking",
+  "pos": [
+   -105,
+   -1141,
+   -101
+  ],
+  "normal": [
+   -0.0,
+   0.0,
+   1.0
+  ],
+  "size": [
+   134,
+   131,
+   1
+  ],
+  "instances": [
+   [
+    -105,
+    -1141,
+    -101
+   ]
+  ]
+ },
+ {
+  "sign": 11,
+  "kind": "sign",
+  "name": "graffiti 'Bezimienny!' (mouse)",
+  "pos": [
+   1947,
+   -1835,
+   -414
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   361,
+   0,
+   111
+  ],
+  "instances": [
+   [
+    1947,
+    -1835,
+    -414
+   ]
+  ]
+ },
+ {
+  "sign": 18,
+  "kind": "sign",
+  "name": "'Lifestyle YOGA' shop front",
+  "pos": [
+   496,
+   -407,
+   -1
+  ],
+  "normal": [
+   -0.76,
+   0.51,
+   0.4
+  ],
+  "size": [
+   153,
+   128,
+   106
+  ],
+  "instances": [
+   [
+    496,
+    -407,
+    -1
+   ]
+  ]
+ },
+ {
+  "sign": 25,
+  "kind": "sign",
+  "name": "pizza/kebab shop interior (menu boards)",
+  "pos": [
+   -41,
+   1137,
+   16
+  ],
+  "normal": [
+   -0.03,
+   0.99,
+   -0.12
+  ],
+  "size": [
+   345,
+   89,
+   125
+  ],
+  "instances": [
+   [
+    -41,
+    1137,
+    16
+   ]
+  ]
+ },
+ {
+  "sign": 32,
+  "kind": "sign",
+  "name": "shop waiting area ('Prislista' price list)",
+  "pos": [
+   622,
+   225,
+   -11
+  ],
+  "normal": [
+   0.3,
+   0.95,
+   0.08
+  ],
+  "size": [
+   83,
+   127,
+   85
+  ],
+  "instances": [
+   [
+    622,
+    225,
+    -11
+   ]
+  ]
+ },
+ {
+  "sign": 44,
+  "kind": "sign",
+  "name": "fruit & veg stand ('Alltid bra pris')",
+  "pos": [
+   -248,
+   -141,
+   -43
+  ],
+  "normal": [
+   -0.02,
+   0.12,
+   0.99
+  ],
+  "size": [
+   188,
+   119,
+   60
+  ],
+  "instances": [
+   [
+    -248,
+    -141,
+    -43
+   ]
+  ]
+ },
+ {
+  "sign": 45,
+  "kind": "sign",
+  "name": "zebra crossing",
+  "pos": [
+   -1313,
+   -1366,
+   -53
+  ],
+  "normal": [
+   0.16,
+   -0.19,
+   0.97
+  ],
+  "size": [
+   445,
+   325,
+   127
+  ],
+  "instances": [
+   [
+    -1313,
+    -1366,
+    -53
+   ]
+  ]
+ },
+ {
+  "sign": 46,
+  "kind": "sign",
+  "name": "zebra crossing",
+  "pos": [
+   -1339,
+   -1066,
+   -74
+  ],
+  "normal": [
+   0.0,
+   -0.14,
+   0.99
+  ],
+  "size": [
+   301,
+   215,
+   56
+  ],
+  "instances": [
+   [
+    -1339,
+    -1066,
+    -74
+   ]
+  ]
+ },
+ {
+  "sign": 70,
+  "kind": "sign",
+  "name": "graffiti 'FNUGZ'",
+  "pos": [
+   732,
+   -371,
+   319
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   113,
+   0,
+   51
+  ],
+  "instances": [
+   [
+    732,
+    -371,
+    319
+   ]
+  ]
+ },
+ {
+  "sign": 114,
+  "kind": "sign",
+  "name": "shop wall with price posters ('149:-')",
+  "pos": [
+   84,
+   -888,
+   -18
+  ],
+  "normal": [
+   0.14,
+   -0.98,
+   -0.13
+  ],
+  "size": [
+   237,
+   89,
+   116
+  ],
+  "instances": [
+   [
+    84,
+    -888,
+    -18
+   ]
+  ]
+ },
+ {
+  "sign": 119,
+  "kind": "sign",
+  "name": "strip mall 'Thaimassage / Lifestyle YOGA / Kommunhuset'",
+  "pos": [
+   862,
+   378,
+   349
+  ],
+  "normal": [
+   0.01,
+   0.98,
+   -0.21
+  ],
+  "size": [
+   581,
+   62,
+   121
+  ],
+  "instances": [
+   [
+    862,
+    378,
+    349
+   ]
+  ]
+ },
+ {
+  "sign": 125,
+  "kind": "sign",
+  "name": "'Thaimassage Tel. 08-648 55 49' sign",
+  "pos": [
+   579,
+   -930,
+   7
+  ],
+  "normal": [
+   -1.0,
+   -0.01,
+   -0.0
+  ],
+  "size": [
+   23,
+   205,
+   108
+  ],
+  "instances": [
+   [
+    579,
+    -930,
+    7
+   ]
+  ]
+ },
+ {
+  "sign": 244,
+  "kind": "sign",
+  "name": "'PEPPES PIZZERIA' shop front ('V\u00e4lkommen')",
+  "pos": [
+   -30,
+   805,
+   85
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   154,
+   5,
+   23
+  ],
+  "instances": [
+   [
+    -30,
+    805,
+    85
+   ]
+  ]
+ },
+ {
+  "sign": 278,
+  "kind": "sign",
+  "name": "train platform sign 'Sp\u00e5r 2' (track 2)",
+  "pos": [
+   2124,
+   1484,
+   -83
+  ],
+  "normal": [
+   -0.56,
+   0.83,
+   -0.08
+  ],
+  "size": [
+   114,
+   49,
+   87
+  ],
+  "instances": [
+   [
+    2124,
+    1484,
+    -83
+   ]
+  ]
+ },
+ {
+  "sign": 280,
+  "kind": "sign",
+  "name": "'Hiss' elevator signs",
+  "pos": [
+   2163,
+   1292,
+   -134
+  ],
+  "normal": [
+   -0.03,
+   -1.0,
+   0.01
+  ],
+  "size": [
+   193,
+   24,
+   190
+  ],
+  "instances": [
+   [
+    2163,
+    1292,
+    -134
+   ]
+  ]
+ },
+ {
+  "sign": 301,
+  "kind": "sign",
+  "name": "overhead line marker 'D13'",
+  "pos": [
+   1732,
+   1187,
+   -21
+  ],
+  "normal": [
+   -0.04,
+   -1.0,
+   0.08
+  ],
+  "size": [
+   109,
+   22,
+   71
+  ],
+  "instances": [
+   [
+    1732,
+    1187,
+    -21
+   ],
+   [
+    1902,
+    1186,
+    -22
+   ]
+  ]
+ },
+ {
+  "sign": 319,
+  "kind": "sign",
+  "name": "pedestrian crossing sign",
+  "pos": [
+   -1484,
+   2687,
+   21
+  ],
+  "normal": [
+   0.01,
+   1.0,
+   0.06
+  ],
+  "size": [
+   24,
+   7,
+   25
+  ],
+  "instances": [
+   [
+    -1484,
+    2687,
+    21
+   ],
+   [
+    -1170,
+    2576,
+    22
+   ]
+  ]
+ },
+ {
+  "sign": 321,
+  "kind": "sign",
+  "name": "pedestrian crossing sign",
+  "pos": [
+   -1191,
+   -1068,
+   9
+  ],
+  "normal": [
+   0.01,
+   1.0,
+   -0.01
+  ],
+  "size": [
+   25,
+   6,
+   25
+  ],
+  "instances": [
+   [
+    -1191,
+    -1068,
+    9
+   ],
+   [
+    -1538,
+    617,
+    19
+   ]
+  ]
+ },
+ {
+  "sign": 324,
+  "kind": "sign",
+  "name": "street signs 'Oskmos Centrum' / 'Kolonilotten H-zone'",
+  "pos": [
+   966,
+   -2009,
+   -115
+  ],
+  "normal": [
+   0.05,
+   0.83,
+   -0.56
+  ],
+  "size": [
+   38,
+   37,
+   25
+  ],
+  "instances": [
+   [
+    966,
+    -2009,
+    -115
+   ]
+  ]
+ },
+ {
+  "sign": 325,
+  "kind": "sign",
+  "name": "street sign 'Oskmos v\u00e4g 13-37'",
+  "pos": [
+   1203,
+   -1417,
+   -148
+  ],
+  "normal": [
+   1.0,
+   0.01,
+   0.02
+  ],
+  "size": [
+   4,
+   36,
+   5
+  ],
+  "instances": [
+   [
+    1203,
+    -1417,
+    -148
+   ]
+  ]
+ },
+ {
+  "sign": 326,
+  "kind": "sign",
+  "name": "pedestrian crossing sign",
+  "pos": [
+   -1103,
+   703,
+   19
+  ],
+  "normal": [
+   -0.12,
+   0.99,
+   -0.12
+  ],
+  "size": [
+   29,
+   11,
+   29
+  ],
+  "instances": [
+   [
+    -1103,
+    703,
+    19
+   ]
+  ]
+ },
+ {
+  "sign": 328,
+  "kind": "sign",
+  "name": "parking sign 'P Avgift' (paid)",
+  "pos": [
+   -4400,
+   904,
+   -17
+  ],
+  "normal": [
+   0.01,
+   1.0,
+   -0.0
+  ],
+  "size": [
+   24,
+   6,
+   45
+  ],
+  "instances": [
+   [
+    -4400,
+    904,
+    -17
+   ]
+  ]
+ },
+ {
+  "sign": 329,
+  "kind": "sign",
+  "name": "street signs 'Oskmos v\u00e4g 13-37' / 'Kolonilotten H-zone'",
+  "pos": [
+   278,
+   1946,
+   -82
+  ],
+  "normal": [
+   -0.16,
+   0.65,
+   0.74
+  ],
+  "size": [
+   71,
+   34,
+   25
+  ],
+  "instances": [
+   [
+    278,
+    1946,
+    -82
+   ]
+  ]
+ },
+ {
+  "sign": 332,
+  "kind": "sign",
+  "name": "pedestrian + bicycle path sign",
+  "pos": [
+   -4074,
+   1638,
+   -22
+  ],
+  "normal": [
+   0.66,
+   0.73,
+   0.15
+  ],
+  "size": [
+   27,
+   35,
+   35
+  ],
+  "instances": [
+   [
+    -4074,
+    1638,
+    -22
+   ]
+  ]
+ },
+ {
+  "sign": 335,
+  "kind": "sign",
+  "name": "street sign 'Kolonilotten H-zone'",
+  "pos": [
+   -105,
+   633,
+   35
+  ],
+  "normal": [
+   0.04,
+   1.0,
+   0.02
+  ],
+  "size": [
+   39,
+   4,
+   5
+  ],
+  "instances": [
+   [
+    -105,
+    633,
+    35
+   ]
+  ]
+ }
+]

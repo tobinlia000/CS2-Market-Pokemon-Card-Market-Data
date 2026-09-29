@@ -1,0 +1,2511 @@
+[
+ {
+  "sign": 0,
+  "kind": "sign",
+  "name": "chalkboard (classroom)",
+  "pos": [
+   -1445,
+   -860,
+   160
+  ],
+  "normal": [
+   0.99,
+   -0.01,
+   -0.17
+  ],
+  "size": [
+   16,
+   181,
+   70
+  ],
+  "instances": [
+   [
+    -1445,
+    -860,
+    160
+   ]
+  ]
+ },
+ {
+  "sign": 1,
+  "kind": "sign",
+  "name": "chalkboard + posters (classroom)",
+  "pos": [
+   535,
+   -992,
+   474
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   0.0
+  ],
+  "size": [
+   181,
+   16,
+   73
+  ],
+  "instances": [
+   [
+    535,
+    -992,
+    474
+   ]
+  ]
+ },
+ {
+  "sign": 2,
+  "kind": "sign",
+  "name": "kids' art board 'Our impressions'",
+  "pos": [
+   616,
+   1194,
+   316
+  ],
+  "normal": [
+   0.05,
+   -1.0,
+   0.0
+  ],
+  "size": [
+   171,
+   10,
+   47
+  ],
+  "instances": [
+   [
+    616,
+    1194,
+    316
+   ]
+  ]
+ },
+ {
+  "sign": 4,
+  "kind": "sign",
+  "name": "high-voltage sign 'Keep out - danger of death'",
+  "pos": [
+   83,
+   1339,
+   483
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   21,
+   10
+  ],
+  "instances": [
+   [
+    83,
+    1339,
+    483
+   ]
+  ]
+ },
+ {
+  "sign": 5,
+  "kind": "sign",
+  "name": "high-voltage + 'Work here' signs",
+  "pos": [
+   416,
+   1711,
+   448
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   -0.0
+  ],
+  "size": [
+   21,
+   0,
+   24
+  ],
+  "instances": [
+   [
+    416,
+    1711,
+    448
+   ]
+  ]
+ },
+ {
+  "sign": 6,
+  "kind": "sign",
+  "name": "'Work here' sign (blue)",
+  "pos": [
+   -823,
+   -399,
+   452
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   10,
+   10
+  ],
+  "instances": [
+   [
+    -823,
+    -399,
+    452
+   ]
+  ]
+ },
+ {
+  "sign": 7,
+  "kind": "sign",
+  "name": "fire hose sign (\u041f\u041a)",
+  "pos": [
+   -1136,
+   1470,
+   295
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   21,
+   10
+  ],
+  "instances": [
+   [
+    -1136,
+    1470,
+    295
+   ]
+  ]
+ },
+ {
+  "sign": 8,
+  "kind": "sign",
+  "name": "no open flame sign",
+  "pos": [
+   275,
+   464,
+   65
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   10,
+   10
+  ],
+  "instances": [
+   [
+    275,
+    464,
+    65
+   ]
+  ]
+ },
+ {
+  "sign": 9,
+  "kind": "sign",
+  "name": "no smoking sign",
+  "pos": [
+   735,
+   1075,
+   70
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   10,
+   10
+  ],
+  "instances": [
+   [
+    735,
+    1075,
+    70
+   ]
+  ]
+ },
+ {
+  "sign": 10,
+  "kind": "sign",
+  "name": "no entry sign (hand)",
+  "pos": [
+   735,
+   1686,
+   67
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   10,
+   10
+  ],
+  "instances": [
+   [
+    735,
+    1686,
+    67
+   ]
+  ]
+ },
+ {
+  "sign": 11,
+  "kind": "sign",
+  "name": "fire safety officer notice",
+  "pos": [
+   241,
+   -439,
+   456
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   21,
+   0,
+   10
+  ],
+  "instances": [
+   [
+    241,
+    -439,
+    456
+   ],
+   [
+    243,
+    -439,
+    302
+   ],
+   [
+    232,
+    -439,
+    150
+   ]
+  ]
+ },
+ {
+  "sign": 12,
+  "kind": "sign",
+  "name": "'Sports life' board + exit sign",
+  "pos": [
+   313,
+   1853,
+   317
+  ],
+  "normal": [
+   0.1,
+   -0.93,
+   0.35
+  ],
+  "size": [
+   128,
+   25,
+   85
+  ],
+  "instances": [
+   [
+    313,
+    1853,
+    317
+   ]
+  ]
+ },
+ {
+  "sign": 13,
+  "kind": "sign",
+  "name": "exit arrow sign (right)",
+  "pos": [
+   -999,
+   1495,
+   299
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   13,
+   6
+  ],
+  "instances": [
+   [
+    -999,
+    1495,
+    299
+   ],
+   [
+    -151,
+    1711,
+    149
+   ],
+   [
+    -289,
+    1816,
+    141
+   ],
+   [
+    -1136,
+    1826,
+    151
+   ],
+   [
+    -937,
+    771,
+    149
+   ],
+   [
+    -842,
+    -400,
+    142
+   ]
+  ]
+ },
+ {
+  "sign": 14,
+  "kind": "sign",
+  "name": "exit arrow sign (right)",
+  "pos": [
+   -960,
+   1704,
+   139
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   13,
+   6
+  ],
+  "instances": [
+   [
+    -960,
+    1704,
+    139
+   ],
+   [
+    259,
+    753,
+    462
+   ],
+   [
+    -1162,
+    -112,
+    142
+   ]
+  ]
+ },
+ {
+  "sign": 15,
+  "kind": "sign",
+  "name": "EMERGENCY EXIT sign",
+  "pos": [
+   -1000,
+   2255,
+   152
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   21,
+   10
+  ],
+  "instances": [
+   [
+    -1000,
+    2255,
+    152
+   ]
+  ]
+ },
+ {
+  "sign": 16,
+  "kind": "sign",
+  "name": "EMERGENCY EXIT sign",
+  "pos": [
+   646,
+   1711,
+   80
+  ],
+  "normal": [
+   0.0,
+   1.0,
+   -0.0
+  ],
+  "size": [
+   21,
+   0,
+   10
+  ],
+  "instances": [
+   [
+    646,
+    1711,
+    80
+   ]
+  ]
+ },
+ {
+  "sign": 17,
+  "kind": "sign",
+  "name": "'Do not switch on - people working' sign",
+  "pos": [
+   -960,
+   1018,
+   73
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   21,
+   10
+  ],
+  "instances": [
+   [
+    -960,
+    1018,
+    73
+   ]
+  ]
+ },
+ {
+  "sign": 18,
+  "kind": "sign",
+  "name": "DO NOT ENTER sign",
+  "pos": [
+   368,
+   1224,
+   303
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   20,
+   10
+  ],
+  "instances": [
+   [
+    368,
+    1224,
+    303
+   ]
+  ]
+ },
+ {
+  "sign": 19,
+  "kind": "sign",
+  "name": "CAUTION DANGER ZONE sign",
+  "pos": [
+   436,
+   1824,
+   295
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   0.0
+  ],
+  "size": [
+   20,
+   0,
+   10
+  ],
+  "instances": [
+   [
+    436,
+    1824,
+    295
+   ]
+  ]
+ },
+ {
+  "sign": 20,
+  "kind": "sign",
+  "name": "windows papered with Soviet newspapers",
+  "pos": [
+   243,
+   18,
+   317
+  ],
+  "normal": [
+   0.99,
+   0.12,
+   0.01
+  ],
+  "size": [
+   33,
+   274,
+   87
+  ],
+  "instances": [
+   [
+    243,
+    18,
+    317
+   ]
+  ]
+ },
+ {
+  "sign": 21,
+  "kind": "sign",
+  "name": "windows papered with Soviet newspapers",
+  "pos": [
+   243,
+   -210,
+   477
+  ],
+  "normal": [
+   0.98,
+   -0.17,
+   0.07
+  ],
+  "size": [
+   32,
+   208,
+   87
+  ],
+  "instances": [
+   [
+    243,
+    -210,
+    477
+   ]
+  ]
+ },
+ {
+  "sign": 22,
+  "kind": "sign",
+  "name": "windows papered with Soviet newspapers",
+  "pos": [
+   -499,
+   -435,
+   157
+  ],
+  "normal": [
+   -0.12,
+   -0.99,
+   0.07
+  ],
+  "size": [
+   273,
+   33,
+   87
+  ],
+  "instances": [
+   [
+    -499,
+    -435,
+    157
+   ]
+  ]
+ },
+ {
+  "sign": 23,
+  "kind": "sign",
+  "name": "Soviet newspaper wall + exit sign",
+  "pos": [
+   -403,
+   -435,
+   317
+  ],
+  "normal": [
+   -0.42,
+   -0.9,
+   0.13
+  ],
+  "size": [
+   84,
+   32,
+   87
+  ],
+  "instances": [
+   [
+    -403,
+    -435,
+    317
+   ]
+  ]
+ },
+ {
+  "sign": 24,
+  "kind": "sign",
+  "name": "exit arrow sign (left)",
+  "pos": [
+   -368,
+   -451,
+   471
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   13,
+   0,
+   6
+  ],
+  "instances": [
+   [
+    -368,
+    -451,
+    471
+   ],
+   [
+    -835,
+    176,
+    467
+   ],
+   [
+    -835,
+    175,
+    301
+   ]
+  ]
+ },
+ {
+  "sign": 25,
+  "kind": "sign",
+  "name": "noticeboard 'The school we make ourselves' (timetable)",
+  "pos": [
+   -1319,
+   464,
+   158
+  ],
+  "normal": [
+   -0.08,
+   -1.0,
+   -0.04
+  ],
+  "size": [
+   257,
+   22,
+   54
+  ],
+  "instances": [
+   [
+    -1319,
+    464,
+    158
+   ]
+  ]
+ },
+ {
+  "sign": 26,
+  "kind": "sign",
+  "name": "exit arrow sign (left)",
+  "pos": [
+   -1166,
+   740,
+   141
+  ],
+  "normal": [
+   0.77,
+   -0.63,
+   0.1
+  ],
+  "size": [
+   7,
+   13,
+   6
+  ],
+  "instances": [
+   [
+    -1166,
+    740,
+    141
+   ]
+  ]
+ },
+ {
+  "sign": 27,
+  "kind": "sign",
+  "name": "graffiti 'Yashka lokh' (blue)",
+  "pos": [
+   -576,
+   1511,
+   338
+  ],
+  "normal": [
+   -1.0,
+   0.07,
+   -0.0
+  ],
+  "size": [
+   2,
+   23,
+   22
+  ],
+  "instances": [
+   [
+    -576,
+    1511,
+    338
+   ]
+  ]
+ },
+ {
+  "sign": 30,
+  "kind": "sign",
+  "name": "'Fire extinguishing station' door sign",
+  "pos": [
+   -779,
+   -242,
+   55
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   -0.0
+  ],
+  "size": [
+   5,
+   92,
+   110
+  ],
+  "instances": [
+   [
+    -779,
+    -242,
+    55
+   ]
+  ]
+ },
+ {
+  "sign": 31,
+  "kind": "sign",
+  "name": "'Stop! Danger to life' door sign",
+  "pos": [
+   -776,
+   1003,
+   66
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   89,
+   130
+  ],
+  "instances": [
+   [
+    -776,
+    1003,
+    66
+   ]
+  ]
+ },
+ {
+  "sign": 33,
+  "kind": "sign",
+  "name": "EXIT sign (\u0412\u042b\u0425\u041e\u0414/EXIT)",
+  "pos": [
+   -847,
+   254,
+   148
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   -0.0
+  ],
+  "size": [
+   21,
+   0,
+   10
+  ],
+  "instances": [
+   [
+    -847,
+    254,
+    148
+   ]
+  ]
+ },
+ {
+  "sign": 34,
+  "kind": "sign",
+  "name": "BIOHAZARD 'Infectious substance' sign",
+  "pos": [
+   -960,
+   1377,
+   148
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   32,
+   64
+  ],
+  "instances": [
+   [
+    -960,
+    1377,
+    148
+   ]
+  ]
+ },
+ {
+  "sign": 35,
+  "kind": "sign",
+  "name": "windows papered with Soviet newspapers",
+  "pos": [
+   243,
+   849,
+   317
+  ],
+  "normal": [
+   0.98,
+   0.18,
+   -0.02
+  ],
+  "size": [
+   33,
+   209,
+   87
+  ],
+  "instances": [
+   [
+    243,
+    849,
+    317
+   ]
+  ]
+ },
+ {
+  "sign": 36,
+  "kind": "sign",
+  "name": "noticeboard 'The school we make ourselves' (timetable)",
+  "pos": [
+   -1319,
+   173,
+   158
+  ],
+  "normal": [
+   -0.07,
+   0.97,
+   0.23
+  ],
+  "size": [
+   256,
+   22,
+   54
+  ],
+  "instances": [
+   [
+    -1319,
+    173,
+    158
+   ]
+  ]
+ },
+ {
+  "sign": 37,
+  "kind": "sign",
+  "name": "'No passage' sign",
+  "pos": [
+   247,
+   1425,
+   464
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   21,
+   10
+  ],
+  "instances": [
+   [
+    247,
+    1425,
+    464
+   ]
+  ]
+ },
+ {
+  "sign": 38,
+  "kind": "sign",
+  "name": "'Unauthorised exit prohibited' sign",
+  "pos": [
+   -947,
+   1640,
+   304
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   20,
+   0,
+   10
+  ],
+  "instances": [
+   [
+    -947,
+    1640,
+    304
+   ]
+  ]
+ },
+ {
+  "sign": 39,
+  "kind": "sign",
+  "name": "'No smoking - protect children' sign",
+  "pos": [
+   498,
+   -392,
+   147
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   -0.0
+  ],
+  "size": [
+   20,
+   0,
+   10
+  ],
+  "instances": [
+   [
+    498,
+    -392,
+    147
+   ]
+  ]
+ },
+ {
+  "sign": 40,
+  "kind": "sign",
+  "name": "Terminator (Schwarzenegger) calendar poster",
+  "pos": [
+   444,
+   -588,
+   472
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   38,
+   0,
+   49
+  ],
+  "instances": [
+   [
+    444,
+    -588,
+    472
+   ]
+  ]
+ },
+ {
+  "sign": 41,
+  "kind": "sign",
+  "name": "board 'Commandments of the school planet'",
+  "pos": [
+   57,
+   1242,
+   302
+  ],
+  "normal": [
+   0.99,
+   0.14,
+   -0.06
+  ],
+  "size": [
+   25,
+   78,
+   50
+  ],
+  "instances": [
+   [
+    57,
+    1242,
+    302
+   ]
+  ]
+ },
+ {
+  "sign": 42,
+  "kind": "sign",
+  "name": "framed photo: student holding a rifle",
+  "pos": [
+   -335,
+   2046,
+   151
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -335,
+    2046,
+    151
+   ]
+  ]
+ },
+ {
+  "sign": 43,
+  "kind": "sign",
+  "name": "framed photo: three students with a phone",
+  "pos": [
+   596,
+   1863,
+   306
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   -0.0
+  ],
+  "size": [
+   128,
+   0,
+   128
+  ],
+  "instances": [
+   [
+    596,
+    1863,
+    306
+   ]
+  ]
+ },
+ {
+  "sign": 44,
+  "kind": "sign",
+  "name": "framed photo: computer class",
+  "pos": [
+   407,
+   323,
+   304
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    407,
+    323,
+    304
+   ]
+  ]
+ },
+ {
+  "sign": 46,
+  "kind": "sign",
+  "name": "framed photo: students in a corridor",
+  "pos": [
+   -118,
+   1487,
+   151
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -118,
+    1487,
+    151
+   ]
+  ]
+ },
+ {
+  "sign": 47,
+  "kind": "sign",
+  "name": "framed photo: student with phone at window",
+  "pos": [
+   -1319,
+   -439,
+   462
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   128,
+   0,
+   128
+  ],
+  "instances": [
+   [
+    -1319,
+    -439,
+    462
+   ]
+  ]
+ },
+ {
+  "sign": 48,
+  "kind": "sign",
+  "name": "framed photo: student at desk, world map",
+  "pos": [
+   -660,
+   -813,
+   463
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -660,
+    -813,
+    463
+   ]
+  ]
+ },
+ {
+  "sign": 49,
+  "kind": "sign",
+  "name": "framed photo: student waving at camera",
+  "pos": [
+   407,
+   -199,
+   471
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    407,
+    -199,
+    471
+   ]
+  ]
+ },
+ {
+  "sign": 50,
+  "kind": "sign",
+  "name": "framed photo: students at desks",
+  "pos": [
+   407,
+   977,
+   470
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    407,
+    977,
+    470
+   ]
+  ]
+ },
+ {
+  "sign": 51,
+  "kind": "sign",
+  "name": "framed photo: five students posing",
+  "pos": [
+   407,
+   1937,
+   472
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    407,
+    1937,
+    472
+   ]
+  ]
+ },
+ {
+  "sign": 52,
+  "kind": "sign",
+  "name": "framed photo: four students posing",
+  "pos": [
+   -1317,
+   1351,
+   467
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   0.0
+  ],
+  "size": [
+   128,
+   0,
+   128
+  ],
+  "instances": [
+   [
+    -1317,
+    1351,
+    467
+   ]
+  ]
+ },
+ {
+  "sign": 53,
+  "kind": "sign",
+  "name": "framed photo: student in beanie and scarf",
+  "pos": [
+   -1177,
+   -86,
+   473
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -1177,
+    -86,
+    473
+   ]
+  ]
+ },
+ {
+  "sign": 54,
+  "kind": "sign",
+  "name": "framed photos (two, classroom)",
+  "pos": [
+   -500,
+   -663,
+   388
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   135,
+   0,
+   292
+  ],
+  "instances": [
+   [
+    -500,
+    -663,
+    388
+   ]
+  ]
+ },
+ {
+  "sign": 55,
+  "kind": "sign",
+  "name": "framed photo (classroom)",
+  "pos": [
+   388,
+   -761,
+   384
+  ],
+  "normal": [
+   -0.98,
+   0.01,
+   -0.2
+  ],
+  "size": [
+   39,
+   175,
+   289
+  ],
+  "instances": [
+   [
+    388,
+    -761,
+    384
+   ]
+  ]
+ },
+ {
+  "sign": 56,
+  "kind": "sign",
+  "name": "framed photo: two students close-up",
+  "pos": [
+   -1177,
+   949,
+   306
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -1177,
+    949,
+    306
+   ]
+  ]
+ },
+ {
+  "sign": 57,
+  "kind": "sign",
+  "name": "framed photo: class with chalkboard",
+  "pos": [
+   -1144,
+   -744,
+   306
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -1144,
+    -744,
+    306
+   ]
+  ]
+ },
+ {
+  "sign": 58,
+  "kind": "sign",
+  "name": "framed photo: gas mask in corridor",
+  "pos": [
+   47,
+   -663,
+   303
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   128,
+   0,
+   128
+  ],
+  "instances": [
+   [
+    47,
+    -663,
+    303
+   ]
+  ]
+ },
+ {
+  "sign": 59,
+  "kind": "sign",
+  "name": "framed photo: gas mask on floor",
+  "pos": [
+   -1178,
+   1731,
+   303
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -1178,
+    1731,
+    303
+   ]
+  ]
+ },
+ {
+  "sign": 60,
+  "kind": "sign",
+  "name": "framed photo: students with gas mask hose",
+  "pos": [
+   -752,
+   1681,
+   306
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   0.0
+  ],
+  "size": [
+   128,
+   0,
+   128
+  ],
+  "instances": [
+   [
+    -752,
+    1681,
+    306
+   ]
+  ]
+ },
+ {
+  "sign": 61,
+  "kind": "sign",
+  "name": "framed photo: students clowning at desks",
+  "pos": [
+   407,
+   65,
+   309
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    407,
+    65,
+    309
+   ]
+  ]
+ },
+ {
+  "sign": 62,
+  "kind": "sign",
+  "name": "framed photo: grinning student in white shirt",
+  "pos": [
+   -1177,
+   -146,
+   308
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -1177,
+    -146,
+    308
+   ]
+  ]
+ },
+ {
+  "sign": 63,
+  "kind": "sign",
+  "name": "framed photo: three students posing",
+  "pos": [
+   -514,
+   1857,
+   152
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   -0.0
+  ],
+  "size": [
+   128,
+   0,
+   128
+  ],
+  "instances": [
+   [
+    -514,
+    1857,
+    152
+   ]
+  ]
+ },
+ {
+  "sign": 64,
+  "kind": "sign",
+  "name": "framed photo: group with Russian flag",
+  "pos": [
+   -1311,
+   -439,
+   146
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   128,
+   0,
+   128
+  ],
+  "instances": [
+   [
+    -1311,
+    -439,
+    146
+   ]
+  ]
+ },
+ {
+  "sign": 65,
+  "kind": "sign",
+  "name": "framed photo: school lobby",
+  "pos": [
+   -1177,
+   1221,
+   148
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -1177,
+    1221,
+    148
+   ]
+  ]
+ },
+ {
+  "sign": 66,
+  "kind": "sign",
+  "name": "framed photo: men in lobby",
+  "pos": [
+   415,
+   2144,
+   157
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    415,
+    2144,
+    157
+   ]
+  ]
+ },
+ {
+  "sign": 67,
+  "kind": "sign",
+  "name": "framed photo: lobby with handprint mural",
+  "pos": [
+   -1178,
+   2202,
+   313
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -1178,
+    2202,
+    313
+   ]
+  ]
+ },
+ {
+  "sign": 68,
+  "kind": "sign",
+  "name": "framed QR code",
+  "pos": [
+   -652,
+   1320,
+   303
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -652,
+    1320,
+    303
+   ]
+  ]
+ },
+ {
+  "sign": 69,
+  "kind": "sign",
+  "name": "framed photo: two students at desk",
+  "pos": [
+   -652,
+   1295,
+   477
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   128,
+   128
+  ],
+  "instances": [
+   [
+    -652,
+    1295,
+    477
+   ]
+  ]
+ },
+ {
+  "sign": 70,
+  "kind": "sign",
+  "name": "graffiti 'Oksana <3' + 'Murz was here'",
+  "pos": [
+   -573,
+   1228,
+   343
+  ],
+  "normal": [
+   -0.99,
+   -0.11,
+   0.0
+  ],
+  "size": [
+   9,
+   83,
+   30
+  ],
+  "instances": [
+   [
+    -573,
+    1228,
+    343
+   ]
+  ]
+ },
+ {
+  "sign": 71,
+  "kind": "sign",
+  "name": "graffiti 'Class of 2013'",
+  "pos": [
+   -566,
+   1585,
+   334
+  ],
+  "normal": [
+   -0.99,
+   0.14,
+   -0.0
+  ],
+  "size": [
+   3,
+   22,
+   22
+  ],
+  "instances": [
+   [
+    -566,
+    1585,
+    334
+   ]
+  ]
+ },
+ {
+  "sign": 72,
+  "kind": "sign",
+  "name": "graffiti 'Olya from 8B is a fool'",
+  "pos": [
+   -580,
+   1341,
+   332
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   23,
+   22
+  ],
+  "instances": [
+   [
+    -580,
+    1341,
+    332
+   ]
+  ]
+ },
+ {
+  "sign": 73,
+  "kind": "sign",
+  "name": "graffiti '2009 the best'",
+  "pos": [
+   -580,
+   1431,
+   318
+  ],
+  "normal": [
+   -1.0,
+   0.05,
+   0.0
+  ],
+  "size": [
+   1,
+   23,
+   22
+  ],
+  "instances": [
+   [
+    -580,
+    1431,
+    318
+   ]
+  ]
+ },
+ {
+  "sign": 74,
+  "kind": "sign",
+  "name": "'MAP BY CHAKA AND RUSTEM' credit photos",
+  "pos": [
+   322,
+   -774,
+   154
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   279,
+   74
+  ],
+  "instances": [
+   [
+    322,
+    -774,
+    154
+   ]
+  ]
+ },
+ {
+  "sign": 75,
+  "kind": "sign",
+  "name": "timetable board 'Schedule'",
+  "pos": [
+   -1184,
+   -301,
+   169
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   80,
+   70
+  ],
+  "instances": [
+   [
+    -1184,
+    -301,
+    169
+   ]
+  ]
+ },
+ {
+  "sign": 76,
+  "kind": "sign",
+  "name": "board 'The school we make ourselves' (army poster)",
+  "pos": [
+   -985,
+   941,
+   176
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   172,
+   90
+  ],
+  "instances": [
+   [
+    -985,
+    941,
+    176
+   ]
+  ]
+ },
+ {
+  "sign": 77,
+  "kind": "sign",
+  "name": "welcome banner 'Welcome!' (Russian/Chuvash)",
+  "pos": [
+   -2066,
+   325,
+   283
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   465,
+   30
+  ],
+  "instances": [
+   [
+    -2066,
+    325,
+    283
+   ]
+  ]
+ },
+ {
+  "sign": 78,
+  "kind": "sign",
+  "name": "Russian + Chuvash flags and anthems",
+  "pos": [
+   -1022,
+   320,
+   165
+  ],
+  "normal": [
+   -1.0,
+   0.02,
+   0.02
+  ],
+  "size": [
+   26,
+   160,
+   117
+  ],
+  "instances": [
+   [
+    -1022,
+    320,
+    165
+   ]
+  ]
+ },
+ {
+  "sign": 79,
+  "kind": "sign",
+  "name": "loudspeaker (black)",
+  "pos": [
+   100,
+   1240,
+   412
+  ],
+  "normal": [
+   0.97,
+   -0.26,
+   -0.0
+  ],
+  "size": [
+   29,
+   29,
+   32
+  ],
+  "instances": [
+   [
+    100,
+    1240,
+    412
+   ]
+  ]
+ },
+ {
+  "sign": 80,
+  "kind": "sign",
+  "name": "volunteer board + speaker + projector",
+  "pos": [
+   88,
+   1130,
+   452
+  ],
+  "normal": [
+   0.96,
+   -0.14,
+   0.23
+  ],
+  "size": [
+   38,
+   84,
+   112
+  ],
+  "instances": [
+   [
+    88,
+    1130,
+    452
+   ]
+  ]
+ },
+ {
+  "sign": 81,
+  "kind": "sign",
+  "name": "wall of framed pictures (school building)",
+  "pos": [
+   -1298,
+   -720,
+   162
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   0.0
+  ],
+  "size": [
+   275,
+   3,
+   72
+  ],
+  "instances": [
+   [
+    -1298,
+    -720,
+    162
+   ]
+  ]
+ },
+ {
+  "sign": 82,
+  "kind": "sign",
+  "name": "Siemens mobile phone (on wall)",
+  "pos": [
+   195,
+   -497,
+   438
+  ],
+  "normal": [
+   0.01,
+   -0.0,
+   1.0
+  ],
+  "size": [
+   9,
+   8,
+   2
+  ],
+  "instances": [
+   [
+    195,
+    -497,
+    438
+   ]
+  ]
+ },
+ {
+  "sign": 84,
+  "kind": "sign",
+  "name": "chalkboard under Soviet relief",
+  "pos": [
+   -713,
+   -636,
+   271
+  ],
+  "normal": [
+   -0.0,
+   0.99,
+   0.12
+  ],
+  "size": [
+   181,
+   10,
+   70
+  ],
+  "instances": [
+   [
+    -713,
+    -636,
+    271
+   ]
+  ]
+ },
+ {
+  "sign": 86,
+  "kind": "sign",
+  "name": "windows papered with Soviet newspapers",
+  "pos": [
+   227,
+   320,
+   477
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "size": [
+   0,
+   247,
+   87
+  ],
+  "instances": [
+   [
+    227,
+    320,
+    477
+   ]
+  ]
+ },
+ {
+  "sign": 87,
+  "kind": "sign",
+  "name": "windows papered with Soviet newspapers",
+  "pos": [
+   -576,
+   -419,
+   317
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   119,
+   0,
+   87
+  ],
+  "instances": [
+   [
+    -576,
+    -419,
+    317
+   ]
+  ]
+ },
+ {
+  "sign": 88,
+  "kind": "sign",
+  "name": "windows papered with Soviet newspapers",
+  "pos": [
+   31,
+   -419,
+   317
+  ],
+  "normal": [
+   -0.0,
+   -1.0,
+   0.0
+  ],
+  "size": [
+   181,
+   0,
+   87
+  ],
+  "instances": [
+   [
+    31,
+    -419,
+    317
+   ]
+  ]
+ },
+ {
+  "sign": 89,
+  "kind": "sign",
+  "name": "newspaper windows with torn paper strips",
+  "pos": [
+   -224,
+   -419,
+   477
+  ],
+  "normal": [
+   0.0,
+   -1.0,
+   -0.0
+  ],
+  "size": [
+   115,
+   0,
+   87
+  ],
+  "instances": [
+   [
+    -224,
+    -419,
+    477
+   ]
+  ]
+ },
+ {
+  "sign": 90,
+  "kind": "sign",
+  "name": "'Our pride' honour board (student photos)",
+  "pos": [
+   -809,
+   -37,
+   178
+  ],
+  "normal": [
+   -1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   91,
+   50
+  ],
+  "instances": [
+   [
+    -809,
+    -37,
+    178
+   ]
+  ]
+ },
+ {
+  "sign": 91,
+  "kind": "sign",
+  "name": "'Our pride' honour board (student photos)",
+  "pos": [
+   -920,
+   -103,
+   166
+  ],
+  "normal": [
+   -0.0,
+   1.0,
+   0.0
+  ],
+  "size": [
+   92,
+   0,
+   63
+  ],
+  "instances": [
+   [
+    -920,
+    -103,
+    166
+   ]
+  ]
+ },
+ {
+  "sign": 92,
+  "kind": "sign",
+  "name": "board 'Before and after lessons' (volunteers)",
+  "pos": [
+   -1184,
+   849,
+   169
+  ],
+  "normal": [
+   1.0,
+   0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   80,
+   70
+  ],
+  "instances": [
+   [
+    -1184,
+    849,
+    169
+   ]
+  ]
+ },
+ {
+  "sign": 93,
+  "kind": "sign",
+  "name": "\u0412\u042b\u0425\u041e\u0414 exit sign (green)",
+  "pos": [
+   -1454,
+   318,
+   225
+  ],
+  "normal": [
+   1.0,
+   -0.0,
+   -0.0
+  ],
+  "size": [
+   0,
+   17,
+   5
+  ],
+  "instances": [
+   [
+    -1454,
+    318,
+    225
+   ],
+   [
+    -1068,
+    1065,
+    196
+   ],
+   [
+    -975,
+    1596,
+    357
+   ],
+   [
+    -975,
+    1768,
+    195
+   ],
+   [
+    -1066,
+    1968,
+    196
+   ],
+   [
+    391,
+    1766,
+    196
+   ],
+   [
+    383,
+    1763,
+    356
+   ],
+   [
+    383,
+    1765,
+    516
+   ],
+   [
+    -975,
+    -536,
+    197
+   ],
+   [
+    -1077,
+    -425,
+    196
+   ],
+   [
+    -1074,
+    -415,
+    358
+   ],
+   [
+    311,
+    -456,
+    189
+   ],
+   [
+    307,
+    -415,
+    357
+   ],
+   [
+    306,
+    -415,
+    517
+   ],
+   [
+    -948,
+    230,
+    197
+   ],
+   [
+    -950,
+    411,
+    196
+   ],
+   [
+    -896,
+    747,
+    356
+   ],
+   [
+    59,
+    1145,
+    357
+   ],
+   [
+    59,
+    1335,
+    356
+   ],
+   [
+    -895,
+    -425,
+    356
+   ],
+   [
+    -896,
+    -425,
+    516
+   ],
+   [
+    -895,
+    747,
+    516
+   ]
+  ]
+ }
+]

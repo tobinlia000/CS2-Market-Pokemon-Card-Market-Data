@@ -530,3 +530,20 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   | D1 | cs_insertion2 | 6:18 | 6 |
   | G1 | de_lord | 5:28 | 4 |
   First-time geometry: backrooms 4m50s, school 1m20s, insertion2 1m50s, lord 33s.
+
+## 19. Named signs (signs.py, 2026-09-28)
+- **Pipeline:** `tools/csdv/signs.py scan|name|clean` plus `blender_signs.py` (runs inside Blender 5.2 in the
+  background).
+  - **Textured export:** workshop addon parts are hard-linked as `pak01_*.vpk` into `videos/maps/<map>/textured/addon`,
+    and a generated gameinfo.gi lists that folder plus csgo and core.
+  - **Candidates:** triangles whose material is a sign keyword, a custom material shipped with the map (minus
+    surface/prop words), or a small-triangle part of the addon's sign models. They're grouped by 24 u voxels,
+    sampling each triangle densely: big pictures are two triangles 128 u wide, and centroid-only sampling split them.
+  - **Dedupe:** identical copies are merged by signature (materials, triangle count, size) into `instances`.
+  - **Render:** ortho camera down the PCA normal, clipped to the sign's depth. Workbench TEXTURE mode needs the
+    base-colour image node set active (the glTF importer leaves the normal map active, which renders flat grey).
+  - **mapview:** reads `landmarks-visual.json` and shows signs only 0–150 u above their floor.
+  - **Cleanup:** door handles and breakable windows are now dropped from landmarks, and doors within 48 u of each
+    other are de-duplicated.
+- **Cost:** scan 1.5–9 min per map. Reading takes about 10 sheets for a good map. Insertion2 floods (foliage, props,
+  windows), so I made focus sheets filtered by material.

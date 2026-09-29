@@ -36,7 +36,7 @@ NOOK_AREA = 160.0 * 160.0
 LANDMARK_WORDS = ("exit", "sign", "door", "stair", "elevator", "lift", "window", "ladder", "vent", "shutter",
                   "button", "statue", "laptop", "computer", "screen", "tv", "clock", "painting", "picture",
                   "desk", "counter", "bench", "chair", "books", "cup")
-SCENERY_WORDS = ("skybox", "tree", "car", "truck", "bus", "police", "bush", "plant")  # outside dressing: not drawn
+SCENERY_WORDS = ("skybox", "tree", "car", "truck", "bus", "police", "bush", "plant", "breakable", "_piece")  # outside dressing: not drawn
 MIN_SPACE = 100.0 * 100.0   # smaller fragments merge into their neighbour (unless someone stood there)
 CROP_MARGIN = 500.0
 
@@ -172,7 +172,11 @@ def landmarks(map_name: str, g: mapgeo.MapGeometry) -> list[dict]:
             continue
         origin = mapgeo._vec(e.get("origin"))
         base = Path(mapgeo._model_path(e.get("model", ""))).stem if e.get("model") else cls
+        if "handle" in base.lower():  # door handles are separate props on the doors already marked
+            continue
         if cls.startswith(("prop_door", "func_door")):
+            if "handle" in base.lower():  # the handle is a separate prop on the same door
+                continue
             kind = "door"
         elif cls == "func_button":
             kind = "button"
@@ -192,6 +196,12 @@ def landmarks(map_name: str, g: mapgeo.MapGeometry) -> list[dict]:
     world = mapgeo.MAPS_DIR / map_name / "render" / "world.glb"
     if world.is_file():
         marks += _world_landmarks(world)
+    # signs/posters read from head-on renders (signs.py scan + name); one landmark per placed copy
+    visual = mapgeo.MAPS_DIR / map_name / "landmarks-visual.json"
+    if visual.is_file():
+        for m in json.loads(visual.read_text(encoding="utf-8")):
+            for pos in m.get("instances") or [m["pos"]]:
+                marks.append({"kind": "sign", "name": m["name"], "pos": list(pos)})
     return marks
 
 
@@ -376,7 +386,8 @@ def build_overview(map_name: str, res: float = 4.0, routes: dict | None = None, 
     # landmarks: de-duplicated, numbered L1.. across the whole map (west->east, north->south)
     kept = []
     for m in sorted(marks, key=lambda m: (-(m["pos"][1] // 512), m["pos"][0])):
-        if not any(k["name"] == m["name"] and np.linalg.norm(np.subtract(k["pos"], m["pos"])) < 48 for k in kept):
+        near = lambda k: np.linalg.norm(np.subtract(k["pos"], m["pos"])) < 48  # noqa: E731
+        if not any(near(k) and (k["name"] == m["name"] or k["kind"] == m["kind"] == "door") for k in kept):
             kept.append(m)
     for n, m in enumerate(kept, start=1):
         m["id"] = f"L{n}"
@@ -442,12 +453,14 @@ def build_overview(map_name: str, res: float = 4.0, routes: dict | None = None, 
                             (s["pos"][0], s["pos"][1]), xytext=(9, 7), textcoords="offset points", fontsize=7.5,
                             weight="bold", zorder=11, bbox=dict(boxstyle="round,pad=0.15", fc="#fff6c8", ec="#aa8"))
         # landmarks: numbered markers
-        here = [m for m in kept if abs(m["pos"][2] - z) <= 170 and lo[0] <= m["pos"][0] <= hi[0]
-                and lo[1] <= m["pos"][1] <= hi[1]]
+        # signs hang on this floor's walls (centre 0-150 u above the floor); other marks keep the looser band
+        here = [m for m in kept if (-16 <= m["pos"][2] - z <= 150 if m["kind"] == "sign" else abs(m["pos"][2] - z) <= 170)
+                and lo[0] <= m["pos"][0] <= hi[0] and lo[1] <= m["pos"][1] <= hi[1]]
         for m in here:
-            colour = {"door": "#8b4513", "exit": "#0a8f2a", "button": "#c00000"}.get(m["kind"], "#6a3d9a")
-            ax.scatter(m["pos"][0], m["pos"][1], marker="s" if m["kind"] == "door" else "^" if m["kind"] == "exit" else "D",
-                       s=90 if m["kind"] == "exit" else 45, c=colour, edgecolors="white", linewidths=0.8, zorder=12)
+            colour = {"door": "#8b4513", "exit": "#0a8f2a", "button": "#c00000", "sign": "#0b7fa8"}.get(m["kind"], "#6a3d9a")
+            marker = {"door": "s", "exit": "^", "sign": "P"}.get(m["kind"], "D")
+            ax.scatter(m["pos"][0], m["pos"][1], marker=marker, s=90 if m["kind"] == "exit" else 45, c=colour,
+                       edgecolors="white", linewidths=0.8, zorder=12)
             ax.annotate(m["id"], (m["pos"][0], m["pos"][1]), xytext=(5, 5), textcoords="offset points", fontsize=7.5,
                         weight="bold", color=colour, zorder=12)
         # hidden zones
@@ -468,13 +481,14 @@ def build_overview(map_name: str, res: float = 4.0, routes: dict | None = None, 
         for name, colour in zip(player_names, ROUTE_COLOURS):
             key.append((f"━ {name[:34]}", colour, 8.5))
         key += [("● start   ✕ end   ➤ direction (every 5 s)", "#333", 8), ("m:ss labels every 15 s", "#333", 8),
-                ("★ stood still ≥ 6 s    ▲ EXIT sign", "#333", 8), ("■ door   ◆ object/prop   L# = landmark", "#333", 8),
+                ("★ stood still ≥ 6 s    ▲ EXIT sign", "#333", 8), ("■ door   ◆ object/prop   ✚ sign/poster", "#333", 8),
+                ("L# = landmark (listed below)", "#333", 8),
                 ("blue room · green corridor · orange nook", "#333", 8),
                 (f"grid square = {grid.cell:.0f} u (≈ {grid.cell * 0.0254:.1f} m)", "#333", 8)]
         marks_col = [("LANDMARKS", "bold", 10.5)]
         for m in here:
             label = "EXIT sign" if m["kind"] == "exit" else m["name"].replace("_", " ")
-            marks_col.append((f"{m['id']:<4}{label[:21]:<21}{m['square']:>4}", "#222", 7))
+            marks_col.append((f"{m['id']:<5}{label[:28]:<28}{m['square']:>5}", "#222", 7))
         spaces_col = [("SPACES", "bold", 10.5)]
         for s in lv["level"].spaces:
             spaces_col.append((f"{s.id:<5}{s.type:<9}{grid.square(*s.label_xy):>4}", "#222", 7))
