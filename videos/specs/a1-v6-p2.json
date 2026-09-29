@@ -1,0 +1,84 @@
+{
+ "name": "a1-v6-p2",
+ "summary": "videos/demos/A1.summary.json",
+ "outputFileName": "A1-V6-P2",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 54560,
+   "end": 54848,
+   "pov": "Caillou (Canadian now)",
+   "why": "#43 'Hang on... did I just hear...': checks around the corner, nothing, walks back",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -948.2,
+       5103.8,
+       -5836.1
+      ],
+      "pitch": 3.365,
+      "yaw": 160.626,
+      "roll": 0.0,
+      "fov": 64.195
+     },
+     {
+      "t": 1.125,
+      "pos": [
+       -948.2,
+       5103.8,
+       -5836.1
+      ],
+      "pitch": 3.365,
+      "yaw": 160.626,
+      "roll": 0.0,
+      "fov": 64.195
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -948.2,
+       5103.8,
+       -5836.1
+      ],
+      "pitch": 3.365,
+      "yaw": 160.626,
+      "roll": 0.0,
+      "fov": 64.195
+     },
+     {
+      "t": 3.375,
+      "pos": [
+       -948.2,
+       5103.8,
+       -5836.1
+      ],
+      "pitch": 3.365,
+      "yaw": 160.626,
+      "roll": 0.0,
+      "fov": 64.195
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -948.2,
+       5103.8,
+       -5836.1
+      ],
+      "pitch": 3.365,
+      "yaw": 160.626,
+      "roll": 0.0,
+      "fov": 64.195
+     }
+    ]
+   }
+  }
+ ],
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": false
+}
