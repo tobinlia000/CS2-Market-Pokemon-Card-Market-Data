@@ -1,4 +1,7 @@
-# Shared file — Cameraman ⇄ Creative Director
+# Project log — A1… (Cameraman + Creative Director, one role since 2026-09-29)
+
+> **2026-09-29: the user merged the Creative Director into the cameraman (Claude Code).** No more Drive round-trips;
+> this file is now a local log. The sections below record the history up to v6.
 
 **Roles (set by the user, 2026-09-28)**
 - **Cameraman** (Claude Code, on the PC): owns the shooting. Has the demos, map geometry and renderer. Decides

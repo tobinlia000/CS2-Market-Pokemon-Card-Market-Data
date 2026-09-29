@@ -30,8 +30,8 @@ and let the user run the two scripts. Git is the hand-off.
 
 ## STORY BIBLE: read `videos/briefs/LORE.md` before shooting anything for this series
 (The world, the rules of observation, what must never be shown, Part 1 scene by scene with the demo mapping, and
-tone. I'm the Cameraman with full ownership of what to shoot and what to leave out (user, 2026-09-29). I check with
-the Creative Director only for story choices: anything that could reveal LL, reorder events, or change meaning.)
+tone. Since 2026-09-29 I am both the Cameraman and the Creative Director: I own the story calls too. The user is
+the final say and reviews each render.)
 
 ## LORE RULES (user, 2026-09-28; apply to every demo with these two players)
 - **Caillou (C) is the main character.** Any angle is fine.
@@ -52,16 +52,23 @@ the Creative Director only for story choices: anything that could reveal LL, reo
   standing only where the script demands it (a line or a beat), and then briefly. Shots too long or redundant = cut.
 - The Part 1 script is in `videos/briefs/PART1-script.md` (A1 beat mapping at its end).
 
-## Roles (user, 2026-09-28)
-**I am the Cameraman.** The claude.ai chat is the **Creative Director** (lore and story). I own the shooting:
-cameras, framing, reading the demos (takes, repeats, improvised additions, dead space) and reporting them for
-lore checks. The shared file is `videos/briefs/COLLAB.md` (local master). **The shared copy is in Google Drive:** folder
-"CS2 Demo Videos — Cameraman ⇄ Creative Director" (id 1uOg9NRGon0K_byiLHCTjBrWcxAO7adKd). My Drive connector can
-create and read files but can't edit an existing doc's text, so each update is a new Google Doc `COLLAB vN (Cameraman)`
-(create_file with parentId, contentMimeType text/markdown). Before each update, search the folder
-(`parentId = '<id>'`) for `CD reply N` docs and merge them into §4. I keep it: bump the version, merge the CD's replies
-(the user relays them), and keep the status board and logs current. The goal per demo is a full render; the user
-gives feedback after. Story changes need the CD's OK; camera changes are mine. Scripted shot lists are built with
+## Roles (user, 2026-09-29: the CD role merged into me)
+**I am the Cameraman AND the Creative Director.** No more back-and-forth with a separate claude.ai chat. I own the
+shooting (cameras, framing, reading the demos: takes, repeats, improvised additions, dead space) and the story calls
+(canon takes, beat order, lore checks against `videos/briefs/LORE.md`). The user reviews each full render and has
+the final say. For big story choices (dropping or adding a beat, anything that changes meaning), I make a
+recommendation and state it clearly in my report, so the user can overrule it.
+`videos/briefs/COLLAB.md` stays as the project log (status board, decisions, render log), local only. The Google
+Drive folder (id 1uOg9NRGon0K_byiLHCTjBrWcxAO7adKd) is retired: no more COLLAB/CD-reply docs.
+
+## Usage budget (user, 2026-09-29)
+- Liam is on the Pro plan and usage credits are tight. Offload work that doesn't need this PC (research, writing,
+  long analysis of committed files) to a **cloud session**: free cloud-session credits. Anything touching CS2, HLAE,
+  renders, local demos or local files stays local.
+- Check `get_usage` at the start of big tasks and before long renders/reviews. **Tell Liam when the weekly limit is
+  close to max (~85%+)**, so he can use his free weekly reset. Don't wait until it's hit.
+
+Scripted shot lists are built with
 a per-demo builder (e.g. `videos/specs/a1v2/build.py`: solver + checks: C visible, LL out or face-safe,
 camera not in walls).
 
