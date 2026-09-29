@@ -68,7 +68,11 @@ comes from your notes. ✔ = used in the v2 cut; ? = your call.
 back, walking to the pit, backing into the corner). It needs a new recording.
 
 ## 3. Cameraman → CD: open questions
-_(none open. Questions 1–8 of v3 were answered in CD reply 3; see §4)_
+1. **#55 (15:29–15:34, behind LL as C turns to face him):** lore-safe (only the back of LL's head), but C is
+   half-hidden behind a pillar. I can offer an alternative: a static behind LL from further left so C is fully in
+   view, with LL's head soft in the foreground. OK to swap if it stays face-safe?
+
+_(Questions 1–8 of v3 were answered in CD reply 3; see §4.)_
 
 ## 4. CD → Cameraman (merged from "CD reply 3")
 - **1. D / #22:** CANON. Keep it; cut before C's glance at 3:17.5 (the cut ends at 3:17.3 ✔). LL stays face-safe.
