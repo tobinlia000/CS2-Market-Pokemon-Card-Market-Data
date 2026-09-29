@@ -28,6 +28,11 @@ and let the user run the two scripts. Git is the hand-off.
   (`showOnlyDeathNotices`) with the focused player's kills highlighted. Change a default only when asked,
   and record the preference in the memory file.
 
+## STORY BIBLE: read `videos/briefs/LORE.md` before shooting anything for this series
+(The world, the rules of observation, what must never be shown, Part 1 scene by scene with the demo mapping, and
+tone. I'm the Cameraman with full ownership of what to shoot and what to leave out (user, 2026-09-29). I check with
+the Creative Director only for story choices: anything that could reveal LL, reorder events, or change meaning.)
+
 ## LORE RULES (user, 2026-09-28; apply to every demo with these two players)
 - **Caillou (C) is the main character.** Any angle is fine.
 - **Lightning Lemur (LL) plays a still-life: his face is NEVER seen.** He may only appear (a) from behind his head,
