@@ -78,6 +78,12 @@ Drive folder (id 1uOg9NRGon0K_byiLHCTjBrWcxAO7adKd) is retired: no more COLLAB/C
   the user adds the letterbox in CapCut. **8-bit** H.264 (dithered from the 16-bit grade, CRF 14), since CapCut
   and the Windows player may not open 10-bit H.264.
 - A joined, letterboxed preview is still useful for reviews.
+- **(2026-09-30) Folder layout (user):** everything for a video lives in one folder in `CS2 Renders` (Part 1:
+  `Backrooms Part 1\`), sorted by where it appears in the script: `1 - Backrooms (script scenes 2-6)\A1 edit shots` +
+  `Custom shots`, `2 - Poolrooms (script scene 9)`, `3 - School (…11)`, `4 - Insertion2 flash (…13)`,
+  `5 - Jungle temple (…17)`, `6 - Previews and full cuts\` (+ `Old versions\`), `7 - Work files (safe to delete)\`
+  (raw passes, ungraded shots, tests, 10-bit masters). Index/contact sheet files start with "00" so they sort first.
+  `tools/organize_part1.py` did the move (log in the work folder). The user sorts by name.
 - **(2026-09-29) Division of labour:** the user does the key story shots manually where needed. My main value is
   **cinematic B-roll of Caillou** (sweeps, tripod pans, drone, swoops, cranes, orbits, push/pull, motion blur).
   Deliver **several angles per scene to choose from, and always one still/static/slow-zoom option** (variant "a").

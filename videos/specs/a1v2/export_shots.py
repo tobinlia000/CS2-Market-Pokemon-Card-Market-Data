@@ -38,14 +38,16 @@ def main():
         m = re.match(r"\| (\d+) \| (A1|A11|A12) \| ([^|]+)\| [^|]+\| [^|]+\| (.+) \|", line)
         if m:
             notes[int(m.group(1))] = (m.group(2), m.group(3).strip(), m.group(4).strip())
-    dest = OUT / f"A1-{VER}-shots-graded"
+    dest = OUT / "Backrooms Part 1" / "1 - Backrooms (script scenes 2-6)" / "A1 edit shots"   # the user's layout
     dest.mkdir(exist_ok=True)
     tmp = dest / "_tmp10bit.mp4"
     fin = order["finish"]
     ff = ffmpeg_path()
     listing = []
     for k, o in enumerate(order["shots"], 1):
-        hits = glob.glob(str(OUT / f"{o['pass'].upper()}-shots" / f"sequence-*-tick-{o['start']}-to-{o['end']}.mp4"))
+        hits = []
+        for root in (OUT, OUT / "Backrooms Part 1" / "7 - Work files (safe to delete)" / "A1"):
+            hits = hits or glob.glob(str(root / f"{o['pass'].upper()}-shots" / f"sequence-*-tick-{o['start']}-to-{o['end']}.mp4"))
         if len(hits) != 1:
             sys.exit(f"shot #{o['n']}: found {hits}")
         demo, span, note = notes[o["n"]]

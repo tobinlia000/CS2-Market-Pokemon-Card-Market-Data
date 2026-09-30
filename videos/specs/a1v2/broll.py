@@ -28,7 +28,18 @@ from build import tk, sample, fixed, shot_cine, shot_behind_ll
 REPO = B.REPO
 DEMO_DIR = Path(r"C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo")
 RENDERS = Path(r"C:\Users\Liam's PC\Videos\CS2 Renders")
-OUT_ROOT = RENDERS / "Part 1 B-roll"
+PART1 = RENDERS / "Backrooms Part 1"          # the user's layout (2026-09-30): one folder per script scene
+SCENE_DIRS = {"A2": "2 - Poolrooms (script scene 9)", "C1": "3 - School (script scene 11)",
+              "D1": "4 - Insertion2 flash (script scene 13)", "G1": "5 - Jungle temple (script scene 17)"}
+PASS_ROOTS = [RENDERS, PART1 / "7 - Work files (safe to delete)" / "B-roll passes"]
+
+
+def pass_shots(pass_name, start, end):
+    for root in PASS_ROOTS:
+        hits = glob.glob(str(root / f"{pass_name.upper()}-shots" / f"sequence-*-tick-{start}-to-{end}.mp4"))
+        if hits:
+            return hits
+    return []
 FINISH = {"look": "cinematic", "letterbox": False, "vignette": False,
           "curves": "0/0 0.088/0.035 0.136/0.075 0.193/0.136 0.293/0.254 0.409/0.401 1/1"}
 CNAME, LNAME = "Caillou (Canadian now)", "Lightning Lemur"
@@ -461,14 +472,14 @@ def export(demo, only=None, curve=None):
     from post import ffmpeg_path
     ff = ffmpeg_path()
     order = json.loads((REPO / "videos" / "specs" / f"broll-{demo.lower()}-order.json").read_text(encoding="utf-8"))
-    dest = OUT_ROOT / demo
+    dest = PART1 / SCENE_DIRS.get(demo, f"B-roll {demo}")
     dest.mkdir(parents=True, exist_ok=True)
     tmp = dest / "_tmp10bit.mp4"
     index = [f"# {demo} B-roll", "", "Variant **a** = the still / static / slow-zoom option. Times are demo time.", "",
              "| file | demo time | angle |", "|---|---|---|"]
     thumbs = []
     for o in order["shots"]:
-        hits = glob.glob(str(RENDERS / f"{o['pass_'].upper()}-shots" / f"sequence-*-tick-{o['start']}-to-{o['end']}.mp4"))
+        hits = pass_shots(o["pass_"], o["start"], o["end"])
         name = f"{demo} {o['n']:02d}{o['letter']} - {slug(o['title'], 50)} - {slug(o['label'], 30)}.mp4"
         if len(hits) != 1:
             index.append(f"| (missing) {name} | {o['a']}–{o['b']} | {o['label']} |")

@@ -25,8 +25,9 @@ def main():
     order = json.loads((REPO / "videos" / "specs" / f"a1-{VER}-order.json").read_text(encoding="utf-8"))
     files = []
     for o in order["shots"]:
-        folder = OUT / f"{o['pass'].upper()}-shots"
-        hits = glob.glob(str(folder / f"sequence-*-tick-{o['start']}-to-{o['end']}.mp4"))
+        hits = []
+        for root in (OUT, OUT / "Backrooms Part 1" / "7 - Work files (safe to delete)" / "A1"):
+            hits = hits or glob.glob(str(root / f"{o['pass'].upper()}-shots" / f"sequence-*-tick-{o['start']}-to-{o['end']}.mp4"))
         if len(hits) != 1:
             sys.exit(f"shot #{o['n']} ({o['pass']} ticks {o['start']}-{o['end']}): found {hits}")
         files.append(hits[0])

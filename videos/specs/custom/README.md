@@ -1,6 +1,6 @@
 # Custom shot requests
 
-One spec per request, named `cNN-<demo>-<what>.json`. Renders go to `Videos\CS2 Renders\Custom Shots\`
+One spec per request, named `cNN-<demo>-<what>.json`. Renders go to `Videos\CS2 Renders\Custom Shots\`; the 8-bit final is then moved to the part's scene folder (Part 1: `Backrooms Part 1\1 - Backrooms (script scenes 2-6)\Custom shots\`)
 (graded, no black bars, plus an 8-bit copy, per the user's CapCut delivery rule).
 
 | # | Demo | Request | Spec |
