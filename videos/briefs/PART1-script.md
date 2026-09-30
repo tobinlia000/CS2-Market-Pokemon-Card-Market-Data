@@ -71,16 +71,151 @@ T: How- how?
 The T backs up frantically through the smoke, and eventually backs up too far, falling into the pit by accident.
 T (screams)
 
-EXT. CACHE — (CT ad scene) · INT. THE POOLROOMS (A2) · INT. ROOM OF DOORS · EXT. DE_02SCHOOL (C1) ·
-MONTAGE: INSERTION2 (D1, flash), MAP 3 TBD, DE_FARM · EXT. JUNGLE TEMPLE — END OF PART 1
-(See the user's message of 2026-09-29 for the full text of these later scenes; key camera notes:
-Poolrooms: floor transition from Mirage; the camera lingers looking down through a pool at a sinking still-life,
-back to us; the duck. School: first person arrival; lingering shot of the lamp poles (foreshadowing Part 2); a
-shot from his right side creeping along the ground; the flags; clock/stopwatch; classroom; faint green exit glow;
-the painted hallway with the ladder; the locked door with a girl's voice; the Soviet newspapers; the courtyard
-hopscotch; the still-life in a window seen from behind its head; the gap in the grass. Jungle temple: the camera
-behind the still-life's head; the final reveal of its face, completely blank, is the ONLY time a still-life's
-face is shown.)
+<!-- recovered verbatim from the user's 2026-09-29 message (session transcript) -->
+EXT. CACHE
+The CT is doing an ad for Buff, which eventually transitions back to the story.
+The camera is distant on the CT, as if removed from the actual camera he's talking to. Then it transitions to the close-up camera after the first couple of sentences.
+CT
+Buff Market is the international version of the famous CS2 marketplace BUFF163, and it's got some of the lowest fees there is. You don't have to wait for your funds to settle to buy new skins, AND, if you use my link in the description you get a bonus. It's a great site to buy and sell skins on and it helps support the channel!
+(voice drops off as he turns away, suggesting the ad is over)
+And, I need all the help I can get these days. My friend... he's still missing.
+(sighs)
+His hanging head raises.
+CT
+Hang on.
+He starts running.
+CT
+When he first went through, I just assumed that he noclipped through the wall, but that's stupid.
+A black and white replay of the T's disappearance plays.
+CT
+I've taught him everything he knows about CS, but I never taught him how to use noclip.
+ 
+He barely knows how to buy armor, let alone open his console!
+He goes back to the wallbang spot from before, finding his way in through the door. We reuse audio from the short here, as he disappears through the solid wall, but instead of arriving in the Backrooms, he seems to appear on Mirage.
+CT
+(looking around)
+Of course! I can't believe I never tried just WALKING through the wall. I guess I just never thought that would work.
+He looks around.
+CT
+Mirage? Wasn't I just on Cache? Wait... this shouldn't be possible but, maybe this is where it took him too.
+The CT walks around, examining things, but not paying close attention as the camera reveals the oddities of the map in the blurred foreground.
+CT
+It's weird though. The background in that video he posted didn't look anything like Mirage.
+The CT roams around the map, calling out for his missing friend.
+CT
+Hello? Hellooooo? Dude I made it through.
+Eventually, the CT loops back to where he spawned in, standing alone out in the open, still looking around.
+CT
+Where'd he go?
+INT. THE POOLROOMS
+Floor transition: the camera sinks down through the ground of Mirage and emerges from the ceiling of the Poolrooms, just as the T falls from above.
+T
+What the-
+The T traverses the Poolrooms without issue, encountering no one along the way. As he passes one of the pools, the camera lingers, looking down through the water from above. Far below, barely visible through the ripples, the dark shape of a still-life slowly sinks, its back to us. The T never notices. He eventually reaches the edge. He sees the duck.
+T
+(scoffs)
+Quack, quack.
+The T walks over to the edge, hearing wind below. He turns around to face the duck.
+T
+What do you think, buddy? Should I jump?
+It pans to the duck, unmoving.
+T
+Not too talkative, huh?
+It pans to the duck again.
+T
+You know who does talk a lot?
+The duck stays still.
+T
+My friend, Counterstupid. He talks so much that sometimes I feel like his name should be Countersilent, you know what I mean? BAHAHAHAHhahahahhehhhhh
+The T slowly turns around toward the white light.
+T
+He's annoying sometimes, but man, I would do ANYTHING to hear his voice again...
+He looks back at the duck again.
+T
+Nothing too crazy of course. It's not like I'd jump off ANOTHER super high ledge where I can't see the bottom, risking my life for no apparent reason.
+The T turns to the camera.
+T
+Or would I?
+Silence.
+T
+Really? No music? So it only works when HE does it then, huh?
+The T stares down below, and jumps.
+INT. ROOM OF DOORS
+He lands sideways in a white room full of doors. He begins looking around, assessing his surroundings. He tries each door, and a locked door sound is heard for each, until he reaches the final door.
+T
+The last door. If this one doesn't open, then... no, I shouldn't think about that yet... not until I know.
+When he tries this one, he is suddenly transported.
+EXT. DE_02SCHOOL
+We enter in first person. The T goes through the door and flies through the air, landing on the very edge of a concrete road. In front of him is a long stretch of rolling green hills, broken up by a string of tall metal lamp poles, placed in a straight line, spaced evenly. Above is bright blue sky with only wisps of clouds. Even closer to the T is what looks like a swing set, but it's missing the swings, like it's the skeleton of a swing set.
+Get a lingering shot of the lamp poles. They foreshadow the lamp post in Part 2.
+The T remains silent as he examines the area in front of him. A shot from his right side creeps in along the ground, breaking the first-person perspective. Then we return to first person as he slowly turns around, revealing a large, rectangular school behind him, colored a dull yellow and red.
+T
+It worked. The last door worked. Now the only question is: where did it take me?
+The T walks along the concrete road surrounding the school, until he reaches the other side, where two flags stand tall and wave in the wind.
+T
+Huh... the right one is the Russian flag, I know that. I have no idea what the left one is though.
+The T enters through three sets of gray double doors, and enters the building. The floors are a strange, jagged pattern of orange and green. It seems tacky or outdated. Plastered on the walls are various posters and Russian writing. Further on, there's a poster which looks to have school photos of perhaps a graduating class. Directly in front of the T there is a clock that is counting up.
+T
+A clock... but... no... a stopwatch, I guess. It's counting up. But it looks like it only just started.
+He looks to his left and then his right down the halls.
+T
+What IS this place?
+The door must be destroyed for access here.
+He chooses right, and walks into a small room filled with chairs and desks, facing a dull chalkboard.
+T
+A classroom? Huh... this must be a school.
+He leaves the room and continues exploring. Above a door in one hallway, a faint green glow catches the camera. An exit sign, its lettering gone, only a pale green-white border left. The T walks right past it without a glance.
+Alternate: the T and/or the camera only notices a faint green glow.
+He enters a long hallway that looks to be hand-painted with bright flowers and green grass. At the end, there is a hole in the ceiling, with a ladder propped up through it. At the second door to his right, he hears a girl's voice speaking in Russian.
+T
+(excited)
+Hello? Is someone there?
+He tries the door, but it's locked and won't budge. He sprints outside of the building, rounding the corner to find the set of windows corresponding to that door. Once he finds it, he tries to see in. He jumps up and down, but he can't see anything; the windows are too high.
+T
+Hello? Can you see me? I'm lost, and I need help!
+There's no response. He goes back inside and finds the door again. It's still locked, but this time, he hears nothing, only the hum of fluorescent lights, which scares him off. Ignoring the ladder, he runs up the stairs to the top floor. It's light blue, with a speckled salmon floor. Some of the windows are covered with what look like old Soviet-era newspapers. He eventually comes across a particularly empty hallway. At the end is a window, and he looks out through it at a group of trees. There's a strange line cut in the grass below them.
+T
+What is that?
+He goes back down the steps and out another set of doors, arriving in the school courtyard, where a game of hopscotch is still drawn on the concrete in white chalk. He turns around to hop on the drawing, but notices something in one of the windows. The camera cuts to inside the window, showing the back of the head of a T, as the thing stares down into the courtyard at him. He seems taken aback, but remains silent this time, less scared than his previous encounter. He walks backwards for a moment, before turning his gaze away entirely and darting off. He eventually arrives outside where the trees are. He walks toward the line he saw, and the ground shifts in an unnatural way.
+T
+What the hell?
+The camera shifts back and forth to show off this strange gap in the grass. He turns one last time to look at the school, and then walks into the gap.
+INT. ROOM OF DOORS
+He lands back in the white room.
+T
+What? No, no, no. I was out. I was OUT.
+He runs to the other doors. Locked. Locked. Locked. He reaches the last door again.
+T
+Again? ...Fine.
+He's transported.
+MONTAGE
+Each flash map: the T arrives, one or two quick exploration shots, a still-life present in at least one frame, the T clips out of the map, a quick flash of the Room of Doors, and the same last door again.
+EXT. INSERTION2 (FLASH)
+The T lands on the long path. A quick look around. A still-life stands in the distance. He clips out of bounds. White room. Last door.
+EXT. MAP 3 TBD (FLASH)
+Same pattern. Arrival, a quick exploration shot, a still-life in frame, out of bounds. White room. Last door.
+INT. DE_FARM
+The T lands in a barn. Chickens everywhere, all perfectly still, frozen and not reacting to him. He walks among them, unsettled.
+Improvised scene. Key beats: the frozen flock unsettles him; one chicken turns its head and looks at him; the T talks to it; it begins following him on its own.
+He clips out of the map.
+INT. ROOM OF DOORS
+The T lands in the white room. A moment later, the chicken is beside him.
+T
+You came with me?
+He goes through the last door, the chicken following.
+EXT. JUNGLE TEMPLE
+The T and the chicken arrive among overgrown ruins. The T slows down, taking it in, visibly caught by mixed emotions. He talks to the chicken as they explore.
+Improvised dialogue with the chicken.
+T
+Why does this feel so familiar?
+Cut to the jungle room's still-life, standing still, the camera positioned behind its head as it looks toward the T.
+The chicken wanders straight up to the still-life, completely unafraid.
+T
+Wait-
+The T won't follow. He backs away, holding his gaze on the still-life, step by step, until he backs off the edge and falls out of the map with a yelp, out of sight.
+The camera does not cut to the Room of Doors. We stay. The chicken wanders out of frame. The camera slowly pans back and rises around the still-life, revealing its face for the first time: completely blank. The music swells.
+CUT TO BLACK.
+END OF PART 1
 
 ---
 
