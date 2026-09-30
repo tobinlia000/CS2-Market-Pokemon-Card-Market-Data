@@ -78,6 +78,9 @@ Drive folder (id 1uOg9NRGon0K_byiLHCTjBrWcxAO7adKd) is retired: no more COLLAB/C
   the user adds the letterbox in CapCut. **8-bit** H.264 (dithered from the 16-bit grade, CRF 14), since CapCut
   and the Windows player may not open 10-bit H.264.
 - A joined, letterboxed preview is still useful for reviews.
+- **(2026-09-29) Division of labour:** the user does the key story shots manually where needed. My main value is
+  **cinematic B-roll of Caillou** (sweeps, tripod pans, drone, swoops, cranes, orbits, push/pull, motion blur).
+  Deliver **several angles per scene to choose from, and always one still/static/slow-zoom option** (variant "a").
 
 ## Usage budget (user, 2026-09-29)
 - Liam is on the Pro plan and usage credits are tight. Offload work that doesn't need this PC (research, writing,
