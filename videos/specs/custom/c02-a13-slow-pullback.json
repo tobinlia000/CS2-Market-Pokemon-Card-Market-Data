@@ -1,0 +1,54 @@
+{
+ "name": "c02-a13-slow-pullback",
+ "summary": "videos/demos/A13.summary.json",
+ "outputFileName": "C02 - A13 slow pull back",
+ "outputFolder": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders\\Custom Shots",
+ "concatenate": true,
+ "order": "spec",
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": {
+  "look": "cinematic",
+  "letterbox": false,
+  "vignette": false,
+  "curves": "0/0 0.088/0.035 0.136/0.075 0.193/0.136 0.293/0.254 0.409/0.401 1/1"
+ },
+ "clips": [
+  {
+   "type": "time",
+   "start": "0:07",
+   "end": "0:17",
+   "pov": "Caillou (Canadian now)",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2479.0,
+       576.0,
+       -5836.0
+      ],
+      "pitch": 1.0,
+      "yaw": -141.0,
+      "roll": 0.0,
+      "fov": 100.0
+     },
+     {
+      "t": 10.0,
+      "pos": [
+       -2424.6,
+       620.1,
+       -5836.0
+      ],
+      "pitch": 1.0,
+      "yaw": -141.0,
+      "roll": 0.0,
+      "fov": 100.0
+     }
+    ]
+   },
+   "why": "C02: same angle as C01, the camera drifts straight back 70 u over 10 s (to [-2424.6, 620.1, -5836.0])"
+  }
+ ]
+}

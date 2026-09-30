@@ -1,0 +1,54 @@
+{
+ "name": "c01-a13-static-wide",
+ "summary": "videos/demos/A13.summary.json",
+ "outputFileName": "C01 - A13 static wide",
+ "outputFolder": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders\\Custom Shots",
+ "concatenate": true,
+ "order": "spec",
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": {
+  "look": "cinematic",
+  "letterbox": false,
+  "vignette": false,
+  "curves": "0/0 0.088/0.035 0.136/0.075 0.193/0.136 0.293/0.254 0.409/0.401 1/1"
+ },
+ "clips": [
+  {
+   "type": "time",
+   "start": "0:07",
+   "end": "0:17",
+   "pov": "Caillou (Canadian now)",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2479.0,
+       576.0,
+       -5836.0
+      ],
+      "pitch": 1.0,
+      "yaw": -141.0,
+      "roll": 0.0,
+      "fov": 100.0
+     },
+     {
+      "t": 10.0,
+      "pos": [
+       -2479.0,
+       576.0,
+       -5836.0
+      ],
+      "pitch": 1.0,
+      "yaw": -141.0,
+      "roll": 0.0,
+      "fov": 100.0
+     }
+    ]
+   },
+   "why": "C01: static wide from the spot the user marked at the end of A13 (-2479,576), his view angles, fov 100"
+  }
+ ]
+}
