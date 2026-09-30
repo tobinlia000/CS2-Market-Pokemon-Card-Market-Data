@@ -58,5 +58,37 @@ My read:
 ## Questions for the user (answers recorded below)
 See the chat of 2026-09-29.
 
-## Answers
-(to fill in)
+## Answers (user, 2026-09-29)
+**Overall direction (most important):** TRY every shot, but focus on **cinematic B-roll of Caillou**. The user does
+the important story shots manually where needed; I do what's hard for him: special cinematic moves (sweeping, tripod
+pans, drone, swoops, cranes, orbits, push/pull, motion blur). **For each scene, record several angles to choose from,
+and ALWAYS include one still/static/slow-zoom option.**
+
+A2 (Poolrooms)
+1. The pool passes are deliberate: C moved along the path in steps and LL moved to a new spot in the water each
+   time, to give the illusion of several figures in the water at once. Use them all (looking down through the water,
+   a still-life below, back to us).
+2. LL shouldn't be visible at the edge/duck part at all. What matters: the duck scene and the jump scene (the user can
+   redo those if they're not good enough).
+3. Yes: the jump is ~4:40, and everything after it is unusable.
+
+C1 (School)
+4. Yes: 0:40–0:42 is the arrival; 0:00–0:36 is waiting.
+5. Grenades: blowing the door is the only way to open it. **Don't show the nade being thrown, only the aftermath.**
+6. Two versions of the window scene: the courtyard one, and one on the THIRD FLOOR (several takes). **Use the third-floor
+   one, from LL's perspective** (so 7:33+ near LL's floor is NOT goofing; the approach noclip itself is unusable).
+
+D1 (Insertion2)
+7. Just follow Caillou through the scene to the end. At the end: a long stretch of road and a bridge; LL is up on the
+   bridge. Several takes: one where LL runs after him, one where LL just stands. Then C runs off.
+
+G1 (jungle temple)
+8. Yes, de_lord = the jungle temple, and the chicken is in the recording. If chickens can't be read from the demo,
+   that's fine: take a shot at it, and the user will reshoot manually if needed.
+9. (not answered)
+10. The fall at 3:51.8 is probably NOT the real one. Look for the real backing-away/fall; flag it if it isn't found.
+
+## Overnight deliverable
+`Videos\CS2 Renders\Part 1 B-roll\<demo>\`: files named `<demo> NN<letter> - <scene> - <angle>.mp4`
+(NN = scene in story order, letter = variant; variant **a is always the still/static/slow-zoom option**), graded, no
+bars, 8-bit, plus `index.md` (scene list with demo times) and a contact-sheet JPG per demo to choose from quickly.
