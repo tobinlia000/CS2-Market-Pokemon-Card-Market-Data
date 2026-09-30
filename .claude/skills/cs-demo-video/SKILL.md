@@ -74,7 +74,10 @@ Drive folder (id 1uOg9NRGon0K_byiLHCTjBrWcxAO7adKd) is retired: no more COLLAB/C
 ## Delivery for editing (user, 2026-09-29)
 - The user edits in **CapCut**. Deliver **every shot as its own file, numbered in story order**
   (`NN - (#shot) description.mp4`) plus `shot-list.txt`: `videos/specs/a1v2/export_shots.py <ver>`.
-- Shots are **graded** (the cinematic look + the restored map tone curve, no vignette) but have **NO black bars**:
+- **(2026-09-30) The user prefers UNGRADED shots** ("ungraded is best"): the Backrooms material (A1, A2, custom
+  shots) is delivered as the untouched renders (motion blur + the in-game deband stay). Use `export_shots.py <ver> --raw`
+  / `broll.py export <DEMO> - raw`. Grading is now opt-in.
+- (Before 2026-09-30) Shots were **graded** (the cinematic look + the restored map tone curve, no vignette) with **NO black bars**:
   the user adds the letterbox in CapCut. **8-bit** H.264 (dithered from the 16-bit grade, CRF 14), since CapCut
   and the Windows player may not open 10-bit H.264.
 - A joined, letterboxed preview is still useful for reviews.

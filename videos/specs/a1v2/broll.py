@@ -467,7 +467,7 @@ def slug(t, n=70):
 BACKROOMS_CURVE_DEMOS = {"A1", "A2", "A11", "A12", "A13"}   # the restored nino2 tone curve belongs to ze_backrooms only
 
 
-def export(demo, only=None, curve=None):
+def export(demo, only=None, curve=None, raw=False):
     sys.path.insert(0, str(REPO / "tools" / "csdv"))
     from post import ffmpeg_path
     ff = ffmpeg_path()
@@ -484,7 +484,10 @@ def export(demo, only=None, curve=None):
         if len(hits) != 1:
             index.append(f"| (missing) {name} | {o['a']}–{o['b']} | {o['label']} |")
             continue
-        if only is None or o["id"] in only:
+        if (only is None or o["id"] in only) and raw:
+            import shutil
+            shutil.copyfile(hits[0], dest / name)   # ungraded: the user's preference (2026-09-30)
+        elif only is None or o["id"] in only:
             use_curve = (demo in BACKROOMS_CURVE_DEMOS) if curve is None else curve
             args = [sys.executable, str(REPO / "tools" / "csdv" / "post.py"), hits[0], "--look", FINISH["look"], "-o",
                     str(tmp), "--no-vignette"] + (["--curves", FINISH["curves"]] if use_curve else [])
@@ -576,5 +579,6 @@ if __name__ == "__main__":
         fix(demo, int(sys.argv[3]), sys.argv[4], sys.argv[5])
     elif cmd == "export":
         only = set(sys.argv[3].split(",")) if len(sys.argv) > 3 and sys.argv[3] != "-" else None
-        curve = {"curve": True, "nocurve": False}.get(sys.argv[4]) if len(sys.argv) > 4 else None
-        export(demo, only, curve)
+        mode = sys.argv[4] if len(sys.argv) > 4 else ""
+        curve = {"curve": True, "nocurve": False}.get(mode)
+        export(demo, only, curve, raw=(mode == "raw"))
