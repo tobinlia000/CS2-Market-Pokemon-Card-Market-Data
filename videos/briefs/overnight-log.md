@@ -35,3 +35,12 @@ Pipeline (per demo):
 - A2 #14 (the jump): LL is visible behind C before 4:35.5, so the jump is shot from 4:35.5 to 4:40 as a separate fix pass.
 - G1: de_lord is outdoors; the indoor camera check (which rejects open sky) was replaced by a clearance-only check.
 - D1: 3 late moments (5:46–6:18) have no angle that keeps LL (on the bridge, facing C) face-safe; skipped.
+- GRADING FIX: the restored tone curve is the Backrooms map's (nino2) and crushed A2's dark tunnel to black. It is now
+  applied only to Backrooms demos. C1/D1/G1 are exported with the cinematic look but NO curve. A2 01–03 were
+  re-exported without the curve (readable now); the rest of A2 keeps it.
+- C1/D1/G1 were rendered with the map's post-processing OFF (the spec default made for the Backrooms vignette). C1's raw
+  footage looks natural (the school barely uses it). Flag: the map's own look (fog/bloom) could be restored by
+  re-rendering with `r_csgo_postprocess_enable 1` if the user prefers it.
+- G1: the real "backs off the edge and falls" wasn't found. The backing-away beat is 3:07–3:12.5 (facing the
+  still-life), then he turns and runs off NW; the only fall is the 3:51.8 death (which the user doubts). Added scene 37
+  "backing away" (3:05–3:12.4) from behind LL's head. The fall itself: RESHOOT.

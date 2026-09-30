@@ -453,7 +453,10 @@ def slug(t, n=70):
     return re.sub(r"\s+", " ", t).strip()[:n].rstrip(" .,")
 
 
-def export(demo, only=None):
+BACKROOMS_CURVE_DEMOS = {"A1", "A2", "A11", "A12", "A13"}   # the restored nino2 tone curve belongs to ze_backrooms only
+
+
+def export(demo, only=None, curve=None):
     sys.path.insert(0, str(REPO / "tools" / "csdv"))
     from post import ffmpeg_path
     ff = ffmpeg_path()
@@ -471,8 +474,9 @@ def export(demo, only=None):
             index.append(f"| (missing) {name} | {o['a']}–{o['b']} | {o['label']} |")
             continue
         if only is None or o["id"] in only:
+            use_curve = (demo in BACKROOMS_CURVE_DEMOS) if curve is None else curve
             args = [sys.executable, str(REPO / "tools" / "csdv" / "post.py"), hits[0], "--look", FINISH["look"], "-o",
-                    str(tmp), "--curves", FINISH["curves"], "--no-vignette"]
+                    str(tmp), "--no-vignette"] + (["--curves", FINISH["curves"]] if use_curve else [])
             subprocess.run(args, check=True, capture_output=True)
             subprocess.run([ff, "-hide_banner", "-loglevel", "error", "-y", "-i", str(tmp), "-vf",
                             "scale=flags=lanczos:sws_dither=ed,format=yuv420p", "-c:v", "libx264", "-profile:v", "high",
@@ -560,4 +564,6 @@ if __name__ == "__main__":
     elif cmd == "fix":
         fix(demo, int(sys.argv[3]), sys.argv[4], sys.argv[5])
     elif cmd == "export":
-        export(demo, set(sys.argv[3].split(",")) if len(sys.argv) > 3 else None)
+        only = set(sys.argv[3].split(",")) if len(sys.argv) > 3 and sys.argv[3] != "-" else None
+        curve = {"curve": True, "nocurve": False}.get(sys.argv[4]) if len(sys.argv) > 4 else None
+        export(demo, only, curve)
