@@ -655,3 +655,13 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   matching `sequence-*-tick-A-to-B.mp4` in the pass folder, and re-run `join_v5.py v6`.
 - A pillar ~60 u behind LL at T14 limits cameras there. His head can only be a dark shape beside the lit gap, not
   in front of it.
+
+## 29. Overnight B-roll run (2026-09-30)
+- `videos/specs/a1v2/broll.py build|fix|export <DEMO>`: generic B-roll builder for any map. It swaps
+  build.TC/TL/G per demo (a stand-in LL when absent), makes several angles per scene (variant a = static/slow zoom, then
+  cine specials), does a 3D LL face check (yaw + pitch, "tiny" < 6% of frame height is allowed), splits render passes,
+  and exports graded no-bar 8-bit files + index.md + contact sheet.
+- **The restored tone curve belongs to ze_backrooms only** (it crushed A2's dark tunnel). Other maps: look only.
+- **cam_ok rejects open sky**, i.e. all of an outdoor map (de_lord): use a clearance-only check there.
+- Falling off a ledge trips the noclip detector (vertical speed); allow it explicitly for jump/fall beats.
+- `takes.py` (the take sheets) + the user's answers made the intent calls; the user's direction was B-roll-first.

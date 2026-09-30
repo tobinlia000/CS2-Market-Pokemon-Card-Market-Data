@@ -18,7 +18,11 @@ Pipeline (per demo):
 - [x] D1 built (63 shots, 3 passes; thinned: every 3rd moment before 4:30, all of the road/bridge end)
 - [x] G1 built (74 shots, 3 passes; finale orbit 36a from behind to the face)
 - [x] A2 exported (34 files; 05b + 07b deleted: murky/broken)
-- [ ] render C1 → D1 → G1, export each  - [ ] A2 jump fix pass (scene 14 from 4:35.5)  - [ ] reviews  - [ ] morning report
+- [x] C1 rendered + exported (54 files; 13a deleted: dark wall) + reviewed
+- [x] D1 rendered + exported + reviewed (fog, the road under the overpass bridge; good)
+- [x] G1 + fixes rendered, exported (77 files) + reviewed (finale orbit ends on the face)
+- [x] A2 jump exported (14a–d)
+- [x] morning report: videos/briefs/morning-report.md  - [ ] A2 jump fix pass (scene 14 from 4:35.5)  - [ ] reviews  - [ ] morning report
 
 ## Guesses / flags
 - G1: chickens can't be read from the demo data (players only); shots don't account for them.
