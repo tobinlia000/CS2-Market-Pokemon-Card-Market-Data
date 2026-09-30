@@ -52,7 +52,20 @@ def setup(demo):
         B.TL = positions.Track("0", "none", B.TC.tick.copy(), np.tile([0.0, 0.0, -30000.0], (n, 1)), np.zeros(n),
                                np.zeros(n), np.ones(n, bool), np.zeros(n))
     B.G = mapgeo.MapGeometry.for_map(summary["map"])
+    if summary["map"] in OUTDOOR:
+        B.cam_ok = cam_ok_outdoor     # the indoor check rejects open sky, i.e. every outdoor spot
     return summary
+
+
+OUTDOOR = {"de_lord"}
+
+
+def cam_ok_outdoor(p) -> bool:
+    for a in range(0, 360, 45):
+        d = np.array([math.cos(math.radians(a)), math.sin(math.radians(a)), 0.0])
+        if not B.G.clear(p, p + d * 14):
+            return False
+    return B.G.clear(p, p + [0, 0, -14.0]) and B.G.clear(p, p + [0, 0, 14.0])
 
 
 def fast_windows(track, pad=0.35):
@@ -249,6 +262,11 @@ def auto_scenes(demo, chunk=6.5, min_len=3.0):
                          fmt(e), move=True, ll=ll))
             n += 1
             k = e
+    if demo == "D1":
+        # a flash scene in the edit: thin out the middle (every 3rd moment); keep all of the road + bridge ending
+        keep = [sc for k, sc in enumerate(out) if tk(sc["a"]) / 64 >= 270 or k % 3 == 0]
+        out = [dict(sc, n=k + 1) for k, sc in enumerate(keep)]
+        n = len(out) + 1
     if demo == "G1":
         out.append(S(n, "FINALE: around the still-life to its face (blank it in editing)", "5:03", "5:23",
                      move=False, ll="reveal", finale=True))
@@ -289,26 +307,42 @@ def v_behind_ll(dist, side, fov, label, push=False):
 
 
 def v_finale(sc):
-    """A slow orbit from behind the still-life's head around to its face (the only allowed face shot)."""
+    """A slow orbit from behind the still-life's head around to its face (the only allowed face shot). The radius
+    adapts per angle to stay clear of pillars (nearest clear distance to the previous one)."""
     a, b = tk(sc["a"]), tk(sc["b"])
     t = np.arange(a, b + 1, 2)
     lp, lyaw, _, _ = sample(B.TL, t)
     head = lp.mean(0) + [0, 0, 60]
     y0 = float(np.median(lyaw))
+    best = None
+    for sgn in (1, -1):
+        path, r_prev, fails = [], 130.0, 0
+        for k in range(0, 181, 5):
+            ang = math.radians(y0 + 180 + sgn * k)
+            opts = [r for r in range(70, 241, 10)
+                    if B.cam_ok(head + [r * math.cos(ang), r * math.sin(ang), 15])]
+            if not opts:
+                fails += 1
+                path.append(r_prev)
+                continue
+            r_prev = min(opts, key=lambda r: abs(r - r_prev))
+            path.append(float(r_prev))
+        if best is None or fails < best[0]:
+            best = (fails, sgn, path)
+    fails, sgn, path = best
+    if fails > 4:
+        return None
     n = len(t)
     f = np.linspace(0, 1, n)
     f = f * f * (3 - 2 * f)
-    for sgn in (1, -1):
-        ang = np.radians(y0 + 180 + sgn * 180 * f)
-        r = 150 - 40 * f
-        cam = np.c_[head[0] + r * np.cos(ang), head[1] + r * np.sin(ang), head[2] + 20 - 20 * f]
-        if not all(B.cam_ok(c) for c in cam[::10]):
-            continue
-        p, y = B.look(cam, np.tile(head, (n, 1)))
-        s = dict(ticks=t, cam=cam, pitch=p, yaw=y, fov=np.full(n, 45.0))
-        s["res"] = (1.0, 1.0, 1.0)
-        return ("orbit from behind to its face", s)
-    return None
+    kk = f * 180
+    radius = np.interp(kk, np.arange(0, 181, 5), B.smooth(np.array(path), 2) if len(path) > 4 else np.array(path))
+    ang = np.radians(y0 + 180 + sgn * kk)
+    cam = np.c_[head[0] + radius * np.cos(ang), head[1] + radius * np.sin(ang), head[2] + 15 - 15 * f]
+    p, y = B.look(cam, np.tile(head, (n, 1)))
+    s = dict(ticks=t, cam=cam, pitch=p, yaw=y, fov=np.full(n, 45.0))
+    s["res"] = (1.0, 1.0, 1.0)
+    return ("orbit from behind to its face", s)
 
 
 def variants_for(sc):
