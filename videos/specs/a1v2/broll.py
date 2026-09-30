@@ -509,9 +509,55 @@ def contact(path, thumbs, cols=5):
     sheet.save(path, quality=85)
 
 
+def fix(demo, n, a, b, allow_noclip=True, ll="out", move=True, title=None, **extra):
+    """Shoot one scene again (new time window) as separate passes and replace it in the demo's order file."""
+    setup(demo)
+    c_fast, ll_fast = fast_windows(B.TC), fast_windows(B.TL)
+    old = json.loads((REPO / "videos" / "specs" / f"broll-{demo.lower()}-order.json").read_text(encoding="utf-8"))
+    title = title or next((o["title"] for o in old["shots"] if o["n"] == n), f"scene {n}")
+    sc = S(n, title, a, b, move=move, ll=ll, allow_noclip=allow_noclip, **extra)
+    got = []
+    for item in variants_for(sc):
+        if item is None:
+            continue
+        label, shot = item
+        if label == "__specials__":
+            for mk in (SPECIALS_MOVE if move else SPECIALS_STILL):
+                if len(got) >= 4:
+                    break
+                r = mk(sc)
+                if r and accept(sc, r[1], ll_fast, c_fast, 0.55)[0] and r[0] not in [g[0] for g in got]:
+                    got.append(r)
+            continue
+        if accept(sc, shot, ll_fast, c_fast, sc.get("need", 0.5))[0]:
+            got.append((label, shot))
+    shots = [o for o in old["shots"] if o["n"] != n]
+    passes = list(old["passes"])
+    for k, (label, shot) in enumerate(got):
+        B.CLIPS.clear()
+        B.REPORT.clear()
+        sid = f"{demo}-{n:02d}{'abcdefg'[k]}"
+        B.add(sid, a, b, shot, title)
+        name = f"broll-{demo.lower()}-fix{n:02d}{'abcdefg'[k]}"
+        spec = {"name": name, "summary": f"videos/demos/{demo}.summary.json", "outputFileName": name.upper(),
+                "concatenate": True, "order": "spec", "clips": list(B.CLIPS), "cfg": "r_csgo_postprocess_enable 0",
+                "finish": False}
+        (REPO / "videos" / "specs" / f"{name}.json").write_text(json.dumps(spec, indent=1), encoding="utf-8")
+        c = B.CLIPS[0]
+        shots.append(dict(id=sid, n=n, letter="abcdefg"[k], title=title, label=label, a=a, b=b, start=c["start"],
+                          end=c["end"], pass_=name))
+        passes.append(name)
+        print(name, label)
+    shots.sort(key=lambda o: (o["n"], o["letter"]))
+    old["shots"], old["passes"] = shots, passes
+    (REPO / "videos" / "specs" / f"broll-{demo.lower()}-order.json").write_text(json.dumps(old, indent=1), encoding="utf-8")
+
+
 if __name__ == "__main__":
     cmd, demo = sys.argv[1], sys.argv[2].upper()
     if cmd == "build":
         build(demo)
+    elif cmd == "fix":
+        fix(demo, int(sys.argv[3]), sys.argv[4], sys.argv[5])
     elif cmd == "export":
         export(demo, set(sys.argv[3].split(",")) if len(sys.argv) > 3 else None)

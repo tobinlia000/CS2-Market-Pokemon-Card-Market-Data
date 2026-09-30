@@ -1,0 +1,84 @@
+{
+ "name": "broll-a2-fix14d",
+ "summary": "videos/demos/A2.summary.json",
+ "outputFileName": "BROLL-A2-FIX14D",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 17632,
+   "end": 17920,
+   "pov": "Caillou (Canadian now)",
+   "why": "#A2-14d scene 14",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -843.9,
+       -14577.0,
+       1699.0
+      ],
+      "pitch": -5.101,
+      "yaw": -96.477,
+      "roll": 0.0,
+      "fov": 80.0
+     },
+     {
+      "t": 1.125,
+      "pos": [
+       -843.9,
+       -14577.0,
+       1699.0
+      ],
+      "pitch": -5.101,
+      "yaw": -96.477,
+      "roll": 0.0,
+      "fov": 80.0
+     },
+     {
+      "t": 2.25,
+      "pos": [
+       -843.9,
+       -14577.0,
+       1699.0
+      ],
+      "pitch": -5.101,
+      "yaw": -96.477,
+      "roll": 0.0,
+      "fov": 80.0
+     },
+     {
+      "t": 3.375,
+      "pos": [
+       -843.9,
+       -14577.0,
+       1699.0
+      ],
+      "pitch": -5.101,
+      "yaw": -96.477,
+      "roll": 0.0,
+      "fov": 80.0
+     },
+     {
+      "t": 4.5,
+      "pos": [
+       -843.9,
+       -14577.0,
+       1699.0
+      ],
+      "pitch": -5.101,
+      "yaw": -96.477,
+      "roll": 0.0,
+      "fov": 80.0
+     }
+    ]
+   }
+  }
+ ],
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": false
+}

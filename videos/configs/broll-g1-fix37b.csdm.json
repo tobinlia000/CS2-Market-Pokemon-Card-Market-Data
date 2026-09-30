@@ -1,0 +1,63 @@
+{
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\G1.dem",
+  "recordingSystem": "HLAE",
+  "recordingOutput": "video",
+  "encoderSoftware": "FFmpeg",
+  "framerate": 60,
+  "width": 2560,
+  "height": 1440,
+  "closeGameAfterRecording": true,
+  "trueView": false,
+  "concatenateSequences": true,
+  "outputFileName": "BROLL-G1-FIX37B",
+  "ffmpegSettings": {
+    "customLocationEnabled": false,
+    "customExecutableLocation": "",
+    "audioBitrate": 256,
+    "constantRateFactor": 18,
+    "videoContainer": "mp4",
+    "videoCodec": "libx264",
+    "audioCodec": "aac",
+    "inputParameters": "",
+    "outputParameters": ""
+  },
+  "sequences": [
+    {
+      "number": 1,
+      "startTick": 11840,
+      "endTick": 12314,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 11808,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-g1-fix37b-clip1.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 11832 mirv_campath offset current\nmirv_cmd addAtTick 12314 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 12314 cl_drawhud 1\nmirv_cmd addAtTick 11810 spec_mode 3\nmirv_streams settings add sampler csdvBlur1\nmirv_streams settings edit csdvBlur1 settings csdmPreset1\nmirv_streams settings edit csdvBlur1 fps 60\nmirv_streams settings edit csdvBlur1 exposure 0.5\nmirv_streams settings edit csdvBlur1 strength 1.0\nmirv_streams record screen settings csdvBlur1\nmirv_streams record fps 240"
+    }
+  ],
+  "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"
+}

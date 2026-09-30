@@ -9,7 +9,11 @@
  "passes": [
   "broll-a2-p1",
   "broll-a2-p2",
-  "broll-a2-p3"
+  "broll-a2-p3",
+  "broll-a2-fix14a",
+  "broll-a2-fix14b",
+  "broll-a2-fix14c",
+  "broll-a2-fix14d"
  ],
  "shots": [
   {
@@ -443,6 +447,54 @@
    "start": 15962,
    "end": 16666,
    "pass_": "broll-a2-p2"
+  },
+  {
+   "id": "A2-14a",
+   "n": 14,
+   "letter": "a",
+   "title": "scene 14",
+   "label": "static, slow zoom",
+   "a": "4:35.5",
+   "b": "4:40",
+   "start": 17632,
+   "end": 17920,
+   "pass_": "broll-a2-fix14a"
+  },
+  {
+   "id": "A2-14b",
+   "n": 14,
+   "letter": "b",
+   "title": "scene 14",
+   "label": "tripod pan (wide)",
+   "a": "4:35.5",
+   "b": "4:40",
+   "start": 17632,
+   "end": 17920,
+   "pass_": "broll-a2-fix14b"
+  },
+  {
+   "id": "A2-14c",
+   "n": 14,
+   "letter": "c",
+   "title": "scene 14",
+   "label": "side tracking",
+   "a": "4:35.5",
+   "b": "4:40",
+   "start": 17632,
+   "end": 17920,
+   "pass_": "broll-a2-fix14c"
+  },
+  {
+   "id": "A2-14d",
+   "n": 14,
+   "letter": "d",
+   "title": "scene 14",
+   "label": "ground level",
+   "a": "4:35.5",
+   "b": "4:40",
+   "start": 17632,
+   "end": 17920,
+   "pass_": "broll-a2-fix14d"
   }
  ]
 }

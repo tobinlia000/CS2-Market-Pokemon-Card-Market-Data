@@ -1,0 +1,84 @@
+{
+ "name": "broll-g1-fix37a",
+ "summary": "videos/demos/G1.summary.json",
+ "outputFileName": "BROLL-G1-FIX37A",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 11840,
+   "end": 12314,
+   "pov": "Caillou (Canadian now)",
+   "why": "#G1-37a backing away from the still-life, holding its gaze",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -520.2,
+       -1185.6,
+       264.0
+      ],
+      "pitch": 6.281,
+      "yaw": 92.426,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 1.8438,
+      "pos": [
+       -520.2,
+       -1185.6,
+       264.0
+      ],
+      "pitch": 6.281,
+      "yaw": 92.426,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 3.7188,
+      "pos": [
+       -520.2,
+       -1185.6,
+       264.0
+      ],
+      "pitch": 6.281,
+      "yaw": 92.426,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 5.5625,
+      "pos": [
+       -520.2,
+       -1185.6,
+       264.0
+      ],
+      "pitch": 6.281,
+      "yaw": 92.426,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 7.4062,
+      "pos": [
+       -520.2,
+       -1185.6,
+       264.0
+      ],
+      "pitch": 6.281,
+      "yaw": 92.426,
+      "roll": 0.0,
+      "fov": 40.0
+     }
+    ]
+   }
+  }
+ ],
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": false
+}

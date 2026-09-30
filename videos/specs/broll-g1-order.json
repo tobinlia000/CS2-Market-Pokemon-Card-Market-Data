@@ -9,7 +9,10 @@
  "passes": [
   "broll-g1-p1",
   "broll-g1-p2",
-  "broll-g1-p3"
+  "broll-g1-p3",
+  "broll-g1-fix37a",
+  "broll-g1-fix37b",
+  "broll-g1-fix37c"
  ],
  "shots": [
   {
@@ -899,6 +902,42 @@
    "start": 19392,
    "end": 20672,
    "pass_": "broll-g1-p1"
+  },
+  {
+   "id": "G1-37a",
+   "n": 37,
+   "letter": "a",
+   "title": "backing away from the still-life, holding its gaze",
+   "label": "behind its head (static)",
+   "a": "3:05",
+   "b": "3:12.4",
+   "start": 11840,
+   "end": 12314,
+   "pass_": "broll-g1-fix37a"
+  },
+  {
+   "id": "G1-37b",
+   "n": 37,
+   "letter": "b",
+   "title": "backing away from the still-life, holding its gaze",
+   "label": "behind its head, slow push-in",
+   "a": "3:05",
+   "b": "3:12.4",
+   "start": 11840,
+   "end": 12314,
+   "pass_": "broll-g1-fix37b"
+  },
+  {
+   "id": "G1-37c",
+   "n": 37,
+   "letter": "c",
+   "title": "backing away from the still-life, holding its gaze",
+   "label": "over its shoulder (wide)",
+   "a": "3:05",
+   "b": "3:12.4",
+   "start": 11840,
+   "end": 12314,
+   "pass_": "broll-g1-fix37c"
   }
  ]
 }
