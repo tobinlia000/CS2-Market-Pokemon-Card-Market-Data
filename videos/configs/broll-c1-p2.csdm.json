@@ -1,0 +1,567 @@
+{
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\C1.dem",
+  "recordingSystem": "HLAE",
+  "recordingOutput": "video",
+  "encoderSoftware": "FFmpeg",
+  "framerate": 60,
+  "width": 2560,
+  "height": 1440,
+  "closeGameAfterRecording": true,
+  "trueView": false,
+  "concatenateSequences": true,
+  "outputFileName": "BROLL-C1-P2",
+  "ffmpegSettings": {
+    "customLocationEnabled": false,
+    "customExecutableLocation": "",
+    "audioBitrate": 256,
+    "constantRateFactor": 18,
+    "videoContainer": "mp4",
+    "videoCodec": "libx264",
+    "audioCodec": "aac",
+    "inputParameters": "",
+    "outputParameters": ""
+  },
+  "sequences": [
+    {
+      "number": 1,
+      "startTick": 2752,
+      "endTick": 3571,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 2720,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip1.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 2744 mirv_campath offset current\nmirv_cmd addAtTick 3571 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 3571 cl_drawhud 1\nmirv_cmd addAtTick 2722 spec_mode 3\nmirv_streams settings add sampler csdvBlur1\nmirv_streams settings edit csdvBlur1 settings csdmPreset1\nmirv_streams settings edit csdvBlur1 fps 60\nmirv_streams settings edit csdvBlur1 exposure 0.5\nmirv_streams settings edit csdvBlur1 strength 1.0\nmirv_streams record screen settings csdvBlur1\nmirv_streams record fps 240"
+    },
+    {
+      "number": 2,
+      "startTick": 3584,
+      "endTick": 4115,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 3552,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip2.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 3576 mirv_campath offset current\nmirv_cmd addAtTick 4115 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 4115 cl_drawhud 1\nmirv_cmd addAtTick 3554 spec_mode 3\nmirv_streams settings add sampler csdvBlur2\nmirv_streams settings edit csdvBlur2 settings csdmPreset2\nmirv_streams settings edit csdvBlur2 fps 60\nmirv_streams settings edit csdvBlur2 exposure 0.5\nmirv_streams settings edit csdvBlur2 strength 1.0\nmirv_streams record screen settings csdvBlur2\nmirv_streams record fps 240"
+    },
+    {
+      "number": 3,
+      "startTick": 4384,
+      "endTick": 4992,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 4352,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip3.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 4376 mirv_campath offset current\nmirv_cmd addAtTick 4992 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 4992 cl_drawhud 1\nmirv_cmd addAtTick 4354 spec_mode 3\nmirv_streams settings add sampler csdvBlur3\nmirv_streams settings edit csdvBlur3 settings csdmPreset3\nmirv_streams settings edit csdvBlur3 fps 60\nmirv_streams settings edit csdvBlur3 exposure 0.5\nmirv_streams settings edit csdvBlur3 strength 1.0\nmirv_streams record screen settings csdvBlur3\nmirv_streams record fps 240"
+    },
+    {
+      "number": 4,
+      "startTick": 5939,
+      "endTick": 6560,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 5907,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip4.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 5931 mirv_campath offset current\nmirv_cmd addAtTick 6560 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 6560 cl_drawhud 1\nmirv_cmd addAtTick 5909 spec_mode 3\nmirv_streams settings add sampler csdvBlur4\nmirv_streams settings edit csdvBlur4 settings csdmPreset4\nmirv_streams settings edit csdvBlur4 fps 60\nmirv_streams settings edit csdvBlur4 exposure 0.5\nmirv_streams settings edit csdvBlur4 strength 1.0\nmirv_streams record screen settings csdvBlur4\nmirv_streams record fps 240"
+    },
+    {
+      "number": 5,
+      "startTick": 7603,
+      "endTick": 8320,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 7571,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip5.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 7595 mirv_campath offset current\nmirv_cmd addAtTick 8320 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 8320 cl_drawhud 1\nmirv_cmd addAtTick 7573 spec_mode 3\nmirv_streams settings add sampler csdvBlur5\nmirv_streams settings edit csdvBlur5 settings csdmPreset5\nmirv_streams settings edit csdvBlur5 fps 60\nmirv_streams settings edit csdvBlur5 exposure 0.5\nmirv_streams settings edit csdvBlur5 strength 1.0\nmirv_streams record screen settings csdvBlur5\nmirv_streams record fps 240"
+    },
+    {
+      "number": 6,
+      "startTick": 9382,
+      "endTick": 9920,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 9350,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip6.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 9374 mirv_campath offset current\nmirv_cmd addAtTick 9920 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 9920 cl_drawhud 1\nmirv_cmd addAtTick 9352 spec_mode 3\nmirv_streams settings add sampler csdvBlur6\nmirv_streams settings edit csdvBlur6 settings csdmPreset6\nmirv_streams settings edit csdvBlur6 fps 60\nmirv_streams settings edit csdvBlur6 exposure 0.5\nmirv_streams settings edit csdvBlur6 strength 1.0\nmirv_streams record screen settings csdvBlur6\nmirv_streams record fps 240"
+    },
+    {
+      "number": 7,
+      "startTick": 9920,
+      "endTick": 10560,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 9888,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip7.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 9912 mirv_campath offset current\nmirv_cmd addAtTick 10560 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 10560 cl_drawhud 1\nmirv_cmd addAtTick 9890 spec_mode 3\nmirv_streams settings add sampler csdvBlur7\nmirv_streams settings edit csdvBlur7 settings csdmPreset7\nmirv_streams settings edit csdvBlur7 fps 60\nmirv_streams settings edit csdvBlur7 exposure 0.5\nmirv_streams settings edit csdvBlur7 strength 1.0\nmirv_streams record screen settings csdvBlur7\nmirv_streams record fps 240"
+    },
+    {
+      "number": 8,
+      "startTick": 10560,
+      "endTick": 11360,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 10528,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip8.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 10552 mirv_campath offset current\nmirv_cmd addAtTick 11360 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 11360 cl_drawhud 1\nmirv_cmd addAtTick 10530 spec_mode 3\nmirv_streams settings add sampler csdvBlur8\nmirv_streams settings edit csdvBlur8 settings csdmPreset8\nmirv_streams settings edit csdvBlur8 fps 60\nmirv_streams settings edit csdvBlur8 exposure 0.5\nmirv_streams settings edit csdvBlur8 strength 1.0\nmirv_streams record screen settings csdvBlur8\nmirv_streams record fps 240"
+    },
+    {
+      "number": 9,
+      "startTick": 11571,
+      "endTick": 11904,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 11539,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip9.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 11563 mirv_campath offset current\nmirv_cmd addAtTick 11904 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 11904 cl_drawhud 1\nmirv_cmd addAtTick 11541 spec_mode 3\nmirv_streams settings add sampler csdvBlur9\nmirv_streams settings edit csdvBlur9 settings csdmPreset9\nmirv_streams settings edit csdvBlur9 fps 60\nmirv_streams settings edit csdvBlur9 exposure 0.5\nmirv_streams settings edit csdvBlur9 strength 1.0\nmirv_streams record screen settings csdvBlur9\nmirv_streams record fps 240"
+    },
+    {
+      "number": 10,
+      "startTick": 14163,
+      "endTick": 14560,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 14131,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip10.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 14155 mirv_campath offset current\nmirv_cmd addAtTick 14560 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 14560 cl_drawhud 1\nmirv_cmd addAtTick 14133 spec_mode 3\nmirv_streams settings add sampler csdvBlur10\nmirv_streams settings edit csdvBlur10 settings csdmPreset10\nmirv_streams settings edit csdvBlur10 fps 60\nmirv_streams settings edit csdvBlur10 exposure 0.5\nmirv_streams settings edit csdvBlur10 strength 1.0\nmirv_streams record screen settings csdvBlur10\nmirv_streams record fps 240"
+    },
+    {
+      "number": 11,
+      "startTick": 17728,
+      "endTick": 18240,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 17696,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip11.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 17720 mirv_campath offset current\nmirv_cmd addAtTick 18240 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18240 cl_drawhud 1\nmirv_cmd addAtTick 17698 spec_mode 3\nmirv_streams settings add sampler csdvBlur11\nmirv_streams settings edit csdvBlur11 settings csdmPreset11\nmirv_streams settings edit csdvBlur11 fps 60\nmirv_streams settings edit csdvBlur11 exposure 0.5\nmirv_streams settings edit csdvBlur11 strength 1.0\nmirv_streams record screen settings csdvBlur11\nmirv_streams record fps 240"
+    },
+    {
+      "number": 12,
+      "startTick": 18240,
+      "endTick": 18752,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 18208,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip12.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 18232 mirv_campath offset current\nmirv_cmd addAtTick 18752 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 18752 cl_drawhud 1\nmirv_cmd addAtTick 18210 spec_mode 3\nmirv_streams settings add sampler csdvBlur12\nmirv_streams settings edit csdvBlur12 settings csdmPreset12\nmirv_streams settings edit csdvBlur12 fps 60\nmirv_streams settings edit csdvBlur12 exposure 0.5\nmirv_streams settings edit csdvBlur12 strength 1.0\nmirv_streams record screen settings csdvBlur12\nmirv_streams record fps 240"
+    },
+    {
+      "number": 13,
+      "startTick": 19968,
+      "endTick": 20544,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 19936,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip13.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 19960 mirv_campath offset current\nmirv_cmd addAtTick 20544 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 20544 cl_drawhud 1\nmirv_cmd addAtTick 19938 spec_mode 3\nmirv_streams settings add sampler csdvBlur13\nmirv_streams settings edit csdvBlur13 settings csdmPreset13\nmirv_streams settings edit csdvBlur13 fps 60\nmirv_streams settings edit csdvBlur13 exposure 0.5\nmirv_streams settings edit csdvBlur13 strength 1.0\nmirv_streams record screen settings csdvBlur13\nmirv_streams record fps 240"
+    },
+    {
+      "number": 14,
+      "startTick": 27392,
+      "endTick": 28109,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 27360,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip14.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 27384 mirv_campath offset current\nmirv_cmd addAtTick 28109 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 28109 cl_drawhud 1\nmirv_cmd addAtTick 27362 spec_mode 3\nmirv_streams settings add sampler csdvBlur14\nmirv_streams settings edit csdvBlur14 settings csdmPreset14\nmirv_streams settings edit csdvBlur14 fps 60\nmirv_streams settings edit csdvBlur14 exposure 0.5\nmirv_streams settings edit csdvBlur14 strength 1.0\nmirv_streams record screen settings csdvBlur14\nmirv_streams record fps 240"
+    },
+    {
+      "number": 15,
+      "startTick": 29536,
+      "endTick": 30624,
+      "showXRay": false,
+      "showAssists": true,
+      "showOnlyDeathNotices": true,
+      "deathNoticesDuration": 5,
+      "playerVoicesEnabled": false,
+      "recordAudio": true,
+      "playersOptions": [
+        {
+          "playerName": "Caillou (Canadian now)",
+          "steamId": "76561198125088961",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        },
+        {
+          "playerName": "Lightning Lemur",
+          "steamId": "76561197972134749",
+          "showKill": true,
+          "highlightKill": false,
+          "isVoiceEnabled": false
+        }
+      ],
+      "playerCameras": [
+        {
+          "tick": 29504,
+          "playerSteamId": "76561198125088961",
+          "playerName": "Caillou (Canadian now)"
+        }
+      ],
+      "cameras": [],
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/broll-c1-p2-clip15.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 29528 mirv_campath offset current\nmirv_cmd addAtTick 30624 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 30624 cl_drawhud 1\nmirv_cmd addAtTick 29506 spec_mode 3\nmirv_streams settings add sampler csdvBlur15\nmirv_streams settings edit csdvBlur15 settings csdmPreset15\nmirv_streams settings edit csdvBlur15 fps 60\nmirv_streams settings edit csdvBlur15 exposure 0.5\nmirv_streams settings edit csdvBlur15 strength 1.0\nmirv_streams record screen settings csdvBlur15\nmirv_streams record fps 240"
+    }
+  ],
+  "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"
+}
