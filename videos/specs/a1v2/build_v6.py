@@ -173,7 +173,7 @@ def main():
                                                   fixed_fov=38, need_c=0.8, aim_point=cmean("2:30.5", "2:32.5") + [0, 0, 62]),
       "close: 'no, no, that's not right'")
     S(16, "A1", "2:32.5", "2:38", lambda: fixed("2:32.5", "2:38", LLPOS + [0.0, 70.0, 70.0],
-                                               LLPOS + [-10.0, -420.0, 45.0], 32.0),
+                                               LLPOS + [-10.0, -420.0, 64.0], 26.0),
       "straight behind its head, centered: it watches him run")
     S(17, "A1", "2:38", "2:40.5", lambda: shot_cine("ground", tk("2:38"), tk("2:40.5"), {"facing": "away"}, track=B.TC),
       "ground lock-off, runs away (ends before the wall glitch)")
@@ -191,7 +191,7 @@ def main():
         G = np.array([-3175.0, 2515.0, -5830.0])
         u = (G - H)[:2] / np.linalg.norm((G - H)[:2])
         perp = np.array([u[1], -u[0]])
-        cam = np.r_[H[:2] - u * 45 + perp * -14, H[2] + 2]
+        cam = np.r_[H[:2] - u * 45 + perp * -9, H[2] - 2]  # head overlaps the edge of the lit gap
         dh = (H - cam) / np.linalg.norm(H - cam)
         dg = (G - cam) / np.linalg.norm(G - cam)
         return fixed("4:02.4", "4:05", cam, cam + (dh + dg) / 2 * 500, 40.0)
@@ -244,8 +244,8 @@ def main():
                                                 need_c=0.6, margin=1.4), "he walks into the pit room")
     S(40, "A12", "0:35.5", "0:40.5", lambda: shot_ots_c(tk("0:35.5"), tk("0:40.5"), back=80, side=18, up=10, fov=58,
                                                        ahead=700), "over his shoulder: the gigantic pit opens up ahead")
-    S(41, "A12", "0:40.5", "0:44", lambda: solve("0:40.5", "0:44", rel="left", dists=(120, 170, 230), margin=1.2,
-                                                fov_range=(30, 80)), "at the edge he looks down into it (child-like laughter)")
+    S(41, "A12", "0:40.5", "0:44", lambda: solve("0:40.5", "0:44", rel="back", dists=(110, 150, 200), margin=1.2,
+                                                fov_range=(35, 80)), "at the edge he looks down into it (child-like laughter)")
     S(42, "A12", "0:47.5", "0:53.5", lambda: solve("0:47.5", "0:53.5", absb=0, anchor="end", dists=(450, 600, 750),
                                                   margin=1.6, need_c=0.7), "scared, he retreats to the corner")
     S(43, "A12", "0:53.5", "0:57.5", lambda: solve("0:53.5", "0:57.5", rel="front-left", dists=(130, 180, 240), margin=1.25),

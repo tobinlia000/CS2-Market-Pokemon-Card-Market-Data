@@ -19,7 +19,7 @@
 | 17 | A1 | 2:38–2:40.5 | 86% | 0% | ground lock-off, runs away (ends before the wall glitch) |
 | 18 | A1 | 2:49.2–2:54 | 72% | 0% | wide tripod pan, sprint north |
 | 19 | A1 | 2:54–2:56.3 | 100% | 0% | lost: runs through (cut before he turns back) |
-| 20 | A1 | 4:02.4–4:05 | 57% | 100% | close behind it: its head a dark silhouette beside the lit gap as he darts past |
+| 20 | A1 | 4:02.4–4:05 | 50% | 100% | close behind it: its head a dark silhouette beside the lit gap as he darts past |
 | 21 | A11 | 1:43.8–1:47.3 | 100% | 0% | the run: he races past, checking behind him |
 | 22 | A11 | 1:47.3–1:52.5 | 86% | 0% | the run continues, and he ducks around the corner |
 | 24 | A11 | 1:52.5–1:58 | 100% | 0% | 'What the hell was that thing? Its face... WHAT IS HAPPENING?' |

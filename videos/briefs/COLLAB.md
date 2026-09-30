@@ -133,6 +133,8 @@ script beat; standing shots are only scripted lines, about 3–4 s each.
   show his face); #50's POV faces the room, not the pit.
 
 ## 6. Render log
+- 2026-09-29 · **A1 v6** · `A1-v6-final*.mp4` (52 shots). The user's v5 notes plus the A12 B-roll (246/247 → the pit →
+  the corner → smoke). Three demos, five passes + two fix passes, joined by `join_v5.py v6`.
 - 2026-09-29 · **A1 v5** · `A1-v5-final.mp4` + `-final-8bit.mp4` + `-preview-720p.mp4` (49 shots, 3:52). Rebuilt to the
   user's v4 review (`A1-direction.md`) plus the A11 B-roll: spawn corner as the anchor, a two-camera reveal behind
   LL, the run into the hiding corner, and the footstep whips. Four render passes joined by `join_v5.py`.

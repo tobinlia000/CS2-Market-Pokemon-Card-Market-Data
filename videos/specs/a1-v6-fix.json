@@ -1,0 +1,157 @@
+{
+ "name": "a1-v6-fix",
+ "summary": "videos/demos/A1.summary.json",
+ "outputFileName": "A1-V6-FIX",
+ "concatenate": true,
+ "order": "spec",
+ "clips": [
+  {
+   "type": "ticks",
+   "start": 9760,
+   "end": 10112,
+   "pov": "Caillou (Canadian now)",
+   "why": "#16 straight behind its head, centered: it watches him run",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -2686.0,
+       1194.0,
+       -5830.0
+      ],
+      "pitch": 0.701,
+      "yaw": -91.169,
+      "roll": 0.0,
+      "fov": 26.0
+     },
+     {
+      "t": 1.375,
+      "pos": [
+       -2686.0,
+       1194.0,
+       -5830.0
+      ],
+      "pitch": 0.701,
+      "yaw": -91.169,
+      "roll": 0.0,
+      "fov": 26.0
+     },
+     {
+      "t": 2.75,
+      "pos": [
+       -2686.0,
+       1194.0,
+       -5830.0
+      ],
+      "pitch": 0.701,
+      "yaw": -91.169,
+      "roll": 0.0,
+      "fov": 26.0
+     },
+     {
+      "t": 4.125,
+      "pos": [
+       -2686.0,
+       1194.0,
+       -5830.0
+      ],
+      "pitch": 0.701,
+      "yaw": -91.169,
+      "roll": 0.0,
+      "fov": 26.0
+     },
+     {
+      "t": 5.5,
+      "pos": [
+       -2686.0,
+       1194.0,
+       -5830.0
+      ],
+      "pitch": 0.701,
+      "yaw": -91.169,
+      "roll": 0.0,
+      "fov": 26.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "ticks",
+   "start": 15514,
+   "end": 15680,
+   "pov": "Caillou (Canadian now)",
+   "why": "#20 close behind it: its head a dark silhouette beside the lit gap as he darts past",
+   "camera": {
+    "shot": "keys",
+    "interp": "linear",
+    "keys": [
+     {
+      "t": 0.0,
+      "pos": [
+       -3472.4,
+       3966.5,
+       -5834.5
+      ],
+      "pitch": -1.34,
+      "yaw": -83.897,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 0.6562,
+      "pos": [
+       -3472.4,
+       3966.5,
+       -5834.5
+      ],
+      "pitch": -1.34,
+      "yaw": -83.897,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 1.3125,
+      "pos": [
+       -3472.4,
+       3966.5,
+       -5834.5
+      ],
+      "pitch": -1.34,
+      "yaw": -83.897,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 1.9688,
+      "pos": [
+       -3472.4,
+       3966.5,
+       -5834.5
+      ],
+      "pitch": -1.34,
+      "yaw": -83.897,
+      "roll": 0.0,
+      "fov": 40.0
+     },
+     {
+      "t": 2.5938,
+      "pos": [
+       -3472.4,
+       3966.5,
+       -5834.5
+      ],
+      "pitch": -1.34,
+      "yaw": -83.897,
+      "roll": 0.0,
+      "fov": 40.0
+     }
+    ]
+   }
+  }
+ ],
+ "cfg": "r_csgo_postprocess_enable 0",
+ "finish": false
+}

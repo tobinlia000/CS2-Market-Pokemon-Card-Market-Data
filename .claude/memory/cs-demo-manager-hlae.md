@@ -648,3 +648,10 @@ RULE: never give the user a click path from memory. Check `src/ui` in the cloned
   has a solid south wall, so the pans there read as "toward the lens, then past on the left".
 - LL (at T14 in the pillar hall) can only see the U19 gap, not the long corridor. The clean "LL watches, C
   never looks" moment is A1 4:02.4–4:05.
+- (§28 cont.) **A12 B-roll** = the "246, 247" walk to the pit, the edge, the corner, and the smoke (thrown 1:03.2,
+  detonates 1:04.7). It has one noclip (0:16.3–0:18.1) past a map trigger barrier: hidden by a hard cut to a
+  different location. Grenade timing: `DemoParser.parse_event("weapon_fire" / "smokegrenade_detonate")`.
+- **Patching single shots:** a small `-fix` spec with the same ticks, render it, then copy the files over the
+  matching `sequence-*-tick-A-to-B.mp4` in the pass folder, and re-run `join_v5.py v6`.
+- A pillar ~60 u behind LL at T14 limits cameras there. His head can only be a dark shape beside the lit gap, not
+  in front of it.
