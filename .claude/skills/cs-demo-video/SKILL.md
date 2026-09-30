@@ -71,6 +71,14 @@ recommendation and state it clearly in my report, so the user can overrule it.
 `videos/briefs/COLLAB.md` stays as the project log (status board, decisions, render log), local only. The Google
 Drive folder (id 1uOg9NRGon0K_byiLHCTjBrWcxAO7adKd) is retired: no more COLLAB/CD-reply docs.
 
+## Delivery for editing (user, 2026-09-29)
+- The user edits in **CapCut**. Deliver **every shot as its own file, numbered in story order**
+  (`NN - (#shot) description.mp4`) plus `shot-list.txt`: `videos/specs/a1v2/export_shots.py <ver>`.
+- Shots are **graded** (the cinematic look + the restored map tone curve, no vignette) but have **NO black bars**:
+  the user adds the letterbox in CapCut. **8-bit** H.264 (dithered from the 16-bit grade, CRF 14), since CapCut
+  and the Windows player may not open 10-bit H.264.
+- A joined, letterboxed preview is still useful for reviews.
+
 ## Usage budget (user, 2026-09-29)
 - Liam is on the Pro plan and usage credits are tight. Offload work that doesn't need this PC (research, writing,
   long analysis of committed files) to a **cloud session**: free cloud-session credits. Anything touching CS2, HLAE,
