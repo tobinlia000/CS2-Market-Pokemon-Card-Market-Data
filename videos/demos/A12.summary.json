@@ -1,0 +1,38 @@
+{
+  "summaryVersion": 1,
+  "name": "A12",
+  "demoPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\A12.dem",
+  "checksum": "ffee0850c8e189f2",
+  "game": "CS2",
+  "map": "ze_backrooms_insomnia",
+  "date": "2026-09-30T00:01:43.000Z",
+  "source": "valve",
+  "tickrate": 64,
+  "tickCount": 5160,
+  "duration": "1:20",
+  "teams": [
+    {
+      "name": "Team A",
+      "score": 0
+    },
+    {
+      "name": "Team B",
+      "score": 0
+    }
+  ],
+  "players": [
+    {
+      "steamId": "76561198125088961",
+      "name": "Caillou (Canadian now)",
+      "team": "Team B",
+      "kills": 0,
+      "deaths": 0,
+      "assists": 0,
+      "headshots": 0
+    }
+  ],
+  "rounds": [],
+  "multiKills": [],
+  "clutches": [],
+  "kills": []
+}

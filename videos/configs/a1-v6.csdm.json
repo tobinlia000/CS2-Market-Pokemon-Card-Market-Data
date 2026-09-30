@@ -492,150 +492,6 @@
     },
     {
       "number": 14,
-      "startTick": 47744,
-      "endTick": 48256,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "Lightning Lemur",
-          "steamId": "76561197972134749",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 47712,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
-        }
-      ],
-      "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip14.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 47736 mirv_campath offset current\nmirv_cmd addAtTick 48256 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 48256 cl_drawhud 1\nmirv_cmd addAtTick 47714 spec_mode 3\nmirv_streams settings add sampler csdvBlur14\nmirv_streams settings edit csdvBlur14 settings csdmPreset14\nmirv_streams settings edit csdvBlur14 fps 60\nmirv_streams settings edit csdvBlur14 exposure 0.5\nmirv_streams settings edit csdvBlur14 strength 1.0\nmirv_streams record screen settings csdvBlur14\nmirv_streams record fps 240"
-    },
-    {
-      "number": 15,
-      "startTick": 49984,
-      "endTick": 50304,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "Lightning Lemur",
-          "steamId": "76561197972134749",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 49952,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
-        }
-      ],
-      "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip15.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 49976 mirv_campath offset current\nmirv_cmd addAtTick 50304 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 50304 cl_drawhud 1\nmirv_cmd addAtTick 49954 spec_mode 3\nmirv_streams settings add sampler csdvBlur15\nmirv_streams settings edit csdvBlur15 settings csdmPreset15\nmirv_streams settings edit csdvBlur15 fps 60\nmirv_streams settings edit csdvBlur15 exposure 0.5\nmirv_streams settings edit csdvBlur15 strength 1.0\nmirv_streams record screen settings csdvBlur15\nmirv_streams record fps 240"
-    },
-    {
-      "number": 16,
-      "startTick": 50688,
-      "endTick": 51040,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "Lightning Lemur",
-          "steamId": "76561197972134749",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 50656,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
-        }
-      ],
-      "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip16.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 50680 mirv_campath offset current\nmirv_cmd addAtTick 51040 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 51040 cl_drawhud 1\nmirv_cmd addAtTick 50658 spec_mode 3\nmirv_streams settings add sampler csdvBlur16\nmirv_streams settings edit csdvBlur16 settings csdmPreset16\nmirv_streams settings edit csdvBlur16 fps 60\nmirv_streams settings edit csdvBlur16 exposure 0.5\nmirv_streams settings edit csdvBlur16 strength 1.0\nmirv_streams record screen settings csdvBlur16\nmirv_streams record fps 240"
-    },
-    {
-      "number": 17,
-      "startTick": 51040,
-      "endTick": 51264,
-      "showXRay": false,
-      "showAssists": true,
-      "showOnlyDeathNotices": true,
-      "deathNoticesDuration": 5,
-      "playerVoicesEnabled": false,
-      "recordAudio": true,
-      "playersOptions": [
-        {
-          "playerName": "Caillou (Canadian now)",
-          "steamId": "76561198125088961",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        },
-        {
-          "playerName": "Lightning Lemur",
-          "steamId": "76561197972134749",
-          "showKill": true,
-          "highlightKill": false,
-          "isVoiceEnabled": false
-        }
-      ],
-      "playerCameras": [
-        {
-          "tick": 51008,
-          "playerSteamId": "76561198125088961",
-          "playerName": "Caillou (Canadian now)"
-        }
-      ],
-      "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip17.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 51032 mirv_campath offset current\nmirv_cmd addAtTick 51264 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 51264 cl_drawhud 1\nmirv_cmd addAtTick 51010 spec_mode 3\nmirv_streams settings add sampler csdvBlur17\nmirv_streams settings edit csdvBlur17 settings csdmPreset17\nmirv_streams settings edit csdvBlur17 fps 60\nmirv_streams settings edit csdvBlur17 exposure 0.5\nmirv_streams settings edit csdvBlur17 strength 1.0\nmirv_streams record screen settings csdvBlur17\nmirv_streams record fps 240"
-    },
-    {
-      "number": 18,
       "startTick": 52672,
       "endTick": 53069,
       "showXRay": false,
@@ -668,10 +524,10 @@
         }
       ],
       "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip18.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 52664 mirv_campath offset current\nmirv_cmd addAtTick 53069 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 53069 cl_drawhud 1\nmirv_cmd addAtTick 52642 spec_mode 3\nmirv_streams settings add sampler csdvBlur18\nmirv_streams settings edit csdvBlur18 settings csdmPreset18\nmirv_streams settings edit csdvBlur18 fps 60\nmirv_streams settings edit csdvBlur18 exposure 0.5\nmirv_streams settings edit csdvBlur18 strength 1.0\nmirv_streams record screen settings csdvBlur18\nmirv_streams record fps 240"
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip14.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 52664 mirv_campath offset current\nmirv_cmd addAtTick 53069 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 53069 cl_drawhud 1\nmirv_cmd addAtTick 52642 spec_mode 3\nmirv_streams settings add sampler csdvBlur14\nmirv_streams settings edit csdvBlur14 settings csdmPreset14\nmirv_streams settings edit csdvBlur14 fps 60\nmirv_streams settings edit csdvBlur14 exposure 0.5\nmirv_streams settings edit csdvBlur14 strength 1.0\nmirv_streams record screen settings csdvBlur14\nmirv_streams record fps 240"
     },
     {
-      "number": 19,
+      "number": 15,
       "startTick": 53069,
       "endTick": 53203,
       "showXRay": false,
@@ -704,10 +560,10 @@
         }
       ],
       "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip19.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 53061 mirv_campath offset current\nmirv_cmd addAtTick 53203 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 53203 cl_drawhud 1\nmirv_cmd addAtTick 53039 spec_mode 3\nmirv_streams settings add sampler csdvBlur19\nmirv_streams settings edit csdvBlur19 settings csdmPreset19\nmirv_streams settings edit csdvBlur19 fps 60\nmirv_streams settings edit csdvBlur19 exposure 0.5\nmirv_streams settings edit csdvBlur19 strength 1.0\nmirv_streams record screen settings csdvBlur19\nmirv_streams record fps 240"
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip15.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 53061 mirv_campath offset current\nmirv_cmd addAtTick 53203 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 53203 cl_drawhud 1\nmirv_cmd addAtTick 53039 spec_mode 3\nmirv_streams settings add sampler csdvBlur15\nmirv_streams settings edit csdvBlur15 settings csdmPreset15\nmirv_streams settings edit csdvBlur15 fps 60\nmirv_streams settings edit csdvBlur15 exposure 0.5\nmirv_streams settings edit csdvBlur15 strength 1.0\nmirv_streams record screen settings csdvBlur15\nmirv_streams record fps 240"
     },
     {
-      "number": 20,
+      "number": 16,
       "startTick": 53216,
       "endTick": 53376,
       "showXRay": false,
@@ -740,10 +596,10 @@
         }
       ],
       "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip20.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 53208 mirv_campath offset current\nmirv_cmd addAtTick 53376 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 53376 cl_drawhud 1\nmirv_cmd addAtTick 53186 spec_mode 3\nmirv_streams settings add sampler csdvBlur20\nmirv_streams settings edit csdvBlur20 settings csdmPreset20\nmirv_streams settings edit csdvBlur20 fps 60\nmirv_streams settings edit csdvBlur20 exposure 0.5\nmirv_streams settings edit csdvBlur20 strength 1.0\nmirv_streams record screen settings csdvBlur20\nmirv_streams record fps 240"
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip16.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 53208 mirv_campath offset current\nmirv_cmd addAtTick 53376 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 53376 cl_drawhud 1\nmirv_cmd addAtTick 53186 spec_mode 3\nmirv_streams settings add sampler csdvBlur16\nmirv_streams settings edit csdvBlur16 settings csdmPreset16\nmirv_streams settings edit csdvBlur16 fps 60\nmirv_streams settings edit csdvBlur16 exposure 0.5\nmirv_streams settings edit csdvBlur16 strength 1.0\nmirv_streams record screen settings csdvBlur16\nmirv_streams record fps 240"
     },
     {
-      "number": 21,
+      "number": 17,
       "startTick": 54432,
       "endTick": 54592,
       "showXRay": false,
@@ -776,10 +632,10 @@
         }
       ],
       "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip21.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 54424 mirv_campath offset current\nmirv_cmd addAtTick 54592 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 54592 cl_drawhud 1\nmirv_cmd addAtTick 54402 spec_mode 3\nmirv_streams settings add sampler csdvBlur21\nmirv_streams settings edit csdvBlur21 settings csdmPreset21\nmirv_streams settings edit csdvBlur21 fps 60\nmirv_streams settings edit csdvBlur21 exposure 0.5\nmirv_streams settings edit csdvBlur21 strength 1.0\nmirv_streams record screen settings csdvBlur21\nmirv_streams record fps 240"
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip17.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 54424 mirv_campath offset current\nmirv_cmd addAtTick 54592 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 54592 cl_drawhud 1\nmirv_cmd addAtTick 54402 spec_mode 3\nmirv_streams settings add sampler csdvBlur17\nmirv_streams settings edit csdvBlur17 settings csdmPreset17\nmirv_streams settings edit csdvBlur17 fps 60\nmirv_streams settings edit csdvBlur17 exposure 0.5\nmirv_streams settings edit csdvBlur17 strength 1.0\nmirv_streams record screen settings csdvBlur17\nmirv_streams record fps 240"
     },
     {
-      "number": 22,
+      "number": 18,
       "startTick": 59488,
       "endTick": 59712,
       "showXRay": false,
@@ -812,10 +668,10 @@
         }
       ],
       "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip22.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 59480 mirv_campath offset current\nmirv_cmd addAtTick 59712 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 59712 cl_drawhud 1\nmirv_cmd addAtTick 59458 spec_mode 3\nmirv_streams settings add sampler csdvBlur22\nmirv_streams settings edit csdvBlur22 settings csdmPreset22\nmirv_streams settings edit csdvBlur22 fps 60\nmirv_streams settings edit csdvBlur22 exposure 0.5\nmirv_streams settings edit csdvBlur22 strength 1.0\nmirv_streams record screen settings csdvBlur22\nmirv_streams record fps 240"
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip18.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 59480 mirv_campath offset current\nmirv_cmd addAtTick 59712 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 59712 cl_drawhud 1\nmirv_cmd addAtTick 59458 spec_mode 3\nmirv_streams settings add sampler csdvBlur18\nmirv_streams settings edit csdvBlur18 settings csdmPreset18\nmirv_streams settings edit csdvBlur18 fps 60\nmirv_streams settings edit csdvBlur18 exposure 0.5\nmirv_streams settings edit csdvBlur18 strength 1.0\nmirv_streams record screen settings csdvBlur18\nmirv_streams record fps 240"
     },
     {
-      "number": 23,
+      "number": 19,
       "startTick": 59712,
       "endTick": 60128,
       "showXRay": false,
@@ -848,10 +704,10 @@
         }
       ],
       "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip23.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 59704 mirv_campath offset current\nmirv_cmd addAtTick 60128 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 60128 cl_drawhud 1\nmirv_cmd addAtTick 59682 spec_mode 3\nmirv_streams settings add sampler csdvBlur23\nmirv_streams settings edit csdvBlur23 settings csdmPreset23\nmirv_streams settings edit csdvBlur23 fps 60\nmirv_streams settings edit csdvBlur23 exposure 0.5\nmirv_streams settings edit csdvBlur23 strength 1.0\nmirv_streams record screen settings csdvBlur23\nmirv_streams record fps 240"
+      "cfg": "r_csgo_postprocess_enable 0\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip19.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 59704 mirv_campath offset current\nmirv_cmd addAtTick 60128 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 60128 cl_drawhud 1\nmirv_cmd addAtTick 59682 spec_mode 3\nmirv_streams settings add sampler csdvBlur19\nmirv_streams settings edit csdvBlur19 settings csdmPreset19\nmirv_streams settings edit csdvBlur19 fps 60\nmirv_streams settings edit csdvBlur19 exposure 0.5\nmirv_streams settings edit csdvBlur19 strength 1.0\nmirv_streams record screen settings csdvBlur19\nmirv_streams record fps 240"
     },
     {
-      "number": 24,
+      "number": 20,
       "startTick": 60128,
       "endTick": 60198,
       "showXRay": false,
@@ -884,7 +740,7 @@
         }
       ],
       "cameras": [],
-      "cfg": "r_csgo_postprocess_enable 0\ndemo_timescale 0.5\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip24.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 60120 mirv_campath offset current\nmirv_cmd addAtTick 60198 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 60198 cl_drawhud 1\nmirv_cmd addAtTick 60098 spec_mode 3\nmirv_streams settings add sampler csdvBlur24\nmirv_streams settings edit csdvBlur24 settings csdmPreset24\nmirv_streams settings edit csdvBlur24 fps 60\nmirv_streams settings edit csdvBlur24 exposure 0.5\nmirv_streams settings edit csdvBlur24 strength 1.0\nmirv_streams record screen settings csdvBlur24\nmirv_streams record fps 240"
+      "cfg": "r_csgo_postprocess_enable 0\ndemo_timescale 0.5\nmirv_campath enabled 0\nmirv_campath clear\nmirv_campath load \"{REPO}/videos/campaths/a1-v6-clip20.xml\"\nmirv_campath offset none\nmirv_campath enabled 1\nmirv_cmd clear\nmirv_cmd addAtTick 60120 mirv_campath offset current\nmirv_cmd addAtTick 60198 mirv_campath enabled 0\nr_drawviewmodel 0\ncl_drawhud 0\nmirv_cmd addAtTick 60198 cl_drawhud 1\nmirv_cmd addAtTick 60098 spec_mode 3\nmirv_streams settings add sampler csdvBlur20\nmirv_streams settings edit csdvBlur20 settings csdmPreset20\nmirv_streams settings edit csdvBlur20 fps 60\nmirv_streams settings edit csdvBlur20 exposure 0.5\nmirv_streams settings edit csdvBlur20 strength 1.0\nmirv_streams record screen settings csdvBlur20\nmirv_streams record fps 240"
     }
   ],
   "outputFolderPath": "C:\\Users\\Liam's PC\\Videos\\CS2 Renders"

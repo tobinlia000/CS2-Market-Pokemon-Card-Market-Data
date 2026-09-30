@@ -33,20 +33,27 @@
 | 32 | A1 | 6:13–6:19 | 82% | 0% | 'I'm gonna get lost if I keep this up' (wide on the pillars) |
 | 33 | A1 | 6:21–6:25 | 86% | 0% | 'How? How? How? The pillars.' |
 | 34 | A1 | 6:27–6:29.5 | 100% | 0% | counting, he walks off into the dark |
-| 35 | A1 | 12:26–12:34 | 77% | 0% | he walks into the pit room, toward the corner |
-| 36 | A1 | 13:01–13:06 | 100% | 0% | over his shoulder: the huge pit ('I think I'm safe here') |
-| 37 | A1 | 13:12–13:17.5 | 100% | 0% | '...wait... what if...' readies the smoke |
-| 38 | A1 | 13:17.5–13:21 | 100% | 0% | the smoke fills the frame (to Ancient) |
-| 39 | A1 | 13:43–13:49.2 | 100% | 0% | wider, further back: back in the corner, lobbing a smoke, singing |
-| 40 | A1 | 13:49.2–13:51.3 | 100% | 0% | far away, a slow zoom through the corridors toward him: distant footsteps |
-| 41 | A1 | 13:51.5–13:54 | 100% | 0% | he turns his head toward the sound |
-| 42 | A1 | 14:10.5–14:13 | 100% | 0% | 'I really hope that video posted.' |
-| 43 | A1 | 14:12.5–14:17 | 100% | 0% | 'Hang on... did I just hear...': checks around the corner, nothing, walks back |
-| 44 | A1 | 15:29.5–15:33 | 63% | 100% | CLOSE, behind its head: the smoke is up; he turns and sees it: 'How- how?' |
-| 45 | A1 | 15:33–15:39.5 | 100% | 9% | he backs away through the smoke |
-| 46 | A1 | 15:39.5–15:40.6 | 33% | 0% | SLOW MOTION 2x: over the edge |
+| 35 | A12 | 0:02–0:08 | 82% | 0% | the last pillars: '...246...' |
+| 36 | A12 | 0:08–0:11.8 | 100% | 0% | '247.' He stops and stares behind him: 'Maybe it gave up.' |
+| 37 | A12 | 0:12–0:14.3 | 92% | 0% | he walks on (hard cut here hides the noclip) |
+| 38 | A12 | 0:23.3–0:27 | 80% | 0% | further on, he hurries through the rooms |
+| 39 | A12 | 0:30–0:35.5 | 60% | 0% | he walks into the pit room |
+| 40 | A12 | 0:35.5–0:40.5 | 100% | 0% | over his shoulder: the gigantic pit opens up ahead |
+| 41 | A12 | 0:40.5–0:44 | 100% | 0% | at the edge he looks down into it (child-like laughter) |
+| 42 | A12 | 0:47.5–0:53.5 | 82% | 0% | scared, he retreats to the corner |
+| 43 | A12 | 0:53.5–0:57.5 | 100% | 0% | back against the wall: 'I think I'm safe here... wait... what if...' (the smoke comes out) |
+| 44 | A12 | 0:58–1:04 | 100% | 0% | he steps out and throws the smoke to block off the pit |
+| 45 | A12 | 1:04.4–1:07.2 | 100% | 0% | the smoke fills the frame (transition to Ancient) |
+| 46 | A1 | 13:43–13:49.2 | 100% | 0% | wider, further back: back in the corner, lobbing a smoke, singing |
+| 47 | A1 | 13:49.2–13:51.3 | 100% | 0% | far away, a slow zoom through the corridors toward him: distant footsteps |
+| 48 | A1 | 13:51.5–13:54 | 100% | 0% | he turns his head toward the sound |
+| 49 | A1 | 14:10.5–14:13 | 100% | 0% | 'I really hope that video posted.' |
+| 50 | A1 | 14:12.5–14:17 | 100% | 0% | 'Hang on... did I just hear...': checks around the corner, nothing, walks back |
+| 51 | A1 | 15:29.5–15:33 | 63% | 100% | CLOSE, behind its head: the smoke is up; he turns and sees it: 'How- how?' |
+| 52 | A1 | 15:33–15:39.5 | 100% | 9% | he backs away through the smoke |
+| 53 | A1 | 15:39.5–15:40.6 | 33% | 0% | SLOW MOTION 2x: over the edge |
 
-Edit length ~ 206 s
+Edit length ~ 233 s
 
 Problems:
 none

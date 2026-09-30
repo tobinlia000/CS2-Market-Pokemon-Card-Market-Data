@@ -23,6 +23,8 @@ from rev_search import strict, smiley_in
 A11_DEMO = r"C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo\A11.dem"
 A1_TC, A1_TL = B.TC, B.TL
 A11_TC = [t for t in positions.load_tracks(A11_DEMO).values()][0]
+A12_DEMO = A11_DEMO.replace("A11.dem", "A12.dem")
+A12_TC = [t for t in positions.load_tracks(A12_DEMO).values()][0]
 # A11 has no LL: a stand-in far below the map, so every LL check passes trivially
 A11_TL = positions.Track("0", "none", A11_TC.tick.copy(), np.tile([0.0, 0.0, -20000.0], (len(A11_TC.tick), 1)),
                          np.zeros(len(A11_TC.tick)), np.zeros(len(A11_TC.tick)), np.ones(len(A11_TC.tick), bool),
@@ -30,7 +32,8 @@ A11_TL = positions.Track("0", "none", A11_TC.tick.copy(), np.tile([0.0, 0.0, -20
 
 # noclip windows (demo seconds); a clip may not overlap them
 NOCLIP = {"A1": [(164.4, 165.1), (168.2, 168.9), (189.8, 191.2), (193.3, 193.5), (199.5, 205.6), (267.8, 274.9)],
-          "A11": [(0.0, 16.3), (91.8, 100.7)]}
+          "A11": [(0.0, 16.3), (91.8, 100.7)],
+          "A12": [(16.3, 18.1)]}
 FINISH = {"look": "cinematic", "letterbox": True, "vignette": False,
           "curves": "0/0 0.088/0.035 0.136/0.075 0.193/0.136 0.293/0.254 0.409/0.401 1/1"}
 
@@ -38,7 +41,15 @@ SHOTS = []   # (story#, demo, a, b, shot-dict, note, cfg)
 
 
 def use(demo):
-    B.TC, B.TL = (A1_TC, A1_TL) if demo == "A1" else (A11_TC, A11_TL)
+    if demo == "A1":
+        B.TC, B.TL = A1_TC, A1_TL
+    elif demo == "A11":
+        B.TC, B.TL = A11_TC, A11_TL
+    else:
+        B.TC, B.TL = A12_TC, positions.Track("0", "none", A12_TC.tick.copy(),
+                                             np.tile([0.0, 0.0, -20000.0], (len(A12_TC.tick), 1)),
+                                             np.zeros(len(A12_TC.tick)), np.zeros(len(A12_TC.tick)),
+                                             np.ones(len(A12_TC.tick), bool), np.zeros(len(A12_TC.tick)))
 
 
 def S(n, demo, a, b, make, note, cfg=None):
@@ -220,36 +231,50 @@ def main():
     S(34, "A1", "6:27", "6:29.5", lambda: solve("6:27", "6:29.5", rel="left", dists=(300, 420, 550), margin=1.5,
                                                 fov_range=(35, 85)), "counting, he walks off into the dark")
 
-    # ================= SCENE 4: THE CORNER AND THE PIT (first time) =================
-    S(35, "A1", "12:26", "12:34", lambda: solve("12:26", "12:34", rel="behind-travel", dists=(200, 300, 400),
-                                                need_c=0.6, margin=1.4), "he walks into the pit room, toward the corner")
-    S(36, "A1", "13:01", "13:06", lambda: shot_ots_c(tk("13:01"), tk("13:06"), back=80, side=18, up=10, fov=58, ahead=700),
-      "over his shoulder: the huge pit ('I think I'm safe here')")
-    S(37, "A1", "13:12", "13:17.5", lambda: solve("13:12", "13:17.5", rel="front-left", dists=(110, 150, 200), margin=1.2,
-                                                  zoom=0.85, fov_range=(25, 80)), "'...wait... what if...' readies the smoke")
-    t38 = np.arange(tk("13:17.5"), tk("13:21") + 1, 2)
-    S(38, "A1", "13:17.5", "13:21", lambda: fixed("13:17.5", "13:21", SMOKE, sample(B.TC, t38)[0].mean(0) + [0, 0, 46], 70.0),
-      "the smoke fills the frame (to Ancient)")
+    # ================= SCENE 4: '246, 247', THE PIT, THE CORNER, THE SMOKE (A12, recorded for this) =================
+    S(35, "A12", "0:02", "0:08", lambda: solve("0:02", "0:08", rel="left", dists=(300, 420, 550), margin=1.5,
+                                              fov_range=(35, 85), need_c=0.8), "the last pillars: '...246...'")
+    S(36, "A12", "0:08", "0:11.8", lambda: solve("0:08", "0:11.8", rel="front-left", dists=(180, 250, 330), margin=1.3),
+      "'247.' He stops and stares behind him: 'Maybe it gave up.'")
+    S(37, "A12", "0:12", "0:14.3", lambda: solve("0:12", "0:14.3", rel="behind-travel", dists=(200, 300, 400),
+                                                need_c=0.6, margin=1.4), "he walks on (hard cut here hides the noclip)")
+    S(38, "A12", "0:23.3", "0:27", lambda: solve("0:23.3", "0:27", rel="front-left", dists=(350, 500, 650), fit=False,
+                                                fixed_fov=80, need_c=0.7), "further on, he hurries through the rooms")
+    S(39, "A12", "0:30", "0:35.5", lambda: solve("0:30", "0:35.5", rel="behind-travel", dists=(200, 300, 400),
+                                                need_c=0.6, margin=1.4), "he walks into the pit room")
+    S(40, "A12", "0:35.5", "0:40.5", lambda: shot_ots_c(tk("0:35.5"), tk("0:40.5"), back=80, side=18, up=10, fov=58,
+                                                       ahead=700), "over his shoulder: the gigantic pit opens up ahead")
+    S(41, "A12", "0:40.5", "0:44", lambda: solve("0:40.5", "0:44", rel="left", dists=(120, 170, 230), margin=1.2,
+                                                fov_range=(30, 80)), "at the edge he looks down into it (child-like laughter)")
+    S(42, "A12", "0:47.5", "0:53.5", lambda: solve("0:47.5", "0:53.5", absb=0, anchor="end", dists=(450, 600, 750),
+                                                  margin=1.6, need_c=0.7), "scared, he retreats to the corner")
+    S(43, "A12", "0:53.5", "0:57.5", lambda: solve("0:53.5", "0:57.5", rel="front-left", dists=(130, 180, 240), margin=1.25),
+      "back against the wall: 'I think I'm safe here... wait... what if...' (the smoke comes out)")
+    S(44, "A12", "0:58", "1:04", lambda: solve("0:58", "1:04", rel="left", dists=(200, 280, 360), margin=1.4, need_c=0.8),
+      "he steps out and throws the smoke to block off the pit")
+    S(45, "A12", "1:04.4", "1:07.2", lambda: fixed("1:04.4", "1:07.2", np.array([-769.0, 5085.0, -5850.0]),
+                                                  cmean("1:04.4", "1:07.2") + [0, 0, 46], 70.0),
+      "the smoke fills the frame (transition to Ancient)")
 
     # ================= SCENE 5: THE CREATURE RETURNS =================
-    S(39, "A1", "13:43", "13:49.2", lambda: solve("13:43", "13:49.2", absb=0, dists=(650, 850, 1050), margin=2.2,
+    S(46, "A1", "13:43", "13:49.2", lambda: solve("13:43", "13:49.2", absb=0, dists=(650, 850, 1050), margin=2.2,
                                                   fov_range=(30, 85)), "wider, further back: back in the corner, lobbing a smoke, singing")
-    S(40, "A1", "13:49.2", "13:51.3", lambda: far_zoom("13:49.2", "13:51.3"),
+    S(47, "A1", "13:49.2", "13:51.3", lambda: far_zoom("13:49.2", "13:51.3"),
       "far away, a slow zoom through the corridors toward him: distant footsteps")
-    S(41, "A1", "13:51.5", "13:54", lambda: solve("13:51.5", "13:54", absb=90, dists=(200, 280, 360), margin=1.3),
+    S(48, "A1", "13:51.5", "13:54", lambda: solve("13:51.5", "13:54", absb=90, dists=(200, 280, 360), margin=1.3),
       "he turns his head toward the sound")
-    S(42, "A1", "14:10.5", "14:13", lambda: solve("14:10.5", "14:13", rel="front-left", dists=(180, 250), margin=1.3),
+    S(49, "A1", "14:10.5", "14:13", lambda: solve("14:10.5", "14:13", rel="front-left", dists=(180, 250), margin=1.3),
       "'I really hope that video posted.'")
-    S(43, "A1", "14:12.5", "14:17", lambda: solve("14:12.5", "14:17", absb=180, dists=(250, 350, 450), margin=1.5,
+    S(50, "A1", "14:12.5", "14:17", lambda: solve("14:12.5", "14:17", absb=180, dists=(250, 350, 450), margin=1.5,
                                                   need_c=0.7), "'Hang on... did I just hear...': checks around the corner, nothing, walks back")
-    S(44, "A1", "15:29.5", "15:33", lambda: shot_behind_ll(tk("15:29.5"), tk("15:33"), dist=70, side=20, up=6, weight=0.9,
+    S(51, "A1", "15:29.5", "15:33", lambda: shot_behind_ll(tk("15:29.5"), tk("15:33"), dist=70, side=20, up=6, weight=0.9,
                                                           fov=48, follow_facing=True),
       "CLOSE, behind its head: the smoke is up; he turns and sees it: 'How- how?'")
     t45 = np.arange(tk("15:33"), tk("15:39.5"), 8)
-    S(45, "A1", "15:33", "15:39.5", lambda: fixed("15:33", "15:39.5", [-1290.0, 5060.0, -5836.0],
+    S(52, "A1", "15:33", "15:39.5", lambda: fixed("15:33", "15:39.5", [-1290.0, 5060.0, -5836.0],
                                                   sample(B.TC, t45)[0].mean(0) + [0, 0, 46], 40.0),
       "he backs away through the smoke")
-    S(46, "A1", "15:39.5", "15:40.6", lambda: fixed("15:39.5", "15:40.6", [-420.0, 5260.0, -5800.0],
+    S(53, "A1", "15:39.5", "15:40.6", lambda: fixed("15:39.5", "15:40.6", [-420.0, 5260.0, -5800.0],
                                                     [-430.0, 5090.0, -5950.0], 90.0),
       "SLOW MOTION 2x: over the edge", "demo_timescale 0.5")
 
@@ -257,7 +282,7 @@ def main():
     problems = []
     report = ["| # | demo | time | C | LL in | note |", "|---|---|---|---|---|---|"]
     order = []
-    per = {"A1": [], "A11": []}
+    per = {"A1": [], "A11": [], "A12": []}
     for n, demo, a, b, s, note, cfg in SHOTS:
         use(demo)
         if any(tk(a) / 64 < y and tk(b) / 64 > x for x, y in NOCLIP[demo]):
@@ -292,7 +317,7 @@ def main():
             else:
                 passes.append([c])
         for k, ps in enumerate(passes):
-            name = ("a1-v6" if demo == "A1" else "a11-v6") + ("" if k == 0 else f"-p{k + 1}")
+            name = {"A1": "a1-v6", "A11": "a11-v6", "A12": "a12-v6"}[demo] + ("" if k == 0 else f"-p{k + 1}")
             spec = {"name": name, "summary": f"videos/demos/{demo}.summary.json", "outputFileName": name.upper(),
                     "concatenate": True, "order": "spec", "clips": ps, "cfg": "r_csgo_postprocess_enable 0",
                     "finish": False}
@@ -304,10 +329,10 @@ def main():
             print(f"  pass {name}: {len(ps)} clips")
     (B.REPO / "videos" / "specs" / "a1-v6-order.json").write_text(json.dumps({"finish": FINISH, "shots": order}, indent=1),
                                                                   encoding="utf-8")
-    total = sum((o["end"] - o["start"]) / 64 * (2 if o["n"] == 46 else 1) for o in order)
+    total = sum((o["end"] - o["start"]) / 64 * (2 if o["n"] == 53 else 1) for o in order)
     report += ["", f"Edit length ~ {total:.0f} s", "", "Problems:"] + (problems or ["none"])
     (B.REPO / "videos" / "specs" / "a1v2" / "report_v6.md").write_text("\n".join(report) + "\n", encoding="utf-8")
-    print(f"shots {len(order)} (A1 {len(per['A1'])}, A11 {len(per['A11'])}), edit ~ {total:.0f} s")
+    print(f"shots {len(order)} (A1 {len(per['A1'])}, A11 {len(per['A11'])}, A12 {len(per['A12'])}), edit ~ {total:.0f} s")
     print("PROBLEMS:", *(problems or ["none"]), sep="\n  ")
 
 
