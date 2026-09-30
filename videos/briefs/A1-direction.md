@@ -69,3 +69,8 @@ Maps: `A1-map-1-trapped.png` (0:00–2:48) and `A1-map-2-run.png` (2:44–6:42).
 - **#40:** good. **#41:** fine. **#42:** doesn't make sense (it cuts back to him in the corner); show him walking back.
 - **The ending (#43–#50) should be:** a close LL reveal from behind its head (or from the front if its eyes are
   hidden behind the pillar), a smoke already up, he walks backwards away from it and accidentally falls into the pit.
+
+# CapCut notes (2026-09-29)
+- **#14:** restart the reveal from when he's back in the original corner (the user's scrubber frame = 3.5 s into
+  v6 #14 = A1 2:26.0). Shorter: now 2:26.0–2:30.5, with the pull-back from above LL's head over 2.5 s.
+

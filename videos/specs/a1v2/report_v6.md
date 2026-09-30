@@ -13,7 +13,7 @@
 | 11 | A11 | 1:14–1:20 | 100% | 0% | 'what's that stupid command again?' |
 | 12 | A11 | 1:20–1:26 | 100% | 0% | relief speech, the corridor ahead |
 | 13 | A11 | 1:26–1:31 | 100% | 0% | walks up the corridor toward the video 'we were making' |
-| 14 | A1 | 2:22.5–2:30.5 | 70% | 86% | THE REVEAL: the camera backs away to reveal the back of its head; Caillou walks in and notices it |
+| 14 | A1 | 2:26–2:30.5 | 100% | 84% | THE REVEAL: the camera backs away to reveal the back of its head; Caillou walks in and notices it |
 | 15 | A1 | 2:30.5–2:32.5 | 100% | 0% | close: 'no, no, that's not right' |
 | 16 | A1 | 2:32.5–2:38 | 7% | 100% | straight behind its head, centered: it watches him run |
 | 17 | A1 | 2:38–2:40.5 | 86% | 0% | ground lock-off, runs away (ends before the wall glitch) |
@@ -53,7 +53,7 @@
 | 52 | A1 | 15:33–15:39.5 | 100% | 9% | he backs away through the smoke |
 | 53 | A1 | 15:39.5–15:40.6 | 33% | 0% | SLOW MOTION 2x: over the edge |
 
-Edit length ~ 233 s
+Edit length ~ 229 s
 
 Problems:
 none

@@ -166,8 +166,8 @@ def main():
                                               margin=1.3, need_c=0.8), "walks up the corridor toward the video 'we were making'")
     # --- the reveal (A1): LL already in place; the camera backs away from just above his head to reveal it ---
     REV_AIM = LLPOS + [300 * math.cos(math.radians(-110)), 300 * math.sin(math.radians(-110)), 40]
-    S(14, "A1", "2:22.5", "2:30.5", lambda: dolly("2:22.5", "2:30.5", LLPOS + [12.0, 30.0, 92.0],
-                                                  [-2652.0, 1218.0, -5838.0], REV_AIM, 30.0, move=4.0),
+    S(14, "A1", "2:26", "2:30.5", lambda: dolly("2:26", "2:30.5", LLPOS + [12.0, 30.0, 92.0],
+                                              [-2652.0, 1218.0, -5838.0], REV_AIM, 30.0, move=2.5),
       "THE REVEAL: the camera backs away to reveal the back of its head; Caillou walks in and notices it")
     S(15, "A1", "2:30.5", "2:32.5", lambda: solve("2:30.5", "2:32.5", absb=90, dists=(80, 100, 120), fit=False,
                                                   fixed_fov=38, need_c=0.8, aim_point=cmean("2:30.5", "2:32.5") + [0, 0, 62]),

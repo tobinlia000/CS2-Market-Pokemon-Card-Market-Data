@@ -19,6 +19,9 @@ from post import ffmpeg_path  # noqa: E402
 
 ARGS = sys.argv[1:]
 VER = ARGS.pop(0) if ARGS and ARGS[0].startswith("v") else "v6"
+ONLY = {int(x) for x in ARGS.pop(ARGS.index("--only") + 1).split(",")} if "--only" in ARGS else None
+if "--only" in ARGS:
+    ARGS.remove("--only")
 OUT = Path(ARGS[0] if ARGS else r"C:\Users\Liam's PC\Videos\CS2 Renders")
 
 
@@ -46,6 +49,9 @@ def main():
         if len(hits) != 1:
             sys.exit(f"shot #{o['n']}: found {hits}")
         demo, span, note = notes[o["n"]]
+        if ONLY and o["n"] not in ONLY:
+            listing.append(f"{k:02d}  #{o['n']:<3} {demo:<4} demo {span:<18} {note}")
+            continue
         name = f"{k:02d} - (#{o['n']}) {slug(note)}.mp4"
         args = [sys.executable, str(REPO / "tools" / "csdv" / "post.py"), hits[0], "--look", fin["look"], "-o", str(tmp)]
         # no letterbox: the user adds bars in CapCut (keeps the full frame for reframing and text)
